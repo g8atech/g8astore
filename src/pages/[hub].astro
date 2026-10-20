@@ -1,0 +1,149 @@
+---
+// Pagine generali (non legate a una città): servizi di riparazione, vendita, partite IVA.
+import Base from "../layouts/Base.astro";
+import ShopCard from "../components/ShopCard.astro";
+import Promises from "../components/Promises.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import B2bBanner from "../components/B2bBanner.astro";
+import Check from "../components/Check.astro";
+import { shops, services, saleCategories, pivaPoints, macModels, macPriceRange, euro, type Service, type SaleCategory } from "../data/site";
+
+type Props =
+  | { kind: "service"; service: Service }
+  | { kind: "sale"; cat: SaleCategory }
+  | { kind: "vendita" }
+  | { kind: "piva" };
+
+export function getStaticPaths() {
+  return [
+    ...services.map((service) => ({ params: { hub: service.slug }, props: { kind: "service", service } })),
+    ...saleCategories.map((cat) => ({ params: { hub: cat.slug }, props: { kind: "sale", cat } })),
+    { params: { hub: "vendita-pc" }, props: { kind: "vendita" } },
+    { params: { hub: "partite-iva" }, props: { kind: "piva" } },
+  ];
+}
+const p = Astro.props as Props;
+const cities = shops.map((s) => s.city).join(", ");
+
+let title = "", description = "", h1 = "", lede = "", crumb = "", cityPath = "";
+if (p.kind === "service") {
+  const s = p.service;
+  title = `${s.name}: ${shops.length} negozi tra Varese, Milano e Lecco | g8astore`;
+  description = `${s.name} a ${cities}. ${s.lede}`;
+  h1 = s.name;
+  lede = s.lede;
+  crumb = s.name;
+  cityPath = s.slug;
+} else if (p.kind === "sale") {
+  title = `${p.cat.name} a ${cities} | g8astore`;
+  description = `${p.cat.lede} Negozi a ${cities}.`;
+  h1 = p.cat.h1;
+  lede = p.cat.lede;
+  crumb = p.cat.name;
+  cityPath = "vendita-pc";
+} else if (p.kind === "vendita") {
+  title = `Vendita computer: notebook, PC su misura, gaming, ricondizionati | g8astore`;
+  description = `Vendita notebook, PC su misura, PC gaming, workstation e ricondizionati garantiti nei negozi g8astore di ${cities}. Configurati e pronti all'uso.`;
+  h1 = "Vendita computer";
+  lede = "Notebook, PC su misura, gaming, workstation e ricondizionati: ti aiutiamo a scegliere e te lo consegniamo pronto, con i tuoi dati già trasferiti.";
+  crumb = "Vendita PC";
+  cityPath = "vendita-pc";
+} else {
+  title = `Computer e assistenza per partite IVA | g8astore`;
+  description = `Postazioni in fattura, riparazioni con priorità, backup, rete e assistenza remota per professionisti e piccole attività. Negozi a ${cities}.`;
+  h1 = "Computer e assistenza per partite IVA";
+  lede = "Per professionisti, studi e piccole attività: computer in fattura, riparazioni rapide e i servizi che servono a lavorare senza fermi.";
+  crumb = "Partite IVA";
+  cityPath = "partite-iva";
+}
+const path = `/${Astro.params.hub}/`;
+const crumbs =
+  p.kind === "sale"
+    ? [{ name: "Vendita PC", path: "/vendita-pc/" }, { name: crumb, path }]
+    : [{ name: crumb, path }];
+const battery = macPriceRange("batteria");
+const screen = macPriceRange("schermo");
+---
+<Base title={title} description={description} path={path} crumbs={crumbs}>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">g8astore · {shops.length} negozi</span>
+      <h1 style="margin-top:10px;max-width:20ch">{h1}</h1>
+      <p class="lede">{lede}</p>
+    </div>
+  </section>
+
+  {p.kind === "service" && (
+    <section class="s" style="padding-top:8px">
+      <div class="wrap">
+        <div class="shead"><h2>Interventi più richiesti</h2></div>
+        <div class="grid">
+          {p.service.problems.map((pr) => (
+            <div class="tile"><h3>{pr.name}</h3><p>{pr.short}</p></div>
+          ))}
+        </div>
+        {p.service.brands && (
+          <>
+            <h2 style="margin:34px 0 14px;font-size:28px">Tutte le marche</h2>
+            <div class="chips">{p.service.brands.map((b) => <span>{b.name}</span>)}<span>e molte altre</span></div>
+          </>
+        )}
+        {p.service.slug === "riparazione-mac" && (battery || screen) && (
+          <div class="card" style="margin-top:28px">
+            <h2 style="font-size:26px">Prezzi chiari per ogni MacBook</h2>
+            <p class="prose" style="margin-top:8px">
+              Listino per {macModels.length} modelli di MacBook Air e Pro.
+              {battery && <> Batteria da <b>{euro(battery.min)}</b>.</>}
+              {screen && <> Schermo completo da <b>{euro(screen.min)}</b>.</>}
+              {" "}Scegli il negozio per vedere il listino completo.
+            </p>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  {p.kind === "sale" && (
+    <section class="s" style="padding-top:8px">
+      <div class="wrap two">
+        <div class="card">
+          <h2 style="font-size:26px">Cosa ti diamo</h2>
+          <ul class="sympt" style="margin-top:14px">{p.cat.points.map((x) => <li><Check /> {x}</li>)}</ul>
+        </div>
+        <div class="card">
+          <h2 style="font-size:26px">Per chi è</h2>
+          <p class="prose" style="margin-top:10px">{p.cat.for}. Passa in negozio o scrivici su WhatsApp cosa ti serve e il budget: ti proponiamo due o tre soluzioni, senza venderti più del necessario.</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {p.kind === "vendita" && (
+    <section class="s" style="padding-top:8px">
+      <div class="wrap grid">
+        {saleCategories.map((c) => <a class="tile" href={`/${c.slug}/`}><h3>{c.name}</h3><p>{c.for}</p></a>)}
+      </div>
+    </section>
+  )}
+
+  {p.kind === "piva" && (
+    <section class="s" style="padding-top:8px">
+      <div class="wrap three">
+        {pivaPoints.map((x) => <div class="acard"><h3>{x.t}</h3><p>{x.p}</p></div>)}
+      </div>
+    </section>
+  )}
+
+  <section class="s" style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><span class="eyebrow">Scegli il negozio</span><h2 style="margin-top:8px">{h1} vicino a te</h2></div>
+      <div class="three">
+        {shops.map((s) => <ShopCard shop={s} href={`/${s.slug}/${cityPath}/`} msg={`Ciao g8astore ${s.city}, ${h1.toLowerCase()}:`} />)}
+      </div>
+    </div>
+  </section>
+
+  <HowItWorks />
+  <section class="s" style="padding-top:0"><div class="wrap"><Promises /></div></section>
+  {p.kind === "piva" && <B2bBanner />}
+</Base>

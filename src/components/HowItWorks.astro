@@ -1,0 +1,14 @@
+---
+import { howItWorks } from "../data/site";
+const { title = "Semplice, chiaro, senza sorprese" } = Astro.props;
+---
+<section class="s" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead"><span class="eyebrow">Come funziona</span><h2 style="margin-top:8px">{title}</h2></div>
+    <div class="steps">
+      {howItWorks.map(([t, p], i) => (
+        <div class="step"><div class="n">{i + 1}</div><h3>{t}</h3><p>{p}</p></div>
+      ))}
+    </div>
+  </div>
+</section>

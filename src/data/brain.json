@@ -1,0 +1,393 @@
+{
+  "fetchedAt": "2026-10-20T20:05:43.397Z",
+  "shops": [
+    {
+      "slug": "bollate",
+      "city": "Bollate",
+      "address": "Piazza Indipendenza, 8",
+      "zip": "20021",
+      "province": "MI",
+      "phone": "023504614",
+      "whatsapp": "+39023504614",
+      "email": "bollate@g8a.it",
+      "hours": null,
+      "hint": null,
+      "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/0e99f00f-2eb2-458f-a0c1-5a26e21c566f/store_photo_url-1770151349594.webp",
+      "placeId": null,
+      "rating": 4.9,
+      "reviews": 26
+    },
+    {
+      "slug": "busto-arsizio",
+      "city": "Busto Arsizio",
+      "address": "Via Q. Sella, 27",
+      "zip": "21052",
+      "province": "VA",
+      "phone": "0331984555",
+      "whatsapp": "+390331984555",
+      "email": "bustoarsizio@g8a.it",
+      "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab: 09.00-13.00\nDom: Chiuso",
+      "hint": null,
+      "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/1bd94592-9eb1-4409-83c5-4f7deaea9252/store_photo_url-1770151211315.webp",
+      "placeId": null,
+      "rating": 4.9,
+      "reviews": 285
+    },
+    {
+      "slug": "gallarate",
+      "city": "Gallarate",
+      "address": "Viale Milano, 1",
+      "zip": "21013",
+      "province": "VA",
+      "phone": "+390331248859",
+      "whatsapp": "+390331248859",
+      "email": "gallarate@g8a.it",
+      "hours": "Lun-Sab: 09.00-13.00 / 15.00-19.00\nDom: Chiuso",
+      "hint": "Fronte Fontana Zona stazione",
+      "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/00000000-0000-0000-0000-000000000001/store_photo_url-1770150689092.webp",
+      "placeId": "ChIJ6yyZkqWJhkcRWl-oGsLTGlE",
+      "rating": 5,
+      "reviews": 144
+    },
+    {
+      "slug": "jerago-con-orago",
+      "city": "Jerago con Orago",
+      "address": "Via Varesina 3",
+      "zip": "21048",
+      "province": "VA",
+      "phone": "+390331020008",
+      "whatsapp": "+390331020008",
+      "email": "jerago@g8a.it",
+      "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab: 09.00-13.00\nDom: Chiuso",
+      "hint": "Sulla varesina, Sotto i portici",
+      "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/e0eb5b0b-f2b6-42a9-88b6-e22fc26123f3/store_photo_url-1770150879779.webp",
+      "placeId": null,
+      "rating": 4.8,
+      "reviews": 344
+    },
+    {
+      "slug": "lecco",
+      "city": "Lecco",
+      "address": "Viale Dante Alighieri, 22",
+      "zip": "23900",
+      "province": "LC",
+      "phone": "+390341367754",
+      "whatsapp": "+390341367754",
+      "email": "lecco@g8a.it",
+      "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab-Dom: Chiuso",
+      "hint": "Di fronte alle Poste",
+      "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/23ce636d-0a12-4a21-80f9-f3dea9c0c734/store_photo_url-1770151379134.webp",
+      "placeId": null,
+      "rating": 5,
+      "reviews": 77
+    }
+  ],
+  "macModels": [
+    {
+      "slug": "macbook-air-13-a1466",
+      "name": "MacBook Air 13 A1466",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Air 13 (A1466)",
+          "kind": "batteria",
+          "price": 79.9,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Display Completo Macbook Air 13 (A1369/A1466)",
+          "kind": "schermo",
+          "price": 119.9,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Display Completo Argento Macbook Air 13 (A1466)",
+          "kind": "schermo",
+          "price": 189.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-air-13-a1932",
+      "name": "MacBook Air 13 A1932",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Air 13 (A1932/A2179)",
+          "kind": "batteria",
+          "price": 89.9,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Display Completo Argento MacBook Air 13 (A1932)",
+          "kind": "schermo",
+          "price": 259.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-air-13-a2179",
+      "name": "MacBook Air 13 A2179",
+      "repairs": [
+        {
+          "name": "Display Completo Argento Macbook Air 13 (A2179)",
+          "kind": "schermo",
+          "price": 249.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-air-13-a2681",
+      "name": "MacBook Air 13 A2681",
+      "repairs": [
+        {
+          "name": "Display Completo Midnight MacBook Air 13 (A2681)",
+          "kind": "schermo",
+          "price": 229.9,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Display Completo Grigio Siderale MacBook Air 13 (A2681)",
+          "kind": "schermo",
+          "price": 249.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-air-13-a3113",
+      "name": "MacBook Air 13 A3113",
+      "repairs": [
+        {
+          "name": "Display Completo Grigio Siderale MacBook Air 13 (A3113)",
+          "kind": "schermo",
+          "price": 259.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-air-15-a2941",
+      "name": "MacBook Air 15 A2941",
+      "repairs": [
+        {
+          "name": "Display Completo Grigio Siderale MacBook Air 15 (A2941/A3114)",
+          "kind": "schermo",
+          "price": 289.9,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Display Completo Minuit MacBook Air 15 (A2941/A3114)",
+          "kind": "schermo",
+          "price": 299.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-air-m1-a2337",
+      "name": "MacBook Air M1 A2337",
+      "repairs": [
+        {
+          "name": "Batteria Macbook Air M1 (A2337)",
+          "kind": "batteria",
+          "price": 89.9,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Display Completo Grigio Siderale Macbook Air M1 (A2337)",
+          "kind": "schermo",
+          "price": 259.9,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Display Completo Oro Rosa Macbook Air M1 (A2337)",
+          "kind": "schermo",
+          "price": 259.9,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Display Completo Argento Macbook Air M1 (A2337)",
+          "kind": "schermo",
+          "price": 269.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-13-a1502",
+      "name": "MacBook Pro 13 A1502",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 13 Retina (A1502)",
+          "kind": "batteria",
+          "price": 94.9,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-13-a1706",
+      "name": "MacBook Pro 13 A1706",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 13 Retina TB (A1706)",
+          "kind": "batteria",
+          "price": 94.9,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Display Completo Grigio Siderale Macbook Pro 13 (A1706)",
+          "kind": "schermo",
+          "price": 249.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-13-a1708",
+      "name": "MacBook Pro 13 A1708",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 13 Retina (A1708/A2159/A2338)",
+          "kind": "batteria",
+          "price": 94.9,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Display Completo Grigio Siderale Macbook Pro Retina 13 (A1708)",
+          "kind": "schermo",
+          "price": 244.9,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Display Completo Argento Macbook Pro Retina 13 (A1708)",
+          "kind": "schermo",
+          "price": 254.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-13-retina-a2338",
+      "name": "MacBook Pro 13\" Retina A2338",
+      "repairs": [
+        {
+          "name": "Sostituzione Batteria Macbook Pro a2238",
+          "kind": "batteria",
+          "price": 109,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-14-a2442",
+      "name": "MacBook Pro 14 A2442",
+      "repairs": [
+        {
+          "name": "Display Completo Grigio Siderale MacBook Pro 14 (A2442/A2779)",
+          "kind": "schermo",
+          "price": 479.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-14-a2992",
+      "name": "MacBook Pro 14 A2992",
+      "repairs": [
+        {
+          "name": "Display Completo Nero Sidérale MacBook Pro 14 (A2992)",
+          "kind": "schermo",
+          "price": 469.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-15-a1286",
+      "name": "MacBook Pro 15 A1286",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 15 Unibody (A1286)",
+          "kind": "batteria",
+          "price": 89.9,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-15-a1398",
+      "name": "MacBook Pro 15 A1398",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 15 Retina (A1398)",
+          "kind": "batteria",
+          "price": 99.9,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-15-a1707",
+      "name": "MacBook Pro 15 A1707",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 15 Retina (A1707)",
+          "kind": "batteria",
+          "price": 109.9,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-15-a1990",
+      "name": "MacBook Pro 15 A1990",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 15 Retina (A1990)",
+          "kind": "batteria",
+          "price": 109.9,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-16-a2141",
+      "name": "MacBook Pro 16 A2141",
+      "repairs": [
+        {
+          "name": "Batteria MacBook Pro 16 Retina (A2141)",
+          "kind": "batteria",
+          "price": 119.9,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-16-a2485",
+      "name": "MacBook Pro 16 A2485",
+      "repairs": [
+        {
+          "name": "Display Completo Grigio Siderale MacBook Pro 16 (A2485/A2780)",
+          "kind": "schermo",
+          "price": 479.9,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-16-a2991",
+      "name": "MacBook Pro 16 A2991",
+      "repairs": [
+        {
+          "name": "Display Completo Nero Sidérale MacBook Pro 16 (A2991)",
+          "kind": "schermo",
+          "price": 489.9,
+          "warrantyMonths": 12
+        }
+      ]
+    }
+  ]
+}

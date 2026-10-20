@@ -1,0 +1,176 @@
+---
+// Problema × città (/gallarate/riparazione-notebook/schermo/), marca × città (/gallarate/riparazione-notebook/hp/),
+// modello Mac × città (/gallarate/riparazione-mac/macbook-air-m1-a2337/)
+import Base from "../../../layouts/Base.astro";
+import LocalBlock from "../../../components/LocalBlock.astro";
+import Promises from "../../../components/Promises.astro";
+import HowItWorks from "../../../components/HowItWorks.astro";
+import Faq from "../../../components/Faq.astro";
+import FinalCta from "../../../components/FinalCta.astro";
+import WaIcon from "../../../components/WaIcon.astro";
+import Check from "../../../components/Check.astro";
+import { shops, services, macModels, macPriceRange, waLink, fmtRating, euro, type Shop, type Service, type Problem, type MacModel } from "../../../data/site";
+import { storeSchema, serviceSchema, faqSchema } from "../../../lib/schema";
+
+type Brand = NonNullable<Service["brands"]>[number];
+type Props = { shop: Shop; service: Service } & (
+  | { kind: "problem"; problem: Problem }
+  | { kind: "brand"; brand: Brand }
+  | { kind: "mac"; model: MacModel }
+);
+
+export function getStaticPaths() {
+  return shops.flatMap((shop) =>
+    services.flatMap((service) => [
+      ...service.problems.map((problem) => ({ params: { city: shop.slug, service: service.slug, sub: problem.slug }, props: { shop, service, kind: "problem", problem } })),
+      ...(service.brands ?? []).map((brand) => ({ params: { city: shop.slug, service: service.slug, sub: brand.slug }, props: { shop, service, kind: "brand", brand } })),
+      ...(service.slug === "riparazione-mac" ? macModels.map((model) => ({ params: { city: shop.slug, service: service.slug, sub: model.slug }, props: { shop, service, kind: "mac", model } })) : []),
+    ])
+  );
+}
+
+const p = Astro.props as Props;
+const { shop, service } = p;
+const path = `/${shop.slug}/${service.slug}/${Astro.params.sub}/`;
+const servicePath = `/${shop.slug}/${service.slug}/`;
+const isMac = service.slug === "riparazione-mac";
+const deviceLabel = isMac ? "MacBook" : service.device;
+
+let h1 = "", crumb = "", lede = "", msg = "", faq: [string, string][] = [], offers: { name: string; price: number; warrantyMonths?: number | null }[] = [];
+if (p.kind === "problem") {
+  const pr = p.problem;
+  h1 = `${pr.name} ${deviceLabel} a ${shop.city}`;
+  crumb = pr.name;
+  lede = `${pr.what}`;
+  msg = `Ciao g8astore ${shop.city}, ${deviceLabel}: ${pr.name.toLowerCase()}.`;
+  faq = [
+    ["Quanto costa?", isMac && pr.macKind ? "Trovi qui sotto i prezzi per modello. Se non trovi il tuo MacBook, scrivici il codice modello (es. A2337)." : "Il prezzo dipende dal modello e dal guasto: la diagnosi è gratuita e ricevi il preventivo prima di qualsiasi intervento."],
+    ["Quanto tempo ci vuole?", pr.time],
+    ...pr.faq,
+  ];
+  if (isMac && pr.macKind) {
+    offers = macModels.flatMap((m) => m.repairs.filter((r) => r.kind === pr.macKind).slice(0, 1).map((r) => ({ name: m.name, price: r.price, warrantyMonths: r.warrantyMonths, slug: m.slug })));
+  }
+} else if (p.kind === "brand") {
+  const b = p.brand;
+  h1 = `Riparazione notebook ${b.name} a ${shop.city}`;
+  crumb = b.name;
+  lede = `Ripariamo notebook ${b.name} di tutte le serie (${b.lines}): schermo, batteria, tastiera, cerniere, lentezza, virus e recupero dati. Diagnosi gratuita e prezzo prima di riparare.`;
+  msg = `Ciao g8astore ${shop.city}, ho un notebook ${b.name} da riparare:`;
+  faq = [
+    [`Riparate tutti i modelli ${b.name}?`, `Sì, notebook ${b.name} consumer e business. Per alcuni ricambi specifici (schermi particolari, scocche) servono pochi giorni per l'ordine.`],
+    ["Usate ricambi originali?", "Usiamo ricambi originali o compatibili di qualità: ti diciamo sempre quale montiamo e il prezzo di entrambe le opzioni quando disponibili."],
+    ["Quanto costa la diagnosi?", "Niente: la diagnosi è gratuita e se non procedi non paghi."],
+  ];
+} else {
+  const m = p.model;
+  h1 = `Riparazione ${m.name} a ${shop.city}`;
+  crumb = m.name;
+  lede = `Prezzi di riparazione per ${m.name}, IVA inclusa, nel negozio g8astore di ${shop.city}. Diagnosi gratuita per tutti gli altri guasti.`;
+  msg = `Ciao g8astore ${shop.city}, ho un ${m.name} da riparare:`;
+  offers = m.repairs.map((r) => ({ name: r.name, price: r.price, warrantyMonths: r.warrantyMonths }));
+  faq = [
+    ["Come trovo il codice del mio MacBook?", "È stampato in piccolo sul fondo del MacBook, inizia con la lettera A (per esempio A2337)."],
+    ["Siete un centro Apple?", "No, siamo un centro indipendente, non affiliato Apple. Ti diciamo sempre che ricambio usiamo."],
+    ["Il guasto che ho non è in listino?", "Scrivici o passa in negozio: la diagnosi è gratuita e ti diamo il prezzo prima di riparare."],
+  ];
+}
+
+const range = p.kind === "problem" && isMac && p.problem.macKind ? macPriceRange(p.problem.macKind) : null;
+const siblings = service.problems.filter((x) => p.kind !== "problem" || x.slug !== p.problem.slug);
+const schema = [storeSchema(shop), serviceSchema(h1, lede, shop, path, offers.slice(0, 40)), faqSchema(faq)!];
+const description = `${h1}. ${p.kind === "mac" && offers[0] ? `Da ${euro(offers[0].price)}. ` : range ? `Da ${euro(range.min)}. ` : "Diagnosi gratuita, preventivo prima. "}${shop.address}, ${shop.city}.`;
+---
+<Base
+  title={`${h1} | g8astore`}
+  description={description}
+  path={path}
+  crumbs={[{ name: shop.city, path: `/negozi/${shop.slug}/` }, { name: service.name, path: servicePath }, { name: crumb, path }]}
+  schema={schema}
+  shop={shop}
+  waMessage={msg}
+>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">g8astore {shop.city} · {service.name}</span>
+      <h1 style="margin-top:10px;max-width:22ch">{h1}</h1>
+      <p class="lede">{lede}</p>
+      <div class="badges">
+        {range && <span class="gpill">Da <b>{euro(range.min)}</b></span>}
+        {p.kind === "mac" && offers[0] && <span class="gpill">Da <b>{euro(offers[0].price)}</b></span>}
+        {shop.rating && shop.reviews ? <span class="gpill"><span class="stars">★★★★★</span> {fmtRating(shop.rating)} · {shop.reviews} recensioni</span> : null}
+        <span class="gpill warr"><Check /> Diagnosi gratuita</span>
+      </div>
+      <div class="hcta"><a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a></div>
+    </div>
+  </section>
+
+  {p.kind === "problem" && (
+    <section class="s" style="padding-top:8px">
+      <div class="wrap two">
+        <div class="card">
+          <h2 style="font-size:26px">Ti succede questo?</h2>
+          <ul class="sympt" style="margin-top:14px">
+            {p.problem.symptoms.map((x) => <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 8v5M12 16h.01"/><circle cx="12" cy="12" r="9"/></svg> {x}</li>)}
+          </ul>
+        </div>
+        <div class="card">
+          <h2 style="font-size:26px">Cosa facciamo</h2>
+          <div class="prose" style="margin-top:12px"><p>{p.problem.what}</p><p><b>Tempi:</b> {p.problem.time}</p></div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {offers.length > 0 && (
+    <section class="s" style="padding-top:0">
+      <div class="wrap">
+        <div class="shead"><h2>Prezzi a {shop.city}</h2><p class="sub">IVA inclusa, dal nostro listino. Il prezzo finale te lo confermiamo prima di riparare.</p></div>
+        <div style="overflow-x:auto">
+          <table class="price-table">
+            <thead><tr><th>{p.kind === "mac" ? "Intervento" : "Modello"}</th><th>Garanzia</th><th>Prezzo</th></tr></thead>
+            <tbody>
+              {offers.map((o: any) => (
+                <tr>
+                  <td>{o.slug ? <a href={`${servicePath}${o.slug}/`}>{o.name}</a> : o.name}</td>
+                  <td>{o.warrantyMonths ? `${o.warrantyMonths} mesi` : "—"}</td>
+                  <td class="p">{euro(o.price)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {p.kind === "brand" && (
+    <section class="s" style="padding-top:8px">
+      <div class="wrap">
+        <div class="shead"><h2>Riparazioni notebook {p.brand.name}</h2></div>
+        <div class="grid">
+          {service.problems.map((pr) => <a class="tile" href={`${servicePath}${pr.slug}/`}><h3>{pr.name}</h3><p>{pr.short}</p></a>)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <LocalBlock shop={shop} />
+
+  {p.kind !== "brand" && (
+    <section class="s" style="padding-top:0">
+      <div class="wrap">
+        <h2 style="font-size:24px;margin-bottom:12px">Altre riparazioni {deviceLabel} a {shop.city}</h2>
+        <div class="chips">{siblings.map((x) => <a href={`${servicePath}${x.slug}/`}>{x.name}</a>)}</div>
+      </div>
+    </section>
+  )}
+
+  <HowItWorks />
+  <section class="s" style="padding-top:0"><div class="wrap"><Promises /></div></section>
+  <Faq items={faq} />
+  <FinalCta shop={shop} title={h1} text={`Raccontaci il problema su WhatsApp: ti rispondiamo dal negozio di ${shop.city}.`} msg={msg} />
+  <section class="s" style="padding-top:0">
+    <div class="wrap"><p class="note">Anche a: {shops.filter((s) => s.slug !== shop.slug).map((s, i, a) => <><a href={`/${s.slug}/${service.slug}/${Astro.params.sub}/`} style="text-decoration:underline">{s.city}</a>{i < a.length - 1 ? " · " : ""}</>)}</p></div>
+  </section>
+</Base>

@@ -1,0 +1,25 @@
+{
+  "name": "g8astore",
+  "version": "1.0.0",
+  "description": "Sito g8astore.it — riparazione e vendita computer, dati da Brain",
+  "scripts": {
+    "fetch-data": "node scripts/fetch-brain.mjs",
+    "dev": "astro dev",
+    "build": "node scripts/fetch-brain.mjs && astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g8atech/g8astore.git"
+  },
+  "bugs": {
+    "url": "https://github.com/g8atech/g8astore/issues"
+  },
+  "homepage": "https://github.com/g8atech/g8astore#readme",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.1"
+  },
+  "private": true,
+  "type": "module"
+}

@@ -1,0 +1,110 @@
+---
+import Base from "../layouts/Base.astro";
+import ShopCard from "../components/ShopCard.astro";
+import Promises from "../components/Promises.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Faq from "../components/Faq.astro";
+import B2bBanner from "../components/B2bBanner.astro";
+import WaIcon from "../components/WaIcon.astro";
+import Check from "../components/Check.astro";
+import { shops, services, saleCategories, totalReviews, avgRating, fmtRating, waLink, SITE } from "../data/site";
+import { storeSchema, faqSchema } from "../lib/schema";
+
+const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
+const cities = shops.map((s) => s.city);
+const citiesText = `${cities.slice(0, -1).join(", ")} e ${cities[cities.length - 1]}`;
+const faq: [string, string][] = [
+  ["Quante sedi avete?", `${shops.length} negozi: ${citiesText}. Stesso servizio e stesse garanzie in ogni sede.`],
+  ["Devo prendere appuntamento?", "No: puoi passare in qualsiasi negozio negli orari di apertura per una valutazione gratuita. Se preferisci, scrivici prima su WhatsApp."],
+  ["Riparate PC e Mac?", "Sì: notebook e PC fissi Windows di tutte le marche e MacBook. Siamo un centro indipendente, non affiliato Apple."],
+  ["Lavorate con le partite IVA?", "Sì: vendita in fattura, riparazioni con priorità, backup, rete e assistenza remota per professionisti e piccole attività."],
+  ["La garanzia vale in tutti i negozi?", "Sì: la garanzia sull'intervento vale in tutta la rete g8astore."],
+];
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE}/#org`,
+    name: "g8astore",
+    url: `${SITE}/`,
+    logo: `${SITE}/g8a-logo.png`,
+    parentOrganization: { "@type": "Organization", name: "G8A Technology S.r.l.", url: "https://www.g8a.it/" },
+    subOrganization: shops.map((s) => ({ "@id": `${SITE}/negozi/${s.slug}/#store` })),
+  },
+  ...shops.map((s) => storeSchema(s)),
+  faqSchema(faq)!,
+];
+---
+<Base
+  title="g8astore — Riparazione e vendita computer, 5 negozi | Varese, Milano, Lecco"
+  description={`Riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. ${shops.length} negozi a ${citiesText}. Diagnosi gratuita, preventivo prima, garanzia.`}
+  path="/"
+  schema={schema}
+>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">{shops.length} negozi g8astore</span>
+      <h1 style="margin-top:10px;max-width:18ch">Riparazione e vendita <span class="b">computer</span> vicino a te</h1>
+      <p class="lede">
+        Notebook, PC fissi e Mac: li ripariamo, li potenziamo e li vendiamo, per privati e partite IVA.
+        Negozi a {citiesText}.
+      </p>
+      <div class="badges">
+        {avgRating && <span class="gpill"><span class="stars">★★★★★</span> {fmtRating(avgRating)} su Google · {totalReviews} recensioni</span>}
+        <span class="gpill warr"><Check /> Diagnosi gratuita</span>
+        <span class="gpill">Preventivo prima di riparare</span>
+      </div>
+      <div class="hcta" style="flex-direction:row;flex-wrap:wrap;max-width:none">
+        <a class="btn btn-wa" href={waLink(ref, "Ciao g8astore, ho bisogno di:")} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
+        <a class="btn btn-ghost" href="#negozi">Trova il negozio più vicino ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:8px">
+    <div class="wrap">
+      <div class="shead"><span class="eyebrow">Riparazioni</span><h2 style="margin-top:8px">Cosa ripariamo</h2></div>
+      <div class="three">
+        {services.map((s) => (
+          <a class="acard" href={`/${s.slug}/`}>
+            <h3>{s.name}</h3>
+            <p>{s.lede}</p>
+            <ul>{s.problems.slice(0, 4).map((p) => <li><Check /> {p.name}</li>)}</ul>
+            <span class="btn btn-ink">Scopri →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:0">
+    <div class="wrap">
+      <div class="shead">
+        <span class="eyebrow">Vendita</span>
+        <h2 style="margin-top:8px">Il computer giusto, scelto con te</h2>
+        <p class="sub">Lo configuriamo noi e te lo consegniamo pronto, con i dati del vecchio computer già trasferiti.</p>
+      </div>
+      <div class="grid">
+        {saleCategories.map((c) => (
+          <a class="tile" href={`/${c.slug}/`}>
+            <h3>{c.name}</h3>
+            <p>{c.for}</p>
+          </a>
+        ))}
+        <a class="tile" href="/partite-iva/"><h3>Partite IVA</h3><p>Postazioni in fattura, backup, rete</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:0" id="negozi">
+    <div class="wrap">
+      <div class="shead"><span class="eyebrow">I nostri negozi</span><h2 style="margin-top:8px">{shops.length} negozi, lo stesso standard</h2></div>
+      <div class="three">{shops.map((s) => <ShopCard shop={s} />)}</div>
+    </div>
+  </section>
+
+  <HowItWorks />
+  <section class="s" style="padding-top:0"><div class="wrap"><Promises /></div></section>
+  <B2bBanner />
+  <Faq items={faq} title="Prima di passare" />
+</Base>

@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import ShopCard from "../../components/ShopCard.astro";
+import { shops } from "../../data/site";
+import { storeSchema } from "../../lib/schema";
+const cities = shops.map((s) => s.city).join(", ");
+---
+<Base
+  title={`Negozi g8astore: ${cities}`}
+  description={`I ${shops.length} negozi g8astore per riparazione e vendita computer: ${cities}. Indirizzi, orari, telefono e WhatsApp di ogni sede.`}
+  path="/negozi/"
+  crumbs={[{ name: "Negozi", path: "/negozi/" }]}
+  schema={shops.map((s) => storeSchema(s))}
+>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Le sedi</span>
+      <h1 style="margin-top:10px">I negozi g8astore</h1>
+      <p class="lede">Riparazione e vendita computer in {shops.length} negozi. Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp alla sede più vicina.</p>
+    </div>
+  </section>
+  <section class="s" style="padding-top:0">
+    <div class="wrap"><div class="three">{shops.map((s) => <ShopCard shop={s} />)}</div></div>
+  </section>
+</Base>

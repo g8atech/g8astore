@@ -1,0 +1,96 @@
+---
+import Base from "../../layouts/Base.astro";
+import LocalBlock from "../../components/LocalBlock.astro";
+import Promises from "../../components/Promises.astro";
+import HowItWorks from "../../components/HowItWorks.astro";
+import Faq from "../../components/Faq.astro";
+import FinalCta from "../../components/FinalCta.astro";
+import B2bBanner from "../../components/B2bBanner.astro";
+import WaIcon from "../../components/WaIcon.astro";
+import Check from "../../components/Check.astro";
+import { shops, services, saleCategories, waLink, fmtRating, nearby, type Shop } from "../../data/site";
+import { storeSchema, faqSchema } from "../../lib/schema";
+
+export function getStaticPaths() {
+  return shops.map((shop) => ({ params: { city: shop.slug }, props: { shop } }));
+}
+const { shop } = Astro.props as { shop: Shop };
+const near = nearby[shop.slug] || [];
+const faq: [string, string][] = [
+  ["Devo prendere appuntamento?", `No: passa in negozio a ${shop.city} negli orari di apertura per una valutazione gratuita. Se vuoi, scrivici prima su WhatsApp e ti diciamo quando passare.`],
+  ["Quanto costa la diagnosi?", "Niente: la diagnosi è gratuita e ricevi il preventivo prima di qualsiasi intervento. Se non procedi, non paghi."],
+  ["Riparate anche i Mac?", "Sì, MacBook Air e MacBook Pro. Siamo un centro indipendente, non affiliato Apple."],
+  ["Vendete computer con fattura alle partite IVA?", "Sì: notebook, PC e monitor in fattura, configurati e pronti all'uso."],
+  ...(near.length ? [[`Venite da ${near[0]} o ${near[1]}?`, `Molti nostri clienti arrivano da ${near.join(", ")}. Per i computer che non puoi portare chiedici su WhatsApp.`] as [string, string]] : []),
+];
+---
+<Base
+  title={`Riparazione e vendita computer a ${shop.city} | g8astore ${shop.city}`}
+  description={`g8astore ${shop.city}, ${shop.address}: riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Diagnosi gratuita, preventivo prima, garanzia.`}
+  path={`/negozi/${shop.slug}/`}
+  crumbs={[{ name: "Negozi", path: "/negozi/" }, { name: shop.city, path: `/negozi/${shop.slug}/` }]}
+  schema={[storeSchema(shop, true), faqSchema(faq)!]}
+  shop={shop}
+>
+  <section class="hero">
+    <div class="wrap hgrid">
+      <div>
+        <span class="eyebrow">g8astore {shop.city}</span>
+        <h1 style="margin-top:10px">Riparazione e vendita <span class="b">computer</span> a {shop.city}</h1>
+        <p class="lede">Notebook, PC fissi e Mac per privati, professionisti e piccole attività. {shop.address}{shop.hint ? ` — ${shop.hint.toLowerCase()}` : ""}.</p>
+        <div class="badges">
+          {shop.rating && shop.reviews ? <span class="gpill"><span class="stars">★★★★★</span> {fmtRating(shop.rating)} su Google · {shop.reviews} recensioni</span> : null}
+          <span class="gpill warr"><Check /> Diagnosi gratuita</span>
+        </div>
+        <div class="hcta">
+          <a class="btn btn-wa" href={waLink(shop, `Ciao g8astore ${shop.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
+          <span class="hsub"><Check class="check-go" /> Passa senza appuntamento negli orari di apertura</span>
+        </div>
+      </div>
+      <div class="photo">{shop.photo && <img src={shop.photo} alt={`Negozio g8astore a ${shop.city}`} width="640" height="420" />}</div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:8px">
+    <div class="wrap">
+      <div class="shead"><span class="eyebrow">Riparazioni a {shop.city}</span><h2 style="margin-top:8px">Qualunque problema, lo risolviamo qui</h2></div>
+      <div class="three">
+        {services.map((s) => (
+          <div class="acard">
+            <h3><a href={`/${shop.slug}/${s.slug}/`}>{s.name}</a></h3>
+            <p>{s.lede}</p>
+            <ul>{s.problems.slice(0, 5).map((p) => <li><Check /> <a href={`/${shop.slug}/${s.slug}/${p.slug}/`}>{p.name}</a></li>)}</ul>
+            <a class="btn btn-ink" href={`/${shop.slug}/${s.slug}/`}>{s.name} a {shop.city} →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:0">
+    <div class="wrap two">
+      <div class="card">
+        <span class="eyebrow">Vendita</span>
+        <h2 style="margin:8px 0 10px;font-size:28px">Computer nuovi e ricondizionati</h2>
+        <div class="chips">{saleCategories.map((c) => <a href={`/${shop.slug}/vendita-pc/#${c.slug}`}>{c.name}</a>)}</div>
+        <a class="btn btn-ghost" style="margin-top:16px" href={`/${shop.slug}/vendita-pc/`}>Vendita PC a {shop.city} →</a>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Partite IVA</span>
+        <h2 style="margin:8px 0 10px;font-size:28px">Per professionisti e piccole attività</h2>
+        <p class="sub" style="margin-top:0">Postazioni in fattura, riparazioni con priorità, backup, rete e assistenza remota.</p>
+        <a class="btn btn-ghost" style="margin-top:16px" href={`/${shop.slug}/partite-iva/`}>Servizi per partite IVA a {shop.city} →</a>
+      </div>
+    </div>
+  </section>
+
+  <LocalBlock shop={shop} />
+  <HowItWorks />
+  <section class="s" style="padding-top:0"><div class="wrap"><Promises /></div></section>
+  <B2bBanner />
+  <Faq items={faq} title="Prima di passare" />
+  <FinalCta shop={shop} title="Riparazione o computer nuovo?" text={`Scrivici cosa ti serve: ti diciamo come fare e quando passare a ${shop.city}.`} msg={`Ciao g8astore ${shop.city}, ho bisogno di:`} />
+  <section class="s" style="padding-top:0">
+    <div class="wrap"><p class="note">Altri negozi: {shops.filter((s) => s.slug !== shop.slug).map((s, i, a) => <><a href={`/negozi/${s.slug}/`} style="text-decoration:underline">{s.city}</a>{i < a.length - 1 ? " · " : ""}</>)}</p></div>
+  </section>
+</Base>
