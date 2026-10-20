@@ -1,0 +1,46 @@
+---
+import Device from "./Device.astro";
+import Icon from "./Icon.astro";
+import WaIcon from "./WaIcon.astro";
+import GoogleG from "./GoogleG.astro";
+import { waLink, telLink, mapsLink, fmtRating, phoneDisplay, type Shop } from "../data/site";
+interface Props {
+  shop: Shop; // negozio per WhatsApp e chiamata
+  sub: string;
+  chips?: string[];
+  msg: string;
+  rating?: number | null;
+  reviews?: number | null;
+  ratingLabel?: string;
+  device?: "laptop" | "desktop" | "mac";
+  deviceTitle?: string;
+  deviceItems?: string[];
+  storeHref?: string; // "Trova il negozio" o "Vieni in negozio"
+  storeLabel?: string;
+}
+const { shop, sub, chips = ["Diagnosi gratuita", "Preventivo prima", "Garanzia fino a 12 mesi"], msg, rating, reviews, ratingLabel = "su Google", device = "laptop", deviceTitle, deviceItems, storeHref, storeLabel } = Astro.props;
+---
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1><slot /></h1>
+      <p class="hero-sub">{sub}</p>
+      <div class="chips">{chips.map((c) => <span class="chip"><Icon name="checkc" /> {c}</span>)}</div>
+      <div class="hero-ctas">
+        <a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
+        <a class="btn btn-ghost" href={telLink(shop)}><Icon name="phone" /> Chiama {phoneDisplay(shop)}</a>
+        <a class="btn btn-soft" href={storeHref ?? mapsLink(shop)} {...(storeHref ? {} : { target: "_blank", rel: "noopener" })}><Icon name="pin" /> {storeLabel ?? "Vieni in negozio"}</a>
+      </div>
+      {rating && reviews ? (
+        <div class="gcard">
+          <span class="g"><GoogleG /></span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <b>{fmtRating(rating)}</b>
+          <span class="muted">({reviews})</span>
+          <span class="sp">{ratingLabel}</span>
+        </div>
+      ) : null}
+    </div>
+    <Device kind={device} title={deviceTitle} items={deviceItems} />
+  </div>
+</section>

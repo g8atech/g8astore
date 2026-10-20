@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
-import ShopList from "../../components/ShopList.astro";
+import ShopCards from "../../components/ShopCards.astro";
+import Icon from "../../components/Icon.astro";
 import { shops } from "../../data/site";
 import { storeSchema } from "../../lib/schema";
 const cities = shops.map((s) => s.city).join(", ");
@@ -12,13 +13,12 @@ const cities = shops.map((s) => s.city).join(", ");
   crumbs={[{ name: "Negozi", path: "/negozi/" }]}
   schema={shops.map((s) => storeSchema(s))}
 >
-  <section class="hero">
-    <div class="wrap">
-      <h1>I negozi g8astore</h1>
-      <p class="lede">Riparazione e vendita computer in {shops.length} negozi. Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp alla sede più vicina.</p>
+  <section class="hero" style="padding-bottom:0">
+    <div class="wrap center" style="display:grid;gap:16px;justify-items:center">
+      <span class="kicker"><Icon name="store" /> {shops.length} negozi</span>
+      <h1 style="max-width:none">I negozi <span class="grad">g8astore</span></h1>
+      <p class="hero-sub" style="margin:0">Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp al negozio più vicino.</p>
     </div>
   </section>
-  <section class="band" style="padding-top:0">
-    <div class="wrap"><ShopList shops={shops} /></div>
-  </section>
+  <ShopCards shops={shops} title="Scegli il negozio" />
 </Base>

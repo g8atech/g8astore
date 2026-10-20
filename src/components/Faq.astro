@@ -1,14 +1,13 @@
 ---
+import Icon from "./Icon.astro";
 interface Props { items: [string, string][]; title?: string }
 const { items, title = "Domande frequenti" } = Astro.props;
 ---
 {items.length > 0 && (
-  <section class="band">
+  <section class="sec">
     <div class="wrap">
-      <div class="sec-head"><h2>{title}</h2></div>
-      <div class="faq">
-        {items.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
-      </div>
+      <div class="sec-head reveal"><span class="kicker"><Icon name="chat" /> FAQ</span><h2>{title}</h2></div>
+      <div class="faq">{items.map(([q, a]) => <details class="reveal"><summary>{q}</summary><p>{a}</p></details>)}</div>
     </div>
   </section>
 )}

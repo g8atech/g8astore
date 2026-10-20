@@ -346,3 +346,14 @@ export const promises: [string, string][] = [
   ["Se non procedi, zero", "Decidi tu, nessun costo nascosto."],
   ["Garanzia fino a 12 mesi", "Sull'intervento, valida in tutti i negozi."],
 ];
+
+// ---------- Icone ----------
+export const problemIcon: Record<string, string> = {
+  "pc-lento": "gauge", "non-si-accende": "power", virus: "bug", "recupero-dati": "database", "upgrade-ssd-ram": "drive",
+  "reinstallazione-windows": "windows", surriscaldamento: "thermo", schermo: "screen", batteria: "battery", tastiera: "keyboard",
+  cerniere: "hinge", "non-carica": "plug", alimentatore: "bolt", "scheda-video": "gpu", liquidi: "droplet",
+};
+export const serviceIcon: Record<string, string> = { "riparazione-notebook": "laptop", "riparazione-pc": "desktop", "riparazione-mac": "mac" };
+export const serviceDevice: Record<string, "laptop" | "desktop" | "mac"> = { "riparazione-notebook": "laptop", "riparazione-pc": "desktop", "riparazione-mac": "mac" };
+export const saleIcon: Record<string, string> = { "pc-su-misura": "cpu", notebook: "laptop", "pc-gaming": "gamepad", workstation: "desktop", ricondizionati: "recycle" };
+export const pivaIcon = ["receipt", "bolt", "database", "wifi", "mail", "remote"];

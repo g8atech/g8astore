@@ -1,31 +1,29 @@
 ---
+import Icon from "./Icon.astro";
 import WaIcon from "./WaIcon.astro";
-import { mapsLink, telLink, phoneDisplay, nearby, waLink, ratingText, type Shop } from "../data/site";
-interface Props { shop: Shop; title?: string; msg?: string }
-const { shop, title = `Il negozio di ${shop.city}`, msg } = Astro.props;
+import { mapsLink, telLink, phoneDisplay, nearby, waLink, fmtRating, type Shop } from "../data/site";
+interface Props { shop: Shop; msg?: string }
+const { shop, msg } = Astro.props;
 const near = nearby[shop.slug] || [];
 ---
-<section class="band--alu" id="sede">
+<section class="sec" id="sede">
   <div class="wrap local">
-    <div>
-      <h2>{title}</h2>
-      <dl>
-        <div><dt>Indirizzo</dt><dd>{shop.address}, {shop.zip} {shop.city} ({shop.province}){shop.hint ? `\n${shop.hint}` : ""}</dd></div>
-        <div><dt>Orari</dt><dd>{shop.hours ? shop.hours.replace(/: /g, "  ") : "Aggiornati sulla scheda Google Maps"}</dd></div>
-        <div><dt>Telefono</dt><dd><a href={telLink(shop)}>{phoneDisplay(shop)}</a></dd></div>
-        {ratingText(shop) && <div><dt>Su Google</dt><dd><span class="stars" aria-hidden="true">★</span> {ratingText(shop)}</dd></div>}
-      </dl>
-      <div class="actions">
-        <a class="btn btn-wa" href={waLink(shop, msg ?? `Ciao g8astore ${shop.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> Scrivi al negozio</a>
-        <a class="btn btn-line" href={mapsLink(shop)} target="_blank" rel="noopener">Indicazioni stradali</a>
+    <div class="panel reveal">
+      <h2 style="font-size:1.8rem">Il negozio di {shop.city}</h2>
+      <div class="info">
+        <div><span class="ic"><Icon name="pin" /></span><p><small>Indirizzo</small><span>{shop.address}, {shop.zip} {shop.city} ({shop.province}){shop.hint ? `\n${shop.hint}` : ""}</span></p></div>
+        <div><span class="ic"><Icon name="clock" /></span><p><small>Orari</small><span>{shop.hours ?? "Sulla scheda Google Maps"}</span></p></div>
+        <div><span class="ic"><Icon name="phone" /></span><p><small>Telefono</small><span><a href={telLink(shop)}>{phoneDisplay(shop)}</a></span></p></div>
+        {shop.rating && shop.reviews ? <div><span class="ic"><Icon name="star" /></span><p><small>Google</small><span><span class="stars">★★★★★</span> {fmtRating(shop.rating)}, {shop.reviews} recensioni</span></p></div> : null}
       </div>
-      {near.length > 0 && <p class="small muted" style="margin-top:20px">Vengono da noi anche da {near.slice(0, -1).join(", ")} e {near[near.length - 1]}.</p>}
+      <div class="acts">
+        <a class="btn btn-wa" href={waLink(shop, msg ?? `Ciao g8astore ${shop.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
+        <a class="btn btn-ghost" href={mapsLink(shop)} target="_blank" rel="noopener"><Icon name="pin" /> Indicazioni</a>
+      </div>
+      {near.length > 0 && <p class="muted" style="margin-top:18px;font-size:.9rem">Clienti anche da {near.slice(0, -1).join(", ")} e {near[near.length - 1]}.</p>}
     </div>
-    {shop.photo && (
-      <figure>
-        <img src={shop.photo} alt={`Come trovare il negozio g8astore di ${shop.city}`} width="640" height="480" loading="lazy" />
-        <figcaption>L'ingresso del negozio, in {shop.address}.</figcaption>
-      </figure>
-    )}
+    <a class="photo reveal" href={mapsLink(shop)} target="_blank" rel="noopener" aria-label={`Apri g8astore ${shop.city} su Google Maps`}>
+      {shop.photo && <img src={shop.photo} alt={`Come trovare il negozio g8astore di ${shop.city}`} width="640" height="480" loading="lazy" />}
+    </a>
   </div>
 </section>
