@@ -3,13 +3,11 @@ interface Props { items: [string, string][]; title?: string }
 const { items, title = "Domande frequenti" } = Astro.props;
 ---
 {items.length > 0 && (
-  <section class="s" style="padding-top:0">
+  <section class="band">
     <div class="wrap">
-      <div class="shead"><span class="eyebrow">FAQ</span><h2 style="margin-top:8px">{title}</h2></div>
+      <div class="sec-head"><h2>{title}</h2></div>
       <div class="faq">
-        {items.map(([q, a], i) => (
-          <details open={i === 0}><summary>{q}</summary><p>{a}</p></details>
-        ))}
+        {items.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
       </div>
     </div>
   </section>

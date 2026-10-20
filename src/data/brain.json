@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-20T20:05:43.397Z",
+  "fetchedAt": "2026-10-20T20:25:27.844Z",
   "shops": [
     {
       "slug": "bollate",
@@ -43,7 +43,7 @@
       "whatsapp": "+390331248859",
       "email": "gallarate@g8a.it",
       "hours": "Lun-Sab: 09.00-13.00 / 15.00-19.00\nDom: Chiuso",
-      "hint": "Fronte Fontana Zona stazione",
+      "hint": "Fronte fontana zona stazione",
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/00000000-0000-0000-0000-000000000001/store_photo_url-1770150689092.webp",
       "placeId": "ChIJ6yyZkqWJhkcRWl-oGsLTGlE",
       "rating": 5,
@@ -59,7 +59,7 @@
       "whatsapp": "+390331020008",
       "email": "jerago@g8a.it",
       "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab: 09.00-13.00\nDom: Chiuso",
-      "hint": "Sulla varesina, Sotto i portici",
+      "hint": "Sulla varesina, sotto i portici",
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/e0eb5b0b-f2b6-42a9-88b6-e22fc26123f3/store_photo_url-1770150879779.webp",
       "placeId": null,
       "rating": 4.8,
@@ -75,7 +75,7 @@
       "whatsapp": "+390341367754",
       "email": "lecco@g8a.it",
       "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab-Dom: Chiuso",
-      "hint": "Di fronte alle Poste",
+      "hint": "Di fronte alle poste",
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/23ce636d-0a12-4a21-80f9-f3dea9c0c734/store_photo_url-1770151379134.webp",
       "placeId": null,
       "rating": 5,

@@ -53,7 +53,7 @@ async function main() {
       whatsapp: s.whatsapp_number || s.phone,
       email: s.email,
       hours: s.opening_hours,
-      hint: s.location_hint,
+      hint: s.location_hint ? s.location_hint.charAt(0).toUpperCase() + s.location_hint.slice(1).toLowerCase() : null,
       photo: st.g8a_store_photo_url || st.store_photo_url || null,
       placeId: st.g8a_google_place_id || null,
       rating: r ? r.rating : null,

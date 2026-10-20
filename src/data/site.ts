@@ -32,7 +32,27 @@ export const phoneDisplay = (shop: Shop) => {
   const d = waNumber(shop.phone).slice(2);
   return d.replace(/^(0\d{2,3})(\d{3})(\d+)$/, "$1 $2 $3");
 };
-export const mapsLink = (shop: Shop) =>
+export const ratingText = (s: Shop) =>
+  s.rating && s.reviews ? `${fmtRating(s.rating)} su Google, ${s.reviews} recensioni` : null;
+
+/** "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab: 09.00-13.00" → "Lun–Ven 9–13, 15–19; Sab 9–13" */
+export function compactHours(hours: string | null) {
+  if (!hours) return null;
+  return hours
+    .split("\n")
+    .filter((l) => !/chius/i.test(l))
+    .map((l) =>
+      l
+        .replace(/(\d{2})\.00/g, (_, h) => String(Number(h)))
+        .replace(/(\d{2})\.(\d{2})/g, (_, h, m) => `${Number(h)}.${m}`)
+        .replace(/\s*\/\s*/g, ", ")
+        .replace(/(\w)-(\w)/g, "$1–$2")
+        .replace(/:\s*/, " ")
+    )
+    .join("; ");
+}
+
+export const mapsLink =(shop: Shop) =>
   shop.placeId
     ? `https://www.google.com/maps/search/?api=1&query=g8astore&query_place_id=${shop.placeId}`
     : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`G8A Store ${shop.address} ${shop.zip} ${shop.city}`)}`;

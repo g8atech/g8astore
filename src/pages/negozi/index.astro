@@ -1,6 +1,6 @@
 ---
 import Base from "../../layouts/Base.astro";
-import ShopCard from "../../components/ShopCard.astro";
+import ShopList from "../../components/ShopList.astro";
 import { shops } from "../../data/site";
 import { storeSchema } from "../../lib/schema";
 const cities = shops.map((s) => s.city).join(", ");
@@ -14,12 +14,11 @@ const cities = shops.map((s) => s.city).join(", ");
 >
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">Le sedi</span>
-      <h1 style="margin-top:10px">I negozi g8astore</h1>
+      <h1>I negozi g8astore</h1>
       <p class="lede">Riparazione e vendita computer in {shops.length} negozi. Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp alla sede più vicina.</p>
     </div>
   </section>
-  <section class="s" style="padding-top:0">
-    <div class="wrap"><div class="three">{shops.map((s) => <ShopCard shop={s} />)}</div></div>
+  <section class="band" style="padding-top:0">
+    <div class="wrap"><ShopList shops={shops} /></div>
   </section>
 </Base>

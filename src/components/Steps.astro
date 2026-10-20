@@ -1,0 +1,13 @@
+---
+import { howItWorks } from "../data/site";
+interface Props { title?: string }
+const { title = "Come funziona" } = Astro.props;
+---
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head"><h2>{title}</h2></div>
+    <ol class="steps">
+      {howItWorks.map(([t, p]) => <li><h3>{t}</h3><p>{p}</p></li>)}
+    </ol>
+  </div>
+</section>

@@ -5,39 +5,37 @@ import { SITE, shops, services, saleCategories, waLink, telLink, type Shop } fro
 interface Props {
   title: string;
   description: string;
-  path: string; // es. "/gallarate/riparazione-notebook/"
+  path: string;
   crumbs?: { name: string; path: string }[];
   schema?: object[];
-  shop?: Shop; // negozio di riferimento per WhatsApp e chiamata
+  shop?: Shop;
   waMessage?: string;
   noindex?: boolean;
 }
 const { title, description, path, crumbs = [], schema = [], shop, waMessage, noindex } = Astro.props;
 const canonical = new URL(path, SITE).toString();
 const ref = shop ?? shops.find((s) => s.slug === "gallarate") ?? shops[0];
-const wa = waLink(ref, waMessage ?? `Ciao g8astore ${shop ? shop.city : ""}, ho bisogno di:`.replace("  ", " "));
+const wa = waLink(ref, waMessage ?? (shop ? `Ciao g8astore ${shop.city}, ho bisogno di:` : "Ciao g8astore, ho bisogno di:"));
 
 const breadcrumbSchema = crumbs.length
   ? {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [{ name: "Home", path: "/" }, ...crumbs].map((c, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        name: c.name,
-        item: new URL(c.path, SITE).toString(),
+        "@type": "ListItem", position: i + 1, name: c.name, item: new URL(c.path, SITE).toString(),
       })),
     }
   : null;
-const allSchema = [...schema, ...(breadcrumbSchema ? [breadcrumbSchema] : [])];
+const allSchema = [...schema.filter(Boolean), ...(breadcrumbSchema ? [breadcrumbSchema] : [])];
 const menu = [
-  { name: "Riparazione notebook", path: "/riparazione-notebook/" },
+  { name: "Notebook", path: "/riparazione-notebook/" },
   { name: "PC fisso", path: "/riparazione-pc/" },
   { name: "Mac", path: "/riparazione-mac/" },
-  { name: "Vendita PC", path: "/vendita-pc/" },
+  { name: "Vendita", path: "/vendita-pc/" },
   { name: "Partite IVA", path: "/partite-iva/" },
   { name: "Negozi", path: "/negozi/" },
 ];
+const isCurrent = (p: string) => path.includes(p);
 ---
 <!doctype html>
 <html lang="it">
@@ -55,28 +53,25 @@ const menu = [
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     {ref.photo && <meta property="og:image" content={ref.photo} />}
-    <meta name="theme-color" content="#15181E" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet" />
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body>
-    <header>
-      <div class="wrap nav">
-        <a class="logo" href="/" aria-label="g8astore, home">
-          <img src="/g8a-logo.png" alt="G8A" width="57" height="34" />
-          <span class="st">store</span>
+    <header class="top">
+      <div class="wrap top-in">
+        <a class="brand" href="/" aria-label="g8astore, pagina iniziale">
+          <img src="/g8a-mark.png" alt="" width="41" height="30" />
+          <span>g8astore</span>
         </a>
         <nav class="menu" aria-label="Menu principale">
-          {menu.map((m) => <a href={m.path} aria-current={path.startsWith(m.path) ? "page" : undefined}>{m.name}</a>)}
+          {menu.map((m) => <a href={m.path} aria-current={isCurrent(m.path) ? "page" : undefined}>{m.name}</a>)}
         </nav>
         <a class="btn btn-wa" href={wa} rel="nofollow">
-          <svg class="wa-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
           WhatsApp
         </a>
       </div>
@@ -86,62 +81,57 @@ const menu = [
     </header>
 
     {crumbs.length > 0 && (
-      <div class="wrap">
-        <nav class="crumbs" aria-label="Percorso">
-          <a href="/">Home</a>
-          {crumbs.map((c, i) => (
-            <>
-              <span aria-hidden="true">›</span>
-              {i === crumbs.length - 1 ? <span>{c.name}</span> : <a href={c.path}>{c.name}</a>}
-            </>
-          ))}
-        </nav>
-      </div>
+      <nav class="wrap crumbs" aria-label="Percorso">
+        <ol>
+          <li><a href="/">Home</a></li>
+          {crumbs.map((c, i) => <li>{i === crumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.path}>{c.name}</a>}</li>)}
+        </ol>
+      </nav>
     )}
 
     <main>
       <slot />
     </main>
 
-    <footer>
+    <footer class="foot">
       <div class="wrap">
         <div class="foot-grid">
           <div>
-            <img src="/g8a-logo.png" alt="G8A" class="footer-logo" width="53" height="32" />
-            <p style="margin-top:10px;max-width:34ch">
-              Assistenza, riparazione e vendita computer per privati e partite IVA. {shops.length} negozi tra Varesotto, Milano nord e Lecco.
-            </p>
+            <img src="/g8a-logo.png" alt="G8A Technology" class="logo" width="50" height="30" />
+            <p style="max-width:36ch">Riparazione e vendita computer per privati e partite IVA, in {shops.length} negozi tra provincia di Varese, Milano nord e Lecco.</p>
           </div>
           <div>
-            <h4>Riparazioni</h4>
-            {services.map((s) => <a href={`/${s.slug}/`}>{s.name}</a>)}
+            <h2>Riparazioni</h2>
+            <ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.name}</a></li>)}</ul>
           </div>
           <div>
-            <h4>Vendita</h4>
-            {saleCategories.map((c) => <a href={`/${c.slug}/`}>{c.name}</a>)}
-            <a href="/partite-iva/">Per partite IVA</a>
+            <h2>Vendita</h2>
+            <ul>
+              {saleCategories.map((c) => <li><a href={`/${c.slug}/`}>{c.name}</a></li>)}
+              <li><a href="/partite-iva/">Per partite IVA</a></li>
+            </ul>
           </div>
           <div>
-            <h4>Negozi</h4>
-            {shops.map((s) => <a href={`/negozi/${s.slug}/`}>g8astore {s.city}</a>)}
+            <h2>Negozi</h2>
+            <ul>{shops.map((s) => <li><a href={`/negozi/${s.slug}/`}>{s.city}</a></li>)}</ul>
           </div>
         </div>
-        <div class="legal">
-          g8astore è un marchio di G8A Technology S.r.l. · P.IVA 03981970126 · Centro assistenza indipendente, non affiliato Apple.
-          Per noleggio e assistenza gestita alle aziende: <a href="https://www.g8a.it/" style="display:inline;text-decoration:underline">g8a.it</a>
-        </div>
+        <p class="legal">
+          g8astore è un marchio di G8A Technology S.r.l., P.IVA 03981970126. Centro assistenza indipendente, non affiliato Apple.
+          Noleggio e assistenza gestita per aziende su <a href="https://www.g8a.it/">g8a.it</a>.
+        </p>
       </div>
     </footer>
 
-    <div class="ab">
-      <a class="c" href={telLink(ref)}>
+    <nav class="mbar" aria-label="Contatti rapidi">
+      <a href={telLink(ref)}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        Chiama
+        Chiama {shop ? shop.city : "Gallarate"}
       </a>
       <a class="w" href={wa} rel="nofollow">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18.3c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3z"/></svg>
-        Scrivici su WhatsApp{shop ? ` · ${shop.city}` : ""}
+        Scrivici su WhatsApp
       </a>
-    </div>
+    </nav>
   </body>
 </html>

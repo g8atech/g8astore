@@ -1,0 +1,16 @@
+---
+// Il cartellino di riparazione: l'elemento simbolo del sito.
+interface Props { title: string; sub?: string; rows: [string, string][]; foot?: [string, string] }
+const { title, sub, rows, foot } = Astro.props;
+---
+<div class="tag-wrap" aria-label={title}>
+  <span class="tag-string" aria-hidden="true"></span>
+  <div class="tag">
+    <p class="tag-title">{title}</p>
+    {sub && <p class="tag-sub">{sub}</p>}
+    <dl>
+      {rows.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+    </dl>
+    {foot && <p class="tag-foot"><span>{foot[0]}</span><span>{foot[1]}</span></p>}
+  </div>
+</div>

@@ -1,0 +1,26 @@
+---
+import WaIcon from "./WaIcon.astro";
+import { waLink, mapsLink, ratingText, compactHours, type Shop } from "../data/site";
+interface Props { shops: Shop[]; suffix?: string; msg?: (s: Shop) => string }
+const { shops, suffix, msg } = Astro.props;
+const hrefFor = (s: Shop) => (suffix ? `/${s.slug}/${suffix}/` : `/negozi/${s.slug}/`);
+---
+<ul class="shops">
+  {shops.map((s) => (
+    <li class="shop">
+      {s.photo ? <img src={s.photo} alt={`Ingresso g8astore ${s.city}`} width="96" height="72" loading="lazy" /> : <span class="noimg" />}
+      <div>
+        <h3><a href={hrefFor(s)}>{s.city}</a></h3>
+        <p class="addr">{s.address}{s.hint ? `, ${s.hint.toLowerCase()}` : ""}</p>
+      </div>
+      <div class="small">
+        {ratingText(s) && <p><span class="stars" aria-hidden="true">★</span> {ratingText(s)}</p>}
+        <p class="meta">{compactHours(s.hours) ?? "Orari su Google Maps"}</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-line btn-sm" href={mapsLink(s)} target="_blank" rel="noopener">Indicazioni</a>
+        <a class="btn btn-wa btn-sm" href={waLink(s, msg ? msg(s) : `Ciao g8astore ${s.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
+      </div>
+    </li>
+  ))}
+</ul>

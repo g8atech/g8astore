@@ -1,15 +1,15 @@
 ---
 // Servizio × città: /gallarate/riparazione-notebook/, /gallarate/vendita-pc/, /gallarate/partite-iva/
 import Base from "../../../layouts/Base.astro";
+import Tag from "../../../components/Tag.astro";
 import LocalBlock from "../../../components/LocalBlock.astro";
-import Promises from "../../../components/Promises.astro";
-import HowItWorks from "../../../components/HowItWorks.astro";
+import Steps from "../../../components/Steps.astro";
 import Faq from "../../../components/Faq.astro";
-import FinalCta from "../../../components/FinalCta.astro";
-import B2bBanner from "../../../components/B2bBanner.astro";
+import CtaLine from "../../../components/CtaLine.astro";
+import B2b from "../../../components/B2b.astro";
 import WaIcon from "../../../components/WaIcon.astro";
 import Check from "../../../components/Check.astro";
-import { shops, services, saleCategories, pivaPoints, macModels, waLink, fmtRating, euro, type Shop, type Service } from "../../../data/site";
+import { shops, services, saleCategories, pivaPoints, macModels, macPriceRange, waLink, ratingText, euro, compactHours, type Shop, type Service } from "../../../data/site";
 import { storeSchema, serviceSchema, faqSchema } from "../../../lib/schema";
 
 type Props = { shop: Shop } & ({ kind: "service"; service: Service } | { kind: "vendita" } | { kind: "piva" });
@@ -24,27 +24,28 @@ export function getStaticPaths() {
 const p = Astro.props as Props;
 const { shop } = p;
 const base = `/${shop.slug}/${Astro.params.service}/`;
+const isMac = p.kind === "service" && p.service.slug === "riparazione-mac";
 
 let name: string, h1: string, lede: string, msg: string, faq: [string, string][];
 if (p.kind === "service") {
   const s = p.service;
   name = s.name;
   h1 = `${s.name} a ${shop.city}`;
-  lede = `${s.lede} Nel negozio di ${shop.address}.`;
+  lede = s.lede;
   msg = `Ciao g8astore ${shop.city}, ho un ${s.device} da riparare:`;
   faq = [
-    [`Quanto costa la ${s.name.toLowerCase()} a ${shop.city}?`, s.slug === "riparazione-mac" ? "Trovi qui sotto il listino per modello. Per gli altri interventi la diagnosi è gratuita e il prezzo te lo diamo prima di riparare." : "Dipende dal guasto e dal modello: la diagnosi è gratuita e ricevi il prezzo esatto prima dell'intervento. Se non procedi, non paghi."],
-    ["Quanto tempo ci vuole?", "Molti interventi (pulizia, SSD, reinstallazione) si chiudono in giornata. Per i ricambi da ordinare ti diamo i tempi in fase di preventivo."],
-    ["Salvate i miei dati?", "Sì: prima di interventi su disco o sistema copiamo i tuoi dati. Se il computer non si accende, li recuperiamo quasi sempre."],
+    [`Quanto costa la ${s.name.toLowerCase()} a ${shop.city}?`, isMac ? "Trovi il listino per modello in questa pagina. Per gli altri guasti la diagnosi è gratuita e il prezzo te lo diamo prima di riparare." : "Dipende dal guasto e dal modello. La diagnosi è gratuita e ricevi il prezzo esatto prima dell'intervento; se non procedi, non paghi."],
+    ["Quanto tempo ci vuole?", "Pulizia, SSD e reinstallazione si chiudono spesso in giornata. Per i ricambi da ordinare ti diamo i tempi insieme al preventivo."],
+    ["Salvate i miei dati?", "Sì. Prima di interventi su disco o sistema copiamo i tuoi dati, e se il computer non si accende li recuperiamo quasi sempre."],
     ...s.problems.flatMap((pr) => pr.faq).slice(0, 2),
   ];
 } else if (p.kind === "vendita") {
-  name = "Vendita PC";
-  h1 = `Vendita computer a ${shop.city}`;
-  lede = `Notebook, PC su misura, gaming, workstation e ricondizionati nel negozio g8astore di ${shop.city}. Configurati da noi e consegnati pronti all'uso.`;
+  name = "Vendita";
+  h1 = `Comprare un computer a ${shop.city}`;
+  lede = `Notebook, PC su misura, gaming, workstation e ricondizionati nel negozio di ${shop.city}. Configurati da noi e consegnati pronti all'uso.`;
   msg = `Ciao g8astore ${shop.city}, cerco un computer per:`;
   faq = [
-    ["Mi aiutate a scegliere?", "Sì: dicci cosa ci devi fare e il budget, ti proponiamo due o tre soluzioni senza venderti più del necessario."],
+    ["Mi aiutate a scegliere?", "Sì. Dicci cosa ci devi fare e quanto vuoi spendere: ti proponiamo due o tre soluzioni senza venderti più del necessario."],
     ["Trasferite i dati dal vecchio computer?", "Sì, ti consegniamo il nuovo computer con file, posta e programmi principali già pronti."],
     ["Fate fattura alle partite IVA?", "Sì, vendiamo in fattura a professionisti e aziende."],
   ];
@@ -54,20 +55,27 @@ if (p.kind === "service") {
   lede = `Per professionisti, studi e piccole attività di ${shop.city} e dintorni: computer in fattura, riparazioni con priorità, backup, rete e assistenza remota.`;
   msg = `Ciao g8astore ${shop.city}, ho una partita IVA e mi serve:`;
   faq = [
-    ["Fate assistenza anche da remoto?", "Sì: per i problemi software interveniamo da remoto, senza farti venire in negozio."],
+    ["Fate assistenza anche da remoto?", "Sì. Per i problemi software interveniamo da remoto, senza farti venire in negozio."],
     ["Avete un contratto di assistenza per piccole attività?", "Per una o due postazioni lavoriamo a intervento. Per uffici con più postazioni da gestire a canone ti mettiamo in contatto con G8A, il nostro servizio per aziende."],
     ["Vendete in fattura?", "Sì: notebook, PC, monitor e accessori in fattura, configurati e pronti all'uso."],
   ];
 }
 
-const macRows = p.kind === "service" && p.service.slug === "riparazione-mac"
-  ? macModels.map((m) => ({ m, battery: m.repairs.find((r) => r.kind === "batteria"), screen: m.repairs.filter((r) => r.kind === "schermo")[0] }))
-  : [];
+const macRows = isMac ? macModels.map((m) => ({ m, battery: m.repairs.find((r) => r.kind === "batteria"), screen: m.repairs.find((r) => r.kind === "schermo") })) : [];
 const offers = macRows.flatMap((r) => [r.battery, r.screen].filter(Boolean).map((x) => ({ name: x!.name, price: x!.price })));
-const schema = [storeSchema(shop), serviceSchema(h1, lede, shop, base, offers.slice(0, 40)), faqSchema(faq)!];
+const schema = [storeSchema(shop), serviceSchema(h1, lede, shop, base, offers.slice(0, 40)), faqSchema(faq)];
+const battery = macPriceRange("batteria");
+const screen = macPriceRange("schermo");
+const tagRows: [string, string][] = isMac && battery && screen
+  ? [["Batteria", `da ${euro(battery.min)}`], ["Schermo", `da ${euro(screen.min)}`], ["Diagnosi", "gratuita"], ["Orari", compactHours(shop.hours)?.split("; ")[0] ?? "vedi Google Maps"]]
+  : p.kind === "service"
+  ? [["Diagnosi", "gratuita"], ["Prezzo", "prima di riparare"], ["Garanzia", "fino a 12 mesi"], ["Orari", compactHours(shop.hours)?.split("; ")[0] ?? "vedi Google Maps"]]
+  : p.kind === "piva"
+  ? [["Vendita", "in fattura"], ["Riparazioni", "con priorità"], ["Assistenza", "anche da remoto"], ["Orari", compactHours(shop.hours)?.split("; ")[0] ?? "vedi Google Maps"]]
+  : [["Consiglio", "gratuito"], ["Configurazione", "inclusa"], ["Dati trasferiti", "dal vecchio PC"], ["Orari", compactHours(shop.hours)?.split("; ")[0] ?? "vedi Google Maps"]];
 ---
 <Base
-  title={`${h1} | g8astore ${shop.city}`}
+  title={`${h1} | g8astore`}
   description={`${h1}: ${lede}`.slice(0, 158)}
   path={base}
   crumbs={[{ name: shop.city, path: `/negozi/${shop.slug}/` }, { name, path: base }]}
@@ -76,69 +84,66 @@ const schema = [storeSchema(shop), serviceSchema(h1, lede, shop, base, offers.sl
   waMessage={msg}
 >
   <section class="hero">
-    <div class="wrap">
-      <span class="eyebrow">g8astore {shop.city}</span>
-      <h1 style="margin-top:10px;max-width:20ch">{h1}</h1>
-      <p class="lede">{lede}</p>
-      <div class="badges">
-        {shop.rating && shop.reviews ? <span class="gpill"><span class="stars">★★★★★</span> {fmtRating(shop.rating)} su Google · {shop.reviews} recensioni</span> : null}
-        <span class="gpill warr"><Check /> {p.kind === "service" ? "Diagnosi gratuita" : "Consiglio gratuito"}</span>
+    <div class="wrap hero-grid">
+      <div>
+        <h1>{h1}</h1>
+        <p class="lede">{lede}</p>
+        <div class="actions"><a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivi al negozio di {shop.city}</a></div>
+        {ratingText(shop) && <p class="proof"><span><span class="stars" aria-hidden="true">★★★★★</span> <b>{ratingText(shop)}</b></span></p>}
       </div>
-      <div class="hcta"><a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a></div>
+      <Tag title={`g8astore ${shop.city}`} sub={shop.address} rows={tagRows} />
     </div>
   </section>
 
   {p.kind === "service" && (
-    <section class="s" style="padding-top:8px">
+    <section class="band--alu">
       <div class="wrap">
-        <div class="shead"><h2>Di cosa hai bisogno?</h2><p class="sub">Scegli il problema: ti spieghiamo cosa facciamo, tempi e prezzi.</p></div>
-        <div class="grid">
-          {p.service.problems.map((pr) => (
-            <a class="tile" href={`${base}${pr.slug}/`}><h3>{pr.name}</h3><p>{pr.short}</p></a>
-          ))}
-        </div>
+        <div class="sec-head"><h2>Di cosa hai bisogno?</h2><p>Scegli il problema: ti spieghiamo cosa facciamo, i tempi e i prezzi.</p></div>
+        <ul class="rows">
+          {p.service.problems.map((pr) => <li><a href={`${base}${pr.slug}/`}><span class="r-name">{pr.name}</span><span class="r-desc">{pr.short}</span><span class="r-end go" aria-hidden="true"></span></a></li>)}
+        </ul>
         {p.service.brands && (
-          <>
-            <h2 style="margin:34px 0 14px;font-size:28px">Ripariamo notebook di tutte le marche</h2>
-            <div class="chips">{p.service.brands.map((b) => <a href={`${base}${b.slug}/`}>{b.name}</a>)}</div>
-          </>
+          <div style="margin-top:36px">
+            <h3 style="margin-bottom:12px">Ripariamo notebook di tutte le marche</h3>
+            <div class="pills">{p.service.brands.map((b) => <a href={`${base}${b.slug}/`}>{b.name}</a>)}</div>
+          </div>
         )}
       </div>
     </section>
   )}
 
   {macRows.length > 0 && (
-    <section class="s" style="padding-top:0">
+    <section class="band" style="padding-top:64px">
       <div class="wrap">
-        <div class="shead"><h2>Listino MacBook a {shop.city}</h2><p class="sub">Prezzi di batteria e schermo per modello, IVA inclusa. Clicca il modello per il dettaglio.</p></div>
-        <div style="overflow-x:auto">
-          <table class="price-table">
-            <thead><tr><th>Modello</th><th>Batteria</th><th>Schermo</th></tr></thead>
+        <div class="sec-head"><h2>Listino MacBook</h2><p>Batteria e schermo per modello, IVA inclusa. Il codice del modello (per esempio A2337) è scritto sotto il MacBook.</p></div>
+        <div class="table-scroll">
+          <table class="price">
+            <thead><tr><th>Modello</th><th class="p">Batteria</th><th class="p">Schermo</th></tr></thead>
             <tbody>
               {macRows.map((r) => (
                 <tr>
                   <td><a href={`${base}${r.m.slug}/`}>{r.m.name}</a></td>
-                  <td class="p">{r.battery ? euro(r.battery.price) : "—"}</td>
-                  <td class="p">{r.screen ? `da ${euro(r.screen.price)}` : "—"}</td>
+                  <td class="p">{r.battery ? euro(r.battery.price) : "–"}</td>
+                  <td class="p">{r.screen ? `da ${euro(r.screen.price)}` : "–"}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <p class="note">Il codice del modello (es. A2337) è scritto sotto il MacBook. Non trovi il tuo? Scrivici: lo verifichiamo noi.</p>
+        <p class="small muted" style="margin-top:12px">Non trovi il tuo modello? Scrivici il codice: lo verifichiamo noi.</p>
       </div>
     </section>
   )}
 
   {p.kind === "vendita" && (
-    <section class="s" style="padding-top:8px">
-      <div class="wrap three">
+    <section class="band--alu">
+      <div class="wrap offer-grid">
         {saleCategories.map((c) => (
-          <div class="acard" id={c.slug}>
-            <h3><a href={`/${c.slug}/`}>{c.name}</a></h3>
+          <div id={c.slug}>
+            <h3><a href={`/${c.slug}/`} style="text-decoration:none">{c.name}</a></h3>
             <p>{c.lede}</p>
-            <ul>{c.points.slice(0, 3).map((x) => <li><Check /> {x}</li>)}</ul>
-            <a class="btn btn-ink" href={waLink(shop, `Ciao g8astore ${shop.city}, mi interessa: ${c.name}`)} rel="nofollow">Chiedi a {shop.city}</a>
+            <ul class="checks small">{c.points.slice(0, 3).map((x) => <li><Check /><span>{x}</span></li>)}</ul>
+            <a class="link small" href={waLink(shop, `Ciao g8astore ${shop.city}, mi interessa: ${c.name}`)} rel="nofollow">Chiedi al negozio</a>
           </div>
         ))}
       </div>
@@ -146,20 +151,21 @@ const schema = [storeSchema(shop), serviceSchema(h1, lede, shop, base, offers.sl
   )}
 
   {p.kind === "piva" && (
-    <section class="s" style="padding-top:8px">
-      <div class="wrap three">
-        {pivaPoints.map((x) => <div class="acard"><h3>{x.t}</h3><p>{x.p}</p></div>)}
+    <section class="band--alu">
+      <div class="wrap offer-grid">
+        {pivaPoints.map((x) => <div><h3>{x.t}</h3><p>{x.p}</p></div>)}
       </div>
     </section>
   )}
 
-  <LocalBlock shop={shop} />
-  <HowItWorks />
-  <section class="s" style="padding-top:0"><div class="wrap"><Promises /></div></section>
-  {p.kind !== "service" && <B2bBanner />}
+  <LocalBlock shop={shop} msg={msg} />
+  <Steps />
   <Faq items={faq} />
-  <FinalCta shop={shop} title={h1} text={`Scrivici cosa ti serve: ti rispondiamo dal negozio di ${shop.city}.`} msg={msg} />
-  <section class="s" style="padding-top:0">
-    <div class="wrap"><p class="note">{name} anche a: {shops.filter((s) => s.slug !== shop.slug).map((s, i, a) => <><a href={`/${s.slug}/${Astro.params.service}/`} style="text-decoration:underline">{s.city}</a>{i < a.length - 1 ? " · " : ""}</>)}</p></div>
+  <CtaLine shop={shop} title={h1} text={`Scrivici cosa ti serve: ti risponde direttamente il negozio di ${shop.city}.`} msg={msg} />
+  <section class="band">
+    <div class="wrap" style="display:grid;gap:16px">
+      <p class="also">{name} anche a {shops.filter((s) => s.slug !== shop.slug).map((s, i, a) => <><a href={`/${s.slug}/${Astro.params.service}/`}>{s.city}</a>{i < a.length - 1 ? ", " : "."}</>)}</p>
+      {p.kind !== "service" && <B2b />}
+    </div>
   </section>
 </Base>
