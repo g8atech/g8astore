@@ -1,13 +1,12 @@
 ---
-import Icon from "./Icon.astro";
-interface Props { items: [string, string][]; title?: string }
-const { items, title = "Domande frequenti" } = Astro.props;
+interface Props { items: [string, string][]; title?: string; paper?: boolean }
+const { items, title = "Domande frequenti", paper = false } = Astro.props;
 ---
 {items.length > 0 && (
-  <section class="sec">
+  <section class={paper ? "sec sec-paper" : "sec"}>
     <div class="wrap">
-      <div class="sec-head reveal"><span class="kicker"><Icon name="chat" /> FAQ</span><h2>{title}</h2></div>
-      <div class="faq">{items.map(([q, a]) => <details class="reveal"><summary>{q}</summary><p>{a}</p></details>)}</div>
+      <div class="head c reveal"><span class="tag">FAQ</span><h2>{title}</h2></div>
+      <div class="faq">{items.map(([q, a], i) => <details class="reveal" open={i === 0}><summary>{q}</summary><p>{a}</p></details>)}</div>
     </div>
   </section>
 )}

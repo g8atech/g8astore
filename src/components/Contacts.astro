@@ -1,0 +1,30 @@
+---
+// Tutti i negozi con Chiama e WhatsApp già pronti: nessuna lista da scegliere prima di agire.
+import Icon from "./Icon.astro";
+import WaIcon from "./WaIcon.astro";
+import { shops, waLink, telLink, fmtRating, compactHours, type Shop } from "../data/site";
+interface Props { msg: (s: Shop) => string; linkSuffix?: string; title?: string; sub?: string; paper?: boolean }
+const { msg, linkSuffix, title = "Scrivi al negozio più vicino", sub = "Ti risponde direttamente il tecnico del negozio. Puoi anche passare senza appuntamento.", paper = true } = Astro.props;
+const href = (s: Shop) => (linkSuffix ? `/${s.slug}/${linkSuffix}` : `/${s.slug}/`);
+---
+<section class={paper ? "sec sec-paper" : "sec"} id="contatti">
+  <div class="wrap">
+    <div class="head c reveal"><span class="tag">{shops.length} negozi</span><h2>{title}</h2><p>{sub}</p></div>
+    <div class="contacts">
+      {shops.map((s) => (
+        <div class="contact reveal">
+          {s.photo ? <img src={s.photo} alt={`Negozio g8astore di ${s.city}`} width="64" height="64" loading="lazy" /> : <span class="noimg" />}
+          <div>
+            <b><a href={href(s)}>g8astore {s.city}</a></b>
+            <p class="meta">{s.address}{s.rating && s.reviews ? ` · ★ ${fmtRating(s.rating)} (${s.reviews})` : ""}</p>
+            <p class="meta">{compactHours(s.hours) ?? "Orari su Google Maps"}</p>
+          </div>
+          <div class="acts">
+            <a class="btn btn-line btn-xs" href={telLink(s)}><Icon name="phone" /> Chiama</a>
+            <a class="btn btn-wa btn-xs" href={waLink(s, msg(s))} rel="nofollow"><WaIcon /> WhatsApp</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

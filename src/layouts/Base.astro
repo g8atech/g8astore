@@ -2,32 +2,29 @@
 import "../styles/global.css";
 import Icon from "../components/Icon.astro";
 import WaIcon from "../components/WaIcon.astro";
-import { SITE, shops, services, saleCategories, waLink, telLink, type Shop } from "../data/site";
+import { SITE, shops, services, saleCategories, waLink, telLink, avgRating, fmtRating, totalReviews, type Shop } from "../data/site";
 
 interface Props {
   title: string;
   description: string;
   path: string;
-  crumbs?: { name: string; path: string }[];
+  crumbs?: { name: string; path: string }[]; // per i dati strutturati; il percorso visibile è nell'hero
   schema?: (object | null)[];
   shop?: Shop;
   waMessage?: string;
   noindex?: boolean;
+  ogImage?: string;
 }
-const { title, description, path, crumbs = [], schema = [], shop, waMessage, noindex } = Astro.props;
+const { title, description, path, crumbs = [], schema = [], shop, waMessage, noindex, ogImage } = Astro.props;
 const canonical = new URL(path, SITE).toString();
 const ref = shop ?? shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const wa = waLink(ref, waMessage ?? (shop ? `Ciao g8astore ${shop.city}, ho bisogno di:` : "Ciao g8astore, ho bisogno di:"));
 const breadcrumbSchema = crumbs.length
-  ? {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [{ name: "Home", path: "/" }, ...crumbs].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: new URL(c.path, SITE).toString() })),
-    }
+  ? { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ name: "Home", path: "/" }, ...crumbs].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: new URL(c.path, SITE).toString() })) }
   : null;
 const allSchema = [...schema, breadcrumbSchema].filter(Boolean);
 const menu = [
-  { name: "Riparazione notebook", path: "/riparazione-notebook/" },
+  { name: "Notebook", path: "/riparazione-notebook/" },
   { name: "PC fisso", path: "/riparazione-pc/" },
   { name: "Mac", path: "/riparazione-mac/" },
   { name: "Vendita PC", path: "/vendita-pc/" },
@@ -50,8 +47,8 @@ const menu = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    {ref.photo && <meta property="og:image" content={ref.photo} />}
-    <meta name="theme-color" content="#0c1424" />
+    <meta property="og:image" content={new URL(ogImage ?? "/img/notebook-rosso.webp", SITE).toString()} />
+    <meta name="theme-color" content="#0d0d0f" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,30 +57,30 @@ const menu = [
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body>
+    <div class="topbar">
+      <div class="wrap">
+        <span><Icon name="search" /> Diagnosi gratuita</span>
+        <span class="hide-s"><Icon name="euro" /> Prezzo prima di riparare</span>
+        <span class="hide-s"><Icon name="store" /> {shops.length} negozi in Lombardia</span>
+        {avgRating && <span><Icon name="star" /> {fmtRating(avgRating)} su Google ({totalReviews})</span>}
+      </div>
+    </div>
     <header class="top">
       <div class="wrap top-in">
         <a class="brand" href="/" aria-label="g8astore, pagina iniziale">
-          <span class="brand-mark"><img src="/g8a-mark.png" alt="" width="28" height="21" /></span>
-          <span><b>g8astore</b><small>Riparazione e vendita PC</small></span>
+          <img src="/g8a-mark.png" alt="" width="46" height="34" />
+          <span><b>g8a<i>store</i></b><small>Riparazione e vendita PC</small></span>
         </a>
         <nav class="menu" aria-label="Menu principale">
           {menu.map((m) => <a href={m.path} aria-current={path.includes(m.path) ? "page" : undefined}>{m.name}</a>)}
         </nav>
         <div class="top-cta">
+          <a class="btn btn-line btn-sm" href={telLink(ref)}><Icon name="phone" /> Chiama</a>
           <a class="btn btn-wa btn-sm" href={wa} rel="nofollow"><WaIcon /> WhatsApp</a>
         </div>
       </div>
       <nav class="mnav" aria-label="Menu">{menu.map((m) => <a href={m.path}>{m.name}</a>)}</nav>
     </header>
-
-    {crumbs.length > 0 && (
-      <nav class="wrap crumbs" aria-label="Percorso">
-        <ol>
-          <li><a href="/">Home</a></li>
-          {crumbs.map((c, i) => <li>{i === crumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.path}>{c.name}</a>}</li>)}
-        </ol>
-      </nav>
-    )}
 
     <main><slot /></main>
 
@@ -91,36 +88,32 @@ const menu = [
       <div class="wrap">
         <div class="foot-grid">
           <div>
-            <a class="brand" href="/" style="margin-bottom:12px">
-              <span class="brand-mark"><img src="/g8a-mark.png" alt="" width="28" height="21" /></span>
-              <span><b>g8astore</b><small>by G8A Technology</small></span>
+            <a class="brand" href="/" style="margin-bottom:14px">
+              <span class="brand-box"><img src="/g8a-mark.png" alt="" width="32" height="23" /></span>
+              <span><b>g8a<i style="font-style:normal;color:var(--red-2)">store</i></b><small>by G8A Technology</small></span>
             </a>
             <p style="max-width:34ch">Riparazione e vendita computer per privati e partite IVA in {shops.length} negozi tra provincia di Varese, Milano nord e Lecco.</p>
           </div>
           <div><h2>Riparazioni</h2><ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.name}</a></li>)}</ul></div>
           <div><h2>Vendita</h2><ul>{saleCategories.map((c) => <li><a href={`/${c.slug}/`}>{c.name}</a></li>)}<li><a href="/partite-iva/">Per partite IVA</a></li></ul></div>
-          <div><h2>Negozi</h2><ul>{shops.map((s) => <li><a href={`/negozi/${s.slug}/`}>{s.city}</a></li>)}</ul></div>
+          <div><h2>Negozi</h2><ul>{shops.map((s) => <li><a href={`/${s.slug}/`}>g8astore {s.city}</a></li>)}</ul></div>
         </div>
         <p class="legal">g8astore è un marchio di G8A Technology S.r.l., P.IVA 03981970126. Centro assistenza indipendente, non affiliato Apple. Per le aziende: <a href="https://www.g8a.it/">g8a.it</a></p>
       </div>
     </footer>
 
     <nav class="mbar" aria-label="Contatti rapidi">
-      <a class="btn btn-ghost" href={telLink(ref)}><Icon name="phone" /> Chiama</a>
+      <a class="btn btn-line" href={telLink(ref)}><Icon name="phone" /> Chiama</a>
       <a class="btn btn-wa" href={wa} rel="nofollow"><WaIcon /> WhatsApp</a>
     </nav>
 
     <script is:inline>
       (function () {
         var els = document.querySelectorAll(".reveal");
-        if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          els.forEach(function (e) { e.classList.add("in"); });
-          return;
-        }
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-        }, { rootMargin: "0px 0px -8% 0px" });
+        if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { els.forEach(function (e) { e.classList.add("in"); }); return; }
+        var io = new IntersectionObserver(function (entries) { entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
         els.forEach(function (e) { io.observe(e); });
+        setTimeout(function () { els.forEach(function (e) { e.classList.add("in"); }); }, 2500);
       })();
     </script>
   </body>

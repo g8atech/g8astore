@@ -28,9 +28,9 @@ export function storeSchema(shop: Shop, withRating = false) {
   return {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
-    "@id": `${SITE}/negozi/${shop.slug}/#store`,
+    "@id": `${SITE}/${shop.slug}/#store`,
     name: `g8astore ${shop.city}`,
-    url: `${SITE}/negozi/${shop.slug}/`,
+    url: `${SITE}/${shop.slug}/`,
     image: shop.photo || `${SITE}/g8a-logo.png`,
     telephone: telLink(shop).replace("tel:", ""),
     email: shop.email,
@@ -60,7 +60,7 @@ export function serviceSchema(name: string, description: string, shop: Shop, url
     description,
     url: new URL(url, SITE).toString(),
     areaServed: { "@type": "City", name: shop.city },
-    provider: { "@id": `${SITE}/negozi/${shop.slug}/#store` },
+    provider: { "@id": `${SITE}/${shop.slug}/#store` },
     ...(offers?.length
       ? {
           hasOfferCatalog: {

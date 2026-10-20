@@ -1,46 +1,55 @@
 ---
-import Device from "./Device.astro";
 import Icon from "./Icon.astro";
 import WaIcon from "./WaIcon.astro";
 import GoogleG from "./GoogleG.astro";
-import { waLink, telLink, mapsLink, fmtRating, phoneDisplay, type Shop } from "../data/site";
+import Photo from "./Photo.astro";
+import { waLink, telLink, fmtRating, phoneDisplay, type Shop } from "../data/site";
 interface Props {
-  shop: Shop; // negozio per WhatsApp e chiamata
+  photo: string;
+  photoAlt: string;
+  crumbs?: { name: string; path: string }[];
   sub: string;
-  chips?: string[];
+  chips?: { t: string; price?: boolean }[];
+  shop: Shop;
   msg: string;
   rating?: number | null;
   reviews?: number | null;
   ratingLabel?: string;
-  device?: "laptop" | "desktop" | "mac";
-  deviceTitle?: string;
-  deviceItems?: string[];
-  storeHref?: string; // "Trova il negozio" o "Vieni in negozio"
-  storeLabel?: string;
+  diagTitle?: string;
+  diagItems?: string[];
+  diagFoot?: [string, string];
+  secondary?: { href: string; label: string; icon?: string };
 }
-const { shop, sub, chips = ["Diagnosi gratuita", "Preventivo prima", "Garanzia fino a 12 mesi"], msg, rating, reviews, ratingLabel = "su Google", device = "laptop", deviceTitle, deviceItems, storeHref, storeLabel } = Astro.props;
+const { photo, photoAlt, crumbs = [], sub, chips = [{ t: "Diagnosi gratuita" }, { t: "Prezzo prima di riparare" }, { t: "Garanzia fino a 12 mesi" }], shop, msg, rating, reviews, ratingLabel = "su Google", diagTitle = "Diagnosi g8astore", diagItems = ["Disco e SSD", "Memoria RAM", "Temperature", "Batteria"], diagFoot = ["Diagnosi", "Gratuita"], secondary } = Astro.props;
 ---
 <section class="hero">
-  <div class="wrap hero-grid">
+  <div class="hero-bg"><Photo name={photo} alt={photoAlt} sizes="100vw" eager /></div>
+  <div class="wrap hero-in">
     <div>
+      {crumbs.length > 0 && (
+        <nav class="crumbs" aria-label="Percorso" style="padding-top:18px">
+          <ol><li><a href="/">Home</a></li>{crumbs.map((c, i) => <li>{i === crumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.path}>{c.name}</a>}</li>)}</ol>
+        </nav>
+      )}
       <h1><slot /></h1>
       <p class="hero-sub">{sub}</p>
-      <div class="chips">{chips.map((c) => <span class="chip"><Icon name="checkc" /> {c}</span>)}</div>
+      <div class="chips">{chips.map((c) => <span class={c.price ? "chip price" : "chip"}><Icon name={c.price ? "euro" : "checkc"} /> {c.t}</span>)}</div>
       <div class="hero-ctas">
         <a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
-        <a class="btn btn-ghost" href={telLink(shop)}><Icon name="phone" /> Chiama {phoneDisplay(shop)}</a>
-        <a class="btn btn-soft" href={storeHref ?? mapsLink(shop)} {...(storeHref ? {} : { target: "_blank", rel: "noopener" })}><Icon name="pin" /> {storeLabel ?? "Vieni in negozio"}</a>
+        <div class="row2">
+          <a class="btn btn-glass btn-sm" href={telLink(shop)}><Icon name="phone" /> {phoneDisplay(shop)}</a>
+          <a class="btn btn-glass btn-sm" href={secondary?.href ?? "#contatti"}><Icon name={secondary?.icon ?? "pin"} /> {secondary?.label ?? "Negozi"}</a>
+        </div>
       </div>
       {rating && reviews ? (
-        <div class="gcard">
-          <span class="g"><GoogleG /></span>
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <b>{fmtRating(rating)}</b>
-          <span class="muted">({reviews})</span>
-          <span class="sp">{ratingLabel}</span>
-        </div>
+        <div class="gcard"><span class="g"><GoogleG /></span><span class="stars" aria-hidden="true">★★★★★</span><b>{fmtRating(rating)}</b><span style="color:#c9c9d1">{reviews} recensioni {ratingLabel}</span></div>
       ) : null}
     </div>
-    <Device kind={device} title={deviceTitle} items={deviceItems} />
+    <div class="diag" aria-hidden="true">
+      <div class="diag-h"><span class="lg"><img src="/g8a-mark.png" alt="" width="30" height="22" /></span><span><b>{diagTitle}</b><small>Controllo in corso</small></span></div>
+      <div class="diag-bar"><i></i></div>
+      <ul>{diagItems.slice(0, 4).map((d) => <li><Icon name="checkc" /> {d}<em>OK</em></li>)}</ul>
+      <div class="diag-foot"><span>{diagFoot[0]}</span><b>{diagFoot[1]}</b></div>
+    </div>
   </div>
 </section>

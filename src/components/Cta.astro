@@ -1,18 +1,20 @@
 ---
 import Icon from "./Icon.astro";
 import WaIcon from "./WaIcon.astro";
+import Photo from "./Photo.astro";
 import { waLink, telLink, type Shop } from "../data/site";
-interface Props { shop: Shop; title: string; text: string; msg: string }
-const { shop, title, text, msg } = Astro.props;
+interface Props { shop: Shop; title: string; text: string; msg: string; photo?: string }
+const { shop, title, text, msg, photo = "circuito-rosso" } = Astro.props;
 ---
 <section class="sec">
   <div class="wrap">
     <div class="cta reveal">
+      <Photo name={photo} alt="" sizes="100vw" />
       <h2>{title}</h2>
       <p>{text}</p>
       <div class="acts">
         <a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
-        <a class="btn btn-ghost" href={telLink(shop)}><Icon name="phone" /> Chiama</a>
+        <a class="btn btn-glass" href={telLink(shop)}><Icon name="phone" /> Chiama</a>
       </div>
     </div>
   </div>

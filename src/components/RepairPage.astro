@@ -1,0 +1,144 @@
+---
+// Pagina completa di una riparazione (es. "Sostituzione batteria notebook"), generale o per sede.
+import Base from "../layouts/Base.astro";
+import Hero from "./Hero.astro";
+import Promises from "./Promises.astro";
+import Icon from "./Icon.astro";
+import Photo from "./Photo.astro";
+import HowItWorks from "./HowItWorks.astro";
+import Contacts from "./Contacts.astro";
+import LocalBlock from "./LocalBlock.astro";
+import Faq from "./Faq.astro";
+import Cta from "./Cta.astro";
+import WaIcon from "./WaIcon.astro";
+import { shops, macModels, macPriceRange, euro, repairTitle, waLink, avgRating, totalReviews, type Shop, type Service, type Problem } from "../data/site";
+import { storeSchema, serviceSchema, faqSchema } from "../lib/schema";
+
+interface Props { problem: Problem; service: Service; shop?: Shop }
+const { problem: pr, service, shop } = Astro.props;
+const ref = shop ?? shops.find((s) => s.slug === "gallarate") ?? shops[0];
+const isMac = service.slug === "riparazione-mac";
+const base = shop ? `/${shop.slug}/${service.slug}/` : `/${service.slug}/`;
+const path = `${base}${pr.slug}/`;
+const name = repairTitle(pr, service); // "Sostituzione batteria notebook"
+const where = shop ? ` a ${shop.city}` : "";
+const msg = shop ? `Ciao g8astore ${shop.city}, ${name.toLowerCase()}:` : `Ciao g8astore, ${name.toLowerCase()}:`;
+
+const range = isMac && pr.macKind ? macPriceRange(pr.macKind) : null;
+const rows = isMac && pr.macKind
+  ? macModels.flatMap((m) => m.repairs.filter((r) => r.kind === pr.macKind).slice(0, 1).map((r) => ({ name: m.name, price: r.price, warrantyMonths: r.warrantyMonths, href: `${base}${m.slug}/` })))
+  : [];
+const faq: [string, string][] = [
+  ["Quanto costa?", range ? `Da ${euro(range.min)} a ${euro(range.max)} in base al modello: trovi il listino completo in questa pagina.` : "Dipende dal modello. La diagnosi è gratuita e ti diamo il prezzo esatto prima di qualsiasi intervento: se non procedi, non paghi."],
+  ["Quanto tempo ci vuole?", pr.time],
+  ...pr.faq,
+  ["Serve appuntamento?", shop ? `No, puoi passare in negozio a ${shop.city} negli orari di apertura. Se scrivi prima su WhatsApp ti diciamo se il ricambio è disponibile.` : "No, puoi passare in qualsiasi negozio. Se scrivi prima su WhatsApp ti diciamo se il ricambio è disponibile."],
+];
+const crumbs = shop
+  ? [{ name: shop.city, path: `/${shop.slug}/` }, { name: service.name, path: base }, { name: pr.name, path }]
+  : [{ name: service.name, path: base }, { name: pr.name, path }];
+const schema = [shop ? storeSchema(shop) : null, serviceSchema(`${name}${where}`, pr.intro, ref, path, rows.map((r) => ({ name: r.name, price: r.price }))), faqSchema(faq)];
+const others = service.problems.filter((x) => x.slug !== pr.slug);
+const priceText = range ? `da ${euro(range.min)}` : "Preventivo gratuito";
+---
+<Base
+  title={`${name}${where}${range ? ` da ${euro(range.min)}` : ""} | g8astore`}
+  description={`${name}${where}: ${pr.short} ${range ? `Da ${euro(range.min)}. ` : "Diagnosi gratuita e prezzo prima di riparare. "}${pr.time.split(".")[0]}.`.slice(0, 160)}
+  path={path}
+  crumbs={crumbs}
+  schema={schema}
+  shop={shop}
+  waMessage={msg}
+>
+  <Hero
+    photo={pr.photo}
+    photoAlt={`${name}: tecnico al lavoro`}
+    crumbs={crumbs}
+    sub={pr.intro}
+    chips={[{ t: priceText, price: true }, { t: pr.time.split(/[,.;]/)[0] }, { t: "Garanzia fino a 12 mesi" }]}
+    shop={ref}
+    msg={msg}
+    rating={shop ? shop.rating : avgRating}
+    reviews={shop ? shop.reviews : totalReviews}
+    ratingLabel={shop ? "su Google" : `nei ${shops.length} negozi`}
+    diagTitle={pr.name}
+    diagItems={pr.steps.map(([t]) => t)}
+    diagFoot={["Prezzo", priceText]}
+    secondary={shop ? { href: "#contatti", label: "Orari e mappa" } : { href: "#contatti", label: "5 negozi" }}
+  >{name}{shop && <span class="grad-text">{` a ${shop.city}`}</span>}</Hero>
+  <Promises />
+
+  <section class="sec">
+    <div class="wrap media">
+      <div class="reveal">
+        <span class="tag">Ti succede questo?</span>
+        <h2 style="margin-top:10px">I segnali da non ignorare</h2>
+        <ul class="checks">{pr.symptoms.map((x) => <li><Icon name="alert" /> {x}</li>)}</ul>
+        <div class="acts" style="margin-top:26px"><a class="btn btn-wa" href={waLink(ref, msg)} rel="nofollow"><WaIcon /> Descrivici il problema</a></div>
+      </div>
+      <figure class="reveal"><Photo name={pr.photo} alt={`${name}${where}`} /></figure>
+    </div>
+  </section>
+
+  <section class="sec sec-paper">
+    <div class="wrap">
+      <div class="head reveal"><span class="tag">Perché succede</span><h2>Le cause più comuni</h2></div>
+      <div class="causes">{pr.causes.map((c, i) => <div class="cause reveal"><span class="n">{i + 1}</span><p>{c}</p></div>)}</div>
+    </div>
+  </section>
+
+  <HowItWorks steps={pr.steps} title={`Come facciamo la ${pr.name.toLowerCase()}`} sub="Ogni passaggio te lo spieghiamo prima di farlo." />
+
+  <section class="sec">
+    <div class="wrap summary">
+      <div class="reveal">
+        <span class="tag">Cosa è incluso</span>
+        <h2 style="margin-top:10px">Tutto chiaro, prima di iniziare</h2>
+        <ul class="checks">{pr.includes.map((x) => <li><Icon name="checkc" /> {x}</li>)}</ul>
+        {service.brands && (
+          <>
+            <h3 style="margin:30px 0 12px">Marche che ripariamo</h3>
+            <div class="pills">{service.brands.map((b) => shop ? <a href={`${base}${b.slug}/`}>{b.name}</a> : <span>{b.name}</span>)}<span>e molte altre</span></div>
+          </>
+        )}
+      </div>
+      <aside class="box box-dark reveal">
+        <h3 style="margin-bottom:8px">{name}</h3>
+        <dl class="facts">
+          <div><dt><Icon name="euro" /> Prezzo</dt><dd>{priceText}</dd></div>
+          <div><dt><Icon name="clock" /> Tempi</dt><dd>{pr.time.split(/[,.;]/)[0]}</dd></div>
+          <div><dt><Icon name="shield" /> Garanzia</dt><dd>fino a 12 mesi</dd></div>
+          <div><dt><Icon name="search" /> Diagnosi</dt><dd>gratuita</dd></div>
+        </dl>
+        <a class="btn btn-wa" style="width:100%;margin-top:18px" href={waLink(ref, msg)} rel="nofollow"><WaIcon /> Chiedi il prezzo</a>
+      </aside>
+    </div>
+  </section>
+
+  {rows.length > 0 && (
+    <section class="sec sec-paper">
+      <div class="wrap">
+        <div class="head reveal"><span class="tag">Listino</span><h2>Prezzi per modello</h2><p>IVA inclusa. Il codice del modello (per esempio A2337) è scritto sotto il MacBook.</p></div>
+        <div class="scroll-x reveal">
+          <table class="ptable">
+            <thead><tr><th>Modello</th><th>Garanzia</th><th class="p">Prezzo</th></tr></thead>
+            <tbody>{rows.map((r) => <tr><td>{shop ? <a href={r.href}>{r.name}</a> : r.name}</td><td>{r.warrantyMonths ? `${r.warrantyMonths} mesi` : "–"}</td><td class="p">{euro(r.price)}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {shop ? <LocalBlock shop={shop} msg={msg} /> : <Contacts msg={(s) => `Ciao g8astore ${s.city}, ${name.toLowerCase()}:`} linkSuffix={`${service.slug}/${pr.slug}/`} title={`${name}: scrivi al negozio più vicino`} />}
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head reveal"><span class="tag">{service.name}</span><h2>Altre riparazioni{where}</h2></div>
+      <div class="tiles">{others.map((x) => <a class="tile reveal" href={`${base}${x.slug}/`}><span class="ic"><Icon name={x.icon} /></span><b>{x.name}</b><span>{x.short}</span></a>)}</div>
+    </div>
+  </section>
+
+  <Faq items={faq} paper />
+  <Cta shop={ref} title={`${name}${where}`} text="Scrivici modello e problema: ti diciamo subito tempi e prezzo." msg={msg} photo={pr.photo} />
+  {shop && <section class="sec-tight"><div class="wrap"><p class="also">{name} anche a {shops.filter((s) => s.slug !== shop.slug).map((s, i, a) => <><a href={`/${s.slug}/${service.slug}/${pr.slug}/`}>{s.city}</a>{i < a.length - 1 ? ", " : "."}</>)}</p></div></section>}
+</Base>

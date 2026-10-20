@@ -1,0 +1,7 @@
+---
+import Icon from "./Icon.astro";
+import { promises } from "../data/site";
+---
+<div class="promises"><div class="wrap">
+  {promises.map((x) => <div class="promise"><span class="ic"><Icon name={x.icon} /></span><span><b>{x.t}</b><span>{x.p}</span></span></div>)}
+</div></div>

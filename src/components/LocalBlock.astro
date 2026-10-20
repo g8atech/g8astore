@@ -6,10 +6,11 @@ interface Props { shop: Shop; msg?: string }
 const { shop, msg } = Astro.props;
 const near = nearby[shop.slug] || [];
 ---
-<section class="sec" id="sede">
+<section class="sec sec-dark" id="contatti">
   <div class="wrap local">
-    <div class="panel reveal">
-      <h2 style="font-size:1.8rem">Il negozio di {shop.city}</h2>
+    <div class="reveal">
+      <span class="tag">Il negozio</span>
+      <h2 style="margin-top:10px">g8astore {shop.city}</h2>
       <div class="info">
         <div><span class="ic"><Icon name="pin" /></span><p><small>Indirizzo</small><span>{shop.address}, {shop.zip} {shop.city} ({shop.province}){shop.hint ? `\n${shop.hint}` : ""}</span></p></div>
         <div><span class="ic"><Icon name="clock" /></span><p><small>Orari</small><span>{shop.hours ?? "Sulla scheda Google Maps"}</span></p></div>
@@ -18,9 +19,9 @@ const near = nearby[shop.slug] || [];
       </div>
       <div class="acts">
         <a class="btn btn-wa" href={waLink(shop, msg ?? `Ciao g8astore ${shop.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
-        <a class="btn btn-ghost" href={mapsLink(shop)} target="_blank" rel="noopener"><Icon name="pin" /> Indicazioni</a>
+        <a class="btn btn-glass" href={mapsLink(shop)} target="_blank" rel="noopener"><Icon name="pin" /> Indicazioni</a>
       </div>
-      {near.length > 0 && <p class="muted" style="margin-top:18px;font-size:.9rem">Clienti anche da {near.slice(0, -1).join(", ")} e {near[near.length - 1]}.</p>}
+      {near.length > 0 && <p style="margin-top:18px;font-size:.9rem">Vengono da noi anche da {near.slice(0, -1).join(", ")} e {near[near.length - 1]}.</p>}
     </div>
     <a class="photo reveal" href={mapsLink(shop)} target="_blank" rel="noopener" aria-label={`Apri g8astore ${shop.city} su Google Maps`}>
       {shop.photo && <img src={shop.photo} alt={`Come trovare il negozio g8astore di ${shop.city}`} width="640" height="480" loading="lazy" />}

@@ -16,13 +16,18 @@ Telefoni e tablet restano su riparohero.it.
 | URL | Contenuto |
 |---|---|
 | `/` | Home |
-| `/negozi/`, `/negozi/:città/` | Sedi |
+| `/negozi/` | Tutti i negozi |
+| `/:città/` | Home della sede (es. `/gallarate/`) |
 | `/riparazione-notebook/`, `/riparazione-pc/`, `/riparazione-mac/` | Servizi |
-| `/:città/:servizio/` | Servizio nella città (anche `vendita-pc` e `partite-iva`) |
-| `/:città/:servizio/:problema/` | Problema nella città (schermo, batteria, …) |
-| `/:città/riparazione-notebook/:marca/` | Marca nella città |
-| `/:città/riparazione-mac/:modello/` | Listino del modello MacBook |
+| `/riparazione-notebook/batteria/` | Pagina completa della riparazione (generale) |
+| `/:città/:servizio/` | Servizio nella sede (anche `vendita-pc` e `partite-iva`) |
+| `/:città/:servizio/:riparazione/` | Pagina completa della riparazione nella sede |
+| `/:città/riparazione-notebook/:marca/` | Marca nella sede |
+| `/:città/riparazione-mac/:modello/` | Listino del modello MacBook nella sede |
 | `/pc-su-misura/`, `/notebook/`, `/pc-gaming/`, `/workstation/`, `/ricondizionati/`, `/vendita-pc/`, `/partite-iva/` | Vendita e partite IVA |
+
+Testi delle riparazioni (sintomi, cause, passaggi, cosa è incluso, FAQ): `src/data/site.ts`.
+Foto: `public/img/` (Unsplash, vedi `CREDITS.txt`), da sostituire nel tempo con foto vere dei negozi.
 
 ## Vercel
 

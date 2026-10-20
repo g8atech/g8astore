@@ -1,0 +1,10 @@
+---
+interface Props { steps?: [string, string][]; title?: string; sub?: string }
+const { steps = [["Scrivici o passa", "Su WhatsApp o al banco: raccontaci cosa succede."], ["Diagnosi gratuita", "Capiamo il guasto senza costi e senza impegno."], ["Prezzo prima", "Ti diciamo quanto costa e quanto tempo serve."], ["Ritiri pronto", "Testato e con garanzia, spesso in giornata."]], title = "Come lavoriamo", sub } = Astro.props;
+---
+<section class="sec sec-dark">
+  <div class="wrap">
+    <div class="head c reveal"><span class="tag">Passo per passo</span><h2>{title}</h2>{sub && <p>{sub}</p>}</div>
+    <ol class="timeline">{steps.map(([t, p]) => <li class="tstep reveal"><h3>{t}</h3><p>{p}</p></li>)}</ol>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+---
+// Pagina generale e completa di ogni riparazione: /riparazione-mac/<riparazione>/
+import RepairPage from "../../components/RepairPage.astro";
+import { serviceBySlug } from "../../data/site";
+export function getStaticPaths() {
+  const service = serviceBySlug("riparazione-mac");
+  return service.problems.map((problem) => ({ params: { problem: problem.slug }, props: { problem, service } }));
+}
+const { problem, service } = Astro.props;
+---
+<RepairPage problem={problem} service={service} />

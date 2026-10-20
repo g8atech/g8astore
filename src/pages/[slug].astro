@@ -1,0 +1,268 @@
+---
+// Pagine di primo livello: servizi (/riparazione-notebook/), vendita, partite IVA e home di ogni sede (/gallarate/).
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Promises from "../components/Promises.astro";
+import Icon from "../components/Icon.astro";
+import Photo from "../components/Photo.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Contacts from "../components/Contacts.astro";
+import LocalBlock from "../components/LocalBlock.astro";
+import Faq from "../components/Faq.astro";
+import Cta from "../components/Cta.astro";
+import B2b from "../components/B2b.astro";
+import WaIcon from "../components/WaIcon.astro";
+import GoogleG from "../components/GoogleG.astro";
+import { shops, services, saleCategories, pivaPoints, macModels, macPriceRange, euro, waLink, avgRating, totalReviews, fmtRating, nearby, repairTitle, type Shop, type Service, type SaleCategory } from "../data/site";
+import { storeSchema, faqSchema } from "../lib/schema";
+
+type Props = { kind: "service"; service: Service } | { kind: "sale"; cat: SaleCategory } | { kind: "vendita" } | { kind: "piva" } | { kind: "city"; shop: Shop };
+export function getStaticPaths() {
+  return [
+    ...services.map((service) => ({ params: { slug: service.slug }, props: { kind: "service", service } })),
+    ...saleCategories.map((cat) => ({ params: { slug: cat.slug }, props: { kind: "sale", cat } })),
+    { params: { slug: "vendita-pc" }, props: { kind: "vendita" } },
+    { params: { slug: "partite-iva" }, props: { kind: "piva" } },
+    ...shops.map((shop) => ({ params: { slug: shop.slug }, props: { kind: "city", shop } })),
+  ];
+}
+const p = Astro.props as Props;
+const path = `/${Astro.params.slug}/`;
+const gallarate = shops.find((s) => s.slug === "gallarate") ?? shops[0];
+const shop = p.kind === "city" ? p.shop : undefined;
+const ref = shop ?? gallarate;
+const cities = shops.map((s) => s.city);
+const citiesText = `${cities.slice(0, -1).join(", ")} e ${cities[cities.length - 1]}`;
+const battery = macPriceRange("batteria");
+const screen = macPriceRange("schermo");
+
+// testi per tipo di pagina
+let title = "", description = "", photo = "notebook-rosso", sub = "", msg = "", crumbName = "", faq: [string, string][] = [];
+let h1: { a: string; b?: string } = { a: "" };
+let diagTitle: string | undefined, diagItems: string[] | undefined;
+if (p.kind === "service") {
+  const s = p.service;
+  title = `${s.name}: diagnosi gratuita e prezzo prima | g8astore`;
+  description = `${s.name} nei negozi g8astore di ${citiesText}. ${s.lede}`.slice(0, 160);
+  photo = s.photo; sub = s.lede; crumbName = s.name; msg = `Ciao g8astore, ho un ${s.device} da riparare:`;
+  h1 = { a: s.name.replace(/ (notebook|PC fisso|Mac)$/, ""), b: s.name.match(/(notebook|PC fisso|Mac)$/)?.[0] };
+  diagTitle = s.name; diagItems = s.problems.slice(0, 4).map((x) => x.name);
+  faq = [
+    ["Quanto costa?", s.slug === "riparazione-mac" && battery ? `Batteria da ${euro(battery.min)}${screen ? `, schermo da ${euro(screen.min)}` : ""}: trovi il listino per modello nelle pagine delle riparazioni. Per gli altri guasti la diagnosi è gratuita.` : "Dipende dal guasto e dal modello. La diagnosi è gratuita e ricevi il prezzo esatto prima dell'intervento."],
+    ["Quanto tempo ci vuole?", "Pulizia, SSD e reinstallazione si chiudono spesso in giornata. Per i ricambi da ordinare ti diamo i tempi con il preventivo."],
+    ["Salvate i miei dati?", "Sì. Prima di interventi su disco o sistema copiamo i tuoi dati."],
+    ["Serve appuntamento?", "No, passa in qualsiasi negozio negli orari di apertura oppure scrivici su WhatsApp."],
+  ];
+} else if (p.kind === "sale") {
+  const c = p.cat;
+  title = `${c.h1} | g8astore`;
+  description = `${c.lede} Negozi a ${citiesText}.`.slice(0, 160);
+  photo = c.photo; sub = c.lede; crumbName = c.name; msg = `Ciao g8astore, mi interessa: ${c.name.toLowerCase()}.`;
+  h1 = { a: c.h1 };
+  diagTitle = c.name; diagItems = ["Scelta componenti", "Windows e driver", "Dati trasferiti", "Test finale"];
+} else if (p.kind === "vendita") {
+  title = "Vendita PC e notebook pronti all'uso | g8astore";
+  description = `Notebook, PC su misura, gaming, workstation e ricondizionati nei negozi g8astore di ${citiesText}. Configurati e con i dati trasferiti.`.slice(0, 160);
+  photo = "scrivania-notebook"; sub = "Ti aiutiamo a scegliere e te lo consegniamo pronto, con i dati del vecchio computer già trasferiti."; crumbName = "Vendita PC"; msg = "Ciao g8astore, cerco un computer per:";
+  h1 = { a: "Vendita", b: "PC e notebook" };
+  diagTitle = "Il tuo nuovo PC"; diagItems = ["Scelta componenti", "Windows e driver", "Dati trasferiti", "Test finale"];
+  faq = [
+    ["Mi aiutate a scegliere?", "Sì. Dicci cosa ci devi fare e quanto vuoi spendere: ti proponiamo due o tre soluzioni senza venderti più del necessario."],
+    ["Trasferite i dati dal vecchio computer?", "Sì, ti consegniamo il nuovo computer con file, posta e programmi principali già pronti."],
+    ["Fate fattura alle partite IVA?", "Sì, vendiamo in fattura a professionisti e aziende."],
+  ];
+} else if (p.kind === "piva") {
+  title = "Computer e assistenza per partite IVA | g8astore";
+  description = `Computer in fattura, riparazioni con priorità, backup, rete e assistenza remota per professionisti e piccole attività. Negozi a ${citiesText}.`.slice(0, 160);
+  photo = "ufficio-clienti"; sub = "Per professionisti, studi e piccole attività: computer in fattura, riparazioni rapide e tutto quello che serve per lavorare senza fermi."; crumbName = "Partite IVA"; msg = "Ciao g8astore, ho una partita IVA e mi serve:";
+  h1 = { a: "Computer e assistenza per", b: "partite IVA" };
+  diagTitle = "Il tuo ufficio"; diagItems = ["Backup dei dati", "Rete e Wi-Fi", "Posta e PEC", "Aggiornamenti"];
+  faq = [
+    ["Fate assistenza anche da remoto?", "Sì. Per i problemi software interveniamo da remoto, senza farti venire in negozio."],
+    ["Vendete in fattura?", "Sì: notebook, PC, monitor e accessori in fattura, configurati e pronti all'uso."],
+    ["E se ho tante postazioni?", "Per uffici con molte postazioni da gestire a canone ti mettiamo in contatto con G8A, il nostro servizio per aziende."],
+  ];
+} else {
+  const s = p.shop;
+  const near = nearby[s.slug] || [];
+  title = `Riparazione e vendita PC a ${s.city} | g8astore ${s.city}`;
+  description = `g8astore ${s.city}, ${s.address}: riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Diagnosi gratuita e prezzo prima di riparare.`.slice(0, 160);
+  photo = "notebook-rosso"; sub = `Notebook, PC fissi e Mac per privati e partite IVA. Ci trovi in ${s.address}${s.hint ? `, ${s.hint.toLowerCase()}` : ""}.`; crumbName = s.city; msg = `Ciao g8astore ${s.city}, ho bisogno di:`;
+  h1 = { a: "Riparazione e vendita PC a", b: s.city };
+  faq = [
+    ["Devo prendere appuntamento?", `No. Passa in negozio a ${s.city} negli orari di apertura per una valutazione gratuita. Se vuoi, scrivici prima su WhatsApp e ti diciamo quando passare.`],
+    ["Quanto costa la diagnosi?", "Niente. Ricevi il preventivo prima di qualsiasi intervento e, se non procedi, non paghi."],
+    ["Riparate anche i Mac?", "Sì, MacBook Air e MacBook Pro, con listino per modello. Siamo un centro indipendente, non affiliato Apple."],
+    ["Vendete computer con fattura alle partite IVA?", "Sì: notebook, PC e monitor in fattura, configurati e pronti all'uso."],
+    ...(near.length > 1 ? [[`Arrivo da ${near[0]} o ${near[1]}: vale la pena?`, `Sì, molti nostri clienti arrivano da ${near.join(", ")}. Scrivici prima su WhatsApp: per molti interventi ti diciamo già se si risolve in giornata.`] as [string, string]] : []),
+  ];
+}
+const crumbs = p.kind === "sale" ? [{ name: "Vendita PC", path: "/vendita-pc/" }, { name: crumbName, path }] : [{ name: crumbName, path }];
+const schema = [shop ? storeSchema(shop, true) : null, faqSchema(faq)];
+const cityBase = shop ? `/${shop.slug}` : "";
+const popular = [
+  ["riparazione-notebook", "batteria"], ["riparazione-notebook", "schermo"], ["riparazione-pc", "non-si-accende"], ["riparazione-notebook", "pc-lento"],
+  ["riparazione-pc", "recupero-dati"], ["riparazione-pc", "upgrade-ssd-ram"], ["riparazione-pc", "virus"], ["riparazione-mac", "batteria"],
+].map(([sv, sl]) => { const s = services.find((x) => x.slug === sv)!; return { s, pr: s.problems.find((x) => x.slug === sl)! }; });
+---
+<Base title={title} description={description} path={path} crumbs={crumbs} schema={schema} shop={shop} waMessage={msg} ogImage={`/img/${photo}.webp`}>
+  <Hero
+    photo={photo}
+    photoAlt={crumbName}
+    crumbs={crumbs}
+    sub={sub}
+    shop={ref}
+    msg={msg}
+    rating={shop ? shop.rating : avgRating}
+    reviews={shop ? shop.reviews : totalReviews}
+    ratingLabel={shop ? "su Google" : `nei ${shops.length} negozi`}
+    diagTitle={diagTitle}
+    diagItems={diagItems}
+    secondary={{ href: "#contatti", label: shop ? "Orari e mappa" : `${shops.length} negozi` }}
+  >{h1.a}{h1.b && <>{" "}<span class="grad-text">{h1.b}</span></>}</Hero>
+  <Promises />
+
+  {/* ---------- SERVIZIO ---------- */}
+  {p.kind === "service" && (
+    <>
+      <section class="sec">
+        <div class="wrap">
+          <div class="head reveal"><span class="tag">{p.service.name}</span><h2>Scegli la riparazione</h2><p>Ogni riparazione ha la sua pagina con sintomi, tempi, prezzi e domande frequenti.</p></div>
+          <div class="pcards">
+            {p.service.problems.slice(0, 3).map((pr) => (
+              <a class="pcard reveal" href={`/${p.service.slug}/${pr.slug}/`}>
+                <div class="ph"><Photo name={pr.photo} alt={repairTitle(pr, p.service)} sizes="(max-width: 700px) 100vw, 33vw" /><span class="ic"><Icon name={pr.icon} /></span>{p.service.slug === "riparazione-mac" && pr.macKind && macPriceRange(pr.macKind) && <span class="price-badge">da {euro(macPriceRange(pr.macKind)!.min)}</span>}</div>
+                <div class="bd"><h3>{repairTitle(pr, p.service)}</h3><p>{pr.short}</p><span class="more">Scopri <Icon name="arrow" /></span></div>
+              </a>
+            ))}
+          </div>
+          <div class="tiles" style="margin-top:18px">
+            {p.service.problems.slice(3).map((pr) => <a class="tile reveal" href={`/${p.service.slug}/${pr.slug}/`}><span class="ic"><Icon name={pr.icon} /></span><b>{pr.name}</b><span>{pr.short}</span></a>)}
+          </div>
+          {p.service.brands && <div class="pills c reveal" style="margin-top:30px">{p.service.brands.map((b) => <span>{b.name}</span>)}<span>e molte altre marche</span></div>}
+        </div>
+      </section>
+      {p.service.slug === "riparazione-mac" && battery && screen && (
+        <section class="sec sec-paper">
+          <div class="wrap media">
+            <div class="reveal">
+              <span class="tag">Prezzi chiari</span>
+              <h2 style="margin-top:10px">Listino per {macModels.length} modelli di MacBook</h2>
+              <p class="lead" style="margin-top:14px">Batteria da <b>{euro(battery.min)}</b>, schermo da <b>{euro(screen.min)}</b>, IVA inclusa. Il prezzo esatto per il tuo modello lo trovi nelle pagine batteria e schermo.</p>
+              <div class="acts" style="margin-top:22px"><a class="btn btn-red" href="/riparazione-mac/batteria/">Prezzi batteria</a><a class="btn btn-line" href="/riparazione-mac/schermo/">Prezzi schermo</a></div>
+            </div>
+            <figure class="reveal"><Photo name="macbook-luce" alt="MacBook in riparazione" /></figure>
+          </div>
+        </section>
+      )}
+    </>
+  )}
+
+  {/* ---------- VENDITA ---------- */}
+  {(p.kind === "vendita" || p.kind === "sale") && (
+    <section class="sec">
+      <div class="wrap">
+        {p.kind === "sale" ? (
+          <div class="media">
+            <div class="reveal">
+              <span class="tag">Cosa comprende</span>
+              <h2 style="margin-top:10px">{p.cat.name}, chiavi in mano</h2>
+              <ul class="checks">{p.cat.points.map((x) => <li><Icon name="checkc" /> {x}</li>)}</ul>
+              <p class="lead" style="margin-top:20px"><b>Per chi è:</b> {p.cat.for.toLowerCase()}. Scrivici cosa ti serve e quanto vuoi spendere: ti proponiamo due o tre soluzioni.</p>
+              <div class="acts" style="margin-top:22px"><a class="btn btn-wa" href={waLink(ref, msg)} rel="nofollow"><WaIcon /> Chiedi una proposta</a></div>
+            </div>
+            <figure class="reveal"><Photo name={p.cat.photo} alt={p.cat.name} /></figure>
+          </div>
+        ) : (
+          <>
+            <div class="head reveal"><span class="tag">Cosa vendiamo</span><h2>Il computer giusto, scelto con te</h2></div>
+            <div class="pcards">
+              {saleCategories.map((c) => (
+                <a class="pcard reveal" href={`/${c.slug}/`}>
+                  <div class="ph"><Photo name={c.photo} alt={c.name} sizes="(max-width: 700px) 100vw, 33vw" /><span class="ic"><Icon name={c.icon} /></span></div>
+                  <div class="bd"><h3>{c.name}</h3><p>{c.lede}</p><span class="more">Scopri <Icon name="arrow" /></span></div>
+                </a>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  )}
+
+  {/* ---------- PARTITE IVA ---------- */}
+  {p.kind === "piva" && (
+    <section class="sec">
+      <div class="wrap">
+        <div class="head reveal"><span class="tag">Servizi</span><h2>Quello che serve a chi lavora</h2></div>
+        <div class="tiles">{pivaPoints.map((x) => <div class="tile reveal"><span class="ic"><Icon name={x.icon} /></span><b>{x.t}</b><span>{x.p}</span></div>)}</div>
+        <div class="media" style="margin-top:56px">
+          <figure class="reveal"><Photo name="ufficio-team" alt="Ufficio con postazioni di lavoro" /></figure>
+          <div class="reveal">
+            <span class="tag">Per il tuo studio</span>
+            <h2 style="margin-top:10px">Un tecnico di riferimento, vicino a te</h2>
+            <p class="lead" style="margin-top:14px">Quando il computer di lavoro si ferma, ti serve qualcuno che risponda subito. Con g8astore hai un negozio vicino, un tecnico che conosce i tuoi computer e l'assistenza remota per i problemi di tutti i giorni.</p>
+            <div class="acts" style="margin-top:22px"><a class="btn btn-wa" href={waLink(ref, msg)} rel="nofollow"><WaIcon /> Parliamone</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* ---------- SEDE ---------- */}
+  {p.kind === "city" && (
+    <>
+      <section class="sec">
+        <div class="wrap">
+          <div class="head c reveal"><span class="tag">g8astore {p.shop.city}</span><h2>Cosa ti serve?</h2></div>
+          <div class="choose">
+            <a class="choice reveal" href={`${cityBase}/riparazione-notebook/`}><Photo name="mani-riparazione" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="wrench" /></span><h3>Riparare il computer</h3><p>Notebook, PC fisso o Mac: diagnosi gratuita e prezzo prima.</p><span class="go">Riparazioni a {p.shop.city} <Icon name="arrow" /></span></div></a>
+            <a class="choice reveal" href={`${cityBase}/vendita-pc/`}><Photo name="pc-gaming" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="cart" /></span><h3>Comprare un computer</h3><p>Notebook, PC su misura, gaming e ricondizionati pronti all'uso.</p><span class="go">Vendita a {p.shop.city} <Icon name="arrow" /></span></div></a>
+            <a class="choice reveal" href={`${cityBase}/partite-iva/`}><Photo name="ufficio-clienti" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="briefcase" /></span><h3>Sono una partita IVA</h3><p>Computer in fattura, riparazioni con priorità, backup e assistenza.</p><span class="go">Servizi a {p.shop.city} <Icon name="arrow" /></span></div></a>
+          </div>
+        </div>
+      </section>
+      <section class="sec sec-paper">
+        <div class="wrap">
+          <div class="head reveal"><span class="tag">Riparazioni a {p.shop.city}</span><h2>Le riparazioni più richieste</h2></div>
+          <div class="tiles">{popular.map(({ s, pr }) => <a class="tile reveal" href={`${cityBase}/${s.slug}/${pr.slug}/`}><span class="ic"><Icon name={pr.icon} /></span><b>{repairTitle(pr, s)}</b><span>{pr.short}</span></a>)}</div>
+          <div class="pcards" style="margin-top:28px">
+            {services.map((s) => (
+              <a class="pcard reveal" href={`${cityBase}/${s.slug}/`}>
+                <div class="ph"><Photo name={s.photo} alt={s.name} sizes="(max-width: 700px) 100vw, 33vw" /><span class="ic"><Icon name={s.icon} /></span></div>
+                <div class="bd"><h3>{s.name} a {p.shop.city}</h3><p>{s.lede}</p><span class="more">Tutte le riparazioni <Icon name="arrow" /></span></div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <HowItWorks />
+
+  {/* recensioni */}
+  {(shop ? shop.rating : avgRating) && (
+    <section class="sec">
+      <div class="wrap reviews">
+        <div class="score reveal">
+          <span class="g"><GoogleG /></span>
+          <span class="n">{fmtRating(shop ? shop.rating : avgRating)}</span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <p><b style="color:#fff">{shop ? shop.reviews : totalReviews} recensioni su Google</b>{shop ? ` per il negozio di ${shop.city}.` : ` nei nostri ${shops.length} negozi.`}</p>
+        </div>
+        <div class="shoprates">
+          {shops.filter((s) => s.rating && s.reviews).map((s) => (
+            <a class="shoprate reveal" href={`/${s.slug}/`}><Icon name="pin" /><b>g8astore {s.city}</b><span class="v"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)}</span><span class="c">{s.reviews} recensioni</span></a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {shop ? <LocalBlock shop={shop} msg={msg} /> : <Contacts msg={(s) => `Ciao g8astore ${s.city}, ${msg.replace(/^Ciao g8astore, /, "")}`} linkSuffix={p.kind === "service" || p.kind === "vendita" || p.kind === "piva" ? `${Astro.params.slug}/` : p.kind === "sale" ? "vendita-pc/" : undefined} />}
+  <Faq items={faq} paper={!shop} />
+  <Cta shop={ref} title={shop ? `Ti aspettiamo a ${shop.city}` : "Scrivici, ti rispondiamo subito"} text="Raccontaci cosa ti serve: ti diciamo come fare, quanto costa e quando passare." msg={msg} photo={p.kind === "city" ? "circuito-rosso" : photo} />
+  {shop && <section class="sec-tight"><div class="wrap"><p class="also">Gli altri negozi g8astore: {shops.filter((s) => s.slug !== shop.slug).map((s, i, a) => <><a href={`/${s.slug}/`}>{s.city}</a>{i < a.length - 1 ? ", " : "."}</>)}</p></div></section>}
+  {(p.kind === "piva" || p.kind === "city") && <B2b />}
+</Base>
