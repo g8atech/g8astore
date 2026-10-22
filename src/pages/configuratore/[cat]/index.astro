@@ -1,0 +1,38 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Icon from "../../../components/Icon.astro";
+import ShopNav from "../../../components/ShopNav.astro";
+import ShopGrid from "../../../components/ShopGrid.astro";
+import { pcModels, pcFamilies, pcFrom, euro, shops, catSlug, catDesc, productPath, SITE } from "../../../data/site";
+
+export function getStaticPaths() {
+  return pcFamilies.map((f) => ({ params: { cat: catSlug[f.key] }, props: { f } }));
+}
+const { f } = Astro.props as { f: (typeof pcFamilies)[number] };
+const models = pcModels.filter((m) => m.family === f.key);
+const d = catDesc[f.key];
+const min = Math.min(...models.map(pcFrom));
+const path = `/configuratore/${catSlug[f.key]}/`;
+const list = {
+  "@context": "https://schema.org", "@type": "ItemList", name: d.title,
+  itemListElement: models.map((m, i) => ({ "@type": "ListItem", position: i + 1, url: new URL(productPath(m), SITE).toString(), name: m.name })),
+};
+---
+<Base title={`${d.title} configurabili da ${euro(min)} | G8A Store`} description={`${d.intro} ${models.length} modelli da ${euro(min)} IVA inclusa, ritiro nei negozi G8A Store.`.slice(0, 160)} path={path} crumbs={[{ name: "Shop PC", path: "/configuratore/" }, { name: f.plural, path }]} schema={[list]} ogImage={models[0]?.images[0]}>
+  <ShopNav current={f.key} />
+  <div class="wrap">
+    <div class="shop-banner">
+      <img src={`/img/${d.photo}.webp`} alt="" />
+      <nav class="crumbs" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li><a href="/configuratore/">Shop PC</a></li><li><span aria-current="page">{f.plural}</span></li></ol></nav>
+      <h1>{d.title}</h1>
+      <p style="max-width:56ch">{d.intro} {models.length} modelli, da {euro(min)} IVA inclusa.</p>
+    </div>
+    <div class="usp">
+      <div><Icon name="wrench" /> Montato e testato da noi</div>
+      <div><Icon name="store" /> Ritiro in {shops.length} negozi</div>
+      <div><Icon name="receipt" /> Fattura per partite IVA</div>
+      <div><Icon name="shield" /> Assistenza in negozio</div>
+    </div>
+    <ShopGrid models={models} showCat={false} showScreen={f.key === "notebook" || f.key === "gaming"} />
+  </div>
+</Base>

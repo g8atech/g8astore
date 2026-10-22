@@ -1,0 +1,14 @@
+---
+// Barra delle categorie del negozio, sempre visibile sotto l'intestazione.
+import Icon from "./Icon.astro";
+import { pcFamilies, pcModels, catSlug } from "../data/site";
+interface Props { current?: string } // chiave famiglia o "all"
+const { current = "all" } = Astro.props;
+const count = (k: string) => pcModels.filter((m) => m.family === k).length;
+---
+<nav class="shopnav" aria-label="Categorie del negozio">
+  <div class="wrap">
+    <a href="/configuratore/" aria-current={current === "all" ? "page" : undefined}><Icon name="store" /> Tutti i PC <span>{pcModels.length}</span></a>
+    {pcFamilies.map((f) => <a href={`/configuratore/${catSlug[f.key]}/`} aria-current={current === f.key ? "page" : undefined}><Icon name={f.icon} /> {f.plural} <span>{count(f.key)}</span></a>)}
+  </div>
+</nav>

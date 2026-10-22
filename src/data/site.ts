@@ -281,7 +281,10 @@ export function macPriceRange(kind: "batteria" | "schermo") {
   if (!prices.length) return null;
   return { min: Math.min(...prices), max: Math.max(...prices), count: prices.length };
 }
-export const euro = (n: number) => `${n.toLocaleString("it-IT", { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 })} €`;
+export const euro = (n: number) => {
+  const [i, d] = (Math.round(n * 100) / 100).toFixed(2).split(".");
+  return `${i.replace(/\B(?=(\d{3})+(?!\d))/g, ".")}${d === "00" ? "" : "," + d} €`;
+};
 
 /** Nome della riparazione completo per il titolo: "Sostituzione batteria notebook". */
 export const repairTitle = (p: Problem, s: Service) => {
@@ -347,3 +350,29 @@ export const pcFrom = (m: PcModel) => {
   return Math.round((m.base + r + s) * 100) / 100;
 };
 export const sizeLabel = (gb: number) => (gb >= 1000 ? `${gb / 1000} TB` : `${gb} GB`);
+
+// ---------- Shop: categorie, schermo, filtri ----------
+export const catSlug: Record<string, string> = { notebook: "notebook", gaming: "notebook-gaming", aio: "all-in-one", mini: "mini-pc" };
+export const catByslug = (slug: string) => pcFamilies.find((f) => catSlug[f.key] === slug)!;
+export const productPath = (m: PcModel) => `/configuratore/${catSlug[m.family]}/${m.slug}/`;
+const SCREEN: Record<string, number | null> = {
+  "n14-v2": 14, "n14l-i3": 14, "n16l-i3": 16, "n16l-i5": 16, "n16m-ultra": 16, "n17-v2-i5": 17.3, "n17-v2-i7": 17.3,
+  "chrono-14": 14, "chrono-15": 15, "vortex-i7-rtx5050": 16, "vortex-v2-i5-rtx5050": 16, "vortex-v2-i7-rtx5050": 16,
+  "vortex-v2-i7-rtx5060": 16, "x6r-rtx5070ti": 16, "zenith-24": 23.8, "zenith-27": 27, "energy5": null, "cubi-5-ultra": null,
+};
+export const screenOf = (m: PcModel) => SCREEN[m.slug] ?? null;
+export const cpuBrand = (m: PcModel) => (/amd|ryzen/i.test(m.cpu) ? "AMD" : "Intel");
+export const priceBand = (p: number) => (p < 800 ? "0" : p < 1200 ? "1" : p < 1800 ? "2" : "3");
+export const priceBands = [
+  { key: "0", label: "Fino a 800 €" },
+  { key: "1", label: "800 – 1.200 €" },
+  { key: "2", label: "1.200 – 1.800 €" },
+  { key: "3", label: "Oltre 1.800 €" },
+];
+export const screenBand = (s: number | null) => (s == null ? "" : s < 15 ? "14" : s < 17 ? "16" : s < 20 ? "17" : "aio");
+export const catDesc: Record<string, { title: string; intro: string; photo: string }> = {
+  notebook: { title: "Notebook G8A", intro: "Portatili per lavoro, studio e casa. Scegli RAM e SSD: lo montiamo e lo testiamo noi.", photo: "scrivania-notebook" },
+  gaming: { title: "Notebook gaming G8A", intro: "Schede video NVIDIA RTX e schermi ad alta frequenza, configurati sulle tue esigenze.", photo: "pc-gaming" },
+  aio: { title: "All in One G8A", intro: "Tutto il computer dentro lo schermo: meno cavi, scrivania in ordine, perfetti per ufficio e reception.", photo: "ufficio-postazione" },
+  mini: { title: "Mini PC G8A", intro: "Computer piccolissimi e silenziosi, da fissare dietro al monitor. Consumano poco.", photo: "scheda-madre" },
+};

@@ -1,22 +1,23 @@
 ---
 import Icon from "./Icon.astro";
-import { pcFrom, euro, pcFamilies, type PcModel } from "../data/site";
-interface Props { m: PcModel }
-const { m } = Astro.props;
+import { pcFrom, euro, pcFamilies, productPath, cpuBrand, screenOf, screenBand, priceBand, type PcModel } from "../data/site";
+interface Props { m: PcModel; showCat?: boolean }
+const { m, showCat = true } = Astro.props;
 const fam = pcFamilies.find((f) => f.key === m.family)!;
+const price = pcFrom(m);
 ---
-<a class="pc-card reveal" href={`/configuratore/${m.slug}/`} data-family={m.family}>
+<a class="pc-card" href={productPath(m)} data-family={m.family} data-price={price} data-band={priceBand(price)} data-avail={m.available ? "1" : "0"} data-brand={cpuBrand(m)} data-screen={screenBand(screenOf(m))} data-name={m.name}>
   <div class="im">
     {m.images[0] ? <img src={m.images[0]} alt={m.name} loading="lazy" width="600" height="450" /> : <span class="noimg"><Icon name={fam.icon} />Foto in arrivo</span>}
-    <span class={m.available ? "badge-av" : "badge-av ord"}>{m.available ? "Disponibile in negozio" : "Su ordinazione"}</span>
-    <span class="badge-fam">{fam.name}</span>
+    <span class={m.available ? "badge-av" : "badge-av ord"}>{m.available ? "Disponibile" : "Su ordinazione"}</span>
+    {showCat && <span class="badge-fam">{fam.name}</span>}
   </div>
   <div class="bd">
     <h3>{m.name}</h3>
     <p class="cpu">{m.cpu}</p>
     <ul class="keys">{m.keys.map((k) => <li><Icon name="check" /> {k}</li>)}</ul>
     <div class="ft">
-      <div class="price-from"><small>Configurato da</small><b>{euro(pcFrom(m))}</b><em>IVA inclusa, con RAM e SSD</em></div>
+      <div class="price-from"><small>Da</small><b>{euro(price)}</b><em>IVA incl., con RAM e SSD</em></div>
       <span class="btn btn-red btn-sm">Configura</span>
     </div>
   </div>

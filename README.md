@@ -29,9 +29,11 @@ Telefoni e tablet restano su riparohero.it.
 Testi delle riparazioni (sintomi, cause, passaggi, cosa è incluso, FAQ): `src/data/site.ts`.
 Foto: `public/img/` (Unsplash, vedi `CREDITS.txt`), da sostituire nel tempo con foto vere dei negozi.
 
-## Configuratore PC (`/configuratore/`)
+## Shop PC (`/configuratore/`)
 
-- 18 modelli G8A configurabili (notebook, gaming, All in One, mini PC) con scelta di RAM e SSD e prezzo che si aggiorna.
+- `/configuratore/`: vetrina con categorie e tutti i PC; `/configuratore/<categoria>/` (notebook, notebook-gaming, all-in-one, mini-pc);
+  `/configuratore/<categoria>/<modello>/`: scheda prodotto con scelta di RAM e SSD e prezzo che si aggiorna.
+- Filtri (disponibilità, prezzo, processore, schermo) e ordinamento funzionano nel browser, senza inviare dati.
 - Dati in `src/data/configuratore.json`: **copia statica** dei dati pubblici del configuratore di Brain
   (nomi, prezzi al pubblico IVA inclusa, disponibile sì/no, foto, schede tecniche) presa il 22/10/2026 in sola lettura.
   Nessun prezzo d'acquisto, nessuna quantità, nessuna chiave. Foto in `public/img/pc/`.

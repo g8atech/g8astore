@@ -2,81 +2,57 @@
 import Base from "../../layouts/Base.astro";
 import Icon from "../../components/Icon.astro";
 import WaIcon from "../../components/WaIcon.astro";
-import PcCard from "../../components/PcCard.astro";
-import Promises from "../../components/Promises.astro";
+import ShopNav from "../../components/ShopNav.astro";
+import ShopGrid from "../../components/ShopGrid.astro";
 import Faq from "../../components/Faq.astro";
-import Cta from "../../components/Cta.astro";
-import { pcModels, pcFamilies, pcFrom, euro, shops, waLink } from "../../data/site";
+import { pcModels, pcFamilies, pcFrom, euro, shops, waLink, catSlug } from "../../data/site";
 import { faqSchema } from "../../lib/schema";
 
 const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const minPrice = Math.min(...pcModels.map(pcFrom));
-const pick = (slug: string) => pcModels.find((m) => m.slug === slug)!;
-const col = [pick("vortex-i7-rtx5050"), pick("zenith-27"), pick("n14-v2")];
+const cover: Record<string, string> = { notebook: "n16m-ultra", gaming: "vortex-i7-rtx5050", aio: "zenith-27", mini: "energy5" };
 const faq: [string, string][] = [
-  ["Come funziona?", "Scegli il modello, la memoria RAM e il disco SSD: vedi subito il prezzo. Mandi la configurazione al negozio su WhatsApp e ti confermiamo disponibilità e tempi."],
-  ["Chi monta il computer?", "Lo montiamo e lo testiamo noi in negozio, poi lo ritiri pronto. Sono computer a marchio G8A."],
-  ["Il prezzo è definitivo?", "È il prezzo di listino IVA inclusa per la configurazione che scegli. Il negozio te lo conferma insieme alla disponibilità prima di procedere."],
-  ["Posso chiedere una configurazione diversa?", "Sì: scrivici cosa ti serve e ti proponiamo la configurazione giusta, anche con più memoria o disco più grande."],
+  ["Come funziona l'acquisto?", "Scegli il PC e configura RAM e SSD: vedi subito il prezzo. Invii la richiesta al negozio su WhatsApp, ti confermiamo disponibilità e tempi e lo ritiri pronto in negozio."],
+  ["Chi monta il computer?", "Lo montiamo e lo testiamo noi in negozio. Sono computer a marchio G8A."],
+  ["Il prezzo è definitivo?", "È il prezzo di listino IVA inclusa della configurazione scelta. Il negozio te lo conferma insieme alla disponibilità prima di procedere."],
   ["Fate fattura alle partite IVA?", "Sì, vendiamo in fattura a professionisti e aziende."],
 ];
 ---
-<Base title="Configura il tuo PC G8A: notebook, All in One, mini PC e gaming | G8A Store" description={`Configura il tuo computer G8A: scegli modello, RAM e SSD e vedi subito il prezzo. Notebook, gaming, All in One e mini PC da ${euro(minPrice)}. Montato e testato in negozio.`} path="/configuratore/" crumbs={[{ name: "Configuratore", path: "/configuratore/" }]} schema={[faqSchema(faq)]} ogImage={col[0].images[0]}>
-  <section class="cfg-hero">
-    <div class="wrap">
-      <div>
-        <nav class="crumbs" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li><span aria-current="page">Configuratore</span></li></ol></nav>
-        <h1>Configura il tuo <span class="grad-text">PC G8A</span></h1>
-        <p class="hero-sub">Scegli il modello, la memoria e il disco: il prezzo si aggiorna subito. Lo montiamo e lo testiamo noi, tu lo ritiri pronto in negozio.</p>
-        <div class="cfg-steps-mini"><span><b>1</b> Modello</span><span><b>2</b> RAM</span><span><b>3</b> SSD</span><span><b>4</b> Ritiro in negozio</span></div>
-        <div class="hero-ctas" style="max-width:440px">
-          <a class="btn btn-red" href="#modelli">Scegli il modello</a>
-          <a class="btn btn-glass btn-sm" href={waLink(ref, "Ciao G8A Store, vorrei un consiglio per configurare un PC:")} rel="nofollow"><WaIcon /> Chiedi un consiglio</a>
-        </div>
-      </div>
-      <div class="collage" aria-hidden="true">
-        {col.map((m, i) => <div class={`c c${i + 1}`}><img src={m.images[0]} alt="" width="500" height="500" /></div>)}
-        <div class="tagp">Configurati da<b>{euro(minPrice)}</b></div>
-      </div>
+<Base title="Shop PC G8A: notebook, gaming, All in One e mini PC configurabili | G8A Store" description={`Lo shop dei PC G8A: notebook, notebook gaming, All in One e mini PC configurabili con RAM e SSD. Da ${euro(minPrice)} IVA inclusa, ritiro nei negozi G8A Store.`} path="/configuratore/" crumbs={[{ name: "Shop PC", path: "/configuratore/" }]} schema={[faqSchema(faq)]} ogImage={pcModels.find((m) => m.slug === "vortex-i7-rtx5050")?.images[0]}>
+  <ShopNav current="all" />
+  <div class="wrap">
+    <div class="shop-banner">
+      <img src="/img/pc-gaming.webp" alt="" />
+      <nav class="crumbs" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li><span aria-current="page">Shop PC</span></li></ol></nav>
+      <h1>Shop PC G8A</h1>
+      <p style="max-width:52ch">{pcModels.length} computer a marchio G8A da configurare con RAM e SSD. Prezzi IVA inclusa da {euro(minPrice)}, montati e testati nei nostri negozi.</p>
+      <div class="acts" style="margin-top:6px"><a class="btn btn-red btn-sm" href="#prodotti">Vedi tutti i PC</a><a class="btn btn-glass btn-sm" href={waLink(ref, "Ciao G8A Store, vorrei un consiglio su quale PC scegliere:")} rel="nofollow"><WaIcon /> Chiedi un consiglio</a></div>
     </div>
-  </section>
-  <Promises />
-
-  <section class="sec" id="modelli">
-    <div class="wrap">
-      <div class="head reveal"><h2>Da quale PC vuoi partire?</h2><p>Tutti i modelli sono a marchio G8A. Il prezzo indicato comprende RAM e SSD di partenza.</p></div>
-      <div class="fam-tabs" role="toolbar" aria-label="Filtra per tipo">
-        <button type="button" data-f="all" aria-pressed="true">Tutti</button>
-        {pcFamilies.map((f) => <button type="button" data-f={f.key} aria-pressed="false"><Icon name={f.icon} /> {f.plural}</button>)}
-      </div>
-      <div class="pc-grid" id="pc-grid">{pcModels.slice().sort((a, b) => pcFrom(a) - pcFrom(b)).map((m) => <PcCard m={m} />)}</div>
+    <div class="usp">
+      <div><Icon name="wrench" /> Montato e testato da noi</div>
+      <div><Icon name="store" /> Ritiro in {shops.length} negozi</div>
+      <div><Icon name="receipt" /> Fattura per partite IVA</div>
+      <div><Icon name="shield" /> Assistenza in negozio</div>
     </div>
-  </section>
 
-  <section class="sec sec-paper">
-    <div class="wrap">
-      <div class="head c reveal"><h2>Per cosa ti serve?</h2><p>Non sai da dove partire? Scegli l'uso e ti mostriamo i modelli giusti.</p></div>
-      <div class="tiles">
-        {pcFamilies.map((f) => <button type="button" class="tile reveal" data-jump={f.key} style="text-align:left;cursor:pointer;font:inherit"><span class="ic"><Icon name={f.icon} /></span><b>{f.plural}</b><span>{f.desc}</span></button>)}
+    <section style="padding:22px 0 10px">
+      <h2 style="font-size:1.6rem;margin-bottom:16px">Categorie</h2>
+      <div class="cat-tiles">
+        {pcFamilies.map((f) => {
+          const ms = pcModels.filter((m) => m.family === f.key);
+          const c = ms.find((m) => m.slug === cover[f.key]) ?? ms[0];
+          return (
+            <a class="cat-tile" href={`/configuratore/${catSlug[f.key]}/`}>
+              <div class="im">{c?.images[0] && <img src={c.images[0]} alt={f.plural} loading="lazy" width="400" height="300" />}</div>
+              <div class="bd"><b>{f.plural}</b><small>{ms.length} modelli · {f.desc}</small><span class="from">da {euro(Math.min(...ms.map(pcFrom)))}</span></div>
+            </a>
+          );
+        })}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <Faq items={faq} />
-  <Cta shop={ref} title="Non sai quale scegliere?" text="Dicci per cosa ti serve e quanto vuoi spendere: ti consigliamo la configurazione giusta." msg="Ciao G8A Store, vorrei un consiglio per configurare un PC:" photo="processore" />
-
-  <script is:inline>
-    (function () {
-      var btns = document.querySelectorAll(".fam-tabs button");
-      var cards = document.querySelectorAll("#pc-grid .pc-card");
-      function show(f) {
-        btns.forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.f === f ? "true" : "false"); });
-        cards.forEach(function (c) { c.hidden = !(f === "all" || c.dataset.family === f); c.classList.add("in"); });
-      }
-      btns.forEach(function (b) { b.addEventListener("click", function () { show(b.dataset.f); }); });
-      document.querySelectorAll("[data-jump]").forEach(function (t) {
-        t.addEventListener("click", function () { show(t.dataset.jump); document.getElementById("modelli").scrollIntoView({ behavior: "smooth" }); });
-      });
-    })();
-  </script>
+    <h2 style="font-size:1.6rem;margin-top:34px">Tutti i PC</h2>
+    <ShopGrid models={pcModels} />
+  </div>
+  <Faq items={faq} paper />
 </Base>

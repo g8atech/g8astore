@@ -1,23 +1,24 @@
 ---
 // Pagina di configurazione di un modello G8A: scelta RAM e SSD, prezzo che si aggiorna, invio al negozio su WhatsApp.
-import Base from "../../layouts/Base.astro";
-import Icon from "../../components/Icon.astro";
-import WaIcon from "../../components/WaIcon.astro";
-import PcCard from "../../components/PcCard.astro";
-import Promises from "../../components/Promises.astro";
-import Faq from "../../components/Faq.astro";
-import { pcModels, pcFamilies, ramFor, ssdOptions, pcFrom, euro, sizeLabel, shops, waNumber, SITE, type PcModel } from "../../data/site";
-import { faqSchema } from "../../lib/schema";
+import Base from "../../../layouts/Base.astro";
+import ShopNav from "../../../components/ShopNav.astro";
+import Icon from "../../../components/Icon.astro";
+import WaIcon from "../../../components/WaIcon.astro";
+import PcCard from "../../../components/PcCard.astro";
+import Promises from "../../../components/Promises.astro";
+import Faq from "../../../components/Faq.astro";
+import { catSlug, productPath, pcModels, pcFamilies, ramFor, ssdOptions, pcFrom, euro, sizeLabel, shops, waNumber, SITE, type PcModel } from "../../../data/site";
+import { faqSchema } from "../../../lib/schema";
 
 export function getStaticPaths() {
-  return pcModels.map((m) => ({ params: { model: m.slug }, props: { m } }));
+  return pcModels.map((m) => ({ params: { cat: catSlug[m.family], model: m.slug }, props: { m } }));
 }
 const { m } = Astro.props as { m: PcModel };
 const fam = pcFamilies.find((f) => f.key === m.family)!;
 const rams = ramFor(m);
 const ssds = ssdOptions;
 const from = pcFrom(m);
-const path = `/configuratore/${m.slug}/`;
+const path = productPath(m);
 const related = pcModels.filter((x) => x.family === m.family && x.slug !== m.slug).slice(0, 3);
 const faq: [string, string][] = [
   [`Il ${m.name} arriva già pronto?`, "Sì: lo montiamo con la RAM e l'SSD che scegli, lo testiamo e lo ritiri pronto in negozio."],
@@ -34,9 +35,10 @@ const product = {
   image: m.images.map((i) => new URL(i, SITE).toString()),
   offers: { "@type": "Offer", priceCurrency: "EUR", price: from, availability: m.available ? "https://schema.org/InStock" : "https://schema.org/PreOrder", url: new URL(path, SITE).toString(), seller: { "@type": "Organization", name: "G8A Store" } },
 };
-const crumbs = [{ name: "Configuratore", path: "/configuratore/" }, { name: m.name, path }];
+const crumbs = [{ name: "Shop PC", path: "/configuratore/" }, { name: fam.plural, path: `/configuratore/${catSlug[m.family]}/` }, { name: m.name, path }];
 ---
 <Base title={`${m.name} configurabile da ${euro(from)} | G8A Store`} description={`${m.name}, ${m.cpu}: scegli RAM e SSD e vedi subito il prezzo. Da ${euro(from)} IVA inclusa, montato e testato in negozio.`} path={path} crumbs={crumbs} schema={[product, faqSchema(faq)]} ogImage={m.images[0]} waMessage={`Ciao G8A Store, mi interessa il ${m.name}:`}>
+  <ShopNav current={m.family} />
   <div class="wrap cfg">
     <div class="gal">
       <div class="gal-main">
@@ -51,7 +53,7 @@ const crumbs = [{ name: "Configuratore", path: "/configuratore/" }, { name: m.na
 
     <div>
       <div class="cfg-head">
-        <nav class="crumbs" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li><a href="/configuratore/">Configuratore</a></li><li><span aria-current="page">{m.name}</span></li></ol></nav>
+        <nav class="crumbs" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li><a href="/configuratore/">Shop PC</a></li><li><a href={`/configuratore/${catSlug[m.family]}/`}>{fam.plural}</a></li><li><span aria-current="page">{m.name}</span></li></ol></nav>
         <h1>{m.name}</h1>
         <p class="cpu">{m.cpu}</p>
         <div class="keys">{m.keys.map((k) => <span>{k}</span>)}</div>
@@ -141,7 +143,7 @@ const crumbs = [{ name: "Configuratore", path: "/configuratore/" }, { name: m.na
     (function () {
       var f = document.getElementById("cfg"); if (!f) return;
       var base = parseFloat(f.dataset.base), name = f.dataset.name;
-      var fmt = function (n) { return n.toLocaleString("it-IT", { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }) + " €"; };
+      var fmt = function (n) { var p = (Math.round(n * 100) / 100).toFixed(2).split("."); return p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (p[1] === "00" ? "" : "," + p[1]) + " €"; };
       function update() {
         var r = f.querySelector("input[name=ram]:checked"), s = f.querySelector("input[name=ssd]:checked"), st = f.store.options[f.store.selectedIndex];
         var tot = Math.round((base + parseFloat(r.value) + parseFloat(s.value)) * 100) / 100;

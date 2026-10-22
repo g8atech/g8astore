@@ -1,0 +1,82 @@
+---
+// Elenco prodotti con filtri laterali e ordinamento (tutto lato browser, nessun dato inviato).
+import Icon from "./Icon.astro";
+import PcCard from "./PcCard.astro";
+import { pcFrom, priceBands, priceBand, cpuBrand, screenOf, screenBand, type PcModel } from "../data/site";
+interface Props { models: PcModel[]; showCat?: boolean; showScreen?: boolean }
+const { models, showCat = true, showScreen = true } = Astro.props;
+const sorted = models.slice().sort((a, b) => pcFrom(a) - pcFrom(b));
+const n = (fn: (m: PcModel) => boolean) => models.filter(fn).length;
+const bands = priceBands.filter((b) => n((m) => priceBand(pcFrom(m)) === b.key) > 0);
+const brands = ["Intel", "AMD"].filter((b) => n((m) => cpuBrand(m) === b) > 0);
+const screens = [
+  { key: "14", label: "14\" o meno" }, { key: "16", label: "15 – 16\"" }, { key: "17", label: "17\"" }, { key: "aio", label: "24 – 27\" (All in One)" },
+].filter((s) => n((m) => screenBand(screenOf(m)) === s.key) > 0);
+---
+<div class="shop-layout" id="prodotti">
+  <aside class="filters" id="filters" aria-label="Filtri">
+    <div class="filters-head"><b>Filtri</b><button type="button" class="link-btn" data-reset>Azzera</button></div>
+    <fieldset><legend>Disponibilità</legend>
+      <label class="chk"><input type="checkbox" data-f="avail" value="1" /> Solo disponibili in negozio <span>{n((m) => m.available)}</span></label>
+    </fieldset>
+    <fieldset><legend>Prezzo</legend>
+      {bands.map((b) => <label class="chk"><input type="checkbox" data-f="band" value={b.key} /> {b.label} <span>{n((m) => priceBand(pcFrom(m)) === b.key)}</span></label>)}
+    </fieldset>
+    {brands.length > 1 && <fieldset><legend>Processore</legend>
+      {brands.map((b) => <label class="chk"><input type="checkbox" data-f="brand" value={b} /> {b} <span>{n((m) => cpuBrand(m) === b)}</span></label>)}
+    </fieldset>}
+    {showScreen && screens.length > 1 && <fieldset><legend>Schermo</legend>
+      {screens.map((s) => <label class="chk"><input type="checkbox" data-f="screen" value={s.key} /> {s.label} <span>{n((m) => screenBand(screenOf(m)) === s.key)}</span></label>)}
+    </fieldset>}
+    <button type="button" class="btn btn-dark btn-sm filters-close" data-close>Mostra risultati</button>
+  </aside>
+  <div>
+    <div class="toolbar">
+      <button type="button" class="btn btn-line btn-sm filters-open" data-open><Icon name="search" /> Filtri</button>
+      <p class="count" aria-live="polite"><b data-count>{models.length}</b> PC</p>
+      <label class="sort">Ordina per
+        <select data-sort>
+          <option value="price-asc">Prezzo: dal più basso</option>
+          <option value="price-desc">Prezzo: dal più alto</option>
+          <option value="name">Nome</option>
+          <option value="avail">Disponibili prima</option>
+        </select>
+      </label>
+    </div>
+    <div class="pc-grid" data-grid>{sorted.map((m) => <PcCard m={m} showCat={showCat} />)}</div>
+    <p class="empty" data-empty hidden>Nessun PC con questi filtri. <button type="button" class="link-btn" data-reset>Azzera i filtri</button></p>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var root = document.getElementById("prodotti"); if (!root) return;
+    var grid = root.querySelector("[data-grid]"), cards = Array.prototype.slice.call(grid.children);
+    var boxes = root.querySelectorAll("input[data-f]"), sortSel = root.querySelector("[data-sort]");
+    function apply() {
+      var sel = {}; boxes.forEach(function (b) { if (b.checked) (sel[b.dataset.f] = sel[b.dataset.f] || []).push(b.value); });
+      var shown = 0;
+      cards.forEach(function (c) {
+        var ok = (!sel.avail || c.dataset.avail === "1") && (!sel.band || sel.band.indexOf(c.dataset.band) > -1) &&
+                 (!sel.brand || sel.brand.indexOf(c.dataset.brand) > -1) && (!sel.screen || sel.screen.indexOf(c.dataset.screen) > -1);
+        c.hidden = !ok; if (ok) shown++;
+      });
+      root.querySelector("[data-count]").textContent = shown;
+      root.querySelector("[data-empty]").hidden = shown > 0;
+    }
+    function sort() {
+      var v = sortSel.value;
+      cards.sort(function (a, b) {
+        if (v === "price-desc") return b.dataset.price - a.dataset.price;
+        if (v === "name") return a.dataset.name.localeCompare(b.dataset.name);
+        if (v === "avail") return (b.dataset.avail - a.dataset.avail) || (a.dataset.price - b.dataset.price);
+        return a.dataset.price - b.dataset.price;
+      }).forEach(function (c) { grid.appendChild(c); });
+    }
+    boxes.forEach(function (b) { b.addEventListener("change", apply); });
+    sortSel.addEventListener("change", sort);
+    root.querySelectorAll("[data-reset]").forEach(function (b) { b.addEventListener("click", function () { boxes.forEach(function (x) { x.checked = false; }); apply(); }); });
+    var f = document.getElementById("filters");
+    root.querySelector("[data-open]").addEventListener("click", function () { f.classList.add("open"); });
+    root.querySelector("[data-close]").addEventListener("click", function () { f.classList.remove("open"); });
+  })();
+</script>
