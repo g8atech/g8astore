@@ -29,7 +29,7 @@ export function storeSchema(shop: Shop, withRating = false) {
     "@context": "https://schema.org",
     "@type": "ComputerStore",
     "@id": `${SITE}/${shop.slug}/#store`,
-    name: `g8astore ${shop.city}`,
+    name: `G8A Store ${shop.city}`,
     url: `${SITE}/${shop.slug}/`,
     image: shop.photo || `${SITE}/g8a-logo.png`,
     telephone: telLink(shop).replace("tel:", ""),

@@ -31,7 +31,7 @@ let name = "", h1a = "", sub = "", msg = "", photo = "notebook-rosso", faq: [str
 if (p.kind === "service") {
   const s = p.service;
   name = s.name; h1a = `${s.name} a`; sub = s.lede; photo = s.photo; diagTitle = s.name; diagItems = s.problems.slice(0, 4).map((x) => x.name);
-  msg = `Ciao g8astore ${shop.city}, ho un ${s.device} da riparare:`;
+  msg = `Ciao G8A Store ${shop.city}, ho un ${s.device} da riparare:`;
   faq = [
     [`Quanto costa la ${s.name.toLowerCase()} a ${shop.city}?`, isMac ? "Trovi il listino per modello in questa pagina. Per gli altri guasti la diagnosi è gratuita e il prezzo te lo diamo prima di riparare." : "Dipende dal guasto e dal modello. La diagnosi è gratuita e ricevi il prezzo esatto prima dell'intervento; se non procedi, non paghi."],
     ["Quanto tempo ci vuole?", "Pulizia, SSD e reinstallazione si chiudono spesso in giornata. Per i ricambi da ordinare ti diamo i tempi con il preventivo."],
@@ -41,7 +41,7 @@ if (p.kind === "service") {
 } else if (p.kind === "vendita") {
   name = "Vendita PC"; h1a = "Vendita PC a"; photo = "scrivania-notebook"; diagTitle = "Il tuo nuovo PC"; diagItems = ["Scelta componenti", "Windows e driver", "Dati trasferiti", "Test finale"];
   sub = `Notebook, PC su misura, gaming, workstation e ricondizionati, configurati da noi e pronti all'uso, nel negozio di ${shop.address}.`;
-  msg = `Ciao g8astore ${shop.city}, cerco un computer per:`;
+  msg = `Ciao G8A Store ${shop.city}, cerco un computer per:`;
   faq = [
     ["Mi aiutate a scegliere?", "Sì. Dicci cosa ci devi fare e quanto vuoi spendere: ti proponiamo due o tre soluzioni senza venderti più del necessario."],
     ["Trasferite i dati dal vecchio computer?", "Sì, ti consegniamo il nuovo computer con file, posta e programmi principali già pronti."],
@@ -50,7 +50,7 @@ if (p.kind === "service") {
 } else {
   name = "Partite IVA"; h1a = "Computer e assistenza per partite IVA a"; photo = "ufficio-clienti"; diagTitle = "Il tuo ufficio"; diagItems = ["Backup dei dati", "Rete e Wi-Fi", "Posta e PEC", "Aggiornamenti"];
   sub = `Per professionisti, studi e piccole attività di ${shop.city} e dintorni: computer in fattura, riparazioni con priorità, backup, rete e assistenza remota.`;
-  msg = `Ciao g8astore ${shop.city}, ho una partita IVA e mi serve:`;
+  msg = `Ciao G8A Store ${shop.city}, ho una partita IVA e mi serve:`;
   faq = [
     ["Fate assistenza anche da remoto?", "Sì. Per i problemi software interveniamo da remoto, senza farti venire in negozio."],
     ["Avete un contratto di assistenza per piccole attività?", "Per una o due postazioni lavoriamo a intervento. Per uffici con più postazioni da gestire a canone ti mettiamo in contatto con G8A, il nostro servizio per aziende."],
@@ -62,7 +62,7 @@ const offers = macRows.flatMap((r) => [r.battery, r.screen].filter(Boolean).map(
 const crumbs = [{ name: shop.city, path: `/${shop.slug}/` }, { name, path: base }];
 const schema = [storeSchema(shop), serviceSchema(`${h1a} ${shop.city}`, sub, shop, base, offers.slice(0, 40)), faqSchema(faq)];
 ---
-<Base title={`${h1a} ${shop.city} | g8astore`} description={`${h1a} ${shop.city}: ${sub}`.slice(0, 160)} path={base} crumbs={crumbs} schema={schema} shop={shop} waMessage={msg} ogImage={`/img/${photo}.webp`}>
+<Base title={`${h1a} ${shop.city} | G8A Store`} description={`${h1a} ${shop.city}: ${sub}`.slice(0, 160)} path={base} crumbs={crumbs} schema={schema} shop={shop} waMessage={msg} ogImage={`/img/${photo}.webp`}>
   <Hero photo={photo} photoAlt={name} crumbs={crumbs} sub={sub} shop={shop} msg={msg} rating={shop.rating} reviews={shop.reviews} diagTitle={diagTitle} diagItems={diagItems} secondary={{ href: "#contatti", label: "Orari e mappa" }}>
     {h1a}{" "}<span class="grad-text">{shop.city}</span>
   </Hero>
@@ -113,7 +113,7 @@ const schema = [storeSchema(shop), serviceSchema(`${h1a} ${shop.city}`, sub, sho
               <div class="bd">
                 <h3>{c.name}</h3><p>{c.lede}</p>
                 <ul class="list">{c.points.slice(0, 3).map((x) => <li><Icon name="check" /> {x}</li>)}</ul>
-                <a class="btn btn-wa btn-sm" style="margin-top:8px" href={waLink(shop, `Ciao g8astore ${shop.city}, mi interessa: ${c.name}`)} rel="nofollow"><WaIcon /> Chiedi al negozio</a>
+                <a class="btn btn-wa btn-sm" style="margin-top:8px" href={waLink(shop, `Ciao G8A Store ${shop.city}, mi interessa: ${c.name}`)} rel="nofollow"><WaIcon /> Chiedi al negozio</a>
               </div>
             </article>
           ))}

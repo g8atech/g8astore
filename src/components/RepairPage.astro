@@ -22,7 +22,7 @@ const base = shop ? `/${shop.slug}/${service.slug}/` : `/${service.slug}/`;
 const path = `${base}${pr.slug}/`;
 const name = repairTitle(pr, service); // "Sostituzione batteria notebook"
 const where = shop ? ` a ${shop.city}` : "";
-const msg = shop ? `Ciao g8astore ${shop.city}, ${name.toLowerCase()}:` : `Ciao g8astore, ${name.toLowerCase()}:`;
+const msg = shop ? `Ciao G8A Store ${shop.city}, ${name.toLowerCase()}:` : `Ciao G8A Store, ${name.toLowerCase()}:`;
 
 const range = isMac && pr.macKind ? macPriceRange(pr.macKind) : null;
 const rows = isMac && pr.macKind
@@ -42,7 +42,7 @@ const others = service.problems.filter((x) => x.slug !== pr.slug);
 const priceText = range ? `da ${euro(range.min)}` : "Preventivo gratuito";
 ---
 <Base
-  title={`${name}${where}${range ? ` da ${euro(range.min)}` : ""} | g8astore`}
+  title={`${name}${where}${range ? ` da ${euro(range.min)}` : ""} | G8A Store`}
   description={`${name}${where}: ${pr.short} ${range ? `Da ${euro(range.min)}. ` : "Diagnosi gratuita e prezzo prima di riparare. "}${pr.time.split(".")[0]}.`.slice(0, 160)}
   path={path}
   crumbs={crumbs}
@@ -71,19 +71,13 @@ const priceText = range ? `da ${euro(range.min)}` : "Preventivo gratuito";
   <section class="sec">
     <div class="wrap media">
       <div class="reveal">
-        <span class="tag">Ti succede questo?</span>
-        <h2 style="margin-top:10px">I segnali da non ignorare</h2>
+        <h2>Ti succede questo?</h2>
         <ul class="checks">{pr.symptoms.map((x) => <li><Icon name="alert" /> {x}</li>)}</ul>
+        <h3 style="margin:28px 0 4px">Le cause più comuni</h3>
+        <ul class="checks causes-list">{pr.causes.map((c) => <li><Icon name="search" /> {c}</li>)}</ul>
         <div class="acts" style="margin-top:26px"><a class="btn btn-wa" href={waLink(ref, msg)} rel="nofollow"><WaIcon /> Descrivici il problema</a></div>
       </div>
       <figure class="reveal"><Photo name={pr.photo} alt={`${name}${where}`} /></figure>
-    </div>
-  </section>
-
-  <section class="sec sec-paper">
-    <div class="wrap">
-      <div class="head reveal"><span class="tag">Perché succede</span><h2>Le cause più comuni</h2></div>
-      <div class="causes">{pr.causes.map((c, i) => <div class="cause reveal"><span class="n">{i + 1}</span><p>{c}</p></div>)}</div>
     </div>
   </section>
 
@@ -129,7 +123,7 @@ const priceText = range ? `da ${euro(range.min)}` : "Preventivo gratuito";
     </section>
   )}
 
-  {shop ? <LocalBlock shop={shop} msg={msg} /> : <Contacts msg={(s) => `Ciao g8astore ${s.city}, ${name.toLowerCase()}:`} linkSuffix={`${service.slug}/${pr.slug}/`} title={`${name}: scrivi al negozio più vicino`} />}
+  {shop ? <LocalBlock shop={shop} msg={msg} /> : <Contacts msg={(s) => `Ciao G8A Store ${s.city}, ${name.toLowerCase()}:`} linkSuffix={`${service.slug}/${pr.slug}/`} title={`${name}: scrivi al negozio più vicino`} />}
 
   <section class="sec">
     <div class="wrap">

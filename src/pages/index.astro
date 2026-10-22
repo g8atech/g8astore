@@ -4,13 +4,11 @@ import Hero from "../components/Hero.astro";
 import Promises from "../components/Promises.astro";
 import Icon from "../components/Icon.astro";
 import Photo from "../components/Photo.astro";
-import HowItWorks from "../components/HowItWorks.astro";
 import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
-import B2b from "../components/B2b.astro";
 import WaIcon from "../components/WaIcon.astro";
 import GoogleG from "../components/GoogleG.astro";
-import { shops, services, saleCategories, totalReviews, avgRating, fmtRating, waLink, telLink, compactHours, repairTitle, SITE } from "../data/site";
+import { shops, services, totalReviews, avgRating, fmtRating, waLink, telLink, compactHours, repairTitle, SITE } from "../data/site";
 import { storeSchema, faqSchema } from "../lib/schema";
 
 const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
@@ -21,10 +19,10 @@ const faq: [string, string][] = [
   ["Quanto costa la diagnosi?", "Niente. Ti diamo il prezzo esatto prima di riparare e, se decidi di non procedere, non paghi nulla."],
   ["Riparate anche i Mac?", "Sì, MacBook Air e MacBook Pro, con listino per modello. Siamo un centro indipendente, non affiliato Apple."],
   ["Lavorate con le partite IVA?", "Sì: computer in fattura, riparazioni con priorità, backup, rete e assistenza remota per professionisti e piccole attività."],
-  ["La garanzia vale in tutti i negozi?", `Sì, la garanzia sull'intervento vale in tutti i ${shops.length} negozi g8astore.`],
+  ["La garanzia vale in tutti i negozi?", `Sì, la garanzia sull'intervento vale in tutti i ${shops.length} negozi G8A Store.`],
 ];
 const schema = [
-  { "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE}/#org`, name: "g8astore", url: `${SITE}/`, logo: `${SITE}/g8a-logo.png`, parentOrganization: { "@type": "Organization", name: "G8A Technology S.r.l.", url: "https://www.g8a.it/" }, subOrganization: shops.map((s) => ({ "@id": `${SITE}/${s.slug}/#store` })) },
+  { "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE}/#org`, name: "G8A Store", url: `${SITE}/`, logo: `${SITE}/icon-512.png`, parentOrganization: { "@type": "Organization", name: "G8A Technology S.r.l.", url: "https://www.g8a.it/" }, subOrganization: shops.map((s) => ({ "@id": `${SITE}/${s.slug}/#store` })) },
   ...shops.map((s) => storeSchema(s)),
   faqSchema(faq),
 ];
@@ -33,73 +31,48 @@ const popular = [
   ["riparazione-pc", "recupero-dati"], ["riparazione-pc", "upgrade-ssd-ram"], ["riparazione-pc", "virus"], ["riparazione-mac", "batteria"],
 ].map(([sv, sl]) => { const s = services.find((x) => x.slug === sv)!; return { s, pr: s.problems.find((x) => x.slug === sl)! }; });
 ---
-<Base title="g8astore: riparazione e vendita PC, notebook e Mac in 5 negozi" description={`Riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Negozi a ${citiesText}. Diagnosi gratuita e prezzo prima di riparare.`} path="/" schema={schema}>
-  <Hero photo="notebook-rosso" photoAlt="Notebook g8astore" sub={`Notebook, PC fissi e Mac: li ripariamo, li potenziamo e li vendiamo, per privati e partite IVA. ${shops.length} negozi tra Varese, Milano e Lecco.`} shop={ref} msg="Ciao g8astore, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "#negozi", label: `${shops.length} negozi` }}>
-    Riparazione e vendita <span class="grad-text">PC</span>
+<Base title="G8A Store: riparazione e vendita PC, notebook e Mac in 5 negozi" description={`Riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Negozi a ${citiesText}. Diagnosi gratuita e prezzo prima di riparare.`} path="/" schema={schema}>
+  <Hero variant="people" sub={`Ripariamo, potenziamo e vendiamo notebook, PC e Mac. Per privati e partite IVA, in ${shops.length} negozi tra Varese, Milano e Lecco.`} shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "#negozi", label: `${shops.length} negozi` }}>
+    Il tuo PC, in <span class="grad-text">mani esperte</span>
   </Hero>
   <Promises />
 
   <section class="sec">
     <div class="wrap">
-      <div class="head c reveal"><span class="tag">Inizia da qui</span><h2>Cosa ti serve?</h2></div>
+      <div class="head c reveal"><h2>Cosa ti serve?</h2></div>
       <div class="choose">
-        <a class="choice reveal" href="/riparazione-notebook/"><Photo name="mani-riparazione" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="wrench" /></span><h3>Riparare il computer</h3><p>Notebook, PC fisso o Mac che non va? Diagnosi gratuita e prezzo prima di riparare.</p><span class="go">Vai alle riparazioni <Icon name="arrow" /></span></div></a>
-        <a class="choice reveal" href="/vendita-pc/"><Photo name="pc-gaming" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="cart" /></span><h3>Comprare un computer</h3><p>Notebook, PC su misura, gaming e ricondizionati, pronti all'uso.</p><span class="go">Vai alla vendita <Icon name="arrow" /></span></div></a>
-        <a class="choice reveal" href="/partite-iva/"><Photo name="ufficio-clienti" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="briefcase" /></span><h3>Sono una partita IVA</h3><p>Computer in fattura, riparazioni con priorità, backup e assistenza remota.</p><span class="go">Vai ai servizi <Icon name="arrow" /></span></div></a>
+        <a class="choice reveal" href="/riparazione-notebook/"><Photo name="mani-riparazione" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="wrench" /></span><h3>Riparare il computer</h3><p>Diagnosi gratuita e prezzo prima di riparare.</p><span class="go">Riparazioni <Icon name="arrow" /></span></div></a>
+        <a class="choice reveal" href="/vendita-pc/"><Photo name="pc-gaming" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="cart" /></span><h3>Comprare un computer</h3><p>Nuovi e ricondizionati, pronti all'uso.</p><span class="go">Vendita <Icon name="arrow" /></span></div></a>
+        <a class="choice reveal" href="/partite-iva/"><Photo name="ufficio-clienti" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="briefcase" /></span><h3>Sono una partita IVA</h3><p>Computer in fattura e assistenza rapida.</p><span class="go">Servizi <Icon name="arrow" /></span></div></a>
       </div>
     </div>
   </section>
 
   <section class="sec sec-paper">
     <div class="wrap">
-      <div class="head reveal"><span class="tag">Riparazioni</span><h2>Ripariamo ogni tipo di computer</h2><p>Scegli il tuo computer o vai direttamente alla riparazione che ti serve.</p></div>
-      <div class="pcards">
-        {services.map((s) => (
-          <a class="pcard reveal" href={`/${s.slug}/`}>
-            <div class="ph"><Photo name={s.photo} alt={s.name} sizes="(max-width: 700px) 100vw, 33vw" /><span class="ic"><Icon name={s.icon} /></span></div>
-            <div class="bd"><h3>{s.name}</h3><p>{s.lede}</p><span class="more">Tutte le riparazioni <Icon name="arrow" /></span></div>
-          </a>
-        ))}
-      </div>
-      <h3 class="reveal" style="margin:44px 0 16px">Le riparazioni più richieste</h3>
+      <div class="head reveal"><h2>Le riparazioni più richieste</h2><p>Ognuna con sintomi, tempi e prezzi spiegati chiaramente.</p></div>
       <div class="tiles">{popular.map(({ s, pr }) => <a class="tile reveal" href={`/${s.slug}/${pr.slug}/`}><span class="ic"><Icon name={pr.icon} /></span><b>{repairTitle(pr, s)}</b><span>{pr.short}</span></a>)}</div>
+      <div class="pills reveal" style="margin-top:22px">{services.map((s) => <a href={`/${s.slug}/`}>Tutte le riparazioni {s.device === "MacBook" ? "Mac" : s.device}</a>)}</div>
     </div>
   </section>
 
-  <HowItWorks />
-
-  <section class="sec">
+  <section class="sec" id="negozi">
     <div class="wrap">
-      <div class="head reveal"><span class="tag">Vendita</span><h2>Il computer giusto, scelto con te</h2><p>Lo configuriamo noi e trasferiamo i dati dal vecchio computer.</p></div>
-      <div class="pcards">
-        {saleCategories.slice(0, 3).map((c) => (
-          <a class="pcard reveal" href={`/${c.slug}/`}>
-            <div class="ph"><Photo name={c.photo} alt={c.name} sizes="(max-width: 700px) 100vw, 33vw" /><span class="ic"><Icon name={c.icon} /></span></div>
-            <div class="bd"><h3>{c.name}</h3><p>{c.lede}</p><span class="more">Scopri <Icon name="arrow" /></span></div>
-          </a>
-        ))}
-      </div>
-      <p class="center" style="margin-top:22px"><a class="btn btn-line btn-sm" href="/vendita-pc/">Anche workstation e ricondizionati</a></p>
-    </div>
-  </section>
-
-  <section class="sec sec-paper" id="negozi">
-    <div class="wrap">
-      <div class="head c reveal"><span class="tag">{shops.length} negozi</span><h2>Il negozio g8astore vicino a te</h2><p>Ogni negozio ha la sua pagina con orari, mappa e tutte le riparazioni.</p></div>
+      <div class="head c reveal"><h2>Il negozio vicino a te</h2><p>Passa senza appuntamento oppure scrivi direttamente al negozio.</p></div>
       <div class="shops">
         {shops.map((s) => (
           <article class="shop reveal">
-            <a class="ph" href={`/${s.slug}/`} aria-label={`g8astore ${s.city}`}>
-              {s.photo && <img src={s.photo} alt={`Ingresso del negozio g8astore di ${s.city}`} width="640" height="360" loading="lazy" />}
+            <a class="ph" href={`/${s.slug}/`} aria-label={`G8A Store ${s.city}`}>
+              {s.photo && <img src={s.photo} alt={`Ingresso del negozio G8A Store di ${s.city}`} width="640" height="360" loading="lazy" />}
               {s.rating && s.reviews ? <span class="badge"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)} ({s.reviews})</span> : null}
             </a>
             <div class="bd">
-              <h3><a href={`/${s.slug}/`}>g8astore {s.city}</a></h3>
+              <h3><a href={`/${s.slug}/`}>{s.city}</a></h3>
               <p class="addr">{s.address}{s.hint ? `, ${s.hint.toLowerCase()}` : ""}</p>
               <p class="hrs">{compactHours(s.hours) ?? "Orari sulla scheda Google Maps"}</p>
               <div class="row">
                 <a class="btn btn-line btn-xs" href={telLink(s)}><Icon name="phone" /> Chiama</a>
-                <a class="btn btn-wa btn-xs" href={waLink(s, `Ciao g8astore ${s.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
+                <a class="btn btn-wa btn-xs" href={waLink(s, `Ciao G8A Store ${s.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
               </div>
             </div>
           </article>
@@ -109,28 +82,14 @@ const popular = [
   </section>
 
   {avgRating && (
-    <section class="sec">
+    <section class="sec sec-paper">
       <div class="wrap reviews">
         <div class="score reveal"><span class="g"><GoogleG /></span><span class="n">{fmtRating(avgRating)}</span><span class="stars" aria-hidden="true">★★★★★</span><p><b style="color:#fff">{totalReviews} recensioni su Google</b> nei nostri {shops.length} negozi.</p></div>
-        <div class="shoprates">{shops.filter((s) => s.rating && s.reviews).map((s) => <a class="shoprate reveal" href={`/${s.slug}/`}><Icon name="pin" /><b>g8astore {s.city}</b><span class="v"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)}</span><span class="c">{s.reviews} recensioni</span></a>)}</div>
+        <div class="shoprates">{shops.filter((s) => s.rating && s.reviews).map((s) => <a class="shoprate reveal" href={`/${s.slug}/`}><Icon name="pin" /><b>{s.city}</b><span class="v"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)}</span><span class="c">{s.reviews} recensioni</span></a>)}</div>
       </div>
     </section>
   )}
 
-  <section class="sec sec-dark">
-    <div class="wrap media">
-      <figure class="reveal"><Photo name="ufficio-team" alt="Ufficio di una piccola attività" /></figure>
-      <div class="reveal">
-        <span class="tag">Partite IVA</span>
-        <h2 style="margin-top:10px">Il tuo tecnico di fiducia, a due passi</h2>
-        <p style="margin-top:14px;font-size:1.08rem">Computer in fattura, riparazioni con priorità, backup, rete e assistenza remota per professionisti, studi e piccole attività.</p>
-        <ul class="checks"><li><Icon name="checkc" /> Postazioni configurate e pronte</li><li><Icon name="checkc" /> Backup e NAS controllati da noi</li><li><Icon name="checkc" /> Assistenza remota per i problemi di tutti i giorni</li></ul>
-        <div class="acts" style="margin-top:24px"><a class="btn btn-red" href="/partite-iva/">Servizi per partite IVA</a></div>
-      </div>
-    </div>
-  </section>
-
-  <Faq items={faq} title="Prima di passare" paper />
-  <Cta shop={ref} title="Hai un problema con il computer?" text="Scrivici cosa succede: ti rispondiamo in pochi minuti e ti diciamo se si risolve in giornata." msg="Ciao g8astore, ho un problema con il computer:" />
-  <B2b />
+  <Faq items={faq} title="Prima di passare" />
+  <Cta shop={ref} title="Il computer ti ha lasciato a piedi?" text="Scrivici cosa succede: ti rispondiamo in pochi minuti e ti diciamo se si risolve in giornata." msg="Ciao G8A Store, ho un problema con il computer:" />
 </Base>

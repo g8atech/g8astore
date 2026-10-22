@@ -2,7 +2,7 @@
 import brain from "./brain.json";
 
 export const SITE = "https://www.g8astore.it";
-export const BRAND = "g8astore";
+export const BRAND = "G8A Store";
 
 export type Shop = (typeof brain.shops)[number];
 export type MacModel = (typeof brain.macModels)[number];
@@ -54,7 +54,7 @@ export function compactHours(hours: string | null) {
 
 export const mapsLink =(shop: Shop) =>
   shop.placeId
-    ? `https://www.google.com/maps/search/?api=1&query=g8astore&query_place_id=${shop.placeId}`
+    ? `https://www.google.com/maps/search/?api=1&query=G8A Store&query_place_id=${shop.placeId}`
     : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`G8A Store ${shop.address} ${shop.zip} ${shop.city}`)}`;
 
 // Comuni vicini a ogni negozio: rendono ogni pagina città davvero locale.

@@ -18,7 +18,7 @@ interface Props {
 const { title, description, path, crumbs = [], schema = [], shop, waMessage, noindex, ogImage } = Astro.props;
 const canonical = new URL(path, SITE).toString();
 const ref = shop ?? shops.find((s) => s.slug === "gallarate") ?? shops[0];
-const wa = waLink(ref, waMessage ?? (shop ? `Ciao g8astore ${shop.city}, ho bisogno di:` : "Ciao g8astore, ho bisogno di:"));
+const wa = waLink(ref, waMessage ?? (shop ? `Ciao G8A Store ${shop.city}, ho bisogno di:` : "Ciao G8A Store, ho bisogno di:"));
 const breadcrumbSchema = crumbs.length
   ? { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ name: "Home", path: "/" }, ...crumbs].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: new URL(c.path, SITE).toString() })) }
   : null;
@@ -43,13 +43,15 @@ const menu = [
     {noindex && <meta name="robots" content="noindex,follow" />}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
-    <meta property="og:site_name" content="g8astore" />
+    <meta property="og:site_name" content="G8A Store" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(ogImage ?? "/img/notebook-rosso.webp", SITE).toString()} />
+    <meta property="og:image" content={new URL(ogImage ?? "/img/og-g8astore.jpg", SITE).toString()} />
     <meta name="theme-color" content="#0d0d0f" />
+    <link rel="icon" type="image/svg+xml" href="/g8a-mark.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -57,19 +59,10 @@ const menu = [
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body>
-    <div class="topbar">
-      <div class="wrap">
-        <span><Icon name="search" /> Diagnosi gratuita</span>
-        <span class="hide-s"><Icon name="euro" /> Prezzo prima di riparare</span>
-        <span class="hide-s"><Icon name="store" /> {shops.length} negozi in Lombardia</span>
-        {avgRating && <span><Icon name="star" /> {fmtRating(avgRating)} su Google ({totalReviews})</span>}
-      </div>
-    </div>
     <header class="top">
       <div class="wrap top-in">
-        <a class="brand" href="/" aria-label="g8astore, pagina iniziale">
-          <img src="/g8a-mark.png" alt="" width="46" height="34" />
-          <span><b>g8a<i>store</i></b><small>Riparazione e vendita PC</small></span>
+        <a class="brand" href="/" aria-label="G8A Store, pagina iniziale">
+          <img class="logo" src="/g8astore-logo.svg" alt="G8A Store" width="203" height="36" />
         </a>
         <nav class="menu" aria-label="Menu principale">
           {menu.map((m) => <a href={m.path} aria-current={path.includes(m.path) ? "page" : undefined}>{m.name}</a>)}
@@ -89,16 +82,15 @@ const menu = [
         <div class="foot-grid">
           <div>
             <a class="brand" href="/" style="margin-bottom:14px">
-              <span class="brand-box"><img src="/g8a-mark.png" alt="" width="32" height="23" /></span>
-              <span><b>g8a<i style="font-style:normal;color:var(--red-2)">store</i></b><small>by G8A Technology</small></span>
+              <img class="logo" src="/g8astore-logo-white.svg" alt="G8A Store" width="203" height="36" />
             </a>
             <p style="max-width:34ch">Riparazione e vendita computer per privati e partite IVA in {shops.length} negozi tra provincia di Varese, Milano nord e Lecco.</p>
           </div>
           <div><h2>Riparazioni</h2><ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.name}</a></li>)}</ul></div>
           <div><h2>Vendita</h2><ul>{saleCategories.map((c) => <li><a href={`/${c.slug}/`}>{c.name}</a></li>)}<li><a href="/partite-iva/">Per partite IVA</a></li></ul></div>
-          <div><h2>Negozi</h2><ul>{shops.map((s) => <li><a href={`/${s.slug}/`}>g8astore {s.city}</a></li>)}</ul></div>
+          <div><h2>Negozi</h2><ul>{shops.map((s) => <li><a href={`/${s.slug}/`}>G8A Store {s.city}</a></li>)}</ul></div>
         </div>
-        <p class="legal">g8astore è un marchio di G8A Technology S.r.l., P.IVA 03981970126. Centro assistenza indipendente, non affiliato Apple. Per le aziende: <a href="https://www.g8a.it/">g8a.it</a></p>
+        <p class="legal">G8A Store è un marchio di G8A Technology S.r.l., P.IVA 03981970126. Centro assistenza indipendente, non affiliato Apple. Per le aziende: <a href="https://www.g8a.it/">g8a.it</a></p>
       </div>
     </footer>
 

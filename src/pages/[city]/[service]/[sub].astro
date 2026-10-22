@@ -36,7 +36,7 @@ if (p.kind === "brand") {
   const b = p.brand;
   name = `Riparazione notebook ${b.name}`;
   sub = `Ripariamo notebook ${b.name} di ogni serie (${b.lines}): schermo, batteria, tastiera, cerniere, lentezza e recupero dati, con diagnosi gratuita e prezzo prima di riparare.`;
-  msg = `Ciao g8astore ${shop.city}, ho un notebook ${b.name} da riparare:`;
+  msg = `Ciao G8A Store ${shop.city}, ho un notebook ${b.name} da riparare:`;
   faq = [
     [`Riparate tutti i modelli ${b.name}?`, `Sì, notebook ${b.name} per la casa e per il lavoro. Per alcuni ricambi specifici, come schermi particolari o scocche, servono pochi giorni per l'ordine.`],
     ["Usate ricambi originali?", "Usiamo ricambi originali o compatibili di qualità. Ti diciamo sempre quale montiamo e, quando ci sono entrambe le opzioni, il prezzo di ciascuna."],
@@ -47,7 +47,7 @@ if (p.kind === "brand") {
   name = `Riparazione ${m.name}`;
   photo = "macbook";
   sub = `Prezzi di riparazione per ${m.name}, IVA inclusa, nel negozio di ${shop.city}. Per tutti gli altri guasti la diagnosi è gratuita.`;
-  msg = `Ciao g8astore ${shop.city}, ho un ${m.name} da riparare:`;
+  msg = `Ciao G8A Store ${shop.city}, ho un ${m.name} da riparare:`;
   rows = m.repairs.map((r) => ({ name: r.name, price: r.price, warrantyMonths: r.warrantyMonths }));
   faq = [
     ["Come trovo il codice del mio MacBook?", "È stampato in piccolo sul fondo del MacBook e inizia con la lettera A, per esempio A2337."],
@@ -61,7 +61,7 @@ const from = rows[0]?.price;
 {p.kind === "problem" ? (
   <RepairPage problem={p.problem} service={service} shop={shop} />
 ) : (
-  <Base title={`${name} a ${shop.city}${from ? ` da ${euro(from)}` : ""} | g8astore`} description={`${name} a ${shop.city}. ${from ? `Da ${euro(from)}. ` : "Diagnosi gratuita, prezzo prima di riparare. "}${shop.address}.`} path={path} crumbs={crumbs} schema={[storeSchema(shop), serviceSchema(`${name} a ${shop.city}`, sub, shop, path, rows), faqSchema(faq)]} shop={shop} waMessage={msg} ogImage={`/img/${photo}.webp`}>
+  <Base title={`${name} a ${shop.city}${from ? ` da ${euro(from)}` : ""} | G8A Store`} description={`${name} a ${shop.city}. ${from ? `Da ${euro(from)}. ` : "Diagnosi gratuita, prezzo prima di riparare. "}${shop.address}.`} path={path} crumbs={crumbs} schema={[storeSchema(shop), serviceSchema(`${name} a ${shop.city}`, sub, shop, path, rows), faqSchema(faq)]} shop={shop} waMessage={msg} ogImage={`/img/${photo}.webp`}>
     <Hero photo={photo} photoAlt={name} crumbs={crumbs} sub={sub} chips={[...(from ? [{ t: `da ${euro(from)}`, price: true }] : []), { t: "Diagnosi gratuita" }, { t: "Garanzia fino a 12 mesi" }]} shop={shop} msg={msg} rating={shop.rating} reviews={shop.reviews} diagTitle={p.kind === "brand" ? `Notebook ${p.brand.name}` : p.model.name} diagItems={p.kind === "brand" ? ["Schermo e cavo video", "Batteria", "Disco e SSD", "Temperature"] : ["Batteria", "Schermo Retina", "Tastiera", "Scheda logica"]} secondary={{ href: "#contatti", label: "Orari e mappa" }}>
       {name} a{" "}<span class="grad-text">{shop.city}</span>
     </Hero>

@@ -10,26 +10,26 @@ import { storeSchema } from "../../lib/schema";
 const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const cities = shops.map((s) => s.city).join(", ");
 ---
-<Base title={`Negozi g8astore: ${cities}`} description={`I ${shops.length} negozi g8astore per riparazione e vendita computer: ${cities}. Indirizzi, orari, telefono e WhatsApp di ogni sede.`} path="/negozi/" crumbs={[{ name: "Negozi", path: "/negozi/" }]} schema={shops.map((s) => storeSchema(s))}>
-  <Hero photo="circuito-rosso" photoAlt="" crumbs={[{ name: "Negozi", path: "/negozi/" }]} sub="Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp al negozio più vicino." shop={ref} msg="Ciao g8astore, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} diagTitle="I negozi g8astore" diagItems={shops.slice(0, 4).map((s) => s.city)} diagFoot={["Negozi", String(shops.length)]} secondary={{ href: "#negozi", label: "Vedi i negozi" }}>
-    I negozi <span class="grad-text">g8astore</span>
+<Base title={`Negozi G8A Store: ${cities}`} description={`I ${shops.length} negozi G8A Store per riparazione e vendita computer: ${cities}. Indirizzi, orari, telefono e WhatsApp di ogni sede.`} path="/negozi/" crumbs={[{ name: "Negozi", path: "/negozi/" }]} schema={shops.map((s) => storeSchema(s))}>
+  <Hero photo="circuito-rosso" photoAlt="" crumbs={[{ name: "Negozi", path: "/negozi/" }]} sub="Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp al negozio più vicino." shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} diagTitle="I negozi G8A Store" diagItems={shops.slice(0, 4).map((s) => s.city)} diagFoot={["Negozi", String(shops.length)]} secondary={{ href: "#negozi", label: "Vedi i negozi" }}>
+    I negozi <span class="grad-text">G8A Store</span>
   </Hero>
   <Promises />
   <section class="sec" id="negozi">
     <div class="wrap shops">
       {shops.map((s) => (
         <article class="shop reveal">
-          <a class="ph" href={`/${s.slug}/`} aria-label={`g8astore ${s.city}`}>
-            {s.photo && <img src={s.photo} alt={`Ingresso del negozio g8astore di ${s.city}`} width="640" height="360" loading="lazy" />}
+          <a class="ph" href={`/${s.slug}/`} aria-label={`G8A Store ${s.city}`}>
+            {s.photo && <img src={s.photo} alt={`Ingresso del negozio G8A Store di ${s.city}`} width="640" height="360" loading="lazy" />}
             {s.rating && s.reviews ? <span class="badge"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)} ({s.reviews})</span> : null}
           </a>
           <div class="bd">
-            <h3><a href={`/${s.slug}/`}>g8astore {s.city}</a></h3>
+            <h3><a href={`/${s.slug}/`}>G8A Store {s.city}</a></h3>
             <p class="addr">{s.address}, {s.zip} {s.city}{s.hint ? `, ${s.hint.toLowerCase()}` : ""}</p>
             <p class="hrs">{compactHours(s.hours) ?? "Orari sulla scheda Google Maps"}</p>
             <div class="row">
               <a class="btn btn-line btn-xs" href={telLink(s)}><Icon name="phone" /> Chiama</a>
-              <a class="btn btn-wa btn-xs" href={waLink(s, `Ciao g8astore ${s.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
+              <a class="btn btn-wa btn-xs" href={waLink(s, `Ciao G8A Store ${s.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
             </div>
           </div>
         </article>

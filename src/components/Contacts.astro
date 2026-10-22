@@ -13,9 +13,9 @@ const href = (s: Shop) => (linkSuffix ? `/${s.slug}/${linkSuffix}` : `/${s.slug}
     <div class="contacts">
       {shops.map((s) => (
         <div class="contact reveal">
-          {s.photo ? <img src={s.photo} alt={`Negozio g8astore di ${s.city}`} width="64" height="64" loading="lazy" /> : <span class="noimg" />}
+          {s.photo ? <img src={s.photo} alt={`Negozio G8A Store di ${s.city}`} width="64" height="64" loading="lazy" /> : <span class="noimg" />}
           <div>
-            <b><a href={href(s)}>g8astore {s.city}</a></b>
+            <b><a href={href(s)}>G8A Store {s.city}</a></b>
             <p class="meta">{s.address}{s.rating && s.reviews ? ` · ★ ${fmtRating(s.rating)} (${s.reviews})` : ""}</p>
             <p class="meta">{compactHours(s.hours) ?? "Orari su Google Maps"}</p>
           </div>
