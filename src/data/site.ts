@@ -325,3 +325,25 @@ export const promises: { icon: string; t: string; p: string }[] = [
   { icon: "shield", t: "Garanzia fino a 12 mesi", p: "Sull'intervento, valida in tutti i negozi." },
   { icon: "clock", t: "Spesso in giornata", p: "Pulizia, SSD, sistema e molti ricambi." },
 ];
+
+// ---------- Configuratore PC (copia statica dei dati pubblici di Brain) ----------
+import cfg from "./configuratore.json";
+export type PcModel = (typeof cfg.models)[number];
+export type RamOpt = (typeof cfg.ram)[number];
+export type SsdOpt = (typeof cfg.ssd)[number];
+export const pcModels: PcModel[] = cfg.models;
+export const ramOptions: RamOpt[] = cfg.ram;
+export const ssdOptions: SsdOpt[] = cfg.ssd;
+export const pcFamilies: { key: string; name: string; plural: string; icon: string; desc: string }[] = [
+  { key: "notebook", name: "Notebook", plural: "Notebook", icon: "laptop", desc: "Per lavoro, studio e casa" },
+  { key: "gaming", name: "Gaming", plural: "Notebook gaming", icon: "gamepad", desc: "Schede video NVIDIA RTX" },
+  { key: "aio", name: "All in One", plural: "All in One", icon: "desktop", desc: "Tutto nello schermo, zero cavi" },
+  { key: "mini", name: "Mini PC", plural: "Mini PC", icon: "cpu", desc: "Piccolissimi, silenziosi" },
+];
+export const ramFor = (m: PcModel) => ramOptions.filter((r) => r.type === m.ramType);
+export const pcFrom = (m: PcModel) => {
+  const r = ramFor(m)[0]?.price ?? 0;
+  const s = ssdOptions[0]?.price ?? 0;
+  return Math.round((m.base + r + s) * 100) / 100;
+};
+export const sizeLabel = (gb: number) => (gb >= 1000 ? `${gb / 1000} TB` : `${gb} GB`);

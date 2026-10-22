@@ -1,0 +1,753 @@
+{
+ "note": "Copia statica dei dati pubblici del configuratore di Brain (solo lettura). Nessun prezzo d'acquisto, nessuna quantità.",
+ "models": [
+  {
+   "sku": "B481N305",
+   "slug": "energy5",
+   "name": "G8A Energy5",
+   "family": "mini",
+   "cpu": "Intel Core 12ª gen. (Alder Lake-P)",
+   "ramType": "DDR4",
+   "base": 379.0,
+   "available": true,
+   "images": [
+    "/img/pc/energy5-0.webp",
+    "/img/pc/energy5-1.webp",
+    "/img/pc/energy5-2.webp"
+   ],
+   "keys": [
+    "Mini PC compatto",
+    "Fino a 4 monitor",
+    "Consumi ridotti"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core 12ª gen. (Alder Lake-P)"
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B42367Q5",
+   "slug": "cubi-5-ultra",
+   "name": "G8A Cubi 5 Ultra",
+   "family": "mini",
+   "cpu": "Intel Core 5 120U",
+   "ramType": "DDR5",
+   "base": 444.69,
+   "available": true,
+   "images": [],
+   "keys": [
+    "2 porte LAN 2,5 Gb",
+    "Wi-Fi 6E",
+    "Thunderbolt 4"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core 5 120U"
+    ],
+    [
+     "Peso",
+     "121"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "BA294419",
+   "slug": "zenith-24",
+   "name": "G8A Zenith 24",
+   "family": "aio",
+   "cpu": "Intel desktop 10ª-12ª gen.",
+   "ramType": "DDR4",
+   "base": 452.93,
+   "available": true,
+   "images": [
+    "/img/pc/zenith-24-0.webp",
+    "/img/pc/zenith-24-1.webp",
+    "/img/pc/zenith-24-2.webp"
+   ],
+   "keys": [
+    "Schermo 23,8\"",
+    "Tutto in un unico corpo",
+    "Ideale per ufficio e reception"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel desktop 10ª-12ª gen."
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B03C0396",
+   "slug": "zenith-27",
+   "name": "G8A Zenith 27",
+   "family": "aio",
+   "cpu": "Intel desktop 12ª-14ª gen.",
+   "ramType": "DDR5",
+   "base": 550.0,
+   "available": true,
+   "images": [
+    "/img/pc/zenith-27-0.webp",
+    "/img/pc/zenith-27-1.webp",
+    "/img/pc/zenith-27-2.webp",
+    "/img/pc/zenith-27-3.webp"
+   ],
+   "keys": [
+    "Schermo QHD 27\"",
+    "Webcam FHD 5 MP",
+    "Supporto regolabile"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel desktop 12ª-14ª gen."
+    ],
+    [
+     "Schermo",
+     "Schermo panoramico da 27 pollici(Risoluzione nativa/massima2560 x 1440)"
+    ],
+    [
+     "Porte",
+     "USB2 x USB 3.0 (Tipo A), 1 x USB 3.0 (Tipo C) 4 x USB 2.0 · LAN x1 connettore RJ-45 · Display x1 porta HDMI OUT, 1 porta VGA · Ingresso micr"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B04101C7",
+   "slug": "n14-v2",
+   "name": "G8A N14 V2",
+   "family": "notebook",
+   "cpu": "Intel Core i3-1215U",
+   "ramType": "DDR4",
+   "base": 461.16,
+   "available": true,
+   "images": [
+    "/img/pc/n14-v2-0.webp",
+    "/img/pc/n14-v2-1.webp",
+    "/img/pc/n14-v2-2.webp",
+    "/img/pc/n14-v2-3.webp",
+    "/img/pc/n14-v2-4.webp"
+   ],
+   "keys": [
+    "14\" Full HD",
+    "Tastiera retroilluminata",
+    "Leggero: 1,35 kg"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i3-1215U"
+    ],
+    [
+     "Schermo",
+     "Pannello FHD da 60 Hz (1920 x 1080), 45% NTSC"
+    ],
+    [
+     "Peso",
+     "1.355 kg"
+    ],
+    [
+     "Porte",
+     "Porte HDMI · 1 · LAN · 1 presa RJ-45 · USB · 1 PORTA USB 3.2 (TIPO C) + 1 PORTA USB 3.2 + 1 PORTA USB 3.1 · Schermo · 1 HDMI, 1 DP tramite U"
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "BX991451",
+   "slug": "n14l-i3",
+   "name": "G8A N14L",
+   "family": "notebook",
+   "cpu": "Intel Core i3-1315U",
+   "ramType": "DDR4",
+   "base": 520.0,
+   "available": false,
+   "images": [
+    "/img/pc/n14l-i3-0.webp",
+    "/img/pc/n14l-i3-1.webp",
+    "/img/pc/n14l-i3-2.webp"
+   ],
+   "keys": [
+    "Telaio in alluminio",
+    "Lettore di impronte",
+    "Webcam FHD"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i3-1315U"
+    ],
+    [
+     "Schermo",
+     "16 Pannello FHD+ a 60 Hz (1920 x 1200), 72% NTSC"
+    ],
+    [
+     "Peso",
+     "1,35 kg"
+    ],
+    [
+     "Batteria",
+     "Batteria agli ioni di litio a 4 celle (47 WH)"
+    ],
+    [
+     "Webcam",
+     "Webcam FHD da 2,0 MP"
+    ],
+    [
+     "Porte",
+     "USB 3.2 SuperSpeed · Lettore di impronte digitali · Connessione di uscita HDMI · Lettore di schede Micro SD · DisplayPort tramite USB di tip"
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B765X951",
+   "slug": "n16l-i3",
+   "name": "G8A N16L i3",
+   "family": "notebook",
+   "cpu": "Intel Core i3-1315U",
+   "ramType": "DDR4",
+   "base": 487.05,
+   "available": false,
+   "images": [
+    "/img/pc/n16l-i3-0.webp",
+    "/img/pc/n16l-i3-1.webp",
+    "/img/pc/n16l-i3-2.webp"
+   ],
+   "keys": [
+    "16\" FHD+ 100% sRGB",
+    "Telaio in alluminio",
+    "Spesso 16,9 mm"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i3-1315U"
+    ],
+    [
+     "Schermo",
+     "16 Pannello FHD+ a 60 Hz (1920 x 1200), 72% NTSC"
+    ],
+    [
+     "Peso",
+     "1,35 kg"
+    ],
+    [
+     "Batteria",
+     "Batteria agli ioni di litio a 4 celle (47 WH)"
+    ],
+    [
+     "Webcam",
+     "Webcam FHD da 2,0 MP"
+    ],
+    [
+     "Porte",
+     "USB 3.2 SuperSpeed · Lettore di impronte digitali · Connessione di uscita HDMI · Lettore di schede Micro SD · DisplayPort tramite USB di tip"
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B3M83787",
+   "slug": "n16l-i5",
+   "name": "G8A N16L i5",
+   "family": "notebook",
+   "cpu": "Intel Core i5-1335U",
+   "ramType": "DDR4",
+   "base": 651.53,
+   "available": true,
+   "images": [
+    "/img/pc/n16l-i5-0.webp",
+    "/img/pc/n16l-i5-1.webp"
+   ],
+   "keys": [
+    "16\" FHD+ 100% sRGB",
+    "Batteria 64 Wh",
+    "Telaio in alluminio"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i5-1335U"
+    ],
+    [
+     "Schermo",
+     "Pannello FHD+ a 60 Hz (1920 x 1200), 100% sRGB"
+    ],
+    [
+     "Peso",
+     "1,65 kg"
+    ],
+    [
+     "Batteria",
+     "Batteria agli ioni di litio a 4 celle (64 WH)"
+    ],
+    [
+     "Webcam",
+     "Webcam FHD da 2,0 MP"
+    ],
+    [
+     "Porte",
+     "USB 3.2 SuperSpeed · Connessione di uscita HDMI · Lettore di schede Micro SD · DisplayPort tramite USB di tipo C · Capacità di ricarica USB "
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "BB484567",
+   "slug": "n16m-ultra",
+   "name": "G8A N16M Ultra",
+   "family": "notebook",
+   "cpu": "Intel Core Ultra 5 125U",
+   "ramType": "DDR5",
+   "base": 575.0,
+   "available": true,
+   "images": [
+    "/img/pc/n16m-ultra-0.webp",
+    "/img/pc/n16m-ultra-1.webp"
+   ],
+   "keys": [
+    "16\" 16:10",
+    "Fino a 8 ore di batteria",
+    "Cerniera a 180°"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core Ultra 5 125U"
+    ],
+    [
+     "Schermo",
+     "16\" IPS 16:10, 1920 × 1200"
+    ],
+    [
+     "Peso",
+     "1.65kg"
+    ],
+    [
+     "Batteria",
+     "Batteria agli ioni di litio a 4 celle (64 Wh) Fino a 8 ore"
+    ],
+    [
+     "Webcam",
+     "Webcam FHD da 2.0 MP"
+    ],
+    [
+     "Porte",
+     "Porte HDMI 1 · USB 2 porte USB 3.2 (tipo C) + 2 porte USB 3.2 + 1 porta USB 2.0 · Display 1 x HDMI, 2 x DP 1.4 tramite USB-C · Uscita cuffie"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B280K243",
+   "slug": "n17-v2-i5",
+   "name": "G8A N17 V2 i5",
+   "family": "notebook",
+   "cpu": "Intel Core i5 13ª gen.",
+   "ramType": "DDR4",
+   "base": 675.0,
+   "available": false,
+   "images": [
+    "/img/pc/n17-v2-i5-0.webp",
+    "/img/pc/n17-v2-i5-1.webp",
+    "/img/pc/n17-v2-i5-2.webp"
+   ],
+   "keys": [
+    "Schermo grande 17,3\"",
+    "Tastierino numerico",
+    "Porta LAN e VGA"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i5 13ª gen."
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B85196A0",
+   "slug": "n17-v2-i7",
+   "name": "G8A N17 V2 i7",
+   "family": "notebook",
+   "cpu": "Intel Core i7 13ª gen.",
+   "ramType": "DDR4",
+   "base": 700.0,
+   "available": true,
+   "images": [
+    "/img/pc/n17-v2-i7-0.webp"
+   ],
+   "keys": [
+    "Schermo grande 17,3\"",
+    "Tastierino numerico",
+    "Porta LAN e VGA"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i7 13ª gen."
+    ],
+    [
+     "Peso",
+     "2.4 kg"
+    ],
+    [
+     "Batteria",
+     "Batteria agli ioni di litio a 4 celle (41WH) Fino a 4 ore"
+    ],
+    [
+     "Porte",
+     "1x jack RJ-45 · 1x porta USB 3.2 Gen 2 (tipo C) · 1x porta USB 3.2 Gen 1 · 2x porte USB 2.0 · 1x porta HDMI OUT 1x porta · VGA 1x ingresso ·"
+    ],
+    [
+     "Memoria",
+     "DDR4 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B73308X8",
+   "slug": "chrono-14",
+   "name": "G8A Chrono 14",
+   "family": "notebook",
+   "cpu": "AMD Ryzen AI serie 300",
+   "ramType": "DDR5",
+   "base": 698.0,
+   "available": true,
+   "images": [
+    "/img/pc/chrono-14-0.webp"
+   ],
+   "keys": [
+    "14\" QHD+ 120 Hz",
+    "Batteria 80 Wh",
+    "Webcam IR per Windows Hello"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "AMD Ryzen AI serie 300"
+    ],
+    [
+     "Peso",
+     "1.4 kg"
+    ],
+    [
+     "Batteria",
+     "Batteria agli ioni di litio da 80 Wh - Fino 7h"
+    ],
+    [
+     "Webcam",
+     "Webcam ibrida con doppio sensore IR+FHD"
+    ],
+    [
+     "Porte",
+     "Porte HDMI1 · USB1 porta USB 4.0 (tipo C) + 1 porta USB 3.2 (tipo C) 3 porte USB-A · LANN / A · Display1 x HDMI, 2 x DP 1.4 tramite USB-C · "
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B6V04481",
+   "slug": "chrono-15",
+   "name": "G8A Chrono 15",
+   "family": "notebook",
+   "cpu": "AMD Ryzen AI serie 300",
+   "ramType": "DDR5",
+   "base": 710.0,
+   "available": true,
+   "images": [
+    "/img/pc/chrono-15-0.webp"
+   ],
+   "keys": [
+    "15\" QHD+ fino a 180 Hz",
+    "Batteria fino a 99 Wh",
+    "HDMI 2.1"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "AMD Ryzen AI serie 300"
+    ],
+    [
+     "Schermo",
+     "2560 x 1600 120Hz | 180Hz SRGB 100%"
+    ],
+    [
+     "Peso",
+     "1.5Kg"
+    ],
+    [
+     "Batteria",
+     "80Wh | 99Wh Lithium-Ion"
+    ],
+    [
+     "Webcam",
+     "IR+FHD Dual Sensor Hybrid webcam"
+    ],
+    [
+     "Porte",
+     "Porte HDMI1 · Rete locale1 presa RJ-45 · USB1 x PORTA USB 4.0 (Tipo C) + 1 x PORTA USB 3.2 (Tipo C) 3 x PORTE USB-A · Display1 x HDMI, 1 x D"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B05343B0",
+   "slug": "vortex-i7-rtx5050",
+   "name": "G8A Vortex",
+   "family": "gaming",
+   "cpu": "Intel Core i7-13700HX · RTX 5050",
+   "ramType": "DDR5",
+   "base": 1020.0,
+   "available": false,
+   "images": [
+    "/img/pc/vortex-i7-rtx5050-0.webp",
+    "/img/pc/vortex-i7-rtx5050-1.webp",
+    "/img/pc/vortex-i7-rtx5050-2.webp",
+    "/img/pc/vortex-i7-rtx5050-3.webp",
+    "/img/pc/vortex-i7-rtx5050-4.webp",
+    "/img/pc/vortex-i7-rtx5050-5.webp"
+   ],
+   "keys": [
+    "16\" QHD+ 180 Hz",
+    "NVIDIA RTX 5050 8 GB",
+    "Tastiera RGB"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i7-13700HX · RTX 5050"
+    ],
+    [
+     "Schermo",
+     "Pannello da 16 pollici, formato 16:10 IPS (2560 x 1600) 165Hz | 180Hz"
+    ],
+    [
+     "Peso",
+     "2. 5kg"
+    ],
+    [
+     "Batteria",
+     "Batteria a litio da 80 Wh Fino a 6 ore"
+    ],
+    [
+     "Webcam",
+     "Telecamera IR HD con supporto per Windows Hello"
+    ],
+    [
+     "Porte",
+     "Porte: HDMIHDMI 2.1 (4K 120Hz) · LAN1: connettore RJ-45 · USB2: porte USB 3.2 Gen 2 (Tipo C), 3 porte USB 3.2 (Tipo A) · Display1 x HDMI, 1 "
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "BW462090",
+   "slug": "vortex-v2-i5-rtx5050",
+   "name": "G8A Vortex V2 i5",
+   "family": "gaming",
+   "cpu": "Intel Core i5-14650HX · RTX 5050",
+   "ramType": "DDR5",
+   "base": 1151.11,
+   "available": true,
+   "images": [
+    "/img/pc/vortex-v2-i5-rtx5050-0.webp"
+   ],
+   "keys": [
+    "16\" FHD+ 165 Hz",
+    "NVIDIA RTX 5050 8 GB",
+    "Tastiera RGB"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i5-14650HX · RTX 5050"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B2K80273",
+   "slug": "vortex-v2-i7-rtx5050",
+   "name": "G8A Vortex V2 i7",
+   "family": "gaming",
+   "cpu": "Intel Core i7-14650HX · RTX 5050",
+   "ramType": "DDR5",
+   "base": 1250.0,
+   "available": true,
+   "images": [
+    "/img/pc/vortex-v2-i7-rtx5050-0.webp"
+   ],
+   "keys": [
+    "16\" FHD+ 165 Hz",
+    "NVIDIA RTX 5050 8 GB",
+    "Tastiera RGB"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i7-14650HX · RTX 5050"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B42885Q7",
+   "slug": "vortex-v2-i7-rtx5060",
+   "name": "G8A Vortex V2 RTX 5060",
+   "family": "gaming",
+   "cpu": "Intel Core i7-14650HX · RTX 5060",
+   "ramType": "DDR5",
+   "base": 1426.6,
+   "available": true,
+   "images": [
+    "/img/pc/vortex-v2-i7-rtx5060-0.webp"
+   ],
+   "keys": [
+    "16\" QHD+ 180 Hz",
+    "NVIDIA RTX 5060 8 GB",
+    "Tastiera RGB"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i7-14650HX · RTX 5060"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  },
+  {
+   "sku": "B87087A0",
+   "slug": "x6r-rtx5070ti",
+   "name": "G8A X6R",
+   "family": "gaming",
+   "cpu": "Intel Core i9-14900HX · RTX 5070 Ti",
+   "ramType": "DDR5",
+   "base": 2150.0,
+   "available": false,
+   "images": [
+    "/img/pc/x6r-rtx5070ti-0.webp",
+    "/img/pc/x6r-rtx5070ti-1.webp"
+   ],
+   "keys": [
+    "16\" QHD+ 300 Hz",
+    "NVIDIA RTX 5070 Ti 12 GB",
+    "Il top di gamma G8A"
+   ],
+   "specs": [
+    [
+     "Processore",
+     "Intel Core i9-14900HX · RTX 5070 Ti"
+    ],
+    [
+     "Schermo",
+     "16 inch, 16:10 panel(2560 x 1600)"
+    ],
+    [
+     "Peso",
+     "2.4 kg"
+    ],
+    [
+     "Porte",
+     "Porte HDMIHDMI 2.1 (4K 120Hz) · LAN1 connettore RJ-45 · USB2 porte USB 3.2 Gen 2 (Tipo C), 3 porte USB 3.2 (Tipo A) · Display1 x HDMI 2.1, 1"
+    ],
+    [
+     "Memoria",
+     "DDR5 SO-DIMM, da scegliere"
+    ]
+   ]
+  }
+ ],
+ "ram": [
+  {
+   "sku": "B14466D9",
+   "type": "DDR4",
+   "size": 8,
+   "price": 90.0,
+   "available": true
+  },
+  {
+   "sku": "B827E461",
+   "type": "DDR4",
+   "size": 16,
+   "price": 170.0,
+   "available": true
+  },
+  {
+   "sku": "MN16GSD55600-BLK",
+   "type": "DDR5",
+   "size": 16,
+   "price": 257.0,
+   "available": true
+  }
+ ],
+ "ssd": [
+  {
+   "sku": "4711085944146",
+   "size": 512,
+   "price": 175.0,
+   "available": true
+  },
+  {
+   "sku": "649528942081",
+   "size": 1000,
+   "price": 280.0,
+   "available": true
+  }
+ ]
+}
