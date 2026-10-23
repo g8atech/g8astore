@@ -41,6 +41,16 @@ Foto: `public/img/` (Unsplash, vedi `CREDITS.txt`), da sostituire nel tempo con 
 - Le richieste partono su WhatsApp verso il negozio scelto; nulla viene scritto in Brain.
 - Per renderlo automatico: creare in Brain una vista pubblica di sola lettura con questi campi e leggerla in `scripts/fetch-brain.mjs`.
 
+## Dove viene pubblicato: www.g8a.it/store
+
+Non c'è un dominio g8astore.it: il sito vive dentro g8a.it, sotto **/store** (es. `www.g8a.it/store/gallarate`).
+
+- Il codice resta scritto come se fosse alla radice (`/gallarate/`, `SITE = https://www.g8astore.it`).
+- Dopo `astro build`, `scripts/mount-store.mjs` riscrive tutti i percorsi in `/store/...`, gli indirizzi assoluti in
+  `https://www.g8a.it/store/...` (senza barra finale, come il resto di g8a.it) e sposta tutto in `dist/store/`.
+- Il progetto g8ab2b (www.g8a.it) serve `/store` e `/store/*` con una rewrite verso `https://g8astore.vercel.app/store/...`.
+- Su `g8astore.vercel.app` il `robots.txt` blocca tutto, così Google indicizza solo le pagine su g8a.it.
+
 ## Vercel
 
 - Framework: Astro (rilevato da solo). Build: `npm run build`. Output: `dist`.
