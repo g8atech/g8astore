@@ -1,0 +1,17 @@
+---
+// Pagina non trovata: chi arriva da un vecchio indirizzo trova subito i negozi e i servizi.
+import Base from "../layouts/Base.astro";
+import { shops } from "../data/site";
+---
+<Base title="Pagina non trovata | G8A Store" description="La pagina che cerchi non esiste più. Trova il negozio G8A Store più vicino o il servizio che ti serve." path="/404/" noindex>
+  <section class="sec">
+    <div class="wrap">
+      <h1>Questa pagina non esiste più</h1>
+      <p>Il sito G8A Store è stato rinnovato. Scegli il negozio più vicino o il servizio che ti serve.</p>
+      <ul>
+        {shops.map((s) => <li><a href={`/${s.slug}/`}>G8A Store {s.city}</a></li>)}
+      </ul>
+      <p><a href="/riparazione-notebook/">Riparazione notebook</a> · <a href="/riparazione-pc/">Riparazione PC</a> · <a href="/riparazione-mac/">Riparazione Mac</a> · <a href="/configuratore/">PC in vendita</a> · <a href="/">Home</a></p>
+    </div>
+  </section>
+</Base>

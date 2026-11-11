@@ -378,31 +378,14 @@ h3 { font-size: 1.2rem; letter-spacing: -0.015em; line-height: 1.25; }
 .foot .brand .logo { height: 36px; }
 
 /* ---- apertura con le persone ---- */
-.hero-people { background: radial-gradient(ellipse 60% 80% at 78% 60%, rgba(227,6,19,.55), transparent 70%), radial-gradient(ellipse 50% 60% at 95% 10%, rgba(142,20,22,.6), transparent 70%), linear-gradient(180deg, #121215, #0d0d0f); }
-.hero-people::before { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, transparent 75%); }
-.hero-people::after { display: none; }
-.hero-people .hero-in { align-items: center; padding-bottom: 0; }
-@media (min-width: 960px) { .hero-people .hero-in { min-height: 600px; } .hero-people .hero-text { padding-bottom: 64px; } }
-.people { position: relative; align-self: end; height: clamp(360px, 52vw, 620px); }
-.people > img { position: absolute; bottom: 0; height: 100%; width: auto; filter: drop-shadow(0 30px 40px rgba(0,0,0,.55)); }
-.people .p1 { left: -4%; height: 96%; z-index: 2; animation: rise .9s cubic-bezier(.2,.7,.2,1) both .15s; }
-.people .p2 { right: -10%; height: 90%; z-index: 1; animation: rise .9s cubic-bezier(.2,.7,.2,1) both .35s; filter: drop-shadow(0 30px 40px rgba(0,0,0,.55)) brightness(.92); }
-.people-ring { position: absolute; left: 50%; top: 46%; width: 78%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid rgba(255,255,255,.12); box-shadow: inset 0 0 80px rgba(227,6,19,.35); animation: spin 40s linear infinite; }
-.people-ring::before { content: ""; position: absolute; top: -6px; left: 50%; width: 12px; height: 12px; border-radius: 50%; background: var(--red-2); box-shadow: 0 0 16px var(--red-2); }
-.people-badge { position: absolute; left: -2%; bottom: 26px; z-index: 3; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 14px; background: rgba(255,255,255,.95); color: var(--text); box-shadow: 0 16px 34px -12px rgba(0,0,0,.6); animation: rise .8s ease both .7s; }
-.people-badge b { display: block; font-size: .92rem; line-height: 1.2; }
-.people-badge small { color: var(--muted); font-size: .78rem; }
-@media (max-width: 959px) { .people { height: 420px; margin: 0 -20px; } .people .p1 { left: 4%; } .people .p2 { right: 2%; } .people-badge { left: 20px; } }
 @keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
 @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 .causes-list li { color: var(--text-2); font-size: .97rem; }
 .causes-list svg { color: var(--muted); }
 
-.people-badge img { width: 34px; height: auto; }
 .promises .wrap { background: none; gap: 0; }
 .promise { border-left: 1px solid var(--line-d); border-top: 1px solid var(--line-d); }
 @media (min-width: 900px) { .promise { border-top: 0; } .promise:first-child { border-left: 0; } }
-@media (max-width: 959px) { .people .p1 { left: 0; } .people .p2 { right: -4%; } }
 @media (max-width: 599px) { .promise { padding: 14px 12px; align-items: center; } .promise > span:last-child > span { display: none; } .promise .ic { width: 34px; height: 34px; } .promise b { font-size: .88rem; line-height: 1.25; } }
 
 /* ================= CONFIGURATORE ================= */
@@ -580,3 +563,51 @@ h3 { font-size: 1.2rem; letter-spacing: -0.015em; line-height: 1.25; }
 .usp div { display: flex; gap: 10px; align-items: center; font-size: .9rem; font-weight: 600; color: var(--text-2); }
 .usp svg { width: 22px; height: 22px; color: var(--red); flex-shrink: 0; }
 @media (min-width: 1000px) { .gal { top: 140px; } }
+
+
+/* home: PC G8A + pannello negozi */
+.hero-store { background: radial-gradient(ellipse 60% 80% at 78% 55%, rgba(227,6,19,.5), transparent 70%), radial-gradient(ellipse 50% 60% at 95% 5%, rgba(142,20,22,.55), transparent 70%), linear-gradient(180deg, #121215, #0d0d0f); }
+.hero-store::before { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(ellipse at 30% 40%, #000 20%, transparent 75%); }
+.hero-store::after { display: none; }
+.hero-store .hero-in { align-items: center; }
+.hstore { position: relative; display: grid; justify-items: end; }
+.hstore-pc { width: min(78%, 420px); height: auto; margin: 0 4% -46px auto; position: relative; z-index: 0; filter: drop-shadow(0 30px 40px rgba(0,0,0,.6)); animation: float 7s ease-in-out infinite; }
+@media (max-width: 959px) { .hstore { justify-items: stretch; } .hstore-pc { width: 62%; margin: -8px auto -34px; } }
+.spanel { position: relative; z-index: 1; width: min(100%, 440px); padding: 18px; border-radius: 20px; background: rgba(20,20,24,.78); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
+@media (max-width: 959px) { .spanel { width: 100%; } }
+.spanel-h { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.spanel-h .lg { width: 42px; height: 42px; border-radius: 12px; background: #fff; display: grid; place-items: center; flex-shrink: 0; }
+.spanel-h .lg img { width: 30px; }
+.spanel-h b { display: block; font-size: 1.02rem; }
+.spanel-h small { color: #b9b9c2; font-size: .8rem; }
+.spanel ul { display: grid; gap: 6px; }
+.spanel li { display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 12px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid transparent; transition: border-color .2s, background .2s; }
+.spanel li:hover { border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.08); }
+.sp-info { display: grid; gap: 1px; min-width: 0; flex: 1; }
+.sp-info b { font-size: .95rem; }
+.sp-addr { font-size: .78rem; color: #b9b9c2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sp-rate { font-size: .8rem; font-weight: 700; white-space: nowrap; }
+.sp-acts { display: flex; gap: 6px; }
+.sp-btn { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,.1); color: #fff; transition: background .2s, transform .2s; }
+.sp-btn:hover { background: rgba(255,255,255,.2); transform: translateY(-1px); }
+.sp-btn.wa { background: var(--wa); }
+.sp-btn.wa:hover { background: var(--wa-d); }
+.sp-btn svg { width: 17px; height: 17px; }
+@media (max-width: 420px) { .sp-rate { display: none; } }
+
+/* stato aperto/chiuso */
+.st { font-size: .76rem; font-weight: 700; color: #9a9aa5; display: inline-flex; align-items: center; gap: 6px; }
+.st::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.st.on { color: #3ddc84; }
+.st.off { color: #ff8a80; }
+.shop .st.on { color: #128a43; }
+.shop .st.off { color: #c62828; }
+
+/* card negozio senza foto */
+.shop-top { display: flex; align-items: center; justify-content: space-between; padding: 18px 18px 0; }
+.shop-pin { width: 44px; height: 44px; border-radius: 12px; background: var(--grad); display: grid; place-items: center; color: #fff; }
+.shop-pin svg { width: 22px; height: 22px; }
+.shop-top .badge { font-size: .85rem; font-weight: 700; }
+.shop-top .badge small { font-weight: 500; color: var(--muted); }
+.shop .dir { display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; font-size: .86rem; font-weight: 700; color: var(--red); }
+.shop .dir svg { width: 15px; height: 15px; }

@@ -298,13 +298,13 @@ export const saleCategories: SaleCategory[] = [
   { slug: "pc-su-misura", name: "PC su misura", h1: "PC su misura, assemblati da noi", icon: "cpu", photo: "processore",
     lede: "Ci dici cosa ci devi fare e quanto vuoi spendere: scegliamo i componenti, lo assembliamo, lo configuriamo e lo testiamo prima di consegnartelo.",
     points: ["Componenti scelti per il tuo uso, niente di superfluo", "Windows, driver e programmi principali già installati", "Copia dei dati dal vecchio computer", "Assistenza in negozio dopo l'acquisto"], for: "Casa, ufficio, studio professionale" },
-  { slug: "notebook", name: "Notebook", h1: "Notebook per lavoro, studio e casa", icon: "laptop", photo: "scrivania-notebook",
+  { slug: "notebook", name: "Notebook", h1: "Notebook per lavoro, studio e casa", icon: "laptop", photo: "g8a-notebook",
     lede: "Ti aiutiamo a scegliere il portatile giusto tra le principali marche e te lo consegniamo pronto all'uso, con i tuoi dati già trasferiti.",
     points: ["Consiglio onesto in base all'uso reale", "Configurazione iniziale inclusa su richiesta", "Trasferimento dati dal vecchio computer", "Fattura per partite IVA"], for: "Studenti, professionisti, famiglie" },
   { slug: "pc-gaming", name: "PC gaming", h1: "PC gaming pronti o su misura", icon: "gamepad", photo: "pc-gaming",
     lede: "Configurazioni bilanciate tra processore, scheda video e alimentazione, montate con cura e testate sotto sforzo prima della consegna.",
     points: ["Configurazione sul budget e sui giochi che usi", "Test di stabilità e temperature", "Upgrade futuri pensati da subito", "Assistenza in negozio"], for: "Gaming, streaming, creazione contenuti" },
-  { slug: "workstation", name: "Workstation", h1: "Workstation per CAD, grafica e video", icon: "desktop", photo: "workstation",
+  { slug: "workstation", name: "Workstation", h1: "Workstation per CAD, grafica e video", icon: "desktop", photo: "schede-video",
     lede: "Computer per lavori pesanti: progettazione, rendering, montaggio video. Componenti scelti sui programmi che usi davvero.",
     points: ["Dimensionate su AutoCAD, Revit, Adobe, DaVinci e simili", "Affidabilità per lavorare tutto il giorno", "Backup e protezione dei dati", "Fattura e assistenza dedicata"], for: "Studi tecnici, architetti, grafici, videomaker" },
   { slug: "ricondizionati", name: "PC ricondizionati", h1: "Notebook e PC ricondizionati garantiti", icon: "recycle", photo: "notebook-caffe",
@@ -371,8 +371,8 @@ export const priceBands = [
 ];
 export const screenBand = (s: number | null) => (s == null ? "" : s < 15 ? "14" : s < 17 ? "16" : s < 20 ? "17" : "aio");
 export const catDesc: Record<string, { title: string; intro: string; photo: string }> = {
-  notebook: { title: "Notebook G8A", intro: "Portatili per lavoro, studio e casa. Scegli RAM e SSD: lo montiamo e lo testiamo noi.", photo: "scrivania-notebook" },
+  notebook: { title: "Notebook G8A", intro: "Portatili per lavoro, studio e casa. Scegli RAM e SSD: lo montiamo e lo testiamo noi.", photo: "g8a-notebook" },
   gaming: { title: "Notebook gaming G8A", intro: "Schede video NVIDIA RTX e schermi ad alta frequenza, configurati sulle tue esigenze.", photo: "pc-gaming" },
-  aio: { title: "All in One G8A", intro: "Tutto il computer dentro lo schermo: meno cavi, scrivania in ordine, perfetti per ufficio e reception.", photo: "ufficio-postazione" },
+  aio: { title: "All in One G8A", intro: "Tutto il computer dentro lo schermo: meno cavi, scrivania in ordine, perfetti per ufficio e reception.", photo: "g8a-aio" },
   mini: { title: "Mini PC G8A", intro: "Computer piccolissimi e silenziosi, da fissare dietro al monitor. Consumano poco.", photo: "scheda-madre" },
 };

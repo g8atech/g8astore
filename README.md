@@ -41,15 +41,15 @@ Foto: `public/img/` (Unsplash, vedi `CREDITS.txt`), da sostituire nel tempo con 
 - Le richieste partono su WhatsApp verso il negozio scelto; nulla viene scritto in Brain.
 - Per renderlo automatico: creare in Brain una vista pubblica di sola lettura con questi campi e leggerla in `scripts/fetch-brain.mjs`.
 
-## Dove viene pubblicato: www.g8a.it/store
+## Dove viene pubblicato: www.g8astore.it
 
-Non c'è un dominio g8astore.it: il sito vive dentro g8a.it, sotto **/store** (es. `www.g8a.it/store/gallarate`).
+Sito a parte rispetto a g8a.it (che resta B2B). Dominio principale **www.g8astore.it**, indirizzi con la barra finale (`/gallarate/`).
 
-- Il codice resta scritto come se fosse alla radice (`/gallarate/`, `SITE = https://www.g8astore.it`).
-- Dopo `astro build`, `scripts/mount-store.mjs` riscrive tutti i percorsi in `/store/...`, gli indirizzi assoluti in
-  `https://www.g8a.it/store/...` (senza barra finale, come il resto di g8a.it) e sposta tutto in `dist/store/`.
-- Il progetto g8ab2b (www.g8a.it) serve `/store` e `/store/*` con una rewrite verso `https://g8astore.vercel.app/store/...`.
-- Su `g8astore.vercel.app` il `robots.txt` blocca tutto, così Google indicizza solo le pagine su g8a.it.
+- `vercel.json`: `g8astore.it` va su `www.g8astore.it`; i vecchi sottodomini delle città (`gallarate.`, `busto-arsizio.`, `jerago.`, `lecco.`, `bollate.g8astore.it`, con e senza www) vanno con 301 alla pagina del negozio.
+- Su `g8astore.vercel.app` ogni pagina ha `X-Robots-Tag: noindex`, così Google indicizza solo www.g8astore.it.
+- I vecchi indirizzi negozio di g8a.it (`/store-<città>`, `/negozio`) li reindirizza il progetto g8ab2b.
+- Un vecchio indirizzo senza regola finisce sulla pagina 404, che elenca negozi e servizi. Se in Search Console un vecchio URL ha clic, aggiungere una regola precisa in `vercel.json`.
+- `scripts/mount-store.mjs` (montaggio dentro g8a.it/store) non si usa più: tolto dalla build.
 
 ## Vercel
 

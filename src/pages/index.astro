@@ -8,7 +8,8 @@ import Faq from "../components/Faq.astro";
 import Cta from "../components/Cta.astro";
 import WaIcon from "../components/WaIcon.astro";
 import GoogleG from "../components/GoogleG.astro";
-import { shops, services, totalReviews, avgRating, fmtRating, waLink, telLink, compactHours, repairTitle, SITE } from "../data/site";
+import StoreStatus from "../components/StoreStatus.astro";
+import { shops, services, totalReviews, avgRating, fmtRating, waLink, telLink, mapsLink, compactHours, repairTitle, SITE } from "../data/site";
 import { storeSchema, faqSchema } from "../lib/schema";
 
 const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
@@ -32,7 +33,7 @@ const popular = [
 ].map(([sv, sl]) => { const s = services.find((x) => x.slug === sv)!; return { s, pr: s.problems.find((x) => x.slug === sl)! }; });
 ---
 <Base title="G8A Store: riparazione e vendita PC, notebook e Mac in 5 negozi" description={`Riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Negozi a ${citiesText}. Diagnosi gratuita e prezzo prima di riparare.`} path="/" schema={schema}>
-  <Hero variant="people" sub={`Ripariamo, potenziamo e vendiamo notebook, PC e Mac. Per privati e partite IVA, in ${shops.length} negozi tra Varese, Milano e Lecco.`} shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "#negozi", label: `${shops.length} negozi` }}>
+  <Hero variant="store" sub={`Ripariamo, potenziamo e vendiamo notebook, PC e Mac. Per privati e partite IVA, in ${shops.length} negozi tra Varese, Milano e Lecco.`} shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "/configuratore/", label: "PC G8A", icon: "cart" }}>
     Il tuo PC, in <span class="grad-text">mani esperte</span>
   </Hero>
   <Promises />
@@ -42,8 +43,8 @@ const popular = [
       <div class="head c reveal"><h2>Cosa ti serve?</h2></div>
       <div class="choose">
         <a class="choice reveal" href="/riparazione-notebook/"><Photo name="mani-riparazione" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="wrench" /></span><h3>Riparare il computer</h3><p>Diagnosi gratuita e prezzo prima di riparare.</p><span class="go">Riparazioni <Icon name="arrow" /></span></div></a>
-        <a class="choice reveal" href="/configuratore/"><Photo name="pc-gaming" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="cart" /></span><h3>Compra un PC</h3><p>Notebook, gaming, All in One e mini PC G8A configurabili.</p><span class="go">Vai allo shop <Icon name="arrow" /></span></div></a>
-        <a class="choice reveal" href="/partite-iva/"><Photo name="ufficio-clienti" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="briefcase" /></span><h3>Sono una partita IVA</h3><p>Computer in fattura e assistenza rapida.</p><span class="go">Servizi <Icon name="arrow" /></span></div></a>
+        <a class="choice reveal" href="/configuratore/"><Photo name="g8a-notebook" alt="Notebook G8A" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="cart" /></span><h3>Compra un PC G8A</h3><p>Notebook, gaming, All in One e mini PC G8A configurabili.</p><span class="go">Vai allo shop <Icon name="arrow" /></span></div></a>
+        <a class="choice reveal" href="/partite-iva/"><Photo name="g8a-aio" alt="All in One G8A" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="briefcase" /></span><h3>Sono una partita IVA</h3><p>Computer in fattura e assistenza rapida.</p><span class="go">Servizi <Icon name="arrow" /></span></div></a>
       </div>
     </div>
   </section>
@@ -62,18 +63,20 @@ const popular = [
       <div class="shops">
         {shops.map((s) => (
           <article class="shop reveal">
-            <a class="ph" href={`/${s.slug}/`} aria-label={`G8A Store ${s.city}`}>
-              {s.photo && <img src={s.photo} alt={`Ingresso del negozio G8A Store di ${s.city}`} width="640" height="360" loading="lazy" />}
-              {s.rating && s.reviews ? <span class="badge"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)} ({s.reviews})</span> : null}
-            </a>
+            <div class="shop-top">
+              <span class="shop-pin"><Icon name="store" /></span>
+              {s.rating && s.reviews ? <span class="badge"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)} <small>({s.reviews} recensioni)</small></span> : null}
+            </div>
             <div class="bd">
               <h3><a href={`/${s.slug}/`}>{s.city}</a></h3>
               <p class="addr">{s.address}{s.hint ? `, ${s.hint.toLowerCase()}` : ""}</p>
               <p class="hrs">{compactHours(s.hours) ?? "Orari sulla scheda Google Maps"}</p>
+              {s.hours && <span class="st" data-hours={s.hours}></span>}
               <div class="row">
                 <a class="btn btn-line btn-xs" href={telLink(s)}><Icon name="phone" /> Chiama</a>
                 <a class="btn btn-wa btn-xs" href={waLink(s, `Ciao G8A Store ${s.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>
               </div>
+              <a class="dir" href={mapsLink(s)} target="_blank" rel="noopener"><Icon name="pin" /> Indicazioni</a>
             </div>
           </article>
         ))}
@@ -92,4 +95,5 @@ const popular = [
 
   <Faq items={faq} title="Prima di passare" />
   <Cta shop={ref} title="Il computer ti ha lasciato a piedi?" text="Scrivici cosa succede: ti rispondiamo in pochi minuti e ti diciamo se si risolve in giornata." msg="Ciao G8A Store, ho un problema con il computer:" />
+  <StoreStatus />
 </Base>

@@ -1,0 +1,31 @@
+---
+// "Aperto ora / Chiuso" calcolato nel browser, con l'ora italiana, dagli orari di Brain.
+// Uso: <span class="st" data-hours={shop.hours}></span> ovunque, poi <StoreStatus /> una volta nella pagina.
+---
+<script is:inline>
+(() => {
+  const D = { lun: 1, mar: 2, mer: 3, gio: 4, ven: 5, sab: 6, dom: 0 };
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Europe/Rome" }));
+  const day = now.getDay(), min = now.getHours() * 60 + now.getMinutes();
+  const toMin = (t) => { const [h, m] = t.split(/[.:]/).map(Number); return h * 60 + (m || 0); };
+  const days = (spec) => {
+    const [a, b] = spec.toLowerCase().split("-").map((x) => D[x.trim().slice(0, 3)]);
+    if (a === undefined) return [];
+    if (b === undefined) return [a];
+    const out = []; for (let d = a; ; d = (d + 1) % 7) { out.push(d); if (d === b) break; } return out;
+  };
+  document.querySelectorAll(".st[data-hours]").forEach((el) => {
+    const lines = (el.dataset.hours || "").split("\n");
+    let ranges = [];
+    for (const l of lines) {
+      const [spec, rest] = l.split(":"); if (!rest || !days(spec).includes(day)) continue;
+      ranges = (/chius/i.test(rest) ? [] : rest.split("/").map((r) => r.trim().split("-").map(toMin)));
+    }
+    const open = ranges.find(([a, b]) => min >= a && min < b);
+    const next = ranges.find(([a]) => a > min);
+    const hm = (m) => (m % 60 ? `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}` : `${m / 60}`);
+    el.textContent = open ? `Aperto fino alle ${hm(open[1])}` : next ? `Chiuso, apre alle ${hm(next[0])}` : "Chiuso ora";
+    el.classList.add(open ? "on" : "off");
+  });
+})();
+</script>

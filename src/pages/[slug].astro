@@ -74,7 +74,7 @@ if (p.kind === "service") {
 } else if (p.kind === "piva") {
   title = "Computer e assistenza per partite IVA | G8A Store";
   description = `Computer in fattura, riparazioni con priorità, backup, rete e assistenza remota per professionisti e piccole attività. Negozi a ${citiesText}.`.slice(0, 160);
-  photo = "ufficio-clienti"; sub = "Per professionisti, studi e piccole attività: computer in fattura, riparazioni rapide e tutto quello che serve per lavorare senza fermi."; crumbName = "Partite IVA"; msg = "Ciao G8A Store, ho una partita IVA e mi serve:";
+  photo = "lavoro-notebook"; sub = "Per professionisti, studi e piccole attività: computer in fattura, riparazioni rapide e tutto quello che serve per lavorare senza fermi."; crumbName = "Partite IVA"; msg = "Ciao G8A Store, ho una partita IVA e mi serve:";
   h1 = { a: "Computer e assistenza per", b: "partite IVA" };
   diagTitle = "Il tuo ufficio"; diagItems = ["Backup dei dati", "Rete e Wi-Fi", "Posta e PEC", "Aggiornamenti"];
   faq = [
@@ -198,7 +198,7 @@ const popular = [
         <div class="head reveal"><span class="tag">Servizi</span><h2>Quello che serve a chi lavora</h2></div>
         <div class="tiles">{pivaPoints.map((x) => <div class="tile reveal"><span class="ic"><Icon name={x.icon} /></span><b>{x.t}</b><span>{x.p}</span></div>)}</div>
         <div class="media" style="margin-top:56px">
-          <figure class="reveal"><Photo name="ufficio-team" alt="Ufficio con postazioni di lavoro" /></figure>
+          <figure class="reveal"><Photo name="g8a-aio" alt="All in One G8A per l'ufficio" /></figure>
           <div class="reveal">
             <span class="tag">Per il tuo studio</span>
             <h2 style="margin-top:10px">Un tecnico di riferimento, vicino a te</h2>
@@ -218,8 +218,8 @@ const popular = [
           <div class="head c reveal"><span class="tag">G8A Store {p.shop.city}</span><h2>Cosa ti serve?</h2></div>
           <div class="choose">
             <a class="choice reveal" href={`${cityBase}/riparazione-notebook/`}><Photo name="mani-riparazione" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="wrench" /></span><h3>Riparare il computer</h3><p>Notebook, PC fisso o Mac: diagnosi gratuita e prezzo prima.</p><span class="go">Riparazioni a {p.shop.city} <Icon name="arrow" /></span></div></a>
-            <a class="choice reveal" href={`${cityBase}/vendita-pc/`}><Photo name="pc-gaming" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="cart" /></span><h3>Comprare un computer</h3><p>Notebook, PC su misura, gaming e ricondizionati pronti all'uso.</p><span class="go">Vendita a {p.shop.city} <Icon name="arrow" /></span></div></a>
-            <a class="choice reveal" href={`${cityBase}/partite-iva/`}><Photo name="ufficio-clienti" alt="" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="briefcase" /></span><h3>Sono una partita IVA</h3><p>Computer in fattura, riparazioni con priorità, backup e assistenza.</p><span class="go">Servizi a {p.shop.city} <Icon name="arrow" /></span></div></a>
+            <a class="choice reveal" href={`${cityBase}/vendita-pc/`}><Photo name="g8a-notebook" alt="Notebook G8A" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="cart" /></span><h3>Comprare un computer</h3><p>Notebook, PC su misura, gaming e ricondizionati pronti all'uso.</p><span class="go">Vendita a {p.shop.city} <Icon name="arrow" /></span></div></a>
+            <a class="choice reveal" href={`${cityBase}/partite-iva/`}><Photo name="g8a-aio" alt="All in One G8A" sizes="(max-width: 860px) 100vw, 33vw" /><div class="bd"><span class="ic"><Icon name="briefcase" /></span><h3>Sono una partita IVA</h3><p>Computer in fattura, riparazioni con priorità, backup e assistenza.</p><span class="go">Servizi a {p.shop.city} <Icon name="arrow" /></span></div></a>
           </div>
         </div>
       </section>

@@ -1,0 +1,31 @@
+---
+// Pannello negozi in apertura: tutti i negozi con stato, chiamata, WhatsApp e indicazioni.
+import Icon from "./Icon.astro";
+import WaIcon from "./WaIcon.astro";
+import { shops, waLink, telLink, mapsLink, fmtRating } from "../data/site";
+interface Props { msg?: string }
+const { msg = "Ciao G8A Store, ho bisogno di:" } = Astro.props;
+---
+<div class="spanel">
+  <div class="spanel-h">
+    <span class="lg"><img src="/g8a-mark.svg" alt="" width="30" height="22" /></span>
+    <span><b>Scegli il tuo negozio</b><small>Senza appuntamento · diagnosi gratuita</small></span>
+  </div>
+  <ul>
+    {shops.map((s) => (
+      <li>
+        <a class="sp-info" href={`/${s.slug}/`}>
+          <b>{s.city}</b>
+          <span class="sp-addr">{s.address}</span>
+          {s.hours ? <span class="st" data-hours={s.hours}></span> : null}
+        </a>
+        {s.rating && s.reviews ? <span class="sp-rate"><span class="stars" aria-hidden="true">★</span> {fmtRating(s.rating)}</span> : null}
+        <div class="sp-acts">
+          <a class="sp-btn" href={telLink(s)} aria-label={`Chiama G8A Store ${s.city}`}><Icon name="phone" /></a>
+          <a class="sp-btn wa" href={waLink(s, msg.replace("G8A Store", `G8A Store ${s.city}`))} rel="nofollow" aria-label={`WhatsApp G8A Store ${s.city}`}><WaIcon /></a>
+          <a class="sp-btn" href={mapsLink(s)} target="_blank" rel="noopener" aria-label={`Indicazioni per G8A Store ${s.city}`}><Icon name="pin" /></a>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
