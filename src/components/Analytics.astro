@@ -1,0 +1,33 @@
+---
+// Misurazione visite e contatti. Va DOPO ConsentHead (Consent Mode v2: tutto negato finché il visitatore non accetta).
+// Su Vercel: PUBLIC_GTM_ID (Google Tag Manager) oppure PUBLIC_GA4_ID (Google Analytics 4 diretto, es. G-XXXXXXX).
+// Senza nessuna delle due resta solo il conteggio dei clic di contatto nel dataLayer (nessun dato inviato).
+const gtm = import.meta.env.PUBLIC_GTM_ID;
+const ga4 = gtm ? undefined : import.meta.env.PUBLIC_GA4_ID;
+---
+{gtm && <script is:inline define:vars={{ gtm }}>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtm);</script>}
+{ga4 && <script is:inline define:vars={{ ga4 }}>
+  // GA4 diretto si carica solo dopo il consenso alle statistiche (subito se già dato, altrimenti al clic su "Accetta").
+  window.__g8aGa4Load = function () {
+    if (window.__g8aGa4) return;
+    window.__g8aGa4 = true;
+    var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4;
+    document.head.appendChild(s);
+    window.gtag('js', new Date()); window.gtag('config', ga4);
+  };
+  var c = window.g8aConsent && window.g8aConsent.read();
+  if (c && c.a) window.__g8aGa4Load();
+</script>}
+<script is:inline>
+  // Conversioni: ogni clic su telefono, WhatsApp o email (negozio e pagina) va nel dataLayer per GTM, o a GA4 se diretto.
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    var canale = h.indexOf('tel:') === 0 ? 'telefono' : h.indexOf('wa.me/') >= 0 ? 'whatsapp' : h.indexOf('mailto:') === 0 ? 'email' : null;
+    if (!canale) return;
+    var dati = { canale: canale, pagina: location.pathname, negozio: a.getAttribute('data-shop') || '' };
+    (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: 'contatto' }, dati));
+    if (window.__g8aGa4 && window.gtag) window.gtag('event', 'contatto', dati);
+  });
+</script>

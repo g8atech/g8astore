@@ -85,7 +85,7 @@ if (p.kind === "service") {
 } else {
   const s = p.shop;
   const near = nearby[s.slug] || [];
-  title = `Riparazione e vendita PC a ${s.city} | G8A Store ${s.city}`;
+  title = `Riparazione e vendita PC a ${s.city} | G8A Store`;
   description = `G8A Store ${s.city}, ${s.address}: riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Diagnosi gratuita e prezzo prima di riparare.`.slice(0, 160);
   photo = "notebook-rosso"; sub = `Notebook, PC fissi e Mac per privati e partite IVA. Ci trovi in ${s.address}${s.hint ? `, ${s.hint.toLowerCase()}` : ""}.`; crumbName = s.city; msg = `Ciao G8A Store ${s.city}, ho bisogno di:`;
   h1 = { a: "Riparazione e vendita PC a", b: s.city };

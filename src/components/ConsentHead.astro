@@ -4,6 +4,16 @@
 const clarity = import.meta.env.PUBLIC_CLARITY_ID || "zcjpunqe8n";
 ---
 <script is:inline define:vars={{ clarity }}>
+  // Google Consent Mode v2: tutto negato finché il visitatore non sceglie (serve a GA4/GTM se attivati su Vercel).
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag("consent", "default", {
+    ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
+    analytics_storage: "denied", functionality_storage: "granted", security_storage: "granted",
+    wait_for_update: 500,
+  });
+  gtag("set", "ads_data_redaction", true);
   // Scelta salvata: valida 6 mesi, come indicano le linee guida del Garante.
   var KEY = "g8astore_consenso", MAX = 1000 * 60 * 60 * 24 * 182;
   window.g8aConsent = {
@@ -11,6 +21,9 @@ const clarity = import.meta.env.PUBLIC_CLARITY_ID || "zcjpunqe8n";
       try { var c = JSON.parse(localStorage.getItem(KEY)); return c && c.v === 1 && Date.now() - c.t < MAX ? c : null; } catch (e) { return null; }
     },
     apply: function (c) {
+      gtag("consent", "update", { analytics_storage: c.a ? "granted" : "denied" });
+      dataLayer.push({ event: "consenso_aggiornato", consenso_statistiche: !!c.a });
+      if (c.a && window.__g8aGa4Load) window.__g8aGa4Load();
       if (c.a && clarity && !window.clarity) {
         (function (w, d, t, id) {
           w.clarity = w.clarity || function () { (w.clarity.q = w.clarity.q || []).push(arguments); };

@@ -30,7 +30,9 @@ export const waLink = (shop: Shop, msg: string) => `https://wa.me/${waNumber(sho
 export const telLink = (shop: Shop) => `tel:+${waNumber(shop.phone)}`;
 export const phoneDisplay = (shop: Shop) => {
   const d = waNumber(shop.phone).slice(2);
-  return d.replace(/^(0\d{2,3})(\d{3})(\d+)$/, "$1 $2 $3");
+  // Prefissi a 2 cifre (02 Milano, 06 Roma): 02 350 4614; gli altri (0331, 0341…): 0331 248 859
+  if (/^0[26]/.test(d)) return d.replace(/^(0[26])(\d+)(\d{4})$/, "$1 $2 $3");
+  return d.replace(/^(0\d{3})(\d{3})(\d+)$/, "$1 $2 $3");
 };
 export const ratingText = (s: Shop) =>
   s.rating && s.reviews ? `${fmtRating(s.rating)} su Google, ${s.reviews} recensioni` : null;

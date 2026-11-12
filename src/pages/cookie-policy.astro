@@ -2,6 +2,8 @@
 import Base from "../layouts/Base.astro";
 import Legal from "../components/Legal.astro";
 // Elenco dei cookie da tenere allineato agli strumenti davvero attivi sul sito.
+// Google Analytics compare solo quando su Vercel è attivo (PUBLIC_GA4_ID o PUBLIC_GTM_ID).
+const ga = !!(import.meta.env.PUBLIC_GA4_ID || import.meta.env.PUBLIC_GTM_ID);
 ---
 <Base title="Cookie policy | G8A Store" description="Quali cookie usa il sito g8astore.it, a cosa servono, per quanto restano e come cambiare le tue preferenze." path="/cookie-policy/" crumbs={[{ name: "Cookie policy", path: "/cookie-policy/" }]}>
   <Legal titolo="Cookie policy" aggiornato="12 novembre 2026">
@@ -29,6 +31,7 @@ import Legal from "../components/Legal.astro";
         <tr><td><code>_clck</code></td><td>Microsoft Clarity</td><td>Riconosce lo stesso visitatore tra più visite</td><td>1 anno</td></tr>
         <tr><td><code>_clsk</code></td><td>Microsoft Clarity</td><td>Unisce le pagine viste in una sola registrazione della sessione</td><td>1 giorno</td></tr>
         <tr><td><code>CLID</code>, <code>MUID</code>, <code>ANONCHK</code>, <code>SM</code>, <code>MR</code></td><td>Microsoft Clarity / Microsoft</td><td>Identificano il browser per le statistiche di Clarity</td><td>da pochi minuti a 1 anno</td></tr>
+        {ga && <tr><td><code>_ga</code>, <code>_ga_*</code></td><td>Google Analytics 4</td><td>Distingue i visitatori e le sessioni per le statistiche</td><td>2 anni</td></tr>}
       </tbody>
     </table></div>
     <p>Microsoft Clarity registra in forma anonima clic, scorrimento e movimenti del mouse per creare mappe di calore e riproduzioni delle sessioni; i testi inseriti nei campi vengono mascherati.</p>

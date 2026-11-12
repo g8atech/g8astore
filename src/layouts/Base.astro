@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Icon from "../components/Icon.astro";
 import WaIcon from "../components/WaIcon.astro";
 import ConsentHead from "../components/ConsentHead.astro";
+import Analytics from "../components/Analytics.astro";
 import ConsentBanner from "../components/ConsentBanner.astro";
 import { GUIDE_NINA } from "../data/guideNina";
 import { SITE, shops, services, saleCategories, waLink, telLink, avgRating, fmtRating, totalReviews, type Shop } from "../data/site";
@@ -18,8 +19,17 @@ interface Props {
   noindex?: boolean;
   ogImage?: string;
 }
-const { title: rawTitle, description, path, crumbs = [], schema = [], shop, waMessage, noindex, ogImage } = Astro.props;
+const { title: rawTitle, description: rawDescription, path, crumbs = [], schema = [], shop, waMessage, noindex, ogImage } = Astro.props;
 // Google taglia i titoli oltre ~60 caratteri: se il titolo è lungo, togliamo il suffisso del marchio.
+// Description per Google: max ~158 caratteri, tagliata a fine frase o a fine parola (mai a metà parola).
+const description = (() => {
+  const d = rawDescription.replace(/\s+/g, " ").trim();
+  if (d.length <= 158) return d;
+  const cut = d.slice(0, 158);
+  const frase = cut.lastIndexOf(". ");
+  if (frase >= 110) return cut.slice(0, frase + 1);
+  return cut.slice(0, cut.lastIndexOf(" ")).replace(/[,:;\-–]+$/, "") + "…";
+})();
 const title = rawTitle.length > 65 && rawTitle.endsWith(" | G8A Store") ? rawTitle.slice(0, -12) : rawTitle;
 const canonical = new URL(path, SITE).toString();
 const ref = shop ?? shops.find((s) => s.slug === "gallarate") ?? shops[0];
@@ -64,6 +74,7 @@ const menu = [
     <script is:inline>document.documentElement.classList.add("js");</script>
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
     <ConsentHead />
+    <Analytics />
   </head>
   <body>
     <header class="top">
