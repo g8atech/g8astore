@@ -4,6 +4,7 @@ import Icon from "../components/Icon.astro";
 import WaIcon from "../components/WaIcon.astro";
 import ConsentHead from "../components/ConsentHead.astro";
 import ConsentBanner from "../components/ConsentBanner.astro";
+import { GUIDE_NINA } from "../data/guideNina";
 import { SITE, shops, services, saleCategories, waLink, telLink, avgRating, fmtRating, totalReviews, type Shop } from "../data/site";
 
 interface Props {
@@ -92,7 +93,7 @@ const menu = [
             </a>
             <p style="max-width:34ch">Riparazione e vendita computer per privati e partite IVA in {shops.length} negozi tra provincia di Varese, Milano nord e Lecco.</p>
           </div>
-          <div><h2>Riparazioni</h2><ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.name}</a></li>)}</ul></div>
+          <div><h2>Riparazioni</h2><ul>{services.map((s) => <li><a href={`/${s.slug}/`}>{s.name}</a></li>)}{GUIDE_NINA.length > 0 && <li><a href="/guide/">Guide pratiche</a></li>}</ul></div>
           <div><h2>Vendita</h2><ul>{saleCategories.map((c) => <li><a href={`/${c.slug}/`}>{c.name}</a></li>)}<li><a href="/partite-iva/">Per partite IVA</a></li></ul></div>
           <div><h2>Negozi</h2><ul>{shops.map((s) => <li><a href={`/${s.slug}/`}>G8A Store {s.city}</a></li>)}</ul></div>
         </div>
