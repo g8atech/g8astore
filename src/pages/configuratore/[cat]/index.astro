@@ -33,6 +33,7 @@ const list = {
       <div><Icon name="receipt" /> Fattura per partite IVA</div>
       <div><Icon name="shield" /> Assistenza in negozio</div>
     </div>
+    <h2 class="sr-only">{models.length} modelli: {f.plural} G8A</h2>
     <ShopGrid models={models} showCat={false} showScreen={f.key === "notebook" || f.key === "gaming"} />
   </div>
 </Base>
