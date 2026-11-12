@@ -23,6 +23,11 @@ export const GUIDE_NINA: any[] = [
           "Compare un messaggio o il logo ma Windows non parte: è un problema di avvio, non di alimentazione."
         ],
         "titolo": "Come capisci davvero che il notebook non si accende?",
+        "immagine": {
+          "alt": "Notebook che non si accende: cosa controllare prima di portarlo in assistenza",
+          "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/notebook-non-si-accende-foto-6bca8bc9.jpg",
+          "fonte": "foto"
+        },
         "paragrafi": [
           "Prima di tutto distingui due situazioni, perché le cause sono diverse. Il notebook può essere spento del tutto, oppure acceso ma con lo schermo nero.",
           "Premi il tasto di accensione e osserva: si accende qualche spia? Senti le ventole o un leggero rumore dal disco? Su molti modelli puoi provare a premere il tasto Bloc Maiusc: se la spia risponde, il computer ha corrente e il problema può essere lo schermo o l'avvio di Windows. Dell, per esempio, suggerisce proprio questo controllo con le spie per capire se il portatile riceve alimentazione."
@@ -143,7 +148,11 @@ export const GUIDE_NINA: any[] = [
       }
     ],
     "extra": {},
-    "copertina": null,
+    "copertina": {
+      "alt": "Notebook che non si accende: cosa controllare prima di portarlo in assistenza",
+      "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/notebook-non-si-accende-foto-97367e40.jpg",
+      "fonte": "foto"
+    },
     "firmato_da": "Antonio Arrigo",
     "pubblicata_il": "2026-11-12",
     "aggiornata_il": "2026-11-12"
