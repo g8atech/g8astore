@@ -26,7 +26,7 @@ const msg = shop ? `Ciao G8A Store ${shop.city}, ${name.toLowerCase()}:` : `Ciao
 
 const range = isMac && pr.macKind ? macPriceRange(pr.macKind) : null;
 const rows = isMac && pr.macKind
-  ? macModels.flatMap((m) => m.repairs.filter((r) => r.kind === pr.macKind).slice(0, 1).map((r) => ({ name: m.name, price: r.price, warrantyMonths: r.warrantyMonths, href: `${base}${m.slug}/` })))
+  ? macModels.flatMap((m) => m.repairs.filter((r) => r.kind === pr.macKind).slice(0, 1).map((r) => ({ name: m.name, price: r.price, warrantyMonths: r.warrantyMonths, href: `/${service.slug}/${m.slug}/` })))
   : [];
 const faq: [string, string][] = [
   ["Quanto costa?", range ? `Da ${euro(range.min)} a ${euro(range.max)} in base al modello: trovi il listino completo in questa pagina.` : "Dipende dal modello. La diagnosi è gratuita e ti diamo il prezzo esatto prima di qualsiasi intervento: se non procedi, non paghi."],
@@ -92,7 +92,7 @@ const priceText = range ? `da ${euro(range.min)}` : "Preventivo gratuito";
         {service.brands && (
           <>
             <h3 style="margin:30px 0 12px">Marche che ripariamo</h3>
-            <div class="pills">{service.brands.map((b) => shop ? <a href={`${base}${b.slug}/`}>{b.name}</a> : <span>{b.name}</span>)}<span>e molte altre</span></div>
+            <div class="pills">{service.brands.map((b) => <a href={`/${service.slug}/${b.slug}/`}>{b.name}</a>)}<span>e molte altre</span></div>
           </>
         )}
       </div>
@@ -116,19 +116,19 @@ const priceText = range ? `da ${euro(range.min)}` : "Preventivo gratuito";
         <div class="scroll-x reveal">
           <table class="ptable">
             <thead><tr><th>Modello</th><th>Garanzia</th><th class="p">Prezzo</th></tr></thead>
-            <tbody>{rows.map((r) => <tr><td>{shop ? <a href={r.href}>{r.name}</a> : r.name}</td><td>{r.warrantyMonths ? `${r.warrantyMonths} mesi` : "–"}</td><td class="p">{euro(r.price)}</td></tr>)}</tbody>
+            <tbody>{rows.map((r) => <tr><td><a href={r.href}>{r.name}</a></td><td>{r.warrantyMonths ? `${r.warrantyMonths} mesi` : "–"}</td><td class="p">{euro(r.price)}</td></tr>)}</tbody>
           </table>
         </div>
       </div>
     </section>
   )}
 
-  {shop ? <LocalBlock shop={shop} msg={msg} /> : <Contacts msg={(s) => `Ciao G8A Store ${s.city}, ${name.toLowerCase()}:`} linkSuffix={`${service.slug}/${pr.slug}/`} title={`${name}: scrivi al negozio più vicino`} />}
+  {shop ? <LocalBlock shop={shop} msg={msg} /> : <Contacts msg={(s) => `Ciao G8A Store ${s.city}, ${name.toLowerCase()}:`} linkSuffix={`${service.slug}/`} title={`${name}: scrivi al negozio più vicino`} />}
 
   <section class="sec">
     <div class="wrap">
       <div class="head reveal"><span class="tag">{service.name}</span><h2>Altre riparazioni{where}</h2></div>
-      <div class="tiles">{others.map((x) => <a class="tile reveal" href={`${base}${x.slug}/`}><span class="ic"><Icon name={x.icon} /></span><b>{x.name}</b><span>{x.short}</span></a>)}</div>
+      <div class="tiles">{others.map((x) => <a class="tile reveal" href={`/${service.slug}/${x.slug}/`}><span class="ic"><Icon name={x.icon} /></span><b>{x.name}</b><span>{x.short}</span></a>)}</div>
     </div>
   </section>
 

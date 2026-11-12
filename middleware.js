@@ -28,11 +28,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/gallarate/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/gallarate/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -58,11 +58,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/gallarate/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/gallarate/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -88,11 +88,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/busto-arsizio/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/busto-arsizio/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -118,11 +118,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/busto-arsizio/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/busto-arsizio/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -148,11 +148,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/jerago-con-orago/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/jerago-con-orago/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -178,11 +178,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/jerago-con-orago/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/jerago-con-orago/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -208,11 +208,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/lecco/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/lecco/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -238,11 +238,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/lecco/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/lecco/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -268,11 +268,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/bollate/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/bollate/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -298,11 +298,11 @@ const RULES = {
     ],
     [
       "^/sostituzione\\-batteria(.*)$",
-      "https://www.g8astore.it/bollate/riparazione-notebook/batteria/"
+      "https://www.g8astore.it/riparazione-notebook/batteria/"
     ],
     [
       "^/non\\-carica(.*)$",
-      "https://www.g8astore.it/bollate/riparazione-notebook/non-carica/"
+      "https://www.g8astore.it/riparazione-notebook/non-carica/"
     ],
     [
       "^/(.*)$",
@@ -311,8 +311,14 @@ const RULES = {
   ]
 };
 
+// Pagine di riparazione: una sola pagina per riparazione/marca/modello, non una copia per città.
+// /<città>/riparazione-xxx/<pagina>/  ->  /riparazione-xxx/<pagina>/
+const CITY_SUB = /^\/(gallarate|busto-arsizio|bollate|jerago-con-orago|lecco)\/(riparazione-mac|riparazione-notebook|riparazione-pc)\/([^/]+)\/?$/;
+
 export default function middleware(request) {
   const url = new URL(request.url);
+  const cs = CITY_SUB.exec(url.pathname);
+  if (cs) return Response.redirect(`https://www.g8astore.it/${cs[2]}/${cs[3]}/`, 301);
   const rules = RULES[url.hostname.toLowerCase()];
   if (!rules) return; // dominio principale: nessun intervento
   let path = url.pathname;

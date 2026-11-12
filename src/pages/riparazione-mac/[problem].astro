@@ -1,11 +1,17 @@
 ---
-// Pagina generale e completa di ogni riparazione: /riparazione-mac/<riparazione>/
+// Pagine uniche della riparazione (valide per tutti i negozi): /riparazione-mac/<riparazione>/ e modelli Mac (/riparazione-mac/macbook-air-m1-a2337/).
+// Le vecchie copie per città (/<città>/riparazione-mac/<...>/) portano qui con un 301 (middleware.js).
 import RepairPage from "../../components/RepairPage.astro";
-import { serviceBySlug } from "../../data/site";
+import RepairExtraPage from "../../components/RepairExtraPage.astro";
+import { serviceBySlug, macModels } from "../../data/site";
 export function getStaticPaths() {
   const service = serviceBySlug("riparazione-mac");
-  return service.problems.map((problem) => ({ params: { problem: problem.slug }, props: { problem, service } }));
+  return [
+    ...service.problems.map((problem) => ({ params: { problem: problem.slug }, props: { kind: "problem", problem, service } })),
+    ...(service.brands ?? []).map((brand) => ({ params: { problem: brand.slug }, props: { kind: "brand", brand, service } })),
+    ...(service.slug === "riparazione-mac" ? macModels.map((model) => ({ params: { problem: model.slug }, props: { kind: "mac", model, service } })) : []),
+  ];
 }
-const { problem, service } = Astro.props;
+const p = Astro.props as any;
 ---
-<RepairPage problem={problem} service={service} />
+{p.kind === "problem" ? <RepairPage problem={p.problem} service={p.service} /> : <RepairExtraPage {...p} />}

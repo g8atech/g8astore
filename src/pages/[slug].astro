@@ -226,7 +226,7 @@ const popular = [
       <section class="sec sec-paper">
         <div class="wrap">
           <div class="head reveal"><span class="tag">Riparazioni a {p.shop.city}</span><h2>Le riparazioni più richieste</h2></div>
-          <div class="tiles">{popular.map(({ s, pr }) => <a class="tile reveal" href={`${cityBase}/${s.slug}/${pr.slug}/`}><span class="ic"><Icon name={pr.icon} /></span><b>{repairTitle(pr, s)}</b><span>{pr.short}</span></a>)}</div>
+          <div class="tiles">{popular.map(({ s, pr }) => <a class="tile reveal" href={`/${s.slug}/${pr.slug}/`}><span class="ic"><Icon name={pr.icon} /></span><b>{repairTitle(pr, s)}</b><span>{pr.short}</span></a>)}</div>
           <div class="pills reveal" style="margin-top:22px">{services.map((sv) => <a href={`${cityBase}/${sv.slug}/`}>Tutte le riparazioni {sv.device === "MacBook" ? "Mac" : sv.device} a {p.shop.city}</a>)}</div>
         </div>
       </section>

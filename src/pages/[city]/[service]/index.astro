@@ -74,15 +74,15 @@ const schema = [storeSchema(shop), serviceSchema(`${h1a} ${shop.city}`, sub, sho
         <div class="head reveal"><span class="tag">{p.service.name} a {shop.city}</span><h2>Scegli la riparazione</h2><p>Ogni riparazione ha la sua pagina con sintomi, tempi, prezzi e domande frequenti.</p></div>
         <div class="pcards">
           {p.service.problems.slice(0, 3).map((pr) => (
-            <a class="pcard reveal" href={`${base}${pr.slug}/`}>
+            <a class="pcard reveal" href={`/${p.service.slug}/${pr.slug}/`}>
               <div class="ph"><Photo name={pr.photo} alt={repairTitle(pr, p.service)} sizes="(max-width: 700px) 100vw, 33vw" /><span class="ic"><Icon name={pr.icon} /></span>{isMac && pr.macKind && macPriceRange(pr.macKind) && <span class="price-badge">da {euro(macPriceRange(pr.macKind)!.min)}</span>}</div>
               <div class="bd"><h3>{repairTitle(pr, p.service)}</h3><p>{pr.short}</p><span class="more">Scopri <Icon name="arrow" /></span></div>
             </a>
           ))}
         </div>
-        <div class="tiles" style="margin-top:18px">{p.service.problems.slice(3).map((pr) => <a class="tile reveal" href={`${base}${pr.slug}/`}><span class="ic"><Icon name={pr.icon} /></span><b>{pr.name}</b><span>{pr.short}</span></a>)}</div>
+        <div class="tiles" style="margin-top:18px">{p.service.problems.slice(3).map((pr) => <a class="tile reveal" href={`/${p.service.slug}/${pr.slug}/`}><span class="ic"><Icon name={pr.icon} /></span><b>{pr.name}</b><span>{pr.short}</span></a>)}</div>
         {p.service.brands && (
-          <div class="reveal" style="margin-top:34px;text-align:center"><h3 style="margin-bottom:14px">Ripariamo notebook di tutte le marche</h3><div class="pills c">{p.service.brands.map((b) => <a href={`${base}${b.slug}/`}>{b.name}</a>)}</div></div>
+          <div class="reveal" style="margin-top:34px;text-align:center"><h3 style="margin-bottom:14px">Ripariamo notebook di tutte le marche</h3><div class="pills c">{p.service.brands.map((b) => <a href={`/${p.service.slug}/${b.slug}/`}>{b.name}</a>)}</div></div>
         )}
       </div>
     </section>
@@ -95,7 +95,7 @@ const schema = [storeSchema(shop), serviceSchema(`${h1a} ${shop.city}`, sub, sho
         <div class="scroll-x reveal">
           <table class="ptable">
             <thead><tr><th>Modello</th><th class="p">Batteria</th><th class="p">Schermo</th></tr></thead>
-            <tbody>{macRows.map((r) => <tr><td><a href={`${base}${r.m.slug}/`}>{r.m.name}</a></td><td class="p">{r.battery ? euro(r.battery.price) : "–"}</td><td class="p">{r.screen ? `da ${euro(r.screen.price)}` : "–"}</td></tr>)}</tbody>
+            <tbody>{macRows.map((r) => <tr><td><a href={`/${p.service.slug}/${r.m.slug}/`}>{r.m.name}</a></td><td class="p">{r.battery ? euro(r.battery.price) : "–"}</td><td class="p">{r.screen ? `da ${euro(r.screen.price)}` : "–"}</td></tr>)}</tbody>
           </table>
         </div>
       </div>
