@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import Legal from "../components/Legal.astro";
+// Elenco dei cookie da tenere allineato agli strumenti davvero attivi sul sito.
+---
+<Base title="Cookie policy | G8A Store" description="Quali cookie usa il sito g8astore.it, a cosa servono, per quanto restano e come cambiare le tue preferenze." path="/cookie-policy/" crumbs={[{ name: "Cookie policy", path: "/cookie-policy/" }]}>
+  <Legal titolo="Cookie policy" aggiornato="12 novembre 2026">
+    <p>I cookie sono piccoli file che un sito salva nel browser. Questa pagina spiega quali usa <strong>www.g8astore.it</strong>, gestito da G8A Technology S.r.l., e come scegliere quali accettare. Per il resto del trattamento dei dati vedi la <a href="/privacy-policy/">privacy policy</a>.</p>
+
+    <h2>Come scegliere</h2>
+    <p>Alla prima visita ti chiediamo se accettare o rifiutare i cookie statistici. Chiudere il banner con la X equivale a rifiutare. Finché non scegli, i cookie statistici restano spenti. La tua scelta vale 6 mesi; puoi cambiarla quando vuoi:</p>
+    <button class="btn btn-dark" type="button" data-cookie-prefs>Cambia le preferenze cookie</button>
+    <p>Puoi anche cancellare o bloccare i cookie dalle impostazioni del browser (Chrome, Safari, Firefox, Edge hanno tutti una sezione “Privacy”).</p>
+
+    <h2>Cookie tecnici (sempre attivi)</h2>
+    <p>Servono a far funzionare il sito e non richiedono consenso.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Nome</th><th>Fornitore</th><th>A cosa serve</th><th>Durata</th></tr></thead>
+      <tbody>
+        <tr><td><code>g8astore_consenso</code></td><td>G8A Store (memoria locale del browser)</td><td>Ricorda la tua scelta sui cookie</td><td>6 mesi</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>Cookie statistici (solo con consenso)</h2>
+    <p>Ci dicono quali pagine vengono lette e dove le persone si bloccano, così possiamo migliorare il sito.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Nome</th><th>Fornitore</th><th>A cosa serve</th><th>Durata</th></tr></thead>
+      <tbody>
+        <tr><td><code>_clck</code></td><td>Microsoft Clarity</td><td>Riconosce lo stesso visitatore tra più visite</td><td>1 anno</td></tr>
+        <tr><td><code>_clsk</code></td><td>Microsoft Clarity</td><td>Unisce le pagine viste in una sola registrazione della sessione</td><td>1 giorno</td></tr>
+        <tr><td><code>CLID</code>, <code>MUID</code>, <code>ANONCHK</code>, <code>SM</code>, <code>MR</code></td><td>Microsoft Clarity / Microsoft</td><td>Identificano il browser per le statistiche di Clarity</td><td>da pochi minuti a 1 anno</td></tr>
+      </tbody>
+    </table></div>
+    <p>Microsoft Clarity registra in forma anonima clic, scorrimento e movimenti del mouse per creare mappe di calore e riproduzioni delle sessioni; i testi inseriti nei campi vengono mascherati.</p>
+
+    <h2>Link a servizi esterni</h2>
+    <p>I pulsanti WhatsApp e i link a Google Maps e alle recensioni Google ti portano su servizi di terzi, che applicano le loro regole sui cookie: <a href="https://policies.google.com/technologies/cookies?hl=it" rel="noopener">Google</a>, <a href="https://privacy.microsoft.com/it-it/privacystatement" rel="noopener">Microsoft</a>, <a href="https://www.whatsapp.com/legal/privacy-policy-eea" rel="noopener">WhatsApp</a>.</p>
+
+    <h2>Contatti</h2>
+    <p>Per domande sui cookie scrivi a <a href="mailto:info@g8a.it">info@g8a.it</a>.</p>
+  </Legal>
+</Base>

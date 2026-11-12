@@ -1,0 +1,32 @@
+---
+// Consenso cookie, parte in <head>. Microsoft Clarity parte solo dopo il consenso ai cookie statistici.
+// ID del progetto Clarity di g8astore.it (PUBLIC_CLARITY_ID su Vercel lo sostituisce).
+const clarity = import.meta.env.PUBLIC_CLARITY_ID || "zcjpunqe8n";
+---
+<script is:inline define:vars={{ clarity }}>
+  // Scelta salvata: valida 6 mesi, come indicano le linee guida del Garante.
+  var KEY = "g8astore_consenso", MAX = 1000 * 60 * 60 * 24 * 182;
+  window.g8aConsent = {
+    read: function () {
+      try { var c = JSON.parse(localStorage.getItem(KEY)); return c && c.v === 1 && Date.now() - c.t < MAX ? c : null; } catch (e) { return null; }
+    },
+    apply: function (c) {
+      if (c.a && clarity && !window.clarity) {
+        (function (w, d, t, id) {
+          w.clarity = w.clarity || function () { (w.clarity.q = w.clarity.q || []).push(arguments); };
+          var s = d.createElement(t); s.async = 1; s.src = "https://www.clarity.ms/tag/" + id;
+          var f = d.getElementsByTagName(t)[0]; f.parentNode.insertBefore(s, f);
+        })(window, document, "script", clarity);
+      }
+      if (window.clarity) window.clarity("consentv2", { analytics_Storage: c.a ? "granted" : "denied", ad_Storage: "denied" });
+    },
+    save: function (a) {
+      var c = { v: 1, t: Date.now(), a: !!a };
+      try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {}
+      return c;
+    },
+  };
+  var saved = window.g8aConsent.read();
+  if (saved) window.g8aConsent.apply(saved);
+  else document.documentElement.classList.add("no-consent");
+</script>

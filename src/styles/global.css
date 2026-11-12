@@ -614,3 +614,4 @@ h3 { font-size: 1.2rem; letter-spacing: -0.015em; line-height: 1.25; }
 
 /* titolo solo per lettori di schermo e motori (struttura h1 > h2 > h3) */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }

@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import Icon from "../components/Icon.astro";
 import WaIcon from "../components/WaIcon.astro";
+import ConsentHead from "../components/ConsentHead.astro";
+import ConsentBanner from "../components/ConsentBanner.astro";
 import { SITE, shops, services, saleCategories, waLink, telLink, avgRating, fmtRating, totalReviews, type Shop } from "../data/site";
 
 interface Props {
@@ -60,6 +62,7 @@ const menu = [
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script is:inline>document.documentElement.classList.add("js");</script>
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+    <ConsentHead />
   </head>
   <body>
     <header class="top">
@@ -93,7 +96,7 @@ const menu = [
           <div><h2>Vendita</h2><ul>{saleCategories.map((c) => <li><a href={`/${c.slug}/`}>{c.name}</a></li>)}<li><a href="/partite-iva/">Per partite IVA</a></li></ul></div>
           <div><h2>Negozi</h2><ul>{shops.map((s) => <li><a href={`/${s.slug}/`}>G8A Store {s.city}</a></li>)}</ul></div>
         </div>
-        <p class="legal">G8A Store è un marchio di G8A Technology S.r.l., P.IVA 03981970126. Centro assistenza indipendente, non affiliato Apple. Per le aziende: <a href="https://www.g8a.it/">g8a.it</a></p>
+        <p class="legal">G8A Store è un marchio di G8A Technology S.r.l., P.IVA 03981970126. Centro assistenza indipendente, non affiliato Apple. Per le aziende: <a href="https://www.g8a.it/">g8a.it</a> · <a href="/privacy-policy/">Privacy policy</a> · <a href="/cookie-policy/">Cookie policy</a> · <button type="button" class="linkbtn" data-cookie-prefs>Preferenze cookie</button></p>
       </div>
     </footer>
 
@@ -111,5 +114,6 @@ const menu = [
         setTimeout(function () { els.forEach(function (e) { e.classList.add("in"); }); }, 2500);
       })();
     </script>
+    <ConsentBanner />
   </body>
 </html>

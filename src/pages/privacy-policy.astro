@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import Legal from "../components/Legal.astro";
+// Testo da far verificare al consulente privacy.
+const C = { company: "G8A Technology S.r.l.", legalAddress: "Via Caronno Varesino 33, 21048 Solbiate Arno (VA)", vat: "03981970126", rea: "VA-393252", email: "info@g8a.it" };
+---
+<Base title="Privacy policy | G8A Store" description="Informativa sul trattamento dei dati personali di chi visita g8astore.it e contatta i negozi G8A Store, ai sensi del Regolamento UE 2016/679 (GDPR)." path="/privacy-policy/" crumbs={[{ name: "Privacy policy", path: "/privacy-policy/" }]}>
+  <Legal titolo="Privacy policy" aggiornato="12 novembre 2026">
+    <p>Questa informativa spiega come {C.company}, titolare del marchio G8A Store, tratta i dati personali di chi visita il sito <strong>www.g8astore.it</strong> e di chi contatta i negozi, ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (“GDPR”) e del D.lgs. 196/2003 (Codice privacy).</p>
+
+    <h2>1. Titolare del trattamento</h2>
+    <p>{C.company}, sede legale in {C.legalAddress}, P.IVA {C.vat}, REA {C.rea}.<br />Per qualsiasi richiesta sulla privacy: <a href={`mailto:${C.email}`}>{C.email}</a>.</p>
+
+    <h2>2. Quali dati trattiamo</h2>
+    <h3>Dati di navigazione</h3>
+    <p>I sistemi che fanno funzionare il sito raccolgono in automatico alcuni dati tecnici: indirizzo IP, tipo di browser e dispositivo, pagine visitate, data e ora della richiesta. Servono a far funzionare il sito, a proteggerlo e a risolvere problemi tecnici.</p>
+    <h3>Dati che ci comunichi tu</h3>
+    <p>Il sito non ha moduli di raccolta dati. Se chiami un negozio o gli scrivi su WhatsApp, anche partendo dal configuratore dei PC, trattiamo i dati che decidi di darci: nome, numero di telefono, eventuale email e il contenuto della richiesta.</p>
+    <h3>Cookie e strumenti di misurazione</h3>
+    <p>Solo con il tuo consenso usiamo cookie statistici (Microsoft Clarity). Tutti i dettagli sono nella <a href="/cookie-policy/">cookie policy</a>.</p>
+
+    <h2>3. Perché li trattiamo e su quale base</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Finalità</th><th>Base giuridica</th></tr></thead>
+      <tbody>
+        <tr><td>Far funzionare il sito e garantirne la sicurezza</td><td>Legittimo interesse del titolare (art. 6.1.f GDPR)</td></tr>
+        <tr><td>Rispondere alle richieste di informazioni, preventivi, riparazioni e acquisti</td><td>Misure precontrattuali richieste da te (art. 6.1.b GDPR)</td></tr>
+        <tr><td>Gestire vendite, riparazioni, garanzie e obblighi di legge (fiscali, contabili)</td><td>Contratto e obblighi di legge (art. 6.1.b e 6.1.c GDPR)</td></tr>
+        <tr><td>Statistiche di utilizzo del sito e analisi della navigazione</td><td>Consenso (art. 6.1.a GDPR e art. 122 Codice privacy)</td></tr>
+        <tr><td>Difendere i nostri diritti in caso di contestazioni</td><td>Legittimo interesse del titolare (art. 6.1.f GDPR)</td></tr>
+      </tbody>
+    </table></div>
+    <p>Dare i dati per contattarci è facoltativo, ma senza di essi non possiamo risponderti. Il consenso ai cookie statistici è facoltativo e puoi revocarlo in ogni momento senza conseguenze sull'uso del sito.</p>
+
+    <h2>4. Per quanto tempo li conserviamo</h2>
+    <ul>
+      <li><strong>Richieste di contatto</strong> che non diventano un acquisto o una riparazione: per il tempo necessario a gestirle e comunque non oltre 24 mesi.</li>
+      <li><strong>Dati dei clienti</strong>: per la durata del rapporto e poi per 10 anni, come richiesto dalle norme civilistiche e fiscali.</li>
+      <li><strong>Dati di navigazione tecnici</strong>: per il tempo strettamente necessario alla sicurezza del sito, salvo esigenze di accertamento di illeciti.</li>
+      <li><strong>Cookie</strong>: per le durate indicate nella <a href="/cookie-policy/">cookie policy</a>.</li>
+    </ul>
+
+    <h2>5. Chi può vedere i dati</h2>
+    <p>I dati sono trattati dal personale autorizzato di G8A Technology e, solo per quanto necessario, da fornitori che agiscono come responsabili del trattamento o come titolari autonomi:</p>
+    <ul>
+      <li><strong>Vercel Inc.</strong>: hosting del sito.</li>
+      <li><strong>Microsoft Ireland Operations Ltd</strong>: Microsoft Clarity.</li>
+      <li><strong>Google Ireland Ltd</strong>: Google Maps, quando apri le indicazioni o le recensioni di un negozio.</li>
+      <li><strong>WhatsApp Ireland Ltd</strong>: se scrivi a un negozio su WhatsApp, il servizio è regolato anche dall'informativa di WhatsApp.</li>
+      <li>Consulenti e professionisti (commercialista, legali) e autorità, quando richiesto dalla legge.</li>
+    </ul>
+    <p>I dati non vengono diffusi né venduti a terzi.</p>
+
+    <h2>6. Trasferimenti fuori dall'Unione europea</h2>
+    <p>Alcuni fornitori (ad esempio Vercel e Microsoft) possono trattare dati anche negli Stati Uniti. In questi casi il trasferimento avviene sulla base della decisione di adeguatezza della Commissione europea per il Data Privacy Framework UE-USA, per i fornitori che vi aderiscono, o delle clausole contrattuali standard approvate dalla Commissione.</p>
+
+    <h2>7. I tuoi diritti</h2>
+    <p>In qualsiasi momento puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, riceverli in un formato leggibile (portabilità), e opporti ai trattamenti basati sul legittimo interesse (articoli da 15 a 22 GDPR). Puoi revocare il consenso ai cookie da “Preferenze cookie” in fondo a ogni pagina.</p>
+    <p>Per esercitare i tuoi diritti scrivi a <a href={`mailto:${C.email}`}>{C.email}</a>. Se ritieni che il trattamento violi il GDPR puoi presentare reclamo al <a href="https://www.garanteprivacy.it" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
+
+    <h2>8. Modifiche</h2>
+    <p>Possiamo aggiornare questa informativa, ad esempio se cambiano i servizi del sito. La data dell'ultimo aggiornamento è indicata in alto.</p>
+  </Legal>
+</Base>
