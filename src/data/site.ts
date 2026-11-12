@@ -54,7 +54,7 @@ export function compactHours(hours: string | null) {
 
 export const mapsLink =(shop: Shop) =>
   shop.placeId
-    ? `https://www.google.com/maps/search/?api=1&query=G8A Store&query_place_id=${shop.placeId}`
+    ? `https://www.google.com/maps/search/?api=1&query=G8A%20Store&query_place_id=${shop.placeId}`
     : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`G8A Store ${shop.address} ${shop.zip} ${shop.city}`)}`;
 
 // Comuni vicini a ogni negozio: rendono ogni pagina città davvero locale.

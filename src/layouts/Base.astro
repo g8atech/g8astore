@@ -15,7 +15,9 @@ interface Props {
   noindex?: boolean;
   ogImage?: string;
 }
-const { title, description, path, crumbs = [], schema = [], shop, waMessage, noindex, ogImage } = Astro.props;
+const { title: rawTitle, description, path, crumbs = [], schema = [], shop, waMessage, noindex, ogImage } = Astro.props;
+// Google taglia i titoli oltre ~60 caratteri: se il titolo è lungo, togliamo il suffisso del marchio.
+const title = rawTitle.length > 65 && rawTitle.endsWith(" | G8A Store") ? rawTitle.slice(0, -12) : rawTitle;
 const canonical = new URL(path, SITE).toString();
 const ref = shop ?? shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const wa = waLink(ref, waMessage ?? (shop ? `Ciao G8A Store ${shop.city}, ho bisogno di:` : "Ciao G8A Store, ho bisogno di:"));
