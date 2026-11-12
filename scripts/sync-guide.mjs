@@ -16,7 +16,7 @@ if (!Array.isArray(guide)) { console.error("Risposta inattesa"); process.exit(1)
 // Ordine stabile e solo campi attesi: niente commit inutili
 const pulite = guide.map((g) => ({
   slug: g.slug, titolo: g.titolo, h1: g.h1, descrizione: g.descrizione, intro: g.intro, in_breve: g.in_breve ?? [],
-  sezioni: g.sezioni ?? [], faq: g.faq ?? [], link: g.link ?? [], extra: g.extra ?? {},
+  sezioni: g.sezioni ?? [], faq: g.faq ?? [], link: g.link ?? [], extra: g.extra ?? {}, copertina: g.copertina ?? null,
   firmato_da: g.firmato_da, pubblicata_il: g.pubblicata_il, aggiornata_il: g.aggiornata_il,
 })).sort((a, b) => (b.pubblicata_il ?? "").localeCompare(a.pubblicata_il ?? "") || a.slug.localeCompare(b.slug));
 const corpo = JSON.stringify(pulite, null, 2);

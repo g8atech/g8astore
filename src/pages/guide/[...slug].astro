@@ -10,11 +10,12 @@ import { GUIDE_NINA } from "../../data/guideNina";
 import { SITE, shops } from "../../data/site";
 import { faqSchema } from "../../lib/schema";
 
-type Sezione = { titolo: string; paragrafi?: string[]; punti?: string[] };
+type Img = { url: string; alt: string; didascalia?: string };
+type Sezione = { titolo: string; paragrafi?: string[]; punti?: string[]; immagine?: Img | null };
 type Guida = {
   slug: string; titolo: string; h1: string; descrizione: string; intro: string; in_breve: string[];
   sezioni: Sezione[]; faq: { d: string; r: string }[]; link: { testo: string; url: string }[];
-  firmato_da: string | null; pubblicata_il: string; aggiornata_il: string;
+  firmato_da: string | null; pubblicata_il: string; aggiornata_il: string; copertina?: Img | null;
 };
 
 export function getStaticPaths() {
@@ -35,6 +36,7 @@ const schema = guida
         "@context": "https://schema.org",
         "@type": "Article",
         headline: guida.h1,
+        ...(guida.copertina?.url ? { image: guida.copertina.url } : {}),
         description: guida.descrizione,
         inLanguage: "it-IT",
         datePublished: guida.pubblicata_il,
@@ -57,13 +59,14 @@ const schema = guida
 const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [];
 ---
 {guida ? (
-  <Base title={`${guida.titolo} | G8A Store`} description={guida.descrizione} path={`/guide/${guida.slug}/`} crumbs={crumbs} schema={schema} waMessage={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`}>
+  <Base title={`${guida.titolo} | G8A Store`} description={guida.descrizione} path={`/guide/${guida.slug}/`} crumbs={crumbs} schema={schema} waMessage={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} ogImage={guida.copertina?.url}>
     <Hero crumbs={crumbs} sub={guida.intro} shop={ref} msg={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} secondary={{ href: "#contatti", label: "Trova il negozio" }}>
       {guida.h1}
     </Hero>
     <section class="sec">
       <div class="wrap guide">
         <p class="byline">Guida di G8A Store{guida.firmato_da ? <> · verificata da <b>{guida.firmato_da}</b>{RUOLI[guida.firmato_da] ? `, ${RUOLI[guida.firmato_da]}` : ""}</> : null} · aggiornata il {data(guida.aggiornata_il)}</p>
+        {guida.copertina?.url && <img class="cover" src={guida.copertina.url} alt={guida.copertina.alt} width="1200" height="800" />}
         {guida.in_breve.length > 0 && (
           <aside class="breve" aria-label="In breve">
             <b>In breve</b>
@@ -75,6 +78,7 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
             <h2>{s.titolo}</h2>
             {(s.paragrafi ?? []).map((p) => <p>{p}</p>)}
             {(s.punti ?? []).length > 0 && <ul class="punti">{s.punti!.map((p) => <li>{p}</li>)}</ul>}
+            {s.immagine?.url && <figure><img src={s.immagine.url} alt={s.immagine.alt} width="1200" height="800" loading="lazy" />{s.immagine.didascalia && <figcaption>{s.immagine.didascalia}</figcaption>}</figure>}
           </section>
         ))}
         {guida.link.length > 0 && (
@@ -91,7 +95,7 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
       <section class="sec sec-paper">
         <div class="wrap">
           <div class="head c"><span class="tag">Guide</span><h2>Leggi anche</h2></div>
-          <ul class="glist">{altre.map((g) => <li><a href={`/guide/${g.slug}/`}><b>{g.h1}</b><span>{g.descrizione}</span></a></li>)}</ul>
+          <ul class="glist">{altre.map((g) => <li><a href={`/guide/${g.slug}/`}>{g.copertina?.url && <img src={g.copertina.url} alt="" width="1200" height="800" loading="lazy" />}<b>{g.h1}</b><span>{g.descrizione}</span></a></li>)}</ul>
         </div>
       </section>
     )}
@@ -104,7 +108,7 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
     <section class="sec" id="guide">
       <div class="wrap">
         <h2 class="sr-only">Tutte le guide</h2>
-        <ul class="glist">{guide.map((g) => <li><a href={`/guide/${g.slug}/`}><b>{g.h1}</b><span>{g.descrizione}</span></a></li>)}</ul>
+        <ul class="glist">{guide.map((g) => <li><a href={`/guide/${g.slug}/`}>{g.copertina?.url && <img src={g.copertina.url} alt="" width="1200" height="800" loading="lazy" />}<b>{g.h1}</b><span>{g.descrizione}</span></a></li>)}</ul>
       </div>
     </section>
     <Contacts msg={(s) => `Ciao G8A Store ${s.city}, ho bisogno di:`} />
@@ -112,6 +116,11 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
 )}
 
 <style>
+  .cover { width: 100%; height: auto; border-radius: 18px; margin: 0 0 24px; }
+  figure { margin: 18px 0 0; }
+  figure img { width: 100%; height: auto; border-radius: 16px; }
+  figcaption { font-size: .88rem; color: var(--muted); margin-top: 6px; }
+  .glist img { width: calc(100% + 36px); max-width: none; height: auto; aspect-ratio: 3/2; object-fit: cover; margin: -18px -18px 6px; border-radius: 14px 14px 0 0; }
   .guide { max-width: 760px; }
   .guide .byline { font-size: .9rem; color: var(--muted); margin-bottom: 22px; }
   .guide section + section, .guide .breve + section { margin-top: 30px; }
