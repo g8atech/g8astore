@@ -3,6 +3,171 @@
 /* eslint-disable */
 export const GUIDE_NINA: any[] = [
   {
+    "slug": "sostituzione-batteria-notebook",
+    "titolo": "Sostituzione batteria notebook: quando serve e come",
+    "h1": "Sostituzione batteria notebook: quando serve davvero e cosa succede in negozio",
+    "descrizione": "Il notebook dura poco o la batteria è gonfia? Scopri quando va sostituita, come controllarla da solo e cosa fare in sicurezza. Chiedi al negozio.",
+    "intro": "La sostituzione della batteria del notebook serve quando l'autonomia è crollata, il PC si spegne da solo o la batteria è gonfia. Puoi fare un primo controllo gratis con Windows. Se vedi deformazioni, smetti subito di usarlo: in quel caso la batteria va tolta da un tecnico.",
+    "in_breve": [
+      "Batteria che dura pochissimo, spegnimenti improvvisi o PC che funziona solo col cavo: probabilmente è da cambiare.",
+      "Windows ti dà un report gratuito con il comando powercfg /batteryreport: confronta capacità originale e attuale.",
+      "Batteria gonfia (touchpad sollevato, scocca che si apre): spegni, non caricare, non toccare, vai da un tecnico.",
+      "Non sostituire un notebook intero per una batteria esausta: spesso basta cambiare solo quella.",
+      "In negozio la diagnosi è gratuita e il prezzo ti viene detto prima di riparare."
+    ],
+    "sezioni": [
+      {
+        "punti": [
+          "L'autonomia è molto più corta di prima.",
+          "Il notebook si spegne di colpo anche con la carica indicata al 30-40%.",
+          "Il PC funziona solo con il caricabatterie collegato.",
+          "Il livello di carica salta da un valore all'altro.",
+          "Windows segnala che la batteria è da sostituire o la batteria risulta rilevata ma non carica."
+        ],
+        "titolo": "Come capire se la batteria del notebook è da sostituire",
+        "paragrafi": [
+          "Le batterie al litio si consumano con l'uso e con gli anni. Non è un difetto: è normale che dopo molti cicli di carica tengano sempre meno energia."
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Come controllare la salute della batteria con Windows",
+        "paragrafi": [
+          "Windows ha uno strumento integrato che crea un report sulla batteria, senza installare nulla. Apri il Prompt dei comandi come amministratore (premi Win + X e scegli Terminale o Prompt dei comandi come amministratore).",
+          "Scrivi powercfg /batteryreport (con lo spazio prima della barra) e premi Invio. Windows salva un file HTML e ti indica dove si trova: aprilo con doppio clic.",
+          "Nel report confronta la capacità di progetto con la capacità attuale. Una differenza grande indica una batteria da sostituire, ma non esiste una soglia precisa data da Microsoft: è una stima, non una diagnosi di sicurezza.",
+          "Sui Mac il controllo si fa dalle impostazioni di sistema, nella sezione dedicata alla batteria, dove macOS indica lo stato di salute."
+        ]
+      },
+      {
+        "punti": [
+          "Segnali: touchpad sollevato, tastiera che si alza, scocca che non chiude, notebook che dondola sul tavolo.",
+          "Spegni il PC, scollega il caricabatterie e non rimetterlo in carica.",
+          "Appoggialo su una superficie non infiammabile, lontano da tessuti, carta e fonti di calore.",
+          "NON forare, schiacciare o togliere con forza la batteria.",
+          "NON usarlo \"ancora un po'\" e non portarlo in borsa carico.",
+          "Portalo a un tecnico: la batteria va rimossa e smaltita correttamente."
+        ],
+        "titolo": "La batteria è gonfia: cosa fare subito e cosa non fare",
+        "immagine": {
+          "alt": "Confronto tra notebook con batteria normale e batteria gonfia che solleva il touchpad",
+          "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/sostituzione-batteria-notebook-eb62c707.jpg",
+          "fonte": "nina",
+          "didascalia": "Touchpad o scocca sollevati: possibile batteria gonfia."
+        },
+        "paragrafi": [
+          "Una batteria gonfia è un rischio per la sicurezza: le celle al litio producono gas quando si degradano e, se si rompono, possono incendiarsi. Il produttore Dell, come altri, indica di smettere subito di usare il notebook."
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Posso cambiare la batteria da solo?",
+        "paragrafi": [
+          "Dipende dal modello. Su alcuni notebook più vecchi la batteria è accessibile con uno sportellino. Su molti modelli recenti e su quasi tutti i Mac è dentro la scocca, fissata con viti, flat o colla.",
+          "Aprire il notebook senza esperienza può rovinare cavi, connettori e schermo, e rischi di danneggiare la batteria stessa. Se è gonfia, non provarci mai.",
+          "Se vuoi provare, usa solo un ricambio compatibile col tuo modello esatto: la sigla è scritta sull'etichetta sotto il PC e sulla batteria. Evita batterie senza marca o di origine incerta."
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Come si svolge la sostituzione in negozio",
+        "immagine": {
+          "alt": "Sostituzione batteria notebook: quando serve davvero e cosa succede in negozio",
+          "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/sostituzione-batteria-notebook-foto-7f42d03b.jpg",
+          "fonte": "foto"
+        },
+        "paragrafi": [
+          "Porti il notebook e il caricabatterie in uno dei nostri negozi. Il tecnico controlla la batteria e verifica che il problema non sia altrove, per esempio nel caricabatterie, nella porta di ricarica o nella scheda madre.",
+          "La diagnosi è gratuita e il prezzo ti viene comunicato prima di riparare. Sulle riparazioni c'è garanzia. I prezzi sono nella pagina del servizio.",
+          "Se la batteria era gonfia, il tecnico controlla anche se la pressione ha danneggiato touchpad, tastiera o scocca. Prima di consegnare il PC, fai una copia dei dati importanti se puoi."
+        ]
+      },
+      {
+        "punti": [
+          "Evita il caldo: non usare il PC su letto o divano che coprono le ventole.",
+          "Non tenerlo sempre al 100% e collegato per mesi, se il sistema offre il limite di carica.",
+          "Microsoft consiglia di tenere la carica mediamente tra il 20% e l'80% quando possibile.",
+          "Usa il caricabatterie originale o di qualità, con la potenza giusta.",
+          "Se non lo usi per settimane, lascialo con una carica media, non scarico."
+        ],
+        "titolo": "Come far durare di più la nuova batteria",
+        "paragrafi": []
+      },
+      {
+        "punti": [],
+        "titolo": "Conviene cambiare la batteria o comprare un notebook nuovo?",
+        "paragrafi": [
+          "Se il PC va ancora bene per ciò che fai, cambiare la batteria costa meno di un notebook nuovo e lo rende di nuovo portatile. Conviene meno se il PC è molto lento o con altri guasti: in quel caso il tecnico ti dice onestamente le alternative, tra cui un ricondizionato o un nuovo."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "d": "Quanto dura la batteria di un notebook?",
+        "r": "Dipende da uso, calore e numero di cicli di carica. Dopo alcuni anni di uso quotidiano è normale che la capacità cali in modo evidente."
+      },
+      {
+        "d": "Posso usare il notebook senza batteria, solo col cavo?",
+        "r": "In molti modelli sì, ma se la batteria è gonfia no: va rimossa da un tecnico. Anche con batteria sana, un'alimentazione senza batteria può causare spegnimenti se il cavo si sfila."
+      },
+      {
+        "d": "Come si controlla la batteria su Windows?",
+        "r": "Con il comando powercfg /batteryreport dal Prompt dei comandi: crea un report HTML con capacità originale e attuale."
+      },
+      {
+        "d": "La batteria gonfia può esplodere?",
+        "r": "Può incendiarsi se le celle si rompono. Per questo bisogna smettere di usarla, non caricarla e non manipolarla."
+      },
+      {
+        "d": "Sostituite la batteria anche dei MacBook?",
+        "r": "Sì, trovi i dettagli nella pagina riparazione batteria Mac. Contattaci con il modello esatto."
+      },
+      {
+        "d": "La sostituzione rovina i miei dati?",
+        "r": "Di norma no, ma è sempre prudente avere una copia dei file importanti prima di qualsiasi riparazione."
+      }
+    ],
+    "link": [
+      {
+        "url": "/riparazione-notebook/batteria/",
+        "testo": "Riparazione batteria notebook"
+      },
+      {
+        "url": "/riparazione-notebook/non-carica/",
+        "testo": "Notebook che non si carica"
+      },
+      {
+        "url": "/riparazione-mac/batteria/",
+        "testo": "Batteria MacBook"
+      },
+      {
+        "url": "/guide/notebook-non-si-accende/",
+        "testo": "Notebook che non si accende: cosa controllare"
+      },
+      {
+        "url": "/riparazione-notebook/surriscaldamento/",
+        "testo": "Surriscaldamento del notebook"
+      },
+      {
+        "url": "/ricondizionati/",
+        "testo": "Notebook ricondizionati"
+      },
+      {
+        "url": "/negozi/",
+        "testo": "I nostri negozi"
+      }
+    ],
+    "extra": {},
+    "copertina": {
+      "alt": "Sostituzione batteria notebook: quando serve davvero e cosa succede in negozio",
+      "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/sostituzione-batteria-notebook-foto-227cb2bd.jpg",
+      "fonte": "foto"
+    },
+    "firmato_da": "Antonio Arrigo",
+    "pubblicata_il": "2026-11-13",
+    "aggiornata_il": "2026-11-13"
+  },
+  {
     "slug": "notebook-non-si-accende",
     "titolo": "Notebook non si accende: cosa controllare prima",
     "h1": "Notebook che non si accende: cosa controllare prima di portarlo in assistenza",
