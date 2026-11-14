@@ -2,8 +2,8 @@
 import Base from "../layouts/Base.astro";
 import Legal from "../components/Legal.astro";
 // Elenco dei cookie da tenere allineato agli strumenti davvero attivi sul sito.
-// Google Analytics compare solo quando su Vercel è attivo (PUBLIC_GA4_ID o PUBLIC_GTM_ID).
-const ga = !!(import.meta.env.PUBLIC_GA4_ID || import.meta.env.PUBLIC_GTM_ID);
+// Google Analytics 4 è attivo tramite Tag Manager (GTM-K6225NC3), solo con il consenso alle statistiche.
+const ga = true;
 ---
 <Base title="Cookie policy | G8A Store" description="Quali cookie usa il sito g8astore.it, a cosa servono, per quanto restano e come cambiare le tue preferenze." path="/cookie-policy/" crumbs={[{ name: "Cookie policy", path: "/cookie-policy/" }]}>
   <Legal titolo="Cookie policy" aggiornato="12 novembre 2026">
