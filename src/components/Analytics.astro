@@ -3,7 +3,7 @@
 // Su Vercel: PUBLIC_GTM_ID (Google Tag Manager) oppure PUBLIC_GA4_ID (Google Analytics 4 diretto, es. G-XXXXXXX).
 // Senza nessuna delle due resta solo il conteggio dei clic di contatto nel dataLayer (nessun dato inviato).
 // Contenitore Tag Manager di g8astore.it (unico per tutti i negozi); PUBLIC_GTM_ID su Vercel lo sostituisce.
-const gtm = import.meta.env.PUBLIC_GTM_ID || "GTM-K6225NC3";
+const gtm = import.meta.env.PUBLIC_GTM_ID || "GTM-WQ3RR99N";
 const ga4 = gtm ? undefined : import.meta.env.PUBLIC_GA4_ID;
 ---
 {gtm && <script is:inline define:vars={{ gtm }}>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtm);</script>}
