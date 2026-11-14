@@ -85,8 +85,10 @@ if (p.kind === "service") {
 } else {
   const s = p.shop;
   const near = nearby[s.slug] || [];
-  title = `Riparazione e vendita PC a ${s.city} | G8A Store`;
-  description = `G8A Store ${s.city}, ${s.address}: riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Diagnosi gratuita e prezzo prima di riparare.`.slice(0, 160);
+  // Ricerche reali (Search Console): "riparazione pc <città>", "computer ricondizionati/usati <città>",
+  // "centro assistenza computer", "negozio informatica <città>".
+  title = `Riparazione PC e Computer Ricondizionati a ${s.city} | G8A Store`;
+  description = `Negozio di informatica a ${s.city}, ${s.address}: riparazione e assistenza PC, notebook e Mac, computer nuovi e ricondizionati garantiti. Diagnosi gratuita.`.slice(0, 160);
   photo = "notebook-rosso"; sub = `Notebook, PC fissi e Mac per privati e partite IVA. Ci trovi in ${s.address}${s.hint ? `, ${s.hint.toLowerCase()}` : ""}.`; crumbName = s.city; msg = `Ciao G8A Store ${s.city}, ho bisogno di:`;
   h1 = { a: "Riparazione e vendita PC a", b: s.city };
   faq = [
@@ -94,6 +96,7 @@ if (p.kind === "service") {
     ["Quanto costa la diagnosi?", "Niente. Ricevi il preventivo prima di qualsiasi intervento e, se non procedi, non paghi."],
     ["Riparate anche i Mac?", "Sì, MacBook Air e MacBook Pro, con listino per modello. Siamo un centro indipendente, non affiliato Apple."],
     ["Vendete computer con fattura alle partite IVA?", "Sì: notebook, PC e monitor in fattura, configurati e pronti all'uso."],
+    [`Avete computer ricondizionati a ${s.city}?`, "Sì: notebook e PC aziendali ricondizionati, controllati e testati dai nostri tecnici, pronti all'uso con Windows installato e con garanzia diretta in negozio."],
     ...(near.length > 1 ? [[`Arrivo da ${near[0]} o ${near[1]}: vale la pena?`, `Sì, molti nostri clienti arrivano da ${near.join(", ")}. Scrivici prima su WhatsApp: per molti interventi ti diciamo già se si risolve in giornata.`] as [string, string]] : []),
   ];
 }
