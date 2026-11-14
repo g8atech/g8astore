@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Crawler dei motori AI: accesso consentito per la visibilità nelle risposte (GEO)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.g8astore.it/sitemap-index.xml
