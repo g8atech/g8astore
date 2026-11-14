@@ -36,6 +36,7 @@ ${guide ? `\n## Guide pratiche\n\n${guide}\n` : ""}
 - [G8A Technology](https://www.g8a.it): assistenza informatica e noleggio assistito per aziende.
 - [RiparoHero](https://www.riparohero.it): riparazione smartphone, tablet e console.
 - [TonerHero](https://www.tonerhero.it): toner e cartucce.
+- [FibraHero](https://www.fibrahero.it): fibra e connettività per aziende.
 `;
   return new Response(testo, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 };

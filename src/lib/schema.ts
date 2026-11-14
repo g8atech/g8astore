@@ -46,6 +46,8 @@ export function storeSchema(shop: Shop, withRating = false) {
     },
     openingHoursSpecification: openingHours(shop.hours),
     parentOrganization: { "@type": "Organization", name: "G8A Technology S.r.l.", url: "https://www.g8a.it/" },
+    // Scheda Google del negozio (solo se il place id G8A Store è noto in Brain): collega sito e recensioni.
+    ...(shop.placeId ? { sameAs: [`https://www.google.com/maps/place/?q=place_id:${shop.placeId}`] } : {}),
     ...(withRating && shop.rating && shop.reviews
       ? { aggregateRating: { "@type": "AggregateRating", ratingValue: shop.rating, reviewCount: shop.reviews, bestRating: 5 } }
       : {}),
