@@ -5,6 +5,20 @@
 // Contenitore Tag Manager di g8astore.it (unico per tutti i negozi); PUBLIC_GTM_ID su Vercel lo sostituisce.
 const gtm = import.meta.env.PUBLIC_GTM_ID || "GTM-WQ3RR99N";
 const ga4 = gtm ? undefined : import.meta.env.PUBLIC_GA4_ID;
+import { shops, waNumber } from "../data/site";
+// Per riconoscere il negozio di ogni clic: numero di telefono, numero WhatsApp, scheda Google o pagina del negozio.
+// Un numero condiviso da più negozi non indica un negozio preciso e viene scartato.
+const chiavi: Record<string, string> = {};
+const doppie = new Set<string>();
+for (const s of shops) {
+  for (const k of [waNumber(s.phone), waNumber(s.whatsapp), s.placeId, s.city]) {
+    if (!k) continue;
+    if (chiavi[k] && chiavi[k] !== s.city) doppie.add(k);
+    chiavi[k] = s.city;
+  }
+}
+doppie.forEach((k) => delete chiavi[k]);
+const pagine = Object.fromEntries(shops.map((s) => [`/${s.slug}/`, s.city]));
 ---
 {gtm && <script is:inline define:vars={{ gtm }}>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtm);</script>}
 {ga4 && <script is:inline define:vars={{ ga4 }}>
@@ -19,15 +33,24 @@ const ga4 = gtm ? undefined : import.meta.env.PUBLIC_GA4_ID;
   var c = window.g8aConsent && window.g8aConsent.read();
   if (c && c.a) window.__g8aGa4Load();
 </script>}
-<script is:inline>
-  // Conversioni: ogni clic su telefono, WhatsApp o email (negozio e pagina) va nel dataLayer per GTM, o a GA4 se diretto.
+<script is:inline define:vars={{ chiavi, pagine }}>
+  // Conversioni: ogni clic su telefono, WhatsApp, email o Indicazioni (negozio e pagina) va nel dataLayer per GTM, o a GA4 se diretto.
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a') : null;
     if (!a) return;
     var h = a.getAttribute('href') || '';
-    var canale = h.indexOf('tel:') === 0 ? 'telefono' : h.indexOf('wa.me/') >= 0 ? 'whatsapp' : h.indexOf('mailto:') === 0 ? 'email' : null;
+    var canale = h.indexOf('tel:') === 0 ? 'telefono' : h.indexOf('wa.me/') >= 0 ? 'whatsapp' : h.indexOf('mailto:') === 0 ? 'email'
+      : /google\.[a-z.]+\/maps|maps\.app\.goo\.gl|goo\.gl\/maps/.test(h) ? 'indicazioni' : null;
     if (!canale) return;
-    var dati = { canale: canale, pagina: location.pathname, negozio: a.getAttribute('data-shop') || '' };
+    // Negozio: dal numero (tel/WhatsApp), dalla scheda Google o dalla città nel link Maps; altrimenti dalla pagina del negozio.
+    var negozio = '';
+    var num = (h.match(/^tel:\+?(\d+)/) || h.match(/wa\.me\/(\d+)/) || [])[1];
+    var place = (h.match(/query_place_id=([^&]+)/) || [])[1];
+    if (num && chiavi[num]) negozio = chiavi[num];
+    else if (place && chiavi[place]) negozio = chiavi[place];
+    else if (canale === 'indicazioni') { var q = decodeURIComponent(h); for (var k in chiavi) if (isNaN(k) && q.indexOf(' ' + k) >= 0) negozio = chiavi[k]; }
+    if (!negozio) negozio = pagine[location.pathname] || '';
+    var dati = { canale: canale, pagina: location.pathname, negozio: negozio };
     (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: 'contatto' }, dati));
     if (window.__g8aGa4 && window.gtag) window.gtag('event', 'contatto', dati);
   });
