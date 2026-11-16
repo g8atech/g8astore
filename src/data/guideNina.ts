@@ -3,6 +3,192 @@
 /* eslint-disable */
 export const GUIDE_NINA: any[] = [
   {
+    "slug": "antivirus-pc-lavoro",
+    "titolo": "Antivirus per PC: serve se lavori al computer?",
+    "h1": "Antivirus per PC: perché serve se lo usi molto o per lavoro",
+    "descrizione": "Antivirus per PC: se usi il computer ogni giorno o per lavoro, un buon antivirus è una scelta saggia. Cosa guardare, cosa evitare e quando chiedere aiuto.",
+    "intro": "Se usi il computer ogni giorno o ci lavori, ti consigliamo di avere un antivirus per PC attivo, aggiornato e scelto con criterio. Windows ha già una protezione di base gratuita, e va tenuta accesa. Ma quando sul PC ci sono email, fatture, dati dei clienti e accessi alla banca, un danno costa molto più della prevenzione. Qui trovi come scegliere, cosa evitare e quando farti aiutare.",
+    "in_breve": [
+      "Windows 10 e 11 includono Microsoft Defender Antivirus, gratuito e attivo di serie: tienilo acceso e aggiornato, è la base.",
+      "Se usi il PC molto o per lavoro, noi consigliamo un antivirus completo: protezione dai siti truffa, dalle email false e dal ransomware, con assistenza se qualcosa va storto.",
+      "Mai due antivirus insieme: si disturbano a vicenda e rallentano il computer. Ne basta uno.",
+      "L'antivirus non basta da solo: servono aggiornamenti, password diverse per ogni servizio e copie di sicurezza dei file.",
+      "Se il PC è già lento o mostra pubblicità strane, prima serve una pulizia: poi si protegge."
+    ],
+    "sezioni": [
+      {
+        "punti": [],
+        "titolo": "Windows ha già un antivirus: allora perché installarne un altro?",
+        "paragrafi": [
+          "Sì: Windows 11 include Sicurezza di Windows con Microsoft Defender Antivirus, senza costi aggiuntivi. Protegge in tempo reale e si aggiorna da solo tramite Windows Update. Per chi usa il PC poco e con attenzione, può bastare.",
+          "Chi invece passa molte ore al computer, apre allegati ogni giorno, scambia file con clienti o fornitori e usa servizi online delicati, è molto più esposto. Per questo noi consigliamo un antivirus completo. Una buona suite aggiunge in genere controllo dei siti e dei link pericolosi, protezione dalle email truffa, difesa dai ransomware e un'assistenza a cui rivolgersi.",
+          "Non è una questione di paura: è una questione di rischio. Un giorno di lavoro fermo o un archivio clienti perso valgono più di un abbonamento."
+        ]
+      },
+      {
+        "punti": [
+          "Professionisti, partite IVA e piccole attività: sul PC ci sono fatture, contratti, dati dei clienti e accessi alla banca.",
+          "Chi lavora da casa o in smart working e usa il PC anche per la famiglia.",
+          "Chi riceve ogni giorno email con allegati (preventivi, PDF, fatture).",
+          "Studenti e universitari che scaricano molti programmi e scambiano file.",
+          "Chi usa il PC per giocare e scarica spesso giochi, mod e programmi.",
+          "Chi usa il PC per l'home banking e gli acquisti online."
+        ],
+        "titolo": "Chi dovrebbe avere un antivirus completo?",
+        "paragrafi": [
+          "Il consiglio vale soprattutto per queste persone:"
+        ]
+      },
+      {
+        "punti": [
+          "Ransomware: un programma blocca o cifra i tuoi file e chiede un riscatto. Non pagare: non hai garanzia di riavere i dati.",
+          "Phishing: email o messaggi che sembrano di banca, corriere o fornitore e ti portano su siti falsi per rubare password.",
+          "Allegati e programmi infetti: un file «fattura» o un software «crackato» che installa qualcosa di nascosto.",
+          "Spyware e furto di password: programmi che registrano ciò che scrivi.",
+          "Estensioni del browser dannose e pubblicità invasive che dirottano la ricerca."
+        ],
+        "titolo": "Che minacce corre davvero un PC usato per lavoro?",
+        "paragrafi": [
+          "Le più comuni non sono virus da film, ma queste:"
+        ]
+      },
+      {
+        "punti": [
+          "Un produttore conosciuto, che aggiorna il programma ogni giorno.",
+          "Protezione in tempo reale, controllo dei siti web e delle email, difesa anti-ransomware.",
+          "Licenza per il numero di dispositivi che usi davvero (PC, notebook, telefono).",
+          "Se hai un'azienda con più PC: una soluzione con gestione centralizzata, per controllare tutto da un punto.",
+          "Un programma leggero: sul PC vecchio un antivirus pesante rallenta tutto.",
+          "Scaricalo solo dal sito del produttore o da un negozio fidato, mai da pubblicità o da avvisi che dicono «il tuo PC è infetto»: sono quasi sempre truffe."
+        ],
+        "titolo": "Come scegliere un antivirus per PC",
+        "paragrafi": [
+          "Non esiste «il migliore» per tutti. Guarda queste cose:"
+        ]
+      },
+      {
+        "punti": [
+          "Non installare due antivirus insieme: litigano e rallentano il PC. Quando ne installi uno nuovo, quello vecchio va rimosso bene. Windows Defender di norma passa in secondo piano da solo.",
+          "Non scaricare antivirus «gratis» da siti sconosciuti o craccati.",
+          "Non disattivare la protezione «perché rallenta» o perché un programma lo chiede.",
+          "Non ignorare gli avvisi di scadenza: un antivirus scaduto non protegge.",
+          "Non pensare che basti: un antivirus non ferma una password debole o un clic distratto."
+        ],
+        "titolo": "Cosa NON fare con l'antivirus",
+        "paragrafi": [
+          "Gli errori più comuni sono semplici da evitare:"
+        ]
+      },
+      {
+        "punti": [
+          "Tieni aggiornati Windows (o macOS), browser e programmi.",
+          "Usa una password diversa per ogni servizio importante e attiva la verifica in due passaggi.",
+          "Prima di aprire un allegato inatteso, chiedi conferma a chi te lo ha mandato per un'altra via.",
+          "Fai una copia di sicurezza dei file su un disco esterno o in cloud, e scollega il disco quando hai finito: un ransomware non lo raggiunge.",
+          "Non usare il PC di lavoro con un account amministratore per le cose di tutti i giorni.",
+          "Ogni tanto controlla in Sicurezza di Windows che la protezione sia attiva."
+        ],
+        "titolo": "Cosa fare da solo ogni giorno per proteggere il PC",
+        "paragrafi": [
+          "Poche abitudini fanno la differenza, e non costano nulla:"
+        ]
+      },
+      {
+        "punti": [
+          "Il computer è diventato lento senza motivo o la ventola gira sempre.",
+          "Compaiono pubblicità e finestre anche quando non navighi.",
+          "Il browser cambia pagina iniziale o motore di ricerca.",
+          "Programmi che non hai installato.",
+          "File che non si aprono o hanno estensioni strane.",
+          "L'antivirus risulta spento e non riesci ad accenderlo."
+        ],
+        "titolo": "Come capisco se il PC è infetto?",
+        "immagine": {
+          "alt": "Schema delle abitudini che proteggono il PC: aggiornamenti, password, backup, antivirus",
+          "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/antivirus-pc-lavoro-4d4b7bb0.jpg",
+          "fonte": "nina",
+          "didascalia": "Le quattro abitudini che proteggono il PC di lavoro"
+        },
+        "paragrafi": [
+          "Nessun segnale da solo prova qualcosa, ma insieme sono un campanello:"
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Quando serve il tecnico e cosa succede in negozio",
+        "paragrafi": [
+          "Se sospetti un'infezione, spegni il PC dalla rete (stacca il Wi-Fi o il cavo) e non pagare nessun riscatto. Cambia le password importanti da un altro dispositivo.",
+          "In negozio facciamo la diagnosi gratuita e ti diciamo il prezzo prima di intervenire. Controlliamo il PC, togliamo ciò che non va e, se serve, ti aiutiamo a recuperare i dati. Poi ti consigliamo la protezione adatta a come lavori, così non rischi di ricascarci. Per i prezzi guarda la pagina del servizio. Se hai una partita IVA, trovi la pagina dedicata a professionisti e aziende."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "d": "Windows 11 ha già un antivirus?",
+        "r": "Sì. Windows 11 include Sicurezza di Windows con Microsoft Defender Antivirus, senza costi aggiuntivi. Controlla che sia attivo dall'app Sicurezza di Windows."
+      },
+      {
+        "d": "Se uso il PC per lavoro, mi basta Windows Defender?",
+        "r": "Per un uso leggero può bastare. Per un uso intenso o professionale consigliamo un antivirus completo, con protezione da siti e email truffa e dal ransomware, e un'assistenza a cui rivolgersi."
+      },
+      {
+        "d": "Posso installare due antivirus insieme?",
+        "r": "No. Due antivirus in funzione insieme possono creare conflitti e rallentare il PC. Ne serve uno solo."
+      },
+      {
+        "d": "Un antivirus rallenta il computer?",
+        "r": "Può consumare un po' di risorse, soprattutto su PC vecchi. Scegli un programma leggero e, se il PC è già lento, falla controllare prima da un tecnico."
+      },
+      {
+        "d": "L'antivirus protegge dal ransomware?",
+        "r": "Aiuta, ma non basta da solo. Servono anche aggiornamenti, attenzione agli allegati e una copia di sicurezza dei file tenuta fuori dal PC."
+      },
+      {
+        "d": "Anche il Mac ha bisogno di un antivirus?",
+        "r": "Il Mac ha protezioni integrate, ma truffe, email false e allegati pericolosi valgono anche lì. Se lo usi per lavoro, chiedi consiglio in negozio."
+      }
+    ],
+    "link": [
+      {
+        "url": "/riparazione-pc/virus/",
+        "testo": "Rimozione virus dal PC"
+      },
+      {
+        "url": "/riparazione-notebook/virus/",
+        "testo": "Rimozione virus dal notebook"
+      },
+      {
+        "url": "/riparazione-pc/pc-lento/",
+        "testo": "PC lento: cause e soluzioni"
+      },
+      {
+        "url": "/riparazione-pc/recupero-dati/",
+        "testo": "Recupero dati da PC"
+      },
+      {
+        "url": "/partite-iva/",
+        "testo": "Servizi per partite IVA e aziende"
+      },
+      {
+        "url": "/guide/windows-10-fine-supporto-sostituire-pc/",
+        "testo": "Guida: Windows 10 e fine supporto"
+      },
+      {
+        "url": "/negozi/",
+        "testo": "I nostri negozi"
+      }
+    ],
+    "extra": {},
+    "copertina": {
+      "alt": "Notebook con scudo di protezione: antivirus per PC per chi lavora",
+      "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/antivirus-pc-lavoro-ac082f34.jpg",
+      "fonte": "nina"
+    },
+    "firmato_da": "Antonio Arrigo",
+    "pubblicata_il": "2026-11-16",
+    "aggiornata_il": "2026-11-16"
+  },
+  {
     "slug": "windows-10-fine-supporto-sostituire-pc",
     "titolo": "Windows 10 fine supporto: va sostituito il PC?",
     "h1": "Windows 10 è a fine supporto: devi sostituire il PC?",
