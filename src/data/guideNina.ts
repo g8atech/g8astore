@@ -3,6 +3,161 @@
 /* eslint-disable */
 export const GUIDE_NINA: any[] = [
   {
+    "slug": "windows-10-fine-supporto-sostituire-pc",
+    "titolo": "Windows 10 fine supporto: va sostituito il PC?",
+    "h1": "Windows 10 è a fine supporto: devi sostituire il PC?",
+    "descrizione": "Windows 10 non è più supportato da Microsoft. Scopri se puoi passare a Windows 11, quando conviene cambiare PC e cosa fare ora in sicurezza.",
+    "intro": "Windows 10 va sostituito, ma non per forza il PC. Microsoft ha chiuso il supporto ordinario il 14 ottobre 2025: se il tuo computer è compatibile, puoi passare a Windows 11 senza comprarne uno nuovo. Se non lo è, hai ancora un margine, ma limitato: in questa guida vedi come controllare e come decidere.",
+    "in_breve": [
+      "Il supporto di Windows 10 è terminato il 14 ottobre 2025: niente più aggiornamenti gratuiti, correzioni di sicurezza e assistenza tecnica Microsoft.",
+      "I PC personali iscritti al programma ESU ricevono gli aggiornamenti di sicurezza critici e importanti fino al 12 ottobre 2027 (data indicata da Microsoft). Non include assistenza tecnica né nuove funzioni.",
+      "Se il PC è compatibile con Windows 11, di solito basta aggiornare: il PC non va cambiato.",
+      "Se non è compatibile, conviene pianificare la sostituzione entro la fine del programma ESU, non aspettare l'ultimo giorno.",
+      "I PC aziendali non usano l'ESU per privati: per partite IVA conviene un controllo di tutti i computer."
+    ],
+    "sezioni": [
+      {
+        "punti": [],
+        "titolo": "Cosa significa davvero che Windows 10 non è più supportato?",
+        "paragrafi": [
+          "Il PC non smette di funzionare. Si avvia, apri i file e usi i programmi come prima. Cambia una cosa: Microsoft non pubblica più gli aggiornamenti gratuiti da Windows Update, né correzioni per la sicurezza o assistenza tecnica.",
+          "Il rischio è nel tempo. Ogni falla scoperta dopo la fine del supporto resta aperta, e chi attacca i computer cerca proprio i sistemi non aggiornati. Contano soprattutto la posta, la navigazione e i pagamenti online fatti da quel PC."
+        ]
+      },
+      {
+        "punti": [
+          "È un ponte, non una soluzione definitiva: dopo la scadenza i nuovi problemi restano senza correzione.",
+          "Dà solo aggiornamenti di sicurezza critici e importanti: niente nuove funzioni e niente assistenza tecnica generale.",
+          "Serve avere Windows 10 versione 22H2 aggiornata. L'iscrizione si fa da Impostazioni > Windows Update, con un account Microsoft.",
+          "Le condizioni per aziende e scuole sono diverse (a pagamento, fino a ottobre 2028): se usi il PC per lavoro, verifica la tua situazione prima di affidarti all'ESU per privati.",
+          "Microsoft ha già spostato questa data una volta: non contarci per decidere, e controlla sempre la pagina ufficiale."
+        ],
+        "titolo": "Puoi continuare a usare Windows 10 ancora per un po'? Il programma ESU",
+        "paragrafi": [
+          "Microsoft offre il programma ESU (Extended Security Updates, aggiornamenti di sicurezza estesi) anche ai privati. Per i PC personali iscritti la copertura arriva fino al 12 ottobre 2027, come indicato nelle pagine ufficiali Microsoft.",
+          "Cosa devi sapere:"
+        ]
+      },
+      {
+        "punti": [
+          "Scarica l'app gratuita Microsoft PC Health Check e premi il controllo: ti dice se il PC è compatibile e cosa manca.",
+          "Per vedere il TPM: premi Windows + R, scrivi tpm.msc e leggi la versione della specifica (deve essere 2.0).",
+          "Se il controllo dice che il TPM non c'è, spesso è solo disattivato nel BIOS/UEFI: può bastare attivarlo. Se non sei pratico, non toccare il BIOS: fatti aiutare.",
+          "Anche RAM o disco piccoli si possono spesso migliorare con un upgrade."
+        ],
+        "titolo": "Il tuo PC può passare a Windows 11? Come controllare",
+        "immagine": {
+          "alt": "Checklist dei requisiti per passare a Windows 11: processore, RAM, disco, Secure Boot e TPM 2.0",
+          "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/windows-10-fine-supporto-sostituire-pc-743d7639.jpg",
+          "fonte": "nina",
+          "didascalia": "I controlli principali per sapere se il PC può passare a Windows 11."
+        },
+        "paragrafi": [
+          "Windows 11 ha requisiti minimi precisi. I principali: processore a 64 bit compatibile (1 GHz, almeno 2 core), 4 GB di RAM, 64 GB di spazio, firmware UEFI con Secure Boot e chip di sicurezza TPM versione 2.0.",
+          "I due che bloccano più spesso sono il TPM 2.0 e il processore: non tutte le CPU più vecchie sono nella lista di Microsoft. Per questo un PC di qualche anno fa può essere escluso anche se funziona benissimo."
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Cosa NON fare per aggirare i requisiti di Windows 11",
+        "paragrafi": [
+          "Online trovi trucchi per installare Windows 11 su PC non compatibili. Non sono una buona idea: Microsoft non li consiglia e non garantisce aggiornamenti e supporto su hardware non supportato.",
+          "Evita anche i programmi \"gratuiti\" che promettono di riattivare gli aggiornamenti di Windows 10, le chiavi di licenza a prezzi stracciati e i siti non ufficiali: spesso nascondono virus."
+        ]
+      },
+      {
+        "punti": [
+          "PC compatibile e in buono stato: passa a Windows 11 da Windows Update o con una reinstallazione pulita fatta da un tecnico.",
+          "PC compatibile ma lento: un upgrade di SSD e RAM può dargli nuova vita prima dell'aggiornamento.",
+          "PC non compatibile ma ancora valido: iscriviti all'ESU e usa il tempo per scegliere con calma il sostituto.",
+          "PC non compatibile, lento o con problemi: conviene cambiarlo. Puoi valutare un notebook nuovo, un PC ricondizionato o un sistema su misura.",
+          "Computer di lavoro: pianifica la sostituzione di tutti i PC insieme, così non resti fermo e non rischi la sicurezza dei dati dei clienti."
+        ],
+        "titolo": "PC compatibile o non compatibile: cosa conviene fare",
+        "paragrafi": [
+          "Prima di tutto, qualunque scelta fai, fai una copia dei tuoi file importanti su un disco esterno o su un cloud."
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Cosa succede in negozio se porti il tuo PC",
+        "paragrafi": [
+          "Porti il computer in uno dei nostri negozi (Gallarate, Busto Arsizio, Jerago con Orago, Bollate, Lecco) o scrivi prima su WhatsApp. Controlliamo se è compatibile con Windows 11 e in che stato è. La diagnosi è gratuita e il prezzo ti viene detto prima di ogni intervento; sulle riparazioni c'è la garanzia.",
+          "Se il PC non regge, ti diciamo con onestà che cosa conviene: aggiornare, potenziare o sostituire. I prezzi dei servizi sono nelle pagine dedicate."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "d": "Windows 10 smette di funzionare?",
+        "r": "No. Continua ad avviarsi e funzionare. Non riceve più aggiornamenti gratuiti di sicurezza da Microsoft, quindi nel tempo è più esposto a rischi."
+      },
+      {
+        "d": "Fino a quando posso usare Windows 10 in sicurezza?",
+        "r": "Per i PC personali iscritti al programma ESU, Microsoft indica aggiornamenti di sicurezza critici e importanti fino al 12 ottobre 2027. Dopo quella data i nuovi problemi non vengono corretti."
+      },
+      {
+        "d": "Come faccio a sapere se il mio PC supporta Windows 11?",
+        "r": "Usa l'app gratuita Microsoft PC Health Check. In alternativa controlla il TPM con tpm.msc e confronta il processore con le liste ufficiali Microsoft."
+      },
+      {
+        "d": "Posso installare Windows 11 su un PC non compatibile?",
+        "r": "Tecnicamente esistono metodi non ufficiali, ma Microsoft non li raccomanda e non garantisce aggiornamenti e supporto in quel caso. Meglio evitarli."
+      },
+      {
+        "d": "Passando a Windows 11 perdo i miei file?",
+        "r": "L'aggiornamento di solito li conserva, ma una copia di sicurezza prima di cambiare sistema è sempre necessaria."
+      },
+      {
+        "d": "Un PC di lavoro con Windows 10 è un problema?",
+        "r": "Sì, soprattutto se tratta dati di clienti. Per aziende e partite IVA le regole ESU sono diverse e a pagamento: conviene controllare tutti i PC e pianificare la sostituzione."
+      }
+    ],
+    "link": [
+      {
+        "url": "/riparazione-pc/",
+        "testo": "riparazione e assistenza PC"
+      },
+      {
+        "url": "/riparazione-pc/reinstallazione-windows/",
+        "testo": "reinstallazione di Windows"
+      },
+      {
+        "url": "/riparazione-pc/upgrade-ssd-ram/",
+        "testo": "upgrade SSD e RAM"
+      },
+      {
+        "url": "/riparazione-pc/pc-lento/",
+        "testo": "PC lento: cosa fare"
+      },
+      {
+        "url": "/vendita-pc/",
+        "testo": "vendita PC nuovi"
+      },
+      {
+        "url": "/ricondizionati/",
+        "testo": "PC ricondizionati"
+      },
+      {
+        "url": "/partite-iva/",
+        "testo": "soluzioni per partite IVA"
+      },
+      {
+        "url": "/negozi/",
+        "testo": "i nostri negozi"
+      }
+    ],
+    "extra": {},
+    "copertina": {
+      "alt": "Notebook con scudo di sicurezza e calendario: fine supporto di Windows 10",
+      "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/windows-10-fine-supporto-sostituire-pc-38047bb8.jpg",
+      "fonte": "nina"
+    },
+    "firmato_da": "Antonio Arrigo",
+    "pubblicata_il": "2026-11-15",
+    "aggiornata_il": "2026-11-15"
+  },
+  {
     "slug": "sostituzione-batteria-notebook",
     "titolo": "Sostituzione batteria notebook: quando serve e come",
     "h1": "Sostituzione batteria notebook: quando serve davvero e cosa succede in negozio",
