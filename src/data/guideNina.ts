@@ -3,6 +3,147 @@
 /* eslint-disable */
 export const GUIDE_NINA: any[] = [
   {
+    "slug": "pc-lento-ssd-ram-o-pc-nuovo",
+    "titolo": "PC lento: SSD e RAM o PC nuovo? Come scegliere",
+    "h1": "PC lento: conviene cambiare SSD e RAM o comprarne uno nuovo?",
+    "descrizione": "Il tuo PC è lento? Scopri come capire se bastano SSD e RAM o se conviene cambiarlo, con i controlli da fare subito e cosa succede in negozio.",
+    "intro": "Un PC lento non è sempre da buttare. Se è ancora sano, spesso bastano qualche controllo, un SSD al posto del vecchio disco o più RAM per farlo ripartire. Se invece è molto vecchio, o ha altri guasti, cambiarlo costa meno fatica che continuare a ripararlo. In questa guida ti spieghiamo come capire da solo da che parte stai, prima di spendere.",
+    "in_breve": [
+      "Prima controlla il software: app di avvio, spazio libero, aggiornamenti e virus costano zero.",
+      "Se il PC ha ancora un disco meccanico (HDD), l'SSD è quasi sempre il miglioramento più evidente.",
+      "La RAM aiuta se la memoria è spesso quasi piena in Gestione attività.",
+      "Se il PC è molto vecchio, non supporta più gli aggiornamenti o ha più guasti insieme, di solito conviene sostituirlo.",
+      "In negozio la diagnosi è gratuita e il prezzo ti viene detto prima di intervenire."
+    ],
+    "sezioni": [
+      {
+        "punti": [],
+        "titolo": "Perché il mio PC è diventato lento?",
+        "paragrafi": [
+          "Microsoft indica tra le cause più comuni lo spazio di archiviazione quasi pieno, troppe app che partono all'avvio, software non aggiornato e hardware che non basta più per ciò che chiedi al computer.",
+          "Per questo non esiste una sola risposta: prima devi capire se il problema è nel software o nei componenti."
+        ]
+      },
+      {
+        "punti": [
+          "Riavvia il PC: chiude i processi rimasti attivi e completa gli aggiornamenti in sospeso.",
+          "Apri Gestione attività con Ctrl + Maiusc + Esc e guarda CPU, memoria e disco.",
+          "Nella sezione App di avvio (su Windows 10 si chiama Avvio) disattiva i programmi che non ti servono appena accendi il PC. Non li disinstalli, semplicemente non partono da soli.",
+          "Controlla lo spazio libero in Impostazioni > Sistema > Archiviazione.",
+          "Installa gli aggiornamenti da Windows Update.",
+          "Fai una scansione con il tuo antivirus. Se vedi pubblicità strane o pagine che cambiano, leggi la nostra guida sui virus."
+        ],
+        "titolo": "Cosa puoi controllare da solo in 10 minuti?",
+        "paragrafi": [
+          "Sono controlli sicuri, non cancellano nulla di importante. Fai prima una copia dei tuoi file se puoi."
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Quando conviene cambiare il disco con un SSD?",
+        "paragrafi": [
+          "Se in Gestione attività il disco è spesso al massimo e il PC ha ancora un disco meccanico (HDD), l'SSD è di solito il passo che si nota di più: Windows parte più in fretta e i programmi si aprono prima.",
+          "Attenzione: un disco al massimo da solo non indica per forza un guasto. Per questo serve una diagnosi, che può dirti anche se il disco ha errori.",
+          "Prima dell'intervento si copiano i dati. Se il disco è già in sofferenza e non riesci ad accedere ai file, non insistere con riavvii continui: porta il PC in negozio."
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Quando serve più RAM?",
+        "paragrafi": [
+          "La RAM è la memoria di lavoro. Se in Gestione attività la memoria resta spesso molto alta mentre usi poche app e il browser, il PC rallenta quando apri più cose insieme.",
+          "Non tutti i PC si possono potenziare: in molti notebook sottili la RAM è saldata sulla scheda e non si cambia. Il tecnico lo verifica sul tuo modello prima di proporti l'intervento."
+        ]
+      },
+      {
+        "punti": [
+          "Il processore è vecchio e anche con SSD e RAM nuovi ti ritrovi lento nei programmi che usi ogni giorno.",
+          "Il PC non può passare a un Windows ancora supportato: leggi cosa cambia con la fine del supporto di Windows 10.",
+          "Ci sono più problemi insieme: batteria esausta, schermo danneggiato, surriscaldamento.",
+          "Lo usi per lavoro e un fermo ti costa più dell'investimento.",
+          "Se non vuoi spendere molto, valuta anche un ricondizionato controllato."
+        ],
+        "titolo": "Quando è meglio comprare un PC nuovo?",
+        "paragrafi": [
+          "Cambiare il PC ha più senso in questi casi:"
+        ]
+      },
+      {
+        "punti": [],
+        "titolo": "Cosa succede in negozio se porto il PC lento?",
+        "paragrafi": [
+          "Il tecnico controlla disco, memoria, temperature e software. La diagnosi è gratuita e ti dice con chiarezza cosa serve e quanto costa prima di toccare qualcosa: tu decidi se riparare, potenziare o cambiare.",
+          "Le riparazioni hanno garanzia. I prezzi dei singoli interventi sono sulle pagine dei servizi, che trovi nei link qui sotto."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "d": "Se cambio l'SSD perdo i miei file?",
+        "r": "Il tecnico copia i dati sul nuovo disco o li salva prima dell'intervento. Se puoi, fai comunque una copia di sicurezza tua."
+      },
+      {
+        "d": "Meglio più RAM o un SSD?",
+        "r": "Dipende dal PC. Con un disco meccanico di solito l'SSD fa la differenza maggiore; con la memoria sempre quasi piena serve più RAM. Con la diagnosi si capisce quale dei due."
+      },
+      {
+        "d": "Formattare il PC lo velocizza?",
+        "r": "A volte aiuta, ma non è la prima mossa: spesso bastano meno app all'avvio, spazio libero e aggiornamenti. Se il limite è l'hardware, dopo la formattazione il PC torna lento."
+      },
+      {
+        "d": "Posso potenziare qualsiasi notebook?",
+        "r": "No. In alcuni modelli la RAM è saldata e non si cambia. Il tecnico controlla il tuo modello prima di proporti l'intervento."
+      },
+      {
+        "d": "Il PC lento può avere un virus?",
+        "r": "Sì, è una delle cause possibili, insieme a pubblicità e programmi sconosciuti. Una scansione e un controllo in negozio lo chiariscono."
+      }
+    ],
+    "link": [
+      {
+        "url": "/riparazione-pc/pc-lento/",
+        "testo": "Riparazione PC lento"
+      },
+      {
+        "url": "/riparazione-notebook/upgrade-ssd-ram/",
+        "testo": "Upgrade SSD e RAM per notebook"
+      },
+      {
+        "url": "/riparazione-pc/upgrade-ssd-ram/",
+        "testo": "Upgrade SSD e RAM per PC fisso"
+      },
+      {
+        "url": "/riparazione-notebook/virus/",
+        "testo": "Pulizia da virus del notebook"
+      },
+      {
+        "url": "/guide/windows-10-fine-supporto-sostituire-pc/",
+        "testo": "Windows 10 a fine supporto: sostituire il PC?"
+      },
+      {
+        "url": "/ricondizionati/",
+        "testo": "Notebook ricondizionati"
+      },
+      {
+        "url": "/vendita-pc/",
+        "testo": "Vendita PC nei nostri negozi"
+      },
+      {
+        "url": "/riparazione-pc/recupero-dati/",
+        "testo": "Recupero dati"
+      }
+    ],
+    "extra": {},
+    "copertina": {
+      "alt": "Notebook lento con SSD e RAM che ne aumentano la velocità: guida PC lento",
+      "url": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/guide-immagini/g8astore/pc-lento-ssd-ram-o-pc-nuovo-26575990.jpg",
+      "fonte": "nina"
+    },
+    "firmato_da": "Antonio Arrigo",
+    "pubblicata_il": "2026-11-17",
+    "aggiornata_il": "2026-11-17"
+  },
+  {
     "slug": "antivirus-pc-lavoro",
     "titolo": "Antivirus per PC: serve se lavori al computer?",
     "h1": "Antivirus per PC: perché serve se lo usi molto o per lavoro",
