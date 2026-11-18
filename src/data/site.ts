@@ -255,7 +255,8 @@ export const services: Service[] = [
   {
     slug: "riparazione-notebook", name: "Riparazione notebook", device: "notebook", icon: "laptop", photo: "notebook-windows",
     lede: "Portatili Windows di tutte le marche: schermo, batteria, tastiera, cerniere, lentezza, virus e recupero dati. Diagnosi gratuita e prezzo prima di riparare.",
-    problems: [P.batteria, P.schermo, P.tastiera, P.lento, P.accensione, P.ricarica, P.cerniere, P.surriscaldamento, P.upgrade, P.virus, P.dati, P.formattazione],
+    // Foto vere dal banco G8A per le riparazioni notebook (le pagine PC fisso tengono le foto generiche).
+    problems: [P.batteria, P.schermo, P.tastiera, P.lento, P.accensione, P.ricarica, P.cerniere, { ...P.surriscaldamento, photo: "notebook-pulizia-ventola" }, { ...P.upgrade, photo: "notebook-ram-ssd" }, P.virus, P.dati, P.formattazione],
     brands: [
       { slug: "hp", name: "HP", lines: "Pavilion, EliteBook, ProBook, Victus, Omen" },
       { slug: "lenovo", name: "Lenovo", lines: "IdeaPad, ThinkPad, ThinkBook, Legion, Yoga" },
