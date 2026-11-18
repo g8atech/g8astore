@@ -28,6 +28,8 @@ const citiesText = cities.slice(0, -1).join(", ") + " e " + cities[cities.length
 let name = "", sub = "", photo = "notebook-windows", faq: [string, string][] = [], rows: { name: string; price: number; warrantyMonths?: number | null }[] = [];
 if (p.kind === "brand") {
   const b = p.brand;
+  // Foto vere dal banco della stessa marca quando ci sono, altrimenti un notebook senza marchio visibile.
+  photo = ({ hp: "notebook-scheda", lenovo: "notebook-aperto", dell: "notebook-dell" } as Record<string, string>)[b.slug] ?? "notebook-ssd";
   name = `Riparazione notebook ${b.name}`;
   sub = `Ripariamo notebook ${b.name} di ogni serie (${b.lines}): schermo, batteria, tastiera, cerniere, lentezza e recupero dati, con diagnosi gratuita e prezzo prima di riparare. In ${shops.length} negozi: ${citiesText}.`;
   faq = [
@@ -39,7 +41,7 @@ if (p.kind === "brand") {
 } else {
   const m = p.model;
   name = `Riparazione ${m.name}`;
-  photo = "macbook";
+  photo = "macbook-aperto";
   sub = `Prezzi di riparazione per ${m.name}, IVA inclusa, uguali in tutti i ${shops.length} negozi G8A Store. Per tutti gli altri guasti la diagnosi è gratuita.`;
   rows = m.repairs.map((r) => ({ name: r.name, price: r.price, warrantyMonths: r.warrantyMonths }));
   faq = [
