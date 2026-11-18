@@ -10,6 +10,7 @@ import LocalBlock from "../../../components/LocalBlock.astro";
 import Faq from "../../../components/Faq.astro";
 import Cta from "../../../components/Cta.astro";
 import B2b from "../../../components/B2b.astro";
+import ShopReviews from "../../../components/ShopReviews.astro";
 import WaIcon from "../../../components/WaIcon.astro";
 import { shops, services, saleCategories, pivaPoints, macModels, macPriceRange, waLink, euro, repairTitle, type Shop, type Service } from "../../../data/site";
 import { storeSchema, serviceSchema, faqSchema } from "../../../lib/schema";
@@ -132,6 +133,7 @@ const schema = [storeSchema(shop), serviceSchema(`${h1a} ${shop.city}`, sub, sho
   )}
 
   <HowItWorks />
+  <ShopReviews shop={shop} topic={String(Astro.params.service)} title={`${name}: cosa dicono i clienti di G8A Store ${shop.city}`} />
   <LocalBlock shop={shop} msg={msg} />
   <Faq items={faq} paper />
   <Cta shop={shop} title={`${h1a} ${shop.city}`} text={`Scrivici cosa ti serve: ti risponde direttamente il negozio di ${shop.city}.`} msg={msg} photo={photo} />

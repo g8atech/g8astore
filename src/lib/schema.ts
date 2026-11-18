@@ -83,3 +83,9 @@ export function faqSchema(faq: [string, string][]) {
     mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
   };
 }
+
+/** Articoli di stampa (subjectOf dell'Organization): stessi dati del blocco "Comparsi su". */
+import { PRESS } from "../data/press";
+export function pressSchema() {
+  return PRESS.map((p) => ({ "@type": "NewsArticle", headline: p.titolo, url: p.url, datePublished: p.data, publisher: { "@type": "Organization", name: p.testata } }));
+}

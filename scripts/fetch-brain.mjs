@@ -39,6 +39,20 @@ async function main() {
     if (snap[0]) ratings[norm(p.location).replace(/^store /, "")] = snap[0];
   }
 
+  // Recensioni a 5 stelle con testo delle schede G8A Store (RPC pubblica, autore = nome + iniziale)
+  let recensioni = {};
+  try {
+    const res = await fetch(`${URL}/rest/v1/rpc/g8a_store_recensioni_public`, {
+      method: "POST",
+      headers: { apikey: KEY, Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+      body: "{}",
+    });
+    if (res.ok) recensioni = await res.json();
+    else console.warn(`Recensioni non lette: HTTP ${res.status}`);
+  } catch (e) {
+    console.warn(`Recensioni non lette: ${e.message}`);
+  }
+
   const outShops = shops.map((s) => {
     const st = settings.find((x) => x.shop_id === s.id) || {};
     const key = Object.keys(ratings).find((k) => norm(s.city).startsWith(k) || k.startsWith(norm(s.city).split(" ")[0]));
@@ -62,6 +76,9 @@ async function main() {
       placeId: st.g8a_google_place_id || null,
       rating: r ? r.rating : null,
       reviews: r ? r.review_count : null,
+      reviewList: (recensioni[s.slug] || [])
+        .filter((x) => x && x.text)
+        .map((x) => ({ author: x.author || "Cliente", text: x.text, date: x.date ? String(x.date).slice(0, 10) : null })),
     };
   });
 

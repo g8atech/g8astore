@@ -2,6 +2,7 @@
 // Pagine di primo livello: servizi (/riparazione-notebook/), vendita, partite IVA e home di ogni sede (/gallarate/).
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
+import Press from "../components/Press.astro";
 import Promises from "../components/Promises.astro";
 import Icon from "../components/Icon.astro";
 import Photo from "../components/Photo.astro";
@@ -125,6 +126,7 @@ const popular = [
     secondary={{ href: "#contatti", label: shop ? "Orari e mappa" : `${shops.length} negozi` }}
   >{h1.a}{h1.b && <>{" "}<span class="grad-text">{h1.b}</span></>}</Hero>
   <Promises />
+  {p.kind === "city" && <Press />}
 
   {/* ---------- SERVIZIO ---------- */}
   {p.kind === "service" && (

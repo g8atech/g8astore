@@ -1,0 +1,35 @@
+---
+// Recensioni Google reali del negozio (5 stelle, testo da Brain), scelte per argomento: vedi reviewsFor in data/site.ts.
+import Icon from "./Icon.astro";
+import { reviewsFor, fmtRating, mapsLink, type Shop } from "../data/site";
+interface Props { shop: Shop; topic: string; title?: string }
+const { shop, topic, title } = Astro.props;
+const items = reviewsFor(shop, topic);
+const mese = (d: string | null) => (d ? new Date(d).toLocaleDateString("it-IT", { month: "long", year: "numeric" }) : "");
+---
+{items.length > 0 && (
+  <section class="sec">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="tag">Recensioni Google</span>
+        <h2>{title ?? `Cosa dicono i clienti di G8A Store ${shop.city}`}</h2>
+        {shop.rating && shop.reviews ? <p><span class="stars">★★★★★</span> {fmtRating(shop.rating)} su {shop.reviews} recensioni della scheda Google del negozio.</p> : null}
+      </div>
+      <div class="tiles rev-tiles">
+        {items.map((r) => (
+          <figure class="tile reveal">
+            <span class="stars" aria-label="5 stelle su 5">★★★★★</span>
+            <blockquote>{r.text}</blockquote>
+            <figcaption><b>{r.author}</b>{r.date ? ` · ${mese(r.date)}` : ""}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="reveal" style="margin-top:16px;text-align:center"><a href={mapsLink(shop)} target="_blank" rel="noopener">Leggi tutte le recensioni su Google <Icon name="arrow" /></a></p>
+    </div>
+  </section>
+)}
+<style>
+  .rev-tiles blockquote { margin: 8px 0 10px; font-size: .95rem; line-height: 1.5; }
+  .rev-tiles figcaption { font-size: .85rem; opacity: .8; }
+  .rev-tiles figure { margin: 0; }
+</style>
