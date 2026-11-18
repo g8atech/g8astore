@@ -253,10 +253,10 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: "riparazione-notebook", name: "Riparazione notebook", device: "notebook", icon: "laptop", photo: "notebook-windows",
+    slug: "riparazione-notebook", name: "Riparazione notebook", device: "notebook", icon: "laptop", photo: "notebook-aperto",
     lede: "Portatili Windows di tutte le marche: schermo, batteria, tastiera, cerniere, lentezza, virus e recupero dati. Diagnosi gratuita e prezzo prima di riparare.",
     // Foto vere dal banco G8A per le riparazioni notebook (le pagine PC fisso tengono le foto generiche).
-    problems: [P.batteria, P.schermo, P.tastiera, P.lento, P.accensione, P.ricarica, P.cerniere, { ...P.surriscaldamento, photo: "notebook-pulizia-ventola" }, { ...P.upgrade, photo: "notebook-ram-ssd" }, P.virus, P.dati, P.formattazione],
+    problems: [{ ...P.batteria, photo: "notebook-batteria" }, { ...P.schermo, photo: "notebook-schermo" }, P.tastiera, { ...P.lento, photo: "notebook-ssd" }, { ...P.accensione, photo: "notebook-scheda" }, P.ricarica, P.cerniere, { ...P.surriscaldamento, photo: "notebook-pulizia-ventola" }, { ...P.upgrade, photo: "notebook-ram-ssd" }, P.virus, P.dati, P.formattazione],
     brands: [
       { slug: "hp", name: "HP", lines: "Pavilion, EliteBook, ProBook, Victus, Omen" },
       { slug: "lenovo", name: "Lenovo", lines: "IdeaPad, ThinkPad, ThinkBook, Legion, Yoga" },
@@ -272,9 +272,10 @@ export const services: Service[] = [
     problems: [P.accensione, P.lento, P.alimentatore, P.video, P.surriscaldamento, P.upgrade, P.virus, P.dati, P.formattazione],
   },
   {
-    slug: "riparazione-mac", name: "Riparazione Mac", device: "MacBook", icon: "mac", photo: "macbook",
+    slug: "riparazione-mac", name: "Riparazione Mac", device: "MacBook", icon: "mac", photo: "macbook-aperto",
     lede: "MacBook Air e MacBook Pro: batteria, schermo, tastiera, liquidi e recupero dati, con prezzi chiari per modello. Centro indipendente, non affiliato Apple.",
-    problems: [P.batteria, P.schermo, P.tastiera, P.liquidi, P.accensione, P.lento, P.dati],
+    // Foto vere dal banco: MacBook Pro aperto e batteria.
+    problems: [{ ...P.batteria, photo: "macbook-batteria" }, P.schermo, P.tastiera, P.liquidi, P.accensione, P.lento, P.dati],
   },
 ];
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug)!;
