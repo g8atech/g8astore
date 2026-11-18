@@ -378,3 +378,35 @@ export const catDesc: Record<string, { title: string; intro: string; photo: stri
   aio: { title: "All in One G8A", intro: "Tutto il computer dentro lo schermo: meno cavi, scrivania in ordine, perfetti per ufficio e reception.", photo: "g8a-aio" },
   mini: { title: "Mini PC G8A", intro: "Computer piccolissimi e silenziosi, da fissare dietro al monitor. Consumano poco.", photo: "scheda-madre" },
 };
+
+
+// ── Recensioni per le pagine negozio × servizio ────────────────────────────────
+// Le schede G8A Store sono condivise con RiparoHero: molte recensioni parlano di telefoni.
+// Per ogni servizio si preferiscono quelle che parlano di quell'argomento, poi quelle che non
+// parlano di telefoni; un offset per servizio evita le stesse tre recensioni su tutte le pagine.
+export type Recensione = { author: string; text: string; date: string | null };
+const TELEFONI = /telefon|cellular|iphone|smartphone|samsung|xiaomi|redmi|oppo|huawei|motorola|pellicol|\bcover\b|ipad|tablet|switch|ps5|playstation/i;
+export const REVIEW_TOPICS: Record<string, RegExp> = {
+  "riparazione-notebook": /notebook|portatil|laptop|\bpc\b|computer/i,
+  "riparazione-pc": /\bpc\b|computer|fisso|desktop|scheda video/i,
+  "riparazione-mac": /\bmac\b|macbook|imac/i,
+  "vendita-pc": /acquist|comprat|nuovo (pc|computer|notebook|portatile)|consigliat|scelt/i,
+  "partite-iva": /aziend|ufficio|lavoro|partita iva|fattur/i,
+};
+const corta = (t: string, max = 320) => {
+  const s = t.replace(/<br\s*\/?>/gi, " ").replace(/\s+/g, " ").trim();
+  if (s.length <= max) return s;
+  const cut = s.slice(0, max);
+  return cut.slice(0, cut.lastIndexOf(" ")) + "…";
+};
+export function reviewsFor(shop: Shop, topic: string, n = 3): Recensione[] {
+  const all = ((shop as { reviewList?: Recensione[] }).reviewList ?? []).filter((r) => r.text.length >= 40);
+  const re = REVIEW_TOPICS[topic];
+  const onTopic = re ? all.filter((r) => re.test(r.text) && !TELEFONI.test(r.text)) : [];
+  const generic = all.filter((r) => !TELEFONI.test(r.text) && !onTopic.includes(r));
+  const offset = Math.max(0, Object.keys(REVIEW_TOPICS).indexOf(topic)) * n;
+  const rotated = generic.length ? [...generic.slice(offset % generic.length), ...generic.slice(0, offset % generic.length)] : [];
+  const rot = <T,>(a: T[], k: number) => (a.length ? [...a.slice(k % a.length), ...a.slice(0, k % a.length)] : a);
+  // Notebook e PC fisso pescano spesso le stesse recensioni "PC": si ruotano anche quelle in tema.
+  return [...rot(onTopic, offset), ...rotated].slice(0, n).map((r) => ({ ...r, text: corta(r.text) }));
+}

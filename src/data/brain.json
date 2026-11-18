@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-18T20:47:27.520Z",
+  "fetchedAt": "2026-11-18T20:55:03.629Z",
   "shops": [
     {
       "slug": "bollate",
@@ -15,7 +15,94 @@
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/0e99f00f-2eb2-458f-a0c1-5a26e21c566f/store_photo_url-1770151349594.webp",
       "placeId": "ChIJuVB-8zqVhkcRIBQ06wksGto",
       "rating": 4.9,
-      "reviews": 26
+      "reviews": 26,
+      "reviewList": [
+        {
+          "author": "Vittorio B.",
+          "text": "Mi sono trovato benissimo ho sostituito in questo negozio una batteria su un iPhone 13 Pro con richiesta di ricambio originale tutto perfetto Alessandro un ottima persona consiglio questo negozio",
+          "date": "2026-09-27"
+        },
+        {
+          "author": "Angelo M.",
+          "text": "Grazie Ale",
+          "date": "2026-09-19"
+        },
+        {
+          "author": "Nicodemo A.",
+          "text": "Mi hanno servito benissimo",
+          "date": "2026-07-27"
+        },
+        {
+          "author": "Bruna M.",
+          "text": "Cortesia, competenza e ciò che li contraddistingue. Consigliato",
+          "date": "2026-06-25"
+        },
+        {
+          "author": "tobia c.",
+          "text": "Esperienza ottimale grazie ad Ale che ha assistito la mia ps5 per una pulizia interna eccellente più una piacevole conversazione amichevole e consigli vari, davvero professionale e ottimo negozio per qualsiasi tipo di problema!",
+          "date": "2026-06-24"
+        },
+        {
+          "author": "Marina R.",
+          "text": "Servizio perfetto.grazie",
+          "date": "2026-06-12"
+        },
+        {
+          "author": "antonio a.",
+          "text": "Personale super disponibile preparato. Consigliatissimo.",
+          "date": "2026-05-14"
+        },
+        {
+          "author": "Roberta F.",
+          "text": "Ottimo servizio",
+          "date": "2025-08-08"
+        },
+        {
+          "author": "Valeriana F.",
+          "text": "Tanta cortesia",
+          "date": "2025-01-31"
+        },
+        {
+          "author": "luigi g.",
+          "text": "Negozio top! Compententi è gentili",
+          "date": "2024-12-23"
+        },
+        {
+          "author": "Giovanna L.",
+          "text": "Professionali e con disponibilità vari articoli",
+          "date": "2024-12-23"
+        },
+        {
+          "author": "Massimo Z.",
+          "text": "Gentilezza e cortesia li contraddistinguono",
+          "date": "2024-12-02"
+        },
+        {
+          "author": "Sebastiano M.",
+          "text": "Gentili e competenti , servizio perfetto<br>Grazie",
+          "date": "2024-12-02"
+        },
+        {
+          "author": "Antonio S.",
+          "text": "Sono stati velocissimi nella risoluzione di un problema al mio smartphone. Un ringraziamento particolare a Sauro, molto gentile e rapido!",
+          "date": "2024-11-18"
+        },
+        {
+          "author": "Davide L.",
+          "text": "Staff super professionale e preparato (Grazie Sauro!). Consigliato",
+          "date": "2024-04-08"
+        },
+        {
+          "author": "Emanuela C.",
+          "text": "Competenza e cordialità al servizio del cliente",
+          "date": "2022-05-04"
+        },
+        {
+          "author": "Nicolas D.",
+          "text": "Personale professionale e molto disponibile!",
+          "date": "2022-05-03"
+        }
+      ]
     },
     {
       "slug": "busto-arsizio",
@@ -31,7 +118,759 @@
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/1bd94592-9eb1-4409-83c5-4f7deaea9252/store_photo_url-1770151211315.webp",
       "placeId": "ChIJP50Vl0mLhkcRcFXw61MM-tE",
       "rating": 4.9,
-      "reviews": 287
+      "reviews": 287,
+      "reviewList": [
+        {
+          "author": "Luca C.",
+          "text": "Ale è stato super gentile e ha controllato il mio laptop immediatamente identificando il problema in pochi minuti. Completamente consigliato",
+          "date": "2026-11-17"
+        },
+        {
+          "author": "corrado f.",
+          "text": "Molto gentili e professionali",
+          "date": "2026-11-10"
+        },
+        {
+          "author": "Carlo *.",
+          "text": "Ottimo servizio",
+          "date": "2026-11-03"
+        },
+        {
+          "author": "antonella f.",
+          "text": "Ottimo servizio",
+          "date": "2026-11-02"
+        },
+        {
+          "author": "Luigi M.",
+          "text": "Mi sono trovato molto bene",
+          "date": "2026-10-27"
+        },
+        {
+          "author": "Gianfranco",
+          "text": "Benissimo",
+          "date": "2026-10-26"
+        },
+        {
+          "author": "Lorenzo M.",
+          "text": "Mi sono trovato molto bene",
+          "date": "2026-10-07"
+        },
+        {
+          "author": "Elena M.",
+          "text": "Servizio ottimo, Federico fantastico",
+          "date": "2026-09-22"
+        },
+        {
+          "author": "Dominika",
+          "text": "Servizio eccellente! Mi hanno risolto subito il problema con la stampante. Gentilissimi, disponibili e professionali. Sono pienamente soddisfatta e li consiglio vivamente!",
+          "date": "2026-09-18"
+        },
+        {
+          "author": "Giovanni S.",
+          "text": "Assistenza fantastica, graze a Federico",
+          "date": "2026-09-17"
+        },
+        {
+          "author": "Patrizia C.",
+          "text": "Sono entrata di corsa per chiedere due fotocopie urgenti, nonostante non fosse il suo lavoro, mi ha fatto le due fotocopie gratis con gentilezza e disponibilità! Grazie",
+          "date": "2026-09-14"
+        },
+        {
+          "author": "Natale L.",
+          "text": "Apprezzata competenza, cortesia e disponibilità. Complimenti Federico",
+          "date": "2026-09-12"
+        },
+        {
+          "author": "Matteo C.",
+          "text": "Mi sono trovato molto bene, lo consiglio",
+          "date": "2026-09-09"
+        },
+        {
+          "author": "Anna G.",
+          "text": "mi sono trovata molto bene",
+          "date": "2026-09-09"
+        },
+        {
+          "author": "Mariangela V.",
+          "text": "Ottimo",
+          "date": "2026-09-09"
+        },
+        {
+          "author": "Ingrid P.",
+          "text": "Riparazione computer fatta in modo MOLTO professionale. Servizio di qualità senza riserve. Federico mi ha spiegato tutto in modo chiaro. Super",
+          "date": "2026-09-05"
+        },
+        {
+          "author": "Giancarlo M.",
+          "text": "Ottima assistenza",
+          "date": "2026-09-05"
+        },
+        {
+          "author": "Giovanna M.",
+          "text": "Servizio celere e preciso.<br>Federico persona disponibile e competente",
+          "date": "2026-09-02"
+        },
+        {
+          "author": "Sara S.",
+          "text": "Servizio super! Ero alla ricerca di una stampante ad uso domestico. La mia richiesta è stata soddisfatta in modo professionale, attento ed in breve tempo.",
+          "date": "2026-09-01"
+        },
+        {
+          "author": "Tina V.",
+          "text": "Geazie Federico per l'assiatenza",
+          "date": "2026-08-31"
+        },
+        {
+          "author": "Rita M.",
+          "text": "Servizio assistenza impeccabile",
+          "date": "2026-08-29"
+        },
+        {
+          "author": "massimo l.",
+          "text": "Ottimo servizio",
+          "date": "2026-08-27"
+        },
+        {
+          "author": "Andrea C.",
+          "text": "Consigliatissimo ,mi hanno dato un supporto al volo ,problema risolto<br>Lo consiglio",
+          "date": "2026-08-20"
+        },
+        {
+          "author": "Francesco P.",
+          "text": "Sono rimasto molto soddisfatto dell'assistenza. Federico MOLTO competente",
+          "date": "2026-08-19"
+        },
+        {
+          "author": "Rosy S.",
+          "text": "Grazie a Federico ho ricevuto un ottima consulenza tecnica",
+          "date": "2026-08-17"
+        },
+        {
+          "author": "Davide D.",
+          "text": "Sono stato ieri per un bel problema a Cell  Federico a subito capito il problema grande professionista e gentilissimo a risolto .. grazie ancora consiglio vivamente.",
+          "date": "2026-08-07"
+        },
+        {
+          "author": "Angiolino M.",
+          "text": "Ottimo",
+          "date": "2026-08-05"
+        },
+        {
+          "author": "Gaspare L.",
+          "text": "Virus sul telefono tolto rapidamente, grazie Federico",
+          "date": "2026-07-28"
+        },
+        {
+          "author": "Davide A.",
+          "text": "Ragazzi gentilissimi che mi hanno aiutato con un problema col cavo ethernet senza farmi spendere un euro",
+          "date": "2026-07-27"
+        },
+        {
+          "author": "Rosangela M.",
+          "text": "Esperienza fantastica...<br>Avevo il display rotto del mio redmi note 11s ed ero giá pronta a cambiarlo... invece portandolo a loro, Ale me lo ha sostituito in pochissime ore.<br>Gentilezza unica, chiarezza fin da subito anche sui prezzi onesti... Quando le cose vengono fatte bene e con il sorriso a davvero la differenza... Grazie ancora🙏🙏🥰",
+          "date": "2026-07-24"
+        },
+        {
+          "author": "Francesca D.",
+          "text": "Accoglienza e professionalità ammirabile. Il mio problema touch del cellulare è stato risolto in brevissimo tempo e ho ricevuto ulteriore supporto sulle condizioni generali del telefono. Lo consiglio!",
+          "date": "2026-07-03"
+        },
+        {
+          "author": "Mauro G.",
+          "text": "Ottimo servizio assistenza in negozio,",
+          "date": "2026-07-01"
+        },
+        {
+          "author": "Gaetano O.",
+          "text": "Tecnici Federico e Ale ottimi professionisti gentilezza e cortesia nella relazione con i clienti! Ottimo negozio!",
+          "date": "2026-06-30"
+        },
+        {
+          "author": "Roberto R.",
+          "text": "Mi sono trovato benissimo: veloce riparazione per un problema impattante sulla quotidianità personale, salvaguardati tutti i dati. Ottime spiegazioni del consulente, Federico",
+          "date": "2026-06-27"
+        },
+        {
+          "author": "Stefano G.",
+          "text": "Buon servizio, molto disponibili",
+          "date": "2026-06-27"
+        },
+        {
+          "author": "Rossano P.",
+          "text": "Perfetti. Bravissimi, precisissimi e velocissimi. Super consigliati",
+          "date": "2026-06-25"
+        },
+        {
+          "author": "Mauro T.",
+          "text": "professionali,gentili ,disponibili",
+          "date": "2026-06-17"
+        },
+        {
+          "author": "Katia S.",
+          "text": "Eccezionale servizio eccellente.",
+          "date": "2026-06-10"
+        },
+        {
+          "author": "Paola C.",
+          "text": "Grazie mille!!! Siete straordinari!!!! Grazie",
+          "date": "2026-06-02"
+        },
+        {
+          "author": "A F.",
+          "text": "È la prima volta che provo questo centro riparazioni per smartphone e tablet, lo consiglio vivamente.<br>Federico è stato bravo, simpatico, veloce e professionale.<br>Per qualsiasi problema relativo alla tecnologia questo sarà il mio negozio di riferimento.<br>Complimenti continuate così.",
+          "date": "2026-05-28"
+        },
+        {
+          "author": "Gabriello L.",
+          "text": "Ottima esperienza. Risolto il problema in pochissimo tempo. Molta cortesia",
+          "date": "2026-05-18"
+        },
+        {
+          "author": "Gian L.",
+          "text": "Ottimo supporto i ragazzi Federico e Lorenzo sono stati gentilissim e hanno risolto il problema.",
+          "date": "2026-05-11"
+        },
+        {
+          "author": "Kristina G.",
+          "text": "Bravi",
+          "date": "2026-04-28"
+        },
+        {
+          "author": "Bahrami",
+          "text": "Mi piacerebbe ringraziare tutti Voi(soprattutto Federico) per la vostra gentilezza, disponibilità e professionalità.<br>Siete grandiosi.",
+          "date": "2026-04-22"
+        },
+        {
+          "author": "PAOLO M.",
+          "text": "Ragazzo competente, paziente ed estremamente disponibile. Gli ho portato il pc per risolvermi un problemino, e non ha voluto nemmeno un euro per il tempo dedicatomi,nonostante la mia insistenza. Lato umano 10",
+          "date": "2026-04-17"
+        },
+        {
+          "author": "Roberto P.",
+          "text": "Gentile disponibile e sempre con il sorriso.",
+          "date": "2026-04-15"
+        },
+        {
+          "author": "Marco C.",
+          "text": "Mi sono rivolto a questo centro per un problema di ricarica al mio Samsung A54.<br>Federico, il ragazzo che mi ha assistito, molto gentile e disponibile, in un'ora circa ha sostituito la presa di ricarica  utilizzando un ricambio originale Samsung e con tanto di garanzia.<br>Problema risolto con serietà e professionalità.<br>Esperienza molto positiva, lo consiglio vivamente!",
+          "date": "2026-04-13"
+        },
+        {
+          "author": "aldo a.",
+          "text": "Personale professionali e affidabili mi hanno risolto il mio problema al compiuter in tempo breve e con costo molto ragionevole !!",
+          "date": "2026-04-12"
+        },
+        {
+          "author": "Antonio F.",
+          "text": "Ottima assistenza telefonia",
+          "date": "2026-03-31"
+        },
+        {
+          "author": "Giancarlo C.",
+          "text": "Assistenza top",
+          "date": "2026-03-27"
+        },
+        {
+          "author": "Andrea L.",
+          "text": "Ottimo servizio, avevo bisogno di aiuto per la mia stampante e, non solo Federico mi ha spiegato come fare, ma mi ha anche stampato le istruzioni su come fare il tutto. Consigliato!",
+          "date": "2026-03-27"
+        },
+        {
+          "author": "Antonella L.",
+          "text": "Ottimo servizio mi sono trovato bene , ottimo personale",
+          "date": "2026-03-27"
+        },
+        {
+          "author": "Emilio B.",
+          "text": "Personale molto gentile e professionale. Vengo sempre in questo negozio e mi trovo benissimo. Lo consiglio. Emiloo",
+          "date": "2026-03-24"
+        },
+        {
+          "author": "Tiziana F.",
+          "text": "Sono appena uscita da questo negozio che non conoscevo dove ho acquistato una cartuccia per stampante. Sono rimasta più che contenta per la preparazione, la gentilezza e disponibilità dei due ragazzi addetti alla vendita.<br>Oltretutto il negozio è ben rifornito...<br>Sicuramente ci tornerò<br>Tiziana Fanfoni",
+          "date": "2026-03-24"
+        },
+        {
+          "author": "Paola C.",
+          "text": "Disponibili, affidabili, grazie a Federico e Ale!!",
+          "date": "2026-03-24"
+        },
+        {
+          "author": "beatrice n.",
+          "text": "Personale competente molto disponibile gentile, Ale e Federico. Consigliato. Tornerò al bisogno",
+          "date": "2026-03-23"
+        },
+        {
+          "author": "Renata Z.",
+          "text": "Personale gentile, disponibile, molto preparato. Consigliatissimo",
+          "date": "2026-03-17"
+        },
+        {
+          "author": "Chiara F.",
+          "text": "Assistenza PC professionale. Grazie a Federico",
+          "date": "2026-03-12"
+        },
+        {
+          "author": "Nunzio C.",
+          "text": "Ottimo davvero, Ale e Fede molto competenti",
+          "date": "2026-03-11"
+        },
+        {
+          "author": "Lorenza C.",
+          "text": "Ottima assistenza",
+          "date": "2026-03-06"
+        },
+        {
+          "author": "Annamaria B.",
+          "text": "Ale ha risolto il problema in pochi minuti ed é stato super disponibile",
+          "date": "2026-03-06"
+        },
+        {
+          "author": "STEFANIA L.",
+          "text": "Federicone Ale molto professionali",
+          "date": "2026-03-05"
+        },
+        {
+          "author": "Eliana G.",
+          "text": "Ottimo servizio! Assistenza telefono super!",
+          "date": "2026-03-03"
+        },
+        {
+          "author": "Piero B.",
+          "text": "Ale e Federico sono in gamba e molto professionali, mi hanno aiutato immediatamente a risolvere il problema",
+          "date": "2026-03-03"
+        },
+        {
+          "author": "Angela C.",
+          "text": "Account Gmail recuperato, molto competenti",
+          "date": "2026-03-02"
+        },
+        {
+          "author": "Alessandra B.",
+          "text": "Problema Whatsapp risolto in fretta e con molta gentilezza. GRAZIE Federico, consiglio",
+          "date": "2026-03-02"
+        },
+        {
+          "author": "Elena C.",
+          "text": "Punto di riferimento completo per l'informatica. Negozio molto fornito e personale attento al cliente e competente.<br>Grazie al loro supporto ho trovato il PC che cercavo. L’offerta è variegata: dai prodotti nuovi (ordinabili anche su richiesta verificandone la disponibilità presso i propri fornitori) ai ricondizionati, sia multimarca che di propria produzione. Molto apprezzato il supporto nella configurazione iniziale del dispositivo, che mi ha permesso di utilizzarlo nel minor tempo possibile.<br>Buona anche la selezione di accessori (dai mouse ai consumabili) e utilissimo il servizio di assistenza tecnica per riparazioni di PC, smartphone e stampanti.<br>Un servizio a 360° altamente consigliato e un punto vendita strategico per il supporto tecnico e commerciale completo.<br>Una nota di merito particolare alla cortesia e al lato umano: hanno offerto con premura una sedia a mia madre che mi accompagnava, per farla accomodare durante l’attesa della configurazione. Un gesto semplice, apprezzato, che dimostra attenzione al cliente",
+          "date": "2026-02-28"
+        },
+        {
+          "author": "Michi T.",
+          "text": "Personale gentile, competente e super disponibile, da consigliare",
+          "date": "2026-02-28"
+        },
+        {
+          "author": "Corrado F.",
+          "text": "Federico e Ale gentili e competenti",
+          "date": "2026-02-20"
+        },
+        {
+          "author": "donatella v.",
+          "text": "Servizio assistenza per la mia gmail bloccata, ottimo",
+          "date": "2026-02-18"
+        },
+        {
+          "author": "Aurora S.",
+          "text": "Assurdo… mi sono trovata veramente bene !<br>Federico e Ale sono stati gentilissimi e super professionali e disponibili. Grazie per il servizio ragazzi ! ve li consiglio!",
+          "date": "2026-02-16"
+        },
+        {
+          "author": "CiAcca",
+          "text": "Ottimo lavoro, tempistiche brevi e personale gentilissimo e super disponibile",
+          "date": "2026-02-13"
+        },
+        {
+          "author": "Joanakanaci@yahoo.it i.",
+          "text": "Sono professionisti. Gentilissimi .",
+          "date": "2026-02-12"
+        },
+        {
+          "author": "Dario P.",
+          "text": "Problema alla gmail risolto. Super !!",
+          "date": "2026-02-11"
+        },
+        {
+          "author": "artuso f.",
+          "text": "Ho trovato personale  attento e con pazienza  mi ha dato  consigli che mi sono tornati utili.<br>Grazie G8A Technology",
+          "date": "2026-02-05"
+        },
+        {
+          "author": "Ketty P.",
+          "text": "Ottimo servizio",
+          "date": "2026-02-04"
+        },
+        {
+          "author": "itsdany h.",
+          "text": "Personale specializzato e gentilissimo per la riparazione del mio cellulare.",
+          "date": "2026-01-22"
+        },
+        {
+          "author": "Laura V.",
+          "text": "Ottimo centro di assistenza e supporto per smartphone, affidabilità, professionalità e serietà mi sono trovata benissimo",
+          "date": "2026-01-22"
+        },
+        {
+          "author": "Ilario R.",
+          "text": "Ottimo",
+          "date": "2026-01-22"
+        },
+        {
+          "author": "Silvano T.",
+          "text": "Mi sono trovato bene",
+          "date": "2026-01-22"
+        },
+        {
+          "author": "Anna S.",
+          "text": "Ottimo servizio",
+          "date": "2026-01-21"
+        },
+        {
+          "author": "sudarshana b.",
+          "text": "Ottimo lavoro bravissimi consigliatissimo",
+          "date": "2026-01-21"
+        },
+        {
+          "author": "Angela A.",
+          "text": "Mi sono trovata benissimo, consigliato",
+          "date": "2026-01-21"
+        },
+        {
+          "author": "angela m.",
+          "text": "Servizio Super. Contentissima",
+          "date": "2026-01-14"
+        },
+        {
+          "author": "Teresa F.",
+          "text": "Ottima esperienza<br>Federico merita anche 10 stelle<br>Grazie",
+          "date": "2026-01-08"
+        },
+        {
+          "author": "Daniele L.",
+          "text": "Entrato x la prima volta in negozio x sistemare una stampante.Velocissimi,e gentilissimi...Bravi!!!",
+          "date": "2025-12-16"
+        },
+        {
+          "author": "Enrica B.",
+          "text": "Ottimo servizio, assistenza top 😀",
+          "date": "2025-12-16"
+        },
+        {
+          "author": "Maria R.",
+          "text": "Mi sono trovata molto bene",
+          "date": "2025-12-09"
+        },
+        {
+          "author": "giovanni c.",
+          "text": "Molto gentili ed efficienti",
+          "date": "2025-12-06"
+        },
+        {
+          "author": "Bruna D.",
+          "text": "Ottima accoglienza e professionalità",
+          "date": "2025-12-05"
+        },
+        {
+          "author": "Ornella D.",
+          "text": "Mi sono trovata BENISSIMO. Grosso problema al cellulare risolto in breve tempo",
+          "date": "2025-12-05"
+        },
+        {
+          "author": "Maria D.",
+          "text": "Vetro rotto Samsung A40. Cambiato velocemente tutto perfetto. OTTIMO!",
+          "date": "2025-12-02"
+        },
+        {
+          "author": "Argia C.",
+          "text": "Tuutimolto professionali puntuali e simpaticissimi",
+          "date": "2025-11-24"
+        },
+        {
+          "author": "Paola P.",
+          "text": "Bravissimi e professionali. Ho portato il mio cellulare ed è stato riparato. Molto consigliato. Grazie",
+          "date": "2025-10-24"
+        },
+        {
+          "author": "GRAZIANA P.",
+          "text": "Mi sono trovata benissimo personale preparatissimo",
+          "date": "2025-10-24"
+        },
+        {
+          "author": "andrea c.",
+          "text": "Vendita e riparazione PC, stampanti e cartucce. Telefonia e accessori. Applicazione pellicole protettive agli schermi... Servizio di noleggio stampanti. Gente competente",
+          "date": "2025-10-12"
+        },
+        {
+          "author": "Gabriele P.",
+          "text": "Decisamente ottimo",
+          "date": "2025-10-07"
+        },
+        {
+          "author": "Caterina D.",
+          "text": "Federico gentile e competente, problema alla sim risolto in modo ottimale",
+          "date": "2025-10-07"
+        },
+        {
+          "author": "simona s.",
+          "text": "Personale gentilissimo e competente,consigliatissimo per tutti i servizi dalla telefonia alle stampanti",
+          "date": "2025-10-01"
+        },
+        {
+          "author": "Erik T.",
+          "text": "Non posso che confermare quanto di buono scritto finora: precisi, professionali, gentili. Consiglio vivamente.",
+          "date": "2025-09-27"
+        },
+        {
+          "author": "Maurizio L.",
+          "text": "Ottimo davvero",
+          "date": "2025-09-27"
+        },
+        {
+          "author": "Paolo R.",
+          "text": "Servizio super",
+          "date": "2025-09-19"
+        },
+        {
+          "author": "Antonella E.",
+          "text": "Servizio veramente top",
+          "date": "2025-09-19"
+        },
+        {
+          "author": "Massimo F.",
+          "text": "Ottimo servizio",
+          "date": "2025-09-13"
+        },
+        {
+          "author": "Vero",
+          "text": "Ho portato il telefono in assistenza per cambiare il display, Federico è stato molto professionale e gentile, veloci nell' assistenza, raccomandato!",
+          "date": "2025-09-09"
+        },
+        {
+          "author": "Fernanda G.",
+          "text": "Ottimo servizio",
+          "date": "2025-09-06"
+        },
+        {
+          "author": "Piera A.",
+          "text": "Problema con il volume risolto subito",
+          "date": "2025-09-06"
+        },
+        {
+          "author": "Umberto G.",
+          "text": "Trasferimento dati sul telefono nuovo, perfetto",
+          "date": "2025-09-05"
+        },
+        {
+          "author": "Cesare S.",
+          "text": "Telefono nuovo con trasferimento dati, ottimo",
+          "date": "2025-09-05"
+        },
+        {
+          "author": "Michele M.",
+          "text": "Servizio eccellente e grande disponibilità! Grande capacità da parte di Federico di comprendere la problematica con il cellulare e di risolverla rapidamente! Molto soddisfatto...in caso di eventuali tematiche conto su di Lui.",
+          "date": "2025-08-30"
+        },
+        {
+          "author": "Daniela M.",
+          "text": "Mi sono trovata benissimo,il ragazzo preparato ,ottimi consigli",
+          "date": "2025-08-29"
+        },
+        {
+          "author": "Simonetta L.",
+          "text": "Personale gentile e accogliente. Hanno subito risolto il problema. Ti consigliano bene.",
+          "date": "2025-08-26"
+        },
+        {
+          "author": "ernesto c.",
+          "text": "Ottimo servizio, grazie Federico",
+          "date": "2025-08-26"
+        },
+        {
+          "author": "Giulia P.",
+          "text": "Super disponibili, veloci e precisi. Consiglio!",
+          "date": "2025-08-22"
+        },
+        {
+          "author": "MICHELE S.",
+          "text": "Ottima professionalità",
+          "date": "2025-08-19"
+        },
+        {
+          "author": "Giovanni M.",
+          "text": "Telefono vecchio completamente morto. Ho acquistato un nuovo telefono da Federico ed è anche riuscito a recuperare i vecchi dati! Contentissimo del servizio",
+          "date": "2025-08-19"
+        },
+        {
+          "author": "Maria G.",
+          "text": "Benissimo",
+          "date": "2025-08-19"
+        },
+        {
+          "author": "Roberta F.",
+          "text": "Ottimo servizio",
+          "date": "2025-08-08"
+        },
+        {
+          "author": "Ornella G.",
+          "text": "Federico gentilissimo, assistenza sul mio vecchio telefono veloce ed efficiente",
+          "date": "2025-07-30"
+        },
+        {
+          "author": "Mauro S.",
+          "text": "Ottimo supporto",
+          "date": "2025-07-28"
+        },
+        {
+          "author": "Laura B.",
+          "text": "Ottimo servizio Federico gentilissimo",
+          "date": "2025-07-26"
+        },
+        {
+          "author": "Vilma G.",
+          "text": "Competenza e cortesia  geazie",
+          "date": "2025-07-25"
+        },
+        {
+          "author": "Giorgio T.",
+          "text": "Ottimo",
+          "date": "2025-07-23"
+        },
+        {
+          "author": "fiorenza p.",
+          "text": "Servizio ottimo",
+          "date": "2025-07-18"
+        },
+        {
+          "author": "Paola L.",
+          "text": "mi sono trovata benissimo",
+          "date": "2025-07-15"
+        },
+        {
+          "author": "Umberta",
+          "text": "Mi sono trovata benissimo",
+          "date": "2025-07-11"
+        },
+        {
+          "author": "Marisa S.",
+          "text": "Gentilissi!!!!",
+          "date": "2025-06-27"
+        },
+        {
+          "author": "Alfredo B.",
+          "text": "Ottimo servizio davvero, grazie Federico",
+          "date": "2025-06-27"
+        },
+        {
+          "author": "Stefania B.",
+          "text": "Che dire?<br>Lavoro top<br>Federico top<br>Non si trova nulla di meglio... Siete in ottime mani!",
+          "date": "2025-06-19"
+        },
+        {
+          "author": "Elena D.",
+          "text": "Efficiente, rapido e super affabili!",
+          "date": "2025-06-19"
+        },
+        {
+          "author": "Kristi K.",
+          "text": "Personale gentile cortese e professionale 🔝👏",
+          "date": "2025-06-18"
+        },
+        {
+          "author": "jessica m.",
+          "text": "Federico molto competente centro di riferimento<br>( sostituzione batteria Apple )",
+          "date": "2025-06-18"
+        },
+        {
+          "author": "samuele c.",
+          "text": "Cordiali, Professionali, veloci.<br>Batteria originale sostituita in poche ore, spettacolo.",
+          "date": "2025-06-18"
+        },
+        {
+          "author": "Paolo G.",
+          "text": "Precisione, velocità e competenza.",
+          "date": "2025-06-17"
+        },
+        {
+          "author": "Greta G.",
+          "text": "Bravissimi e veloci",
+          "date": "2025-06-17"
+        },
+        {
+          "author": "Paolo R.",
+          "text": "Bravissimi e gentili. Mi hanno risolto un problema sulla luminosità di un cell in tre secondi cosa che ìo non sapevo proprio come affrontare. Guardate che cortesia e semplicità  sono merci rare. E qui le potrete trovare.",
+          "date": "2025-06-17"
+        },
+        {
+          "author": "Adelmo R.",
+          "text": "Acquistato PC nuovo. Federico mi ha aiutato ad avviarlo e mi ha spiegato tutto in modo chiaro. Ottimo davvero, gentilissimo",
+          "date": "2025-06-14"
+        },
+        {
+          "author": "Nicoletta B.",
+          "text": "Spostamento dati da telefono rotto. Grazie mille a Federico per aver risolto il problema!<br>Consigliato.",
+          "date": "2025-06-13"
+        },
+        {
+          "author": "Matteo G.",
+          "text": "Molto di aiuto.",
+          "date": "2025-06-12"
+        },
+        {
+          "author": "Sergio C.",
+          "text": "Ottimo servizio assistenza per una App che non andava",
+          "date": "2025-06-11"
+        },
+        {
+          "author": "carmelo c.",
+          "text": "Ottimo servizio e gentilezza",
+          "date": "2025-06-07"
+        },
+        {
+          "author": "Sergio U.",
+          "text": "Assistenza stampante ben fatta, personale gentile e competente",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Giovanna C.",
+          "text": "Ottima riparazione",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Salvatore M.",
+          "text": "Professionali",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Luciano C.",
+          "text": "Telefono nuovo con spostamento contatti. Federico molto cordiale",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Giovanna F.",
+          "text": "Ottimo davvero",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Michele G.",
+          "text": "Ottima professionalità e disponibilità.<br>Servizio impeccabile.<br>Consiglio vivamente.",
+          "date": "2025-06-05"
+        },
+        {
+          "author": "Lele O.",
+          "text": "Personale molto disponibile e gentile e soprattutto preparato sanno darti il consiglio giusto e soprattutto non ti vendono cose inutili super consigliato",
+          "date": "2025-06-04"
+        },
+        {
+          "author": "laura v.",
+          "text": "Ottima assistenza",
+          "date": "2025-06-04"
+        },
+        {
+          "author": "Fabio M.",
+          "text": "Sempre gentili e pronti a risolvere qualsiasi problema! Consiglio vivamente",
+          "date": "2025-05-28"
+        }
+      ]
     },
     {
       "slug": "gallarate",
@@ -47,7 +886,554 @@
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/00000000-0000-0000-0000-000000000001/store_photo_url-1770150689092.webp",
       "placeId": "ChIJ6yyZkqWJhkcRWl-oGsLTGlE",
       "rating": 5,
-      "reviews": 148
+      "reviews": 148,
+      "reviewList": [
+        {
+          "author": "Maurizia M.",
+          "text": "Ottimo punto di riferimento per qualsiasi cosa riguardi l'informatica! Maria e Vito sempre disponibili",
+          "date": "2026-11-03"
+        },
+        {
+          "author": "Diego P.",
+          "text": "Ottimo negozio, il personale è gentile, disponibile e competente. Io sono andato per problemi con il cellulare che, essendo di una marca poco conosciuta, però non è stato possibile riparare ma ci hanno provato ugualmente. Cortesemente poi mi hanno aiutato nella scelta di un nuovo dispositivo. Fanno anche servizio assistenza per stampanti e PC.<br>Consigliatissimo.",
+          "date": "2026-10-25"
+        },
+        {
+          "author": "Luca D.",
+          "text": "PS5 riparata in pochissimo tempo.<br>Store più che consigliato!",
+          "date": "2026-10-16"
+        },
+        {
+          "author": "Luigi P.",
+          "text": "Raccomandato.",
+          "date": "2026-09-04"
+        },
+        {
+          "author": "Massimo M.",
+          "text": "Dopo aver scoperto il negozio tramite la piattaforma WeFix, ho portato la mia console Nintendo Switch Lite da RiparoHero a Gallarate per un’anomalia nell’utilizzo di una levetta analogica. Antonio si è dimostrato molto disponibile sin da subito e ha risolto il problema con precisione e in tempi brevi. Sono molto soddisfatto del servizio: gentilezza, accuratezza e professionalità garantite!",
+          "date": "2026-08-31"
+        },
+        {
+          "author": "Antonio I.",
+          "text": "Anche se c'è stato qualche intoppo,mi sono trovato bene! Ho trovato un personale attento e cordiale",
+          "date": "2026-08-28"
+        },
+        {
+          "author": "Giorgio M.",
+          "text": "Ottima consulenza mi sono trovato bene per una valida prestazione",
+          "date": "2026-08-28"
+        },
+        {
+          "author": "Andrea A.",
+          "text": "Avevo dato per perso il mio lavoro di anni, sono riusciti a riportare in vita il mio macbook nel giro di qualche giorno, 100% consigliato!!!!",
+          "date": "2026-07-25"
+        },
+        {
+          "author": "Sergio B.",
+          "text": "Ottima esperienza, avevo un problema di virus sul mio telefono. Mi hanno assistito con pazienza e cortesia, sicuramente consigliato!",
+          "date": "2026-07-18"
+        },
+        {
+          "author": "Angela C.",
+          "text": "Gentili disponibili e risolutivi. Ottima esperienza . Grazie",
+          "date": "2026-07-12"
+        },
+        {
+          "author": "eugenio f.",
+          "text": "Sono passato per una piccola riparazione su un bracciale Apple Watch, efficace e gentilissimo!",
+          "date": "2026-07-01"
+        },
+        {
+          "author": "Maurizio V.",
+          "text": "Bravi e gentili. Grazie!!!!",
+          "date": "2026-06-26"
+        },
+        {
+          "author": "Giacoma B.",
+          "text": "Problema risolto bravissimo grazie",
+          "date": "2026-06-25"
+        },
+        {
+          "author": "giorgio p.",
+          "text": "Sono andato in questo negozio di riparazioni cellulari e tutto quel che riguarda l'elettronica, forte delle ottime recensioni e devo ammettere che sono ben riposte, il tecnico è italiano molto competente e onesto. Per qualsiasi problema ora saprò a chi rivolgermi",
+          "date": "2026-06-16"
+        },
+        {
+          "author": "francesco s.",
+          "text": "Rapidità, professionalità e correttezza... Grazie Ale",
+          "date": "2026-05-16"
+        },
+        {
+          "author": "katia c.",
+          "text": "Mi sono recata al negozio per un problema software su telefono. Il negozio è comodo e disposto di un parcheggio comodo. Infine il tecnico Ale è stato gentilissimo sorridente e sempre disponibile. Consiglio",
+          "date": "2026-05-06"
+        },
+        {
+          "author": "Danilo C.",
+          "text": "Professionali e rapidi. Problema risolto in un pomeriggio.",
+          "date": "2026-04-21"
+        },
+        {
+          "author": "Melissa G.",
+          "text": "Mi sono trovata molto bene, ho portato un computer a riparare e ora è tornato a funzionare come prima. Ho trovato inoltre un personale molto gentile e preparato. Lo consiglio",
+          "date": "2026-04-21"
+        },
+        {
+          "author": "Tino",
+          "text": "Ho chiamato x info, sono stati gentili<br>❤️",
+          "date": "2026-04-18"
+        },
+        {
+          "author": "Ennio L.",
+          "text": "Ottima assistenza. Ale ha fatto un ottimo lavoro in tempo brevissimo",
+          "date": "2026-04-15"
+        },
+        {
+          "author": "Luca D.",
+          "text": "Proprietario cordiale e ben preparato.<br>Ho fatto un cambio di componenti pc, scheda video e alimentatore.<br>Ha saputo dirmi con certezza quale fosse la migliore opzione per la mia build ed è stato anche veloce con i tempi, in soli due giorni ho riavuto il mio pc.<br>Consigliato!",
+          "date": "2026-03-21"
+        },
+        {
+          "author": "Camila S.",
+          "text": "Buon servizio molto gentili",
+          "date": "2026-03-12"
+        },
+        {
+          "author": "Agatino P.",
+          "text": "Ho avuto bisogno  di aiuto,  lo hanno fatto e sono stati gentilissimi. Sono rimasto sorpreso e non finivo più di ringraziarli.",
+          "date": "2026-03-11"
+        },
+        {
+          "author": "Labanca M.",
+          "text": "Personale cordiale e molto professionale!",
+          "date": "2026-03-07"
+        },
+        {
+          "author": "Concetta C.",
+          "text": "Vito e Ale...Ragazzi disponibili ...professionali  e molto gentili...Mi hanno conquistata.!  Da oggi...saprò dove andare per risolvere i miei problemi di informatica...Grazie di vero ❤",
+          "date": "2026-03-05"
+        },
+        {
+          "author": "Gabriele P.",
+          "text": "Ottimo servizio, molto bravo il ragazzo.<br>Posto consigliato",
+          "date": "2026-03-04"
+        },
+        {
+          "author": "Andrea T.",
+          "text": "veloce disponibile",
+          "date": "2026-03-03"
+        },
+        {
+          "author": "Erasmo F.",
+          "text": "Ho cambiato la batteria del mio iphone 14 ed il servizio su appuntamento e’ stato efficente cortese e rapido e con spess contenuta. Ci tornero’ sicuramente",
+          "date": "2026-02-23"
+        },
+        {
+          "author": "sabrina r.",
+          "text": "Professionalità, gentilezza, competenza e simpatia!!!!",
+          "date": "2025-12-20"
+        },
+        {
+          "author": "Lorenzo C.",
+          "text": "Puntualità, cordialità e professionalità! iPhone come nuovo!",
+          "date": "2025-11-29"
+        },
+        {
+          "author": "Giacomo G.",
+          "text": "Ho portato il mio Iphone in questo negozio dopo che si era rotta la fotocamera e devo dire che l’esperienza è stata davvero eccellente! Il personale è gentile, disponibile e soprattutto molto competente.<br><br>Consiglio vivamente questo negozio a chiunque abbia bisogno di una riparazione veloce e professionale. Un vero punto di riferimento!",
+          "date": "2025-11-25"
+        },
+        {
+          "author": "Terminale74 T.",
+          "text": "Personale gentile e professionale!",
+          "date": "2025-11-22"
+        },
+        {
+          "author": "Matteo C.",
+          "text": "Cordialità e competenza",
+          "date": "2025-11-21"
+        },
+        {
+          "author": "Anna G.",
+          "text": "Molto disponibili, carinissimi!",
+          "date": "2025-11-17"
+        },
+        {
+          "author": "Rory M.",
+          "text": "Il tecnico è stato molto cordiale ed efficiente nell'ordinare in meno di un  giorno lo schermo per sostituire quello rotto del mio telefono, in meno di due giorni ho riavuto il telefono, senza perdita di nessun dato, per di più mi è stato proposto se volessi un telefono di cortesia nel frattempo, dimostrando un'attenzione al cliente niente affatto scontata.",
+          "date": "2025-11-17"
+        },
+        {
+          "author": "Davide O.",
+          "text": "Conoscevo il negozio da prima, fin da quando erano nella loro vecchia sede nella zona pedonale a Gallarate.<br>Mi sono sempre trovato bene e mi hanno sempre inspirato fiducia, tanto che non mi sono mai fatto scrupoli a consigliarlo.<br>Ho dovuto fare riparare varie cose: lo schermo del mio vecchio Huawei, lo schermo del mio IPhone SE e ora la batteria dello stesso telefono. Le riparazioni sono sempre state effettuate rapidamente, rispettando i tempi dati e comunicando sempre tempestivamente eventuali complicazioni o variazioni. A ispirare fiducia, è anche la trasparenza e il modo di fare aperto del proprietario. Inoltre, mi sono sempre state proposte soluzioni adeguate al mio caso e senza che i portassero a spendere nulla in più del necessario.",
+          "date": "2025-11-13"
+        },
+        {
+          "author": "Gianna M.",
+          "text": "Molto professionali e gentili",
+          "date": "2025-11-12"
+        },
+        {
+          "author": "Marilena T.",
+          "text": "Personale attento, competente e molto professionale. Capace di saper ascoltare ed esaudire tutte le tue esigenze.<br>Per qualsiasi informazione sempre disponibile.<br>Noi siamo stati seguiti dal sig. Vito.<br>Lo consiglio vivamente….",
+          "date": "2025-10-11"
+        },
+        {
+          "author": "Corrado P.",
+          "text": "Mi sono trovato molto bene. Gentili,professionali e puntuali. Complimenti.",
+          "date": "2025-10-05"
+        },
+        {
+          "author": "silvia p.",
+          "text": "mi sono trovata molto bene, veloci e competenti",
+          "date": "2025-10-01"
+        },
+        {
+          "author": "Giovanna A.",
+          "text": "Competenza e gentilezza da parte del gestore.grazie per avere risolto il nostro problema",
+          "date": "2025-09-20"
+        },
+        {
+          "author": "Rosanna G.",
+          "text": "Ho avuto problemi con il mio smartphone e hanno subito trovato la soluzione adatta per me.<br>Ho trovato uno staff attento e cordiale!",
+          "date": "2025-09-12"
+        },
+        {
+          "author": "Marco N.",
+          "text": "Portato tablet da sbloccare,ottimo servizio,persone serie!",
+          "date": "2025-09-04"
+        },
+        {
+          "author": "Enrico L.",
+          "text": "Mi sono trovato bene con il computer che ho chiesto e non ho riscontrato problemi per quanto riguarda le temperature. Anche il prezzo è buono per le parti che ho richiesto",
+          "date": "2025-09-02"
+        },
+        {
+          "author": "Emmanuel O.",
+          "text": "Thank you! Fixed my computer in minutes!",
+          "date": "2025-09-02"
+        },
+        {
+          "author": "dynamiclongrange",
+          "text": "Ho portato a riparare il mio iPad 11 pro, doveva essere sostituito il connettore di ricarica usb c.<br>Altri riparatori mi avevano sconsigliato l’operazione perché si sarebbe potuto rompere il vetro, qua invece ho trovato professionalità e competenza, sono stato avvisato del rischio che sarebbe potuto succedere, ma il titolare del negozio mi aveva anche detto che non aveva mai avuto questo inconveniente. Così è stato, iPad riparato e tempistiche rispettate. Super consigliato.",
+          "date": "2025-09-02"
+        },
+        {
+          "author": "GIORGIO R.",
+          "text": "Ottimo servizio. Comunicazione tempestiva ed efficace. Problema risolto con perizia. Finalmente trovato un negozio molto competente ed affidabile. Grazie ancora",
+          "date": "2025-08-28"
+        },
+        {
+          "author": "Alfio V.",
+          "text": "Ho usufruito dei servizi di Iriparo per la sostituzione del vetro delle fotocamere di uno smartphone. Mi preme sottolineare innanzitutto la disponibilità e la gentilezza durante i contatti avuti: prima telefonicamente e poi di persona il giorno della riparazione. Mi hanno chiamato telefonicamente per fissare un appuntamento, sono arrivato puntuale e ho ricevuto immediatamente assistenza. Ho atteso circa 40 minuti e il tutto era già pronto. Competenza, professionalità e cortesia….. cose rare ormai. Bravi, continuate così",
+          "date": "2025-08-27"
+        },
+        {
+          "author": "carlo f.",
+          "text": "Ho acquistato un iPhone ricondizionato e ricevuto assistenza a distanza di tempo sempre da Iriparo di gallarate . Sono innanzitutto gentilissimi , cordiali e pazienti . Prodotti e servizi nulla da dire . Mi sono sempre trovato molto bene .",
+          "date": "2025-08-27"
+        },
+        {
+          "author": "Maria D.",
+          "text": "Molto bene",
+          "date": "2025-08-25"
+        },
+        {
+          "author": "Loris C.",
+          "text": "professionali e gentili",
+          "date": "2025-08-20"
+        },
+        {
+          "author": "Flavio B.",
+          "text": "Sono venuto al negozio g8a a Gallarate per un problema col mio PC e il sig. ANTONIO mi ha risolto il tutto in brevissimo tempo e dandomi delle soluzioni davvero interessanti nel caso volessi cambiare il mio PC.   Che dire davvero professionali, li consiglio.",
+          "date": "2025-08-20"
+        },
+        {
+          "author": "Paola R.",
+          "text": "Disponibilità, cortesia, competenza, trasparenza e celerità sono solo alcuni dei punti di forza! Mi sono trovata benissimo e lo consiglio vivamente! Sempre così, ragazzi!!",
+          "date": "2025-08-20"
+        },
+        {
+          "author": "Ste G.",
+          "text": "Ottimo servizio e persone molto competenti",
+          "date": "2025-08-07"
+        },
+        {
+          "author": "Max R.",
+          "text": "Ho sostituito la batteria del telefono, sono molto soddisfatto. Competenti, gentili, prezzo giusto",
+          "date": "2025-08-05"
+        },
+        {
+          "author": "Alessandro V.",
+          "text": "Servizio e assistenza puntuali ed eccellenti. Consiglio vivamente!",
+          "date": "2025-07-31"
+        },
+        {
+          "author": "Renato B.",
+          "text": "Personale gentile e competente. Riparazione rapida. Negozio consigliato.",
+          "date": "2025-07-31"
+        },
+        {
+          "author": "Antonio C.",
+          "text": "Molto gentile e disponibile, ho portato 2 PC portatili, non solo è riuscito a risolvere il problema di uno dei due, cosa che altri mi avevano detto che era impossibile da risolvere. Ma per entrambi i PC è riuscito a renderli più veloci di prima. Soddisfatto è dir poco. Inoltre a fatto tutto in poco tempo. Anche in futuro so che mi posso affidare a lui",
+          "date": "2025-07-30"
+        },
+        {
+          "author": "Sara C.",
+          "text": "Esperienza positiva, ho risolto il problema.<br>Gentilissimi e competenti",
+          "date": "2025-07-29"
+        },
+        {
+          "author": "Vito M.",
+          "text": "Riscontro immediato tramite mail e disponibilità. Sostituita una batteria in mezza giornata ad un prezzo ragionevole. Ottimo lavoro!",
+          "date": "2025-07-26"
+        },
+        {
+          "author": "otty",
+          "text": "Ottimo servizio di riparazione",
+          "date": "2025-07-26"
+        },
+        {
+          "author": "Franco D.",
+          "text": "Avevo un problema di virus sul telefono e lo hanno prontamente risolto! Consigliato!",
+          "date": "2025-07-25"
+        },
+        {
+          "author": "Tecla G.",
+          "text": "Sempre molto veloci e disponibili ma soprattutto risolvono i problemi!!!!",
+          "date": "2025-07-23"
+        },
+        {
+          "author": "Raffaella B.",
+          "text": "Grazie per la gentilezza, cortesia, tempestività e professionalità.<br>Esperienza molto positiva.<br>Grazie a Vito e a tutto il team.",
+          "date": "2025-07-21"
+        },
+        {
+          "author": "Renata A.",
+          "text": "Sostituzione batteria<br>E controllo strumenti<br>Bene,ottimo,<br>Grazie!",
+          "date": "2025-07-17"
+        },
+        {
+          "author": "Людмила З.",
+          "text": "Personale attento e disponibile. Ho acquistato in telefono nuovo e mi hanno trasferito tutti i dati, consigliato!",
+          "date": "2025-07-15"
+        },
+        {
+          "author": "Luca G.",
+          "text": "Ottimo servizio! Gentilissimi, super disponibili e competenti!",
+          "date": "2025-07-15"
+        },
+        {
+          "author": "Daniela P.",
+          "text": "Esperienza super positiva, personale professionale e preparato, mi hanno saputo aiutare nonostante i miei problemi provenissero da un telefono ricondizionato in modo pessimo. Il cambio del vetro e della batteria sono stati fatti in modo rapido ed eccellente. La consulenza ha rispecchiato la passione e la dedizione di queste persone per tale lavoro.<br>Aprovatissimo!!",
+          "date": "2025-07-11"
+        },
+        {
+          "author": "Rosalia M.",
+          "text": "Soddisfatta  personale  gentile e disponibile",
+          "date": "2025-07-08"
+        },
+        {
+          "author": "Giorgio C.",
+          "text": "Professionale",
+          "date": "2025-07-05"
+        },
+        {
+          "author": "Matteo C.",
+          "text": "Ho avuto bisogno del cambio della batteria del mio smartphone. Sono rimasto molto soddisfatto della gentilezza, della competenza e dei tempi. Consigliato!!!",
+          "date": "2025-07-03"
+        },
+        {
+          "author": "Daniela C.",
+          "text": "RingraziobMaria e i suoi colleghi per la loto disponibilità gentilezza e professionalità",
+          "date": "2025-07-03"
+        },
+        {
+          "author": "Alessio P.",
+          "text": "Personale qualificato e gentile<br>Ascoltano e cercano di risolvere il tuo problema nel minor tempo possibile.Molto cordiale e preparata ho trovato Maria",
+          "date": "2025-07-03"
+        },
+        {
+          "author": "Giuseppe N.",
+          "text": "Personale efficientissimo e molto cortesel",
+          "date": "2025-07-03"
+        },
+        {
+          "author": "Teresa F.",
+          "text": "Professionalità e simpatia<br>E molta disponibilità per quelle alle prime armi .<br>Grazie Maria",
+          "date": "2025-07-01"
+        },
+        {
+          "author": "Angelo S.",
+          "text": "Massima disponibilità a qualsiasi richiesta ed esigenza del cliente!",
+          "date": "2025-06-30"
+        },
+        {
+          "author": "Elisa M.",
+          "text": "Ho acquistato uno smartphone ricondizionato presso questo negozio e sono rimasta davvero soddisfatta! Il telefono è in condizioni eccellenti, perfettamente funzionante e praticamente come nuovo. Vito è stato super…preparato, gentile e disponibile, pronto a rispondere a tutte le mie domande con professionalità e pazienza.<br>Tornerò sicuramente per futuri acquisti!",
+          "date": "2025-06-28"
+        },
+        {
+          "author": "Emilio B.",
+          "text": "Vito è stato impeccabile!<br>Complimenti 👍",
+          "date": "2025-06-27"
+        },
+        {
+          "author": "Pietro S.",
+          "text": "Grazie per la professionalità’ e cortesia",
+          "date": "2025-06-26"
+        },
+        {
+          "author": "alfio",
+          "text": "Cordialità, puntualità e competenza, cosa vuoi ancora? Costi d'intervento onesti? Hanno anche quelli 👍",
+          "date": "2025-06-24"
+        },
+        {
+          "author": "Plinio F.",
+          "text": "Ho trovato un personale attento e cordiale.<br>Hanno risolto tempestivamente il problema che avevo sul telefono.",
+          "date": "2025-06-20"
+        },
+        {
+          "author": "Gabriele F.",
+          "text": "Professionalità eccellente",
+          "date": "2025-06-20"
+        },
+        {
+          "author": "Greta A.",
+          "text": "Precisi, gentili e disponibili. Consigliato!",
+          "date": "2025-06-19"
+        },
+        {
+          "author": "anna m.",
+          "text": "Esperienza molto positiva",
+          "date": "2025-06-19"
+        },
+        {
+          "author": "Claudio B.",
+          "text": "Utilizzo da molto tempo le cartucce  per la mia stampante,ottimi colori ,che durano nel tempo,prezzo corretto molto bilanciato con la qualità.",
+          "date": "2025-06-13"
+        },
+        {
+          "author": "Alessandro P.",
+          "text": "Gentili e professionali, cambio batteria iPhone nel giro di mezza giornata. Consiglio vivamente!",
+          "date": "2025-06-11"
+        },
+        {
+          "author": "Marina R.",
+          "text": "Troppo gentili troppo simpatici troppo tutto!",
+          "date": "2025-06-03"
+        },
+        {
+          "author": "riccarda f.",
+          "text": "Risolto in 5 minuti, gentilissimo efficiente e competente. Consigliatissimo.",
+          "date": "2025-05-30"
+        },
+        {
+          "author": "Natascia D.",
+          "text": "Sempre cortesi e disponibili",
+          "date": "2025-05-30"
+        },
+        {
+          "author": "elena b.",
+          "text": "Grazie di cuore per i consigli per la mia stampante<br>La signora Maria ..professionale ….preparata e anche molto simpatica che non guasta<br>Cliente presa …..grazie ancora",
+          "date": "2025-05-29"
+        },
+        {
+          "author": "Alessandro M.",
+          "text": "Prontezza, gentilezza e competenza top!<br>Ho portato una stampante non funzionante da mesi e sono stati in grado di trovare in pochissimo il problema e risolverlo.<br>Grazie davvero!",
+          "date": "2025-05-29"
+        },
+        {
+          "author": "Salvatore C.",
+          "text": "Ottimo servizio!",
+          "date": "2025-05-28"
+        },
+        {
+          "author": "Pierangela M.",
+          "text": "Mi sono trovata eggreggiamente",
+          "date": "2025-05-27"
+        },
+        {
+          "author": "Elisa L.",
+          "text": "Molto gentili e competenti, mi hanno aiutata con i vari problemi elettronici con molta pazienza. Super! Consigliatissimo",
+          "date": "2025-05-14"
+        },
+        {
+          "author": "Silvio V.",
+          "text": "Sauro mi ha trattato in modo eccezionale. Gentile e professionale. Grazie.",
+          "date": "2025-05-14"
+        },
+        {
+          "author": "Marisa R.",
+          "text": "Mi hanno risolto il problema con velocità e competenza",
+          "date": "2025-05-07"
+        },
+        {
+          "author": "Massimiliano M.",
+          "text": "Ottima assistenza voto 10 ci tornero",
+          "date": "2025-04-05"
+        },
+        {
+          "author": "Roby R.",
+          "text": "Personale davvero preparato, cortese, gentile e paziente. Consigliatissimo. Ottima esperienza.",
+          "date": "2025-03-12"
+        },
+        {
+          "author": "Franco C.",
+          "text": "Gentili e professionali . Prezzi chiari come preventivi",
+          "date": "2025-02-20"
+        },
+        {
+          "author": "Valentina B.",
+          "text": "Personale disponibile, gentile e professionale. Avevo il display del telefono danneggiato e me lo hanno riparato in un’oretta di tempo: è tornato come nuovo! Super consigliato",
+          "date": "2025-02-16"
+        },
+        {
+          "author": "Pierangelo P.",
+          "text": "Negozio molto ben fornito e organizzato ,gestito da personale competente.",
+          "date": "2025-01-31"
+        },
+        {
+          "author": "Stefano S.",
+          "text": "Personale competente e gentile, riparazione in tempi fulminei",
+          "date": "2025-01-11"
+        },
+        {
+          "author": "Umberto P.",
+          "text": "Ho trovato un ragazzo molto gentile e preparato. Ritornerò certamente",
+          "date": "2024-12-11"
+        },
+        {
+          "author": "Emanuele B.",
+          "text": "Professionalità e gentilezza",
+          "date": "2024-11-22"
+        },
+        {
+          "author": "Anna G.",
+          "text": "Ottimo servizio, con cortesia, gentilezza ed efficienza",
+          "date": "2024-11-20"
+        },
+        {
+          "author": "Bonamici L.",
+          "text": "Qui trovate competenza e professionalità.<br>Personale disponibile ed educato.<br>Complimenti.",
+          "date": "2024-07-24"
+        },
+        {
+          "author": "Gaetano B.",
+          "text": "Ottimo servizio!",
+          "date": "2024-05-30"
+        },
+        {
+          "author": "anto2291",
+          "text": "Assistenza veloce e precisa, personale cortese e professionale, mi ha risolto il problema in men che non si dica!",
+          "date": "2024-05-10"
+        },
+        {
+          "author": "gianrenzo i.",
+          "text": "Tutto ok",
+          "date": "2021-08-14"
+        }
+      ]
     },
     {
       "slug": "jerago-con-orago",
@@ -63,7 +1449,759 @@
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/e0eb5b0b-f2b6-42a9-88b6-e22fc26123f3/store_photo_url-1770150879779.webp",
       "placeId": "ChIJI1NQYgmIhkcRIyYGwWW3ESs",
       "rating": 4.8,
-      "reviews": 346
+      "reviews": 346,
+      "reviewList": [
+        {
+          "author": "Giulia B.",
+          "text": "Difficile trovare persone competenti e gentili e qui han fatto centro su entrambi i punti!<br>Consigliato",
+          "date": "2026-10-29"
+        },
+        {
+          "author": "Fabio B.",
+          "text": "Sempre il TOP!",
+          "date": "2026-10-27"
+        },
+        {
+          "author": "Edo C.",
+          "text": "Professionalità e simpatia, difficili da trovare insieme. Ottimo servizio!",
+          "date": "2026-10-17"
+        },
+        {
+          "author": "Simo",
+          "text": "Personale gentilissimo, disponibile a risolvere problemi che a volte non sono nemmeno di loro competenza( spedizioni ecc.). Sempre competenti e sorridenti! Rarità! Grazie😊. Consigliatissimo.",
+          "date": "2026-10-16"
+        },
+        {
+          "author": "Immacolata C.",
+          "text": "Ragazzi molto competemti, complimenti!<br>Consigliato",
+          "date": "2026-10-12"
+        },
+        {
+          "author": "CiAcca",
+          "text": "Consiglio tanto",
+          "date": "2026-10-10"
+        },
+        {
+          "author": "x a.",
+          "text": "Ottimo servizio e prezzi più che accessibili.",
+          "date": "2026-09-24"
+        },
+        {
+          "author": "Fabrizio G.",
+          "text": "Ottimo servizio, personale gentile ed efficiente prezzi imbattibili, ci passo almeno una volta a settimana per vedere le nuove offerte e ne rimango sempre soddisfatto, unica pecca è un po' piccolino ma fantastico lo stesso!",
+          "date": "2026-09-22"
+        },
+        {
+          "author": "Michela L.",
+          "text": "Molto gentili e disponibili per ogni richiesta di chiarimenti. Ho risolto i miei problemi con il pc.",
+          "date": "2026-09-18"
+        },
+        {
+          "author": "GIOVANNI P.",
+          "text": "Errore stampante e collegamento, fatto regolare come sempre da Ale e staff.ciao",
+          "date": "2026-09-17"
+        },
+        {
+          "author": "Andrea C.",
+          "text": "HO AVUTO UN PROBLEMA CON IL MIO PC ,RISOLTO MOLTO ONESTAMENTE<br>PERSONALE QUALIFICATO!",
+          "date": "2026-08-20"
+        },
+        {
+          "author": "Loretta B.",
+          "text": "Gentili e competenti",
+          "date": "2026-08-14"
+        },
+        {
+          "author": "vincenzo b.",
+          "text": "Personale gentilissimo e disponibilissimo.. 🔝 top… altamente qualificati..",
+          "date": "2026-08-01"
+        },
+        {
+          "author": "Nicolas D.",
+          "text": "Mi ha seguito Federico per un problema importante al PC per un'urgenza.<br><br>Tempo 6 ore tutto risolto e senza alcun problema.<br><br>Grazie!",
+          "date": "2026-07-03"
+        },
+        {
+          "author": "CICCIO P.",
+          "text": "Ottime cartucce",
+          "date": "2026-06-30"
+        },
+        {
+          "author": "alessio j.",
+          "text": "Ho lasciato il mio orologio a riparare, dopo che la casa madre mi aveva risposto che essendo un modello vecchio era meglio la sostituzione con acquisto ultimo modello. Ho chiesto aiuto a RIPAROHERO che sono stati molti gentili ed anno provato un tentativo di riparazione prima di consigliarmi la sostituzione. Riparazione purtroppo non andata a buon fine, hanno deciso di loro spontanea volontà di non farmi pagare nulla visto l’esito finale, questa cosa è stata molto apprezzata. Consiglio, serietà massima!",
+          "date": "2026-06-13"
+        },
+        {
+          "author": "CV- N.",
+          "text": "fantastici in tutto, pulizia riparazione e modifiche eseguite in meno di 2 settimane soddisfatto del risultato. consiglio di passare da loro",
+          "date": "2026-05-30"
+        },
+        {
+          "author": "Luigi M.",
+          "text": "Ottimo negozio e personale qualificato. mi son trovato benissimo",
+          "date": "2026-05-29"
+        },
+        {
+          "author": "Attila 1.",
+          "text": "Ale e Nico sono due ragazzi gentilissimi e mi hanno risolto il problema relativo alla connessione del mio PC. Ho consegnato il PC in mattinata ed era già pronto nel pomeriggio.<br>Gentilissimi e prezzi onesti.<br>Mi hanno anche dato biscotti della fortuna<br>Consiglio tanto 😃😃",
+          "date": "2026-05-11"
+        },
+        {
+          "author": "Enzone 5.",
+          "text": "sostituzione schermo notebok Toshiba  15' minuti veloci bravi e gentilissimi! consigliato, Alla Prossima",
+          "date": "2026-04-25"
+        },
+        {
+          "author": "DoBrA's T.",
+          "text": "Federico molto cordiale e competente, visto che in poche ore mi ha aggiustato l'Iphone bloccato da una caduta. Prezzo onesto. Lo consiglio caldamente.",
+          "date": "2026-03-02"
+        },
+        {
+          "author": "Luca B.",
+          "text": "Una garanzia! Efficienti e veloci, soprattutto se si passa da loro solo per ritirare/spedire qualche pacco. Anche per assistenza tecnica o acquisto di PC sono veramente affidabili. Nicolò una vera garanzia: paziente e sempre gentile. Consigliati!",
+          "date": "2025-11-24"
+        },
+        {
+          "author": "NinjaLeggendario",
+          "text": "Ottima assistenza, compro qui le cartucce mia stampante",
+          "date": "2025-11-15"
+        },
+        {
+          "author": "Sabrina M.",
+          "text": "Ottimo servizio,  gentilissimo e competenti",
+          "date": "2025-11-04"
+        },
+        {
+          "author": "La B.",
+          "text": "Molta professionalità e disponibilità. Nicolò super",
+          "date": "2025-10-29"
+        },
+        {
+          "author": "Ilaria Z.",
+          "text": "Ottimo servizio, molto disponibili e competenti.<br>Consiglio vivamente!!!!",
+          "date": "2025-09-22"
+        },
+        {
+          "author": "Ele M.",
+          "text": "Ho richiesto l'assistenza  per il portatile. È vero che il problema era  limitato ma tutto si è  risolto in due giorni",
+          "date": "2025-09-22"
+        },
+        {
+          "author": "Nami_chin 9.",
+          "text": "Abbiamo portato il mio pc che aveva lo schermo da riparare e già dopo due giorni era pronto e perfettamente funzionante. Ci siamo trovate davvero bene, complimenti",
+          "date": "2025-09-01"
+        },
+        {
+          "author": "Emiliano F.",
+          "text": "Molto professionali",
+          "date": "2025-08-29"
+        },
+        {
+          "author": "Valentina P.",
+          "text": "Personale disponibile e preciso",
+          "date": "2025-08-27"
+        },
+        {
+          "author": "Lali C.",
+          "text": "Personale estremamente gentile, mio punto di ritiro di riferimento",
+          "date": "2025-07-30"
+        },
+        {
+          "author": "Francesco B.",
+          "text": "L'attenzione al cliente e sempre al top.",
+          "date": "2025-07-24"
+        },
+        {
+          "author": "Patrizia D.",
+          "text": "Disponibilità immediata e risoluzione del problema immediato . Consigliatissimo",
+          "date": "2025-07-21"
+        },
+        {
+          "author": "Maria M.",
+          "text": "Grazie per l'assistenza",
+          "date": "2025-07-19"
+        },
+        {
+          "author": "YBK82",
+          "text": "Ottima accoglienza, ragazzi molto disponibili ed efficienti, sostituzione della batteria del telefono effettuata in tempi rapidi, ci tornerò",
+          "date": "2025-07-09"
+        },
+        {
+          "author": "Mariano C.",
+          "text": "Ottimo servizio, grande cortesia e competenza, tempi rapidi e soluzione adeguata secondo i prezzi preventivati. Costi molto contenuti per la sostituzione di una batteria di un iPhone 11, con garanzia 12 mesi",
+          "date": "2025-06-30"
+        },
+        {
+          "author": "Ivano M.",
+          "text": "Professionali, gentili e simpatici",
+          "date": "2025-06-11"
+        },
+        {
+          "author": "Michele G.",
+          "text": "Grande Professionalità e competenza. Servizi efficaci con costi adeguati e tempi celeri.<br>Un punto di riferimento per l'elettronica in zona.",
+          "date": "2025-06-10"
+        },
+        {
+          "author": "francesco b.",
+          "text": "Ottimo servizio,personale molto gentile e disponibile mi sono trovato molto bene",
+          "date": "2025-06-10"
+        },
+        {
+          "author": "Luigino D.",
+          "text": "Mi. Sono. Trovato bene. Molto gentili",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Antonello R.",
+          "text": "Sono seri e molto professionali Top !!!!",
+          "date": "2025-05-20"
+        },
+        {
+          "author": "Alberto B.",
+          "text": "Gentilezza e competenza.",
+          "date": "2025-04-24"
+        },
+        {
+          "author": "Wanda C.",
+          "text": "Anche oggi (come del resto le precedenti) disponibilità ed efficienza un particolare ringraziamento va a Nicolò mi ha sempre consigliato per il meglio Grazie",
+          "date": "2025-04-23"
+        },
+        {
+          "author": "Paolo B.",
+          "text": "Molto disponibili e gentili",
+          "date": "2025-04-18"
+        },
+        {
+          "author": "danilo s.",
+          "text": "Persone molto disponibili, ed anche gentili e risolvono molti problemi",
+          "date": "2025-04-11"
+        },
+        {
+          "author": "Enzo R.",
+          "text": "Personale gentile e competente. Mi sono trovato molto bene.",
+          "date": "2025-04-02"
+        },
+        {
+          "author": "Paolo D.",
+          "text": "Posso dire solo cose positive, mi hanno assistito per un problema post formattazione, anche via whatsapp, x cui consigliatissimi",
+          "date": "2025-04-01"
+        },
+        {
+          "author": "Riccardo S.",
+          "text": "Super veloci, super disponibili, ci sono già stato diverse volte, sempre soddisfatto",
+          "date": "2025-03-25"
+        },
+        {
+          "author": "luisa b.",
+          "text": "Mi sono trovata molto bene. Ottimo lavoro",
+          "date": "2025-03-08"
+        },
+        {
+          "author": "Gianluca T.",
+          "text": "Ottimo servizio.",
+          "date": "2025-03-03"
+        },
+        {
+          "author": "Sergio",
+          "text": "Servizio impeccabile.<br>Professionalità e competenza.<br>5 stelle meritatissime!",
+          "date": "2025-02-27"
+        },
+        {
+          "author": "Wally L.",
+          "text": "Professionalità e competenza top! Niccolò molto gentile e disponibile. Sono molto soddisfatta del servizio",
+          "date": "2025-02-26"
+        },
+        {
+          "author": "Eugenia P.",
+          "text": "Hanno risolto il mio problema sul PC in modo efficace e veloce.",
+          "date": "2025-02-20"
+        },
+        {
+          "author": "Ilaria Z.",
+          "text": "Sempre molto gentili e competenti!<br>Molto soddisfatta.<br>Consiglio!!!",
+          "date": "2025-02-18"
+        },
+        {
+          "author": "Mond C.",
+          "text": "Complimenti a tutti persone fantastiche e molto responsabile cercano sempre di risolvere il bisogno del cliente e fanno dei buoni consigli 👍",
+          "date": "2025-02-14"
+        },
+        {
+          "author": "Doriano R.",
+          "text": "Persona competente e simpatica",
+          "date": "2025-02-13"
+        },
+        {
+          "author": "Alfredo B.",
+          "text": "Ottimo servizio assistenza",
+          "date": "2024-10-31"
+        },
+        {
+          "author": "Fernando R.",
+          "text": "Molto gentile e paziente il ragazzo",
+          "date": "2024-10-21"
+        },
+        {
+          "author": "Marina C.",
+          "text": "Personale gentilissimo e preparato lo consiglio",
+          "date": "2024-07-09"
+        },
+        {
+          "author": "paolo b.",
+          "text": "Cordiali e pronti a qualsiasi domanda, molto bene grazie!!",
+          "date": "2024-06-27"
+        },
+        {
+          "author": "Vincenzo C.",
+          "text": "Ho utilizzato il servizio fermopoint di Bartolini, veloci e gentili.",
+          "date": "2024-06-25"
+        },
+        {
+          "author": "Stefano T.",
+          "text": "Competenti, economici e gentilissimi (menzione d'onore per Sauro).",
+          "date": "2024-06-12"
+        },
+        {
+          "author": "Carlo C.",
+          "text": "Grazie super gentile",
+          "date": "2024-06-11"
+        },
+        {
+          "author": "Lucio M.",
+          "text": "Grazie e buon lavoro",
+          "date": "2024-06-07"
+        },
+        {
+          "author": "Angelo G.",
+          "text": "Gentili, veloci . disponibili e competenti. Graxie",
+          "date": "2024-05-29"
+        },
+        {
+          "author": "Fabrizio M.",
+          "text": "Estremamente soddisfatto del servizio, sicuramente capiterà di nuovo di passare presso il vostro esercizio a ritirare i miei ordini online 🙌",
+          "date": "2024-05-29"
+        },
+        {
+          "author": "Info I.",
+          "text": "Personale gentile e disponibile.<br>Servizio post vendita ottimo.<br>Rispondono in brevissimo tempo per qualsiasi problematica possa sorgere (ho noleggiato un pc e una stampante).",
+          "date": "2024-05-02"
+        },
+        {
+          "author": "Alfonsa B.",
+          "text": "Consigliato, Nicolò davvero gentile e professionale",
+          "date": "2024-05-02"
+        },
+        {
+          "author": "agostino",
+          "text": "Personale preparato e competente … lo consiglio",
+          "date": "2024-04-30"
+        },
+        {
+          "author": "Alfred G.",
+          "text": "Veloce e professione, ragazzo preparato",
+          "date": "2024-04-29"
+        },
+        {
+          "author": "Isabella L.",
+          "text": "Ho trovato persone davvero super gentili e disponibili. Massima competenza.",
+          "date": "2024-04-28"
+        },
+        {
+          "author": "Ermanno C.",
+          "text": "Sono molto soddisfatto del servizio e soprattutto della competenza dei tecnici su una richiesta un po’ particolare riguardante il mio MAC. Davvero un servizio a 5 stelle!",
+          "date": "2024-04-17"
+        },
+        {
+          "author": "Marco M.",
+          "text": "Personale gentile e professionale!",
+          "date": "2024-04-13"
+        },
+        {
+          "author": "Claudio C.",
+          "text": "Ottima professionalità massima cortesia consiglio vivamente",
+          "date": "2024-04-13"
+        },
+        {
+          "author": "Gabriella g.",
+          "text": "Problema con il PC risolto in poco tempo. Federico è stato molto competente.",
+          "date": "2024-04-12"
+        },
+        {
+          "author": "Maurizio C.",
+          "text": "Pe ottimi. Federico mi ha spiegato tutte le differenze con professionalità",
+          "date": "2024-04-11"
+        },
+        {
+          "author": "Rossana P.",
+          "text": "Mi hanno rimesso il telefonino a nuovo pulendo gli altoparlanti, la telecamera ecc. Sono stati puntuali e ritengo aver pagato il giusto prezzo.molto soddisfatta. Gentilezza e cortesia.",
+          "date": "2024-04-11"
+        },
+        {
+          "author": "Luigia P.",
+          "text": "Ottimi PC. Federico molto cordiale e preparato. Consigliato.",
+          "date": "2024-04-10"
+        },
+        {
+          "author": "valentina m.",
+          "text": "Tutto perfetto grazie , consigliati!( io ho cambiato la batteria del mio iPhone a buon prezzo )",
+          "date": "2024-04-10"
+        },
+        {
+          "author": "flavio s.",
+          "text": "Assolutamente soddisfatto. Gentilezza e professionalità!",
+          "date": "2024-04-09"
+        },
+        {
+          "author": "Paolo D.",
+          "text": "Sono stato servito da Nicolò, molto professionale ed educato.<br>Consigliatissimo",
+          "date": "2024-04-08"
+        },
+        {
+          "author": "Ermelinda G.",
+          "text": "Servizio ottimo<br>Nicolo molto preparato e veloce nel servizio<br>Consigliato",
+          "date": "2024-04-04"
+        },
+        {
+          "author": "Giuseppina B.",
+          "text": "Ottimo",
+          "date": "2024-04-04"
+        },
+        {
+          "author": "Andrea P.",
+          "text": "Ottima assistenza e professionalità, sono cliente affezionato da anni",
+          "date": "2024-03-28"
+        },
+        {
+          "author": "Riccardo G.",
+          "text": "Vorrei ringraziare Nicolò per la cortesia e l’efficacia dell’intervento sul mio MacBook per la soluzione di criticità con la posta elettronica. Bravo, attento e veloce! Grazie Nicolò’",
+          "date": "2024-03-26"
+        },
+        {
+          "author": "Concetta T.",
+          "text": "Ottieni servizi offerti, personale cordiale e preparato",
+          "date": "2024-03-21"
+        },
+        {
+          "author": "Ann M.",
+          "text": "Molto gentile e veloce, non caro e molto disponibile",
+          "date": "2024-03-19"
+        },
+        {
+          "author": "Fabrizio B.",
+          "text": "Gentili e molto preparati! Consigliatissimo!",
+          "date": "2024-02-14"
+        },
+        {
+          "author": "Vito c.",
+          "text": "Ottimo servizio , ho  consegnato oggi alle 16 il mio smartphone per sostituzione microfono e circa dopo  un ora me l' hanno riconsegnato ...",
+          "date": "2024-02-07"
+        },
+        {
+          "author": "Roberta M.",
+          "text": "Gentilissimi e disponibilissimi",
+          "date": "2024-02-07"
+        },
+        {
+          "author": "Elisabetta B.",
+          "text": "Giovani, competenti e con prezzi giusti. I ragazzi hanno sistemato il mio pc molto vecchio e senza troppe insistenza per acquistarne uno nuovo se ne sono presi cura ed il mio pc è tornato funzionante.<br>Prezzi abbordabili, quello pattuito è stato pagato.<br>Bravi. Da tenere in considerazione come riferimento per il futuro.<br>BRAVI",
+          "date": "2024-02-05"
+        },
+        {
+          "author": "Maria P.",
+          "text": "Ottimo in tutto sia come assistenza che come prodotti di informatica rapporto qualità prezzo eccellente!!!!",
+          "date": "2023-12-20"
+        },
+        {
+          "author": "Lorenzo D.",
+          "text": "Personale top e sempre disponibili.<br>Lavori svolti molto bene e con cura",
+          "date": "2023-12-07"
+        },
+        {
+          "author": "vaniusha t.",
+          "text": "Persoanele accogliente, gentile e professionale",
+          "date": "2023-12-04"
+        },
+        {
+          "author": "Mauro F.",
+          "text": "Personale disponibile qualificato e gentile",
+          "date": "2023-11-20"
+        },
+        {
+          "author": "Daniela F.",
+          "text": "Frequento G8Atechnology da diversi anni e ho sempre trovato persone competenti e gentili in grado di fornire tantissimi servizi.",
+          "date": "2023-11-14"
+        },
+        {
+          "author": "Vincenzo P.",
+          "text": "È veramente competente e cordiale",
+          "date": "2023-11-13"
+        },
+        {
+          "author": "Laura P.",
+          "text": "Devo dire che la cordialità del personale è davvero top. E anche la professionalità. Bravi",
+          "date": "2023-11-07"
+        },
+        {
+          "author": "Francesco C.",
+          "text": "Personale ben preparato ti sanno seguire e consigliare bene, gentili e competenti!!! Ottimi prezzi e mi hanno rimesso a nuovo il mac in pochissimo tempo!",
+          "date": "2023-10-30"
+        },
+        {
+          "author": "Ilaria",
+          "text": "Ragazzi simpatici, gentili, disponibili. Ormai scelgo praticamente solo questo posto per ritirare i pacchi e vado sul sicuro. Consigliatissimo! Inoltre spesso e volentieri mi lasciano degli sconti da poter utilizzare sulle cartucce della stampante, super consigliati",
+          "date": "2023-10-17"
+        },
+        {
+          "author": "francesco p.",
+          "text": "Consigliato",
+          "date": "2023-10-15"
+        },
+        {
+          "author": "Tommaso B.",
+          "text": "Personale qualificato e molto disponibile.<br>Ottima esperienza",
+          "date": "2023-10-12"
+        },
+        {
+          "author": "Gloria R.",
+          "text": "Sempre carini, educati, pazienti con chi come me è una schiappa totale. Tutte le volte che sono andata da loro hanno risolto i miei piccoli grandi problemi con gentilezza ed un sorriso sulle labbra anche se a volte non hanno guadagnato nulla...",
+          "date": "2023-08-22"
+        },
+        {
+          "author": "Marty M.",
+          "text": "Ottimi consigli,personale pratico e pronto ad accontertarti e professionale .Consigliato. Unica pecca il parcheggio scomodo.",
+          "date": "2023-07-25"
+        },
+        {
+          "author": "mirko l.",
+          "text": "Ottimo servizio, gentilezza e puntualitá la fanno da padrone...🔝",
+          "date": "2023-07-18"
+        },
+        {
+          "author": "stefano c.",
+          "text": "Superveloci e cordiali..Portato il PC lento la mattina,ritirato nel pomeriggio con ram e disco rigido sostituiti. Consigliato!",
+          "date": "2023-07-11"
+        },
+        {
+          "author": "Massimo F.",
+          "text": "Ragazzi molto gentili",
+          "date": "2023-06-28"
+        },
+        {
+          "author": "Alessandro A.",
+          "text": "Eccezionali e cortesi, un punto di riferimento per l’informatica e la telefonia.",
+          "date": "2023-06-26"
+        },
+        {
+          "author": "patrizio l.",
+          "text": "ottimo",
+          "date": "2023-02-15"
+        },
+        {
+          "author": "Giancarlo G.",
+          "text": "Bravi, competenti, gentili",
+          "date": "2023-02-11"
+        },
+        {
+          "author": "Samuele f.",
+          "text": "Esperienza più che soddisfacente, il ragazzo che lavora lì super gentile e sa quello che fa, lavoro eseguito perfettamente, ormai è il mio negozio di fiducia, sempre a top g8a🔝",
+          "date": "2023-02-11"
+        },
+        {
+          "author": "Giorgio M.",
+          "text": "Ho chiesto solo delle informazioni per un mio problema,  personale competente e disponibile a risolvere qualsiasi dubbio grazie",
+          "date": "2023-02-10"
+        },
+        {
+          "author": "HAMSTER",
+          "text": "Sono dei ragazzi italiani giovani, carini e molto gentili.<br>Andate tranquilli ve lo consiglio, fidatevi di me.",
+          "date": "2023-02-08"
+        },
+        {
+          "author": "Elia O.",
+          "text": "Tecnici molto bravi , veloci e molto preparati .",
+          "date": "2023-01-31"
+        },
+        {
+          "author": "Oliviero F.",
+          "text": "Cordiali e competenti",
+          "date": "2022-11-14"
+        },
+        {
+          "author": "Riccardo P.",
+          "text": "Consigliatissimo, non solo per quanto riguarda la parte shop, ma anche per la consulenza e i servizi alle aziende.",
+          "date": "2022-09-21"
+        },
+        {
+          "author": "Johana S.",
+          "text": "Raccomandato al 100%, persona  gentilissima e professionale.",
+          "date": "2022-09-13"
+        },
+        {
+          "author": "enzo r.",
+          "text": "Mi sono trovato benissimo, sostituzione batteria del mio Cell. Effettuata in un oretta, tecnici gentilissimi e simpaticissimi, sarò un cliente fisso, andate con fiducia sono u numeri 1.",
+          "date": "2022-09-13"
+        },
+        {
+          "author": "Renegade J.",
+          "text": "Pienamente soddisfatto. Personale gentile e prepato",
+          "date": "2022-09-08"
+        },
+        {
+          "author": "Marta F.",
+          "text": "Competenza e cortesia",
+          "date": "2022-07-22"
+        },
+        {
+          "author": "Laura P.",
+          "text": "Gentili e professionali. Sono sempre pronti ad aiutare il cliente, capendo le sue esigenze.",
+          "date": "2022-05-28"
+        },
+        {
+          "author": "jumpy a.",
+          "text": "Professionali e gentili",
+          "date": "2022-04-19"
+        },
+        {
+          "author": "Mirko L.",
+          "text": "Sempre utilizzato come DHL service point, ma comunque sempre trovato gentilezza e professionalità.<br>Si vede un'ottima fornitura di componentistica hardware per la composizione di computer e anche solo per una domanda, sempre molto preparati e gentili",
+          "date": "2022-02-01"
+        },
+        {
+          "author": "Giovanni D.",
+          "text": "Cordiali, disponibili,preparatissivi, sapranno risolvere il tuo problema,.consigliatissimi !",
+          "date": "2022-01-21"
+        },
+        {
+          "author": "Endi",
+          "text": "Ben fornito, personale preparato, onesto e trasparente, nonché molto disponibile. Direi che ho finalmente trovato il mio negozio di riferimento ;)",
+          "date": "2021-12-23"
+        },
+        {
+          "author": "Barbara T.",
+          "text": "Molto efficiente, personale sempre disponibile, molto preparati.",
+          "date": "2021-10-22"
+        },
+        {
+          "author": "calogero s.",
+          "text": "Gentili",
+          "date": "2021-09-20"
+        },
+        {
+          "author": "Otmar G.",
+          "text": "Abbiamo cercato un negozio che permetesse a nostro figlio di assistere all'assemblaggio del suo gaming PC. I ragazzi che gestiscono questo negozio sono gentilissimi e molto competenti. Negozio molto fornito di componenti gaming PC. Assolutamente consigliato.",
+          "date": "2021-09-04"
+        },
+        {
+          "author": "Giulia P.",
+          "text": "Veloci e attenti nelle spedizioni, prodotti imballati alla perfezione e prezzi ottimi!",
+          "date": "2021-08-28"
+        },
+        {
+          "author": "Liviana P.",
+          "text": "personale gentilissimo, professionale e molto disponibile. offre varietà di servizi.",
+          "date": "2021-08-26"
+        },
+        {
+          "author": "Chiara R.",
+          "text": "Ordine spedito praticamente subito, arrivato senza il minimo graffio e imballato perfettamente",
+          "date": "2021-08-09"
+        },
+        {
+          "author": "NM L.",
+          "text": "Competenza e gentilezza.",
+          "date": "2021-07-31"
+        },
+        {
+          "author": "antonello s.",
+          "text": "Sostituita celermente batteria notebook apple del 2015.",
+          "date": "2021-07-30"
+        },
+        {
+          "author": "Michele R.",
+          "text": "Ottimo negozio e sono molto disponibili",
+          "date": "2021-07-27"
+        },
+        {
+          "author": "Stefano C.",
+          "text": "Gentilissimi, onesti e molto precisi!",
+          "date": "2021-07-15"
+        },
+        {
+          "author": "Fatima F.",
+          "text": "Ci sono stata solo per ritirare pacchi ma la ragazza è stata molto cortese entrambe le volte e super disponibile.",
+          "date": "2021-07-12"
+        },
+        {
+          "author": "Federica M.",
+          "text": "Eccellente!",
+          "date": "2021-06-07"
+        },
+        {
+          "author": "RIKY0311",
+          "text": "Ottimo venditore serio e disponibile,comprato una 1650 super avendo pure risparmiato visto i tempi che corrono.",
+          "date": "2021-06-07"
+        },
+        {
+          "author": "claudio f.",
+          "text": "Ottimo rivenditore gentili cordiali! Ma soprattutto la merce arriva puntuale. Continuate cosi bravi e professionali",
+          "date": "2021-05-25"
+        },
+        {
+          "author": "Gabriele Z.",
+          "text": "Punto ritiro Wish, servizio rapido e cortese, alla prossima!",
+          "date": "2021-05-22"
+        },
+        {
+          "author": "Umberto R.",
+          "text": "Consigliatissimo, affidabile, prezzi competitivi, presente in tutte le fasi della vendita. Spedizione assicurata e rapidissima. 10+",
+          "date": "2021-05-18"
+        },
+        {
+          "author": "Oblirion",
+          "text": "Ottimo servizio clienti, disponibilità immediata e costi al disotto della concorrenza. Complimenti.",
+          "date": "2021-05-14"
+        },
+        {
+          "author": "PiCcI131",
+          "text": "bastano due parole.<br>Disponibilità e Professionalità",
+          "date": "2021-02-26"
+        },
+        {
+          "author": "Tito M.",
+          "text": "Competenti e gentili",
+          "date": "2021-01-21"
+        },
+        {
+          "author": "andrea l.",
+          "text": "Mi trovo molto bene! Personale simpatico e gentile molto bravi nel loro lavoro",
+          "date": "2021-01-16"
+        },
+        {
+          "author": "Davide B.",
+          "text": "se siete della zona (e non) questo è il miglior posto che potrete trovare per quanto riguarda il mondo dell'elettronica. assemblaggio pc gaming in breve tempo e di ottima qualità. riparazioni rapide e al giusto prezzo. i migliori!",
+          "date": "2020-12-22"
+        },
+        {
+          "author": "PAOLETTA G.",
+          "text": "Gentili e veloci",
+          "date": "2020-12-22"
+        },
+        {
+          "author": "Primo R.",
+          "text": "Consiglio questo negozio, ottima disponibilità da parte loro.",
+          "date": "2020-12-20"
+        },
+        {
+          "author": "Michele",
+          "text": "Non si può che dire: ottima preparazione professionalità e disponibilità.",
+          "date": "2020-10-24"
+        },
+        {
+          "author": "Virgilio",
+          "text": "Team di giovani ragazzi competenti, gentili e disponibili. Consigliatissimo!!!",
+          "date": "2020-09-13"
+        }
+      ]
     },
     {
       "slug": "lecco",
@@ -79,7 +2217,279 @@
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/23ce636d-0a12-4a21-80f9-f3dea9c0c734/store_photo_url-1770151379134.webp",
       "placeId": "ChIJe_rlE8QdhEcRDsib-RoqdKc",
       "rating": 5,
-      "reviews": 79
+      "reviews": 79,
+      "reviewList": [
+        {
+          "author": "Raoul A.",
+          "text": "Ho trovato ragazzi molto disponibili e competenti, capaci di fornire rapide informazioni e proporre soluzioni, anche alternative, a ciò di cui avevo bisogno. Cambiata batteria di iPhone 14 nel giro di poche ore con anche alcuni altri accorgimenti. La spesa finale è stata più che accettabile.",
+          "date": "2026-11-11"
+        },
+        {
+          "author": "Eraldo M.",
+          "text": "Ho avuto un problema al mio pc, allora chiamo un amico se mi dava delle indicazioni per chi li riparava in zona Lecco; mi manda un contatto, chiamo e mi dicono che devo prendere un appuntamento!<br>Aiuto! Non volevo una prenotazione come con il Sistema Sanitario Lombardo, ma un semplice negozio dove portare il mio pc a riparare.                                                                                                                                        Allora vado online e trovo i tipi di G8A Store a Lecco molto ben recensiti; li sento, mi dicono di passare e mi risolvono il problema in un tempo che non avrei mai immaginato.                                                                    Inoltre ho avuto una serie di consigli di cui terrò sicuramente conto.<br>Che dire: rapidità, professionalità, cortesia, disponibilità e prezzi onesti.",
+          "date": "2026-11-11"
+        },
+        {
+          "author": "Gianluca C.",
+          "text": "Efficienza, professionalità e convenienza.",
+          "date": "2026-07-09"
+        },
+        {
+          "author": "Fabrizio C.",
+          "text": "Sono stato qui per il cambio batteria del cellulare e mi sono trovato davvero molto bene. Avevo prenotato in anticipo e l’organizzazione è stata impeccabile. Costo assolutamente giusto e intervento davvero veloce. Gabriele, il ragazzo che mi ha accolto, è stato gentile, serio e molto preparato. Servizio davvero ottimo. Grazie!",
+          "date": "2026-05-15"
+        },
+        {
+          "author": "Elena V.",
+          "text": "Personale disponibile e cortese, servizio efficiente e rapido! Consigliassimo!!",
+          "date": "2026-05-15"
+        },
+        {
+          "author": "Carlo M.",
+          "text": "Servizio veloce e preciso",
+          "date": "2026-05-05"
+        },
+        {
+          "author": "John A.",
+          "text": "Ho avuto una buona esperienza qua, se hai problemi sul cellulare ti possono aiutare con efficacia, per i cellulari vecchi non ci sono tanti opzioni per sistemarli però il servizio è buono ed efficace",
+          "date": "2026-04-30"
+        },
+        {
+          "author": "Anna",
+          "text": "Negozio scoperto da poco, consiglio, molto disponibili e riparazione veloce e a regola d’arte",
+          "date": "2026-04-28"
+        },
+        {
+          "author": "Elvis C.",
+          "text": "Rapidi, gentili, professionali ed efficienti. Consiglio vivamente.",
+          "date": "2026-04-14"
+        },
+        {
+          "author": "Maurizio V.",
+          "text": "Ottimo servizio, hanno gestito bene anche un ritardo non dovuto a loro.<br>Ottimo lavoro, comunicazione puntuale. Bravi!",
+          "date": "2026-03-11"
+        },
+        {
+          "author": "Alessandro Q.",
+          "text": "Davvero un’ottima esperienza ✨ Gentile e competente, ha riparato il mio telefono in poco tempo e a un prezzo ragionevole",
+          "date": "2026-03-05"
+        },
+        {
+          "author": "Giulia M.",
+          "text": "Veloce e preciso nel lavoro e nelle spiegazioni !",
+          "date": "2026-02-28"
+        },
+        {
+          "author": "Alberto D.",
+          "text": "Ragazzo super gentile e risoluzione del problema riuscita al top. Consiglio assolutamente.",
+          "date": "2026-02-19"
+        },
+        {
+          "author": "Gaia L.",
+          "text": "Ottima esperienza. Sostituzione rapida. Gabriele è super gentile e disponibile!<br>Consigliatissimo!!",
+          "date": "2026-02-11"
+        },
+        {
+          "author": "Silvia G.",
+          "text": "Assistenza eccezionale, tempestiva e risultato perfetto. Consigliato",
+          "date": "2026-02-09"
+        },
+        {
+          "author": "Massimo A.",
+          "text": "Ho venduto loro un iPhone 16: cordialità, competenza e tanta tanta empatia. Negozio super raccomandato!",
+          "date": "2026-02-05"
+        },
+        {
+          "author": "maria p.",
+          "text": "Gentilissimi, onesti molto competenti. Consigliatissimo, Gabriele super!!",
+          "date": "2026-01-29"
+        },
+        {
+          "author": "DIAGNE A.",
+          "text": "Ottimo servizio raccomando 💯",
+          "date": "2026-01-23"
+        },
+        {
+          "author": "marcello c.",
+          "text": "Ottimo",
+          "date": "2025-12-30"
+        },
+        {
+          "author": "Valentina M.",
+          "text": "Stefano si è dimostrato gentile, disponibile e  professionale. Servizio consigliato!",
+          "date": "2025-11-11"
+        },
+        {
+          "author": "Marica B.",
+          "text": "Stefano e' molto competente e disponibile a venire incontro alle richieste",
+          "date": "2025-11-05"
+        },
+        {
+          "author": "Chiara M.",
+          "text": "Ho portato il cellulare di mio papà per riparare lo schermo ed in pochi giorni è venuto pronto.Il ragazzo del negozio è stato fin da subito gentile e disponibile.",
+          "date": "2025-10-20"
+        },
+        {
+          "author": "Malina M.",
+          "text": "Stefano è gentilissimo ed estremamente in gamba. Consigliatissimo. Il mio punto di riferimento a Lecco!",
+          "date": "2025-10-15"
+        },
+        {
+          "author": "Renzo Z.",
+          "text": "Stefano cmmesso gentile e premuroso<br>Mi sono trovato molto bene  .<br>Grazie",
+          "date": "2025-10-14"
+        },
+        {
+          "author": "Paola P.",
+          "text": "Benissimo soprattutto bravissimo lo consiglio a tutti",
+          "date": "2025-10-09"
+        },
+        {
+          "author": "Kazyra",
+          "text": "Io mi son trovato benissimo qua',  nessun tipo di problema, se vi serve un montaggio di PC, consigliato assolutamente, personale più che cordiale e professionale.",
+          "date": "2025-09-30"
+        },
+        {
+          "author": "CLAUDIO P.",
+          "text": "Serietà, professionalità, velocità... consigliatissimo",
+          "date": "2025-09-23"
+        },
+        {
+          "author": "Maria D.",
+          "text": "Stefano è molto gentile e competente oltre che ad essere onesto.",
+          "date": "2025-09-17"
+        },
+        {
+          "author": "Maurizio L.",
+          "text": "Cortesia, sincerità e puntualità",
+          "date": "2025-09-12"
+        },
+        {
+          "author": "Moreno T.",
+          "text": "Stefano é stato super nel riparare il mio Samsung",
+          "date": "2025-09-04"
+        },
+        {
+          "author": "Ilaria R.",
+          "text": "Disponibilità, cortesia, professionalità",
+          "date": "2025-09-02"
+        },
+        {
+          "author": "Alessandra P.",
+          "text": "Dovevo cambiare la batteria al mio s21 e mi sono trovata molto bene in questo centro assistenza, il ragazzo Stefano è stato molto gentile e preciso nello spiegarmi tutte le cose che dovevo sapere, sicuramente se dovrò fare altri interventi mi rivolgerò qui. Consiglio assolutamente!",
+          "date": "2025-08-01"
+        },
+        {
+          "author": "Nicola C.",
+          "text": "Ho portato il mio iPhone per una sostituzione della batteria e mi ritengo altamente soddisfatto del lavoro svolto e della professionalità e competenza dimostrata da Stefano. Mi ha spiegato con precisione l’intervento ed ha eseguito la sostituzione in tempi rapidi.<br>Lo consiglio vivamente!",
+          "date": "2025-07-28"
+        },
+        {
+          "author": "Lorenzo P.",
+          "text": "Esperienza splendida. Competenza e gentilezza ai massimi livelli a prezzi super competitivi. Tornerò sicuramente per ogni esigenza legata al mondo dell'informatica.",
+          "date": "2025-07-18"
+        },
+        {
+          "author": "Dani d.",
+          "text": "Ormai sono venuta diverse volte in questo negozio e devo dire che il ragazzo che ci lavora (Stefano)  si è sempre confermato educato, gentile e disponibile. (qualità ultimamente non facili da trovare).<br>Oggi si trova tutto ovunque e la differenza la fa la persona, il rapporto umano che si crea, e per questo quando prenderò il telefono nuovo so che tornerò da lui; perché la gentilezza te la ricordi quando devi scegliere dove andare!",
+          "date": "2025-07-14"
+        },
+        {
+          "author": "Dario d.",
+          "text": "Disponibile e veloce!",
+          "date": "2025-06-30"
+        },
+        {
+          "author": "Nicola D.",
+          "text": "Puntuale e preciso",
+          "date": "2025-06-19"
+        },
+        {
+          "author": "Giuseppina P.",
+          "text": "Ottima esperienza, consiglio! Assistenza e professionalità, mi hanno sistemato velocemente il PC di lavoro.",
+          "date": "2025-06-12"
+        },
+        {
+          "author": "Paula K.",
+          "text": "Molto buono!",
+          "date": "2025-06-10"
+        },
+        {
+          "author": "Emanuele M.",
+          "text": "Velocissimi, gentili e competenti",
+          "date": "2025-06-09"
+        },
+        {
+          "author": "Emanuela B.",
+          "text": "Professionalità, gentilezza e precisione nelle informazioni e nell’esecuzione della riparazione richiesta. Davvero bravi, complimenti!",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Riccardo M.",
+          "text": "Ho sostituito la mia batteria del mio iphone stefano è stato super",
+          "date": "2025-06-06"
+        },
+        {
+          "author": "Marco P.",
+          "text": "Il tecnico è molto disponibile, chiaro nelle spiegazioni e molto rapido. Consigliatissimo!",
+          "date": "2025-05-30"
+        },
+        {
+          "author": "Matteo C.",
+          "text": "Personale competente e super disponibile, ottimi prezzi",
+          "date": "2025-05-22"
+        },
+        {
+          "author": "Sabrina C.",
+          "text": "Sono molto soddisfatta.Ho avuto bisogno di sostituire lo schermo del mio telefono Oppo.Estremamente gentile.Mi ha subito spiegato cosa avrebbe fatto,le tempistiche e la spesa a cui sarei andata incontro. Si è premurato anche di spiegarmi eventuali rare problematiche possibili ( che poi fortunatamente non si sono avverate). Mi ha avvisata subito appena pronto il telefono . Consiglio questo centro per la professionalità e soprattutto la gentilezza nel trattare il cliente. Grazie di cuore",
+          "date": "2025-03-28"
+        },
+        {
+          "author": "Tiziana C.",
+          "text": "Gentilezza,efficienza e celerità. Ottimo servizio !",
+          "date": "2025-03-27"
+        },
+        {
+          "author": "Ratti T.",
+          "text": "Ottima esperienza.<br>Ho portato il telefono a riparare a seguito della rottura cristalli.<br>In due giorni il problema è stato risolto con componenti originali perfettamente aggiungendo anche cambio batteria.<br>In un paio di giorni mi ritrovo con un telefono praticamente nuovo.<br>Ottimo lavoro, ottimo tempismo e ottimo prezzo.<br>Servizio molto cordiale.<br>Rimarrà il mio punto di riferimento per problematiche di questo tipo.<br>Grazie",
+          "date": "2025-03-26"
+        },
+        {
+          "author": "Matteo A.",
+          "text": "Cordiali e disponibili!<br>Cambio batteria iphone 13 mini, un cambio complesso dato che non è sicuro che si riesca a rimanere con la stessa potenza di carica della batteria originale,<br>Primo cambio non andava bene, mi hanno assistito con la seconda batteria in garanzia e seguito in tutto, fantastico carica in funzione oltre la metà giornata a oltre il 50%<br>Consigliati!",
+          "date": "2025-03-17"
+        },
+        {
+          "author": "Chiara B.",
+          "text": "Servizio eccellente e rapido a prezzi assolutamente accessibili.<br>Personale attento e gentilissimo.<br>Super consigliato",
+          "date": "2025-03-11"
+        },
+        {
+          "author": "Elena S.",
+          "text": "Personale preparato e cortese, prezzi competitivi, mi sono trovata bene.<br>Ho portato il mio cellulare da riparare di mercoledì sera, mi è stato detto che il pezzo di ricambio sarebbe arrivato il venerdì in giornata e che il telefono sarebbe stato pronto il venerdì sera. Invece il pezzo è arrivato il lunedì successivo e il telefono pronto martedì. Per me non è stato affatto un problema, tant'è che sono passata a ritirarlo addirittura il giorno dopo, ma se qualcuno ha fretta di riavere il cellulare il prima possibile, questo è un aspetto eventualmente da considerare.<br>Dovesse rompersi di nuovo il telefono, comunque, mi rivolgerò di sicuro di nuovo a loro.",
+          "date": "2025-02-21"
+        },
+        {
+          "author": "SAMISTERY !.",
+          "text": "Personale cordiale e molto preparato mi sono trovato molto bene!<br>Consigliato",
+          "date": "2025-02-18"
+        },
+        {
+          "author": "Lorenzo F.",
+          "text": "Ho richiesto la pulizia della ventola del laptop e sono stati gentili, rapidi e hanno fatto un lavoro impeccabile. Soddisfatto al 100%.",
+          "date": "2025-01-20"
+        },
+        {
+          "author": "Francesca G.",
+          "text": "Un'ottima esperienza, ho portato il mio computer per migliorarne le prestazioni, il ragazzo, gentilissimo, mi ha fornito un ottima consulenza, fatto il lavoro in tempi brevissimi a prezzi veramente onesti! Super consigliato",
+          "date": "2025-01-20"
+        },
+        {
+          "author": "Ester G.",
+          "text": "Inaspettatamente Ho trovato gentilezza comprensione e.... Pazienza, grazie ad Antonio",
+          "date": "2024-10-07"
+        }
+      ]
     }
   ],
   "macModels": [

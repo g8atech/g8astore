@@ -10,7 +10,8 @@ import WaIcon from "../components/WaIcon.astro";
 import GoogleG from "../components/GoogleG.astro";
 import StoreStatus from "../components/StoreStatus.astro";
 import { shops, services, totalReviews, avgRating, fmtRating, waLink, telLink, mapsLink, compactHours, repairTitle, SITE } from "../data/site";
-import { storeSchema, faqSchema } from "../lib/schema";
+import { storeSchema, faqSchema, pressSchema } from "../lib/schema";
+import Press from "../components/Press.astro";
 
 const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const cities = shops.map((s) => s.city);
@@ -23,7 +24,7 @@ const faq: [string, string][] = [
   ["La garanzia vale in tutti i negozi?", `Sì, la garanzia sull'intervento vale in tutti i ${shops.length} negozi G8A Store.`],
 ];
 const schema = [
-  { "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE}/#org`, name: "G8A Store", url: `${SITE}/`, logo: `${SITE}/icon-512.png`, parentOrganization: { "@type": "Organization", name: "G8A Technology S.r.l.", url: "https://www.g8a.it/" }, subOrganization: shops.map((s) => ({ "@id": `${SITE}/${s.slug}/#store` })) },
+  { "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE}/#org`, name: "G8A Store", url: `${SITE}/`, logo: `${SITE}/g8astore-logo.png`, subjectOf: pressSchema(), parentOrganization: { "@type": "Organization", name: "G8A Technology S.r.l.", url: "https://www.g8a.it/" }, subOrganization: shops.map((s) => ({ "@id": `${SITE}/${s.slug}/#store` })) },
   ...shops.map((s) => storeSchema(s)),
   faqSchema(faq),
 ];
@@ -33,10 +34,11 @@ const popular = [
 ].map(([sv, sl]) => { const s = services.find((x) => x.slug === sv)!; return { s, pr: s.problems.find((x) => x.slug === sl)! }; });
 ---
 <Base title="G8A Store: riparazione e vendita PC, notebook e Mac in 5 negozi" description={`Riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Negozi a ${citiesText}. Diagnosi gratuita e prezzo prima di riparare.`} path="/" schema={schema}>
-  <Hero variant="store" sub={`Ripariamo, potenziamo e vendiamo notebook, PC e Mac. Per privati e partite IVA, in ${shops.length} negozi tra Varese, Milano e Lecco.`} shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "/configuratore/", label: "PC G8A", icon: "cart" }}>
-    Il tuo PC, in <span class="grad-text">mani esperte</span>
+  <Hero variant="store" sub={`Il tuo PC in mani esperte: ripariamo, potenziamo e vendiamo notebook, PC e Mac per privati e partite IVA, in ${shops.length} negozi tra Varese, Milano e Lecco.`} shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "/configuratore/", label: "PC G8A", icon: "cart" }}>
+    Riparazione e vendita <span class="grad-text">PC, notebook e Mac</span>
   </Hero>
   <Promises />
+  <Press />
 
   <section class="sec">
     <div class="wrap">
