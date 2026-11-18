@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-22T19:46:36.134Z",
+  "fetchedAt": "2026-11-18T20:47:27.520Z",
   "shops": [
     {
       "slug": "bollate",
@@ -13,7 +13,7 @@
       "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab: 09.00-13.00\nDom: Chiuso",
       "hint": null,
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/0e99f00f-2eb2-458f-a0c1-5a26e21c566f/store_photo_url-1770151349594.webp",
-      "placeId": null,
+      "placeId": "ChIJuVB-8zqVhkcRIBQ06wksGto",
       "rating": 4.9,
       "reviews": 26
     },
@@ -26,12 +26,12 @@
       "phone": "0331984555",
       "whatsapp": "+390331984555",
       "email": "bustoarsizio@g8a.it",
-      "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab: 09.00-13.00\nDom: Chiuso",
+      "hours": "Lun-Sab: 09.00-13.00 / 15.00-19.00\nDom: Chiuso",
       "hint": null,
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/1bd94592-9eb1-4409-83c5-4f7deaea9252/store_photo_url-1770151211315.webp",
-      "placeId": null,
+      "placeId": "ChIJP50Vl0mLhkcRcFXw61MM-tE",
       "rating": 4.9,
-      "reviews": 284
+      "reviews": 287
     },
     {
       "slug": "gallarate",
@@ -47,13 +47,13 @@
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/00000000-0000-0000-0000-000000000001/store_photo_url-1770150689092.webp",
       "placeId": "ChIJ6yyZkqWJhkcRWl-oGsLTGlE",
       "rating": 5,
-      "reviews": 144
+      "reviews": 148
     },
     {
       "slug": "jerago-con-orago",
       "city": "Jerago con Orago",
       "address": "Via Varesina 3",
-      "zip": "21048",
+      "zip": "21040",
       "province": "VA",
       "phone": "+390331020008",
       "whatsapp": "+390331020008",
@@ -61,9 +61,9 @@
       "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab: 09.00-13.00\nDom: Chiuso",
       "hint": "Sulla varesina, sotto i portici",
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/e0eb5b0b-f2b6-42a9-88b6-e22fc26123f3/store_photo_url-1770150879779.webp",
-      "placeId": null,
+      "placeId": "ChIJI1NQYgmIhkcRIyYGwWW3ESs",
       "rating": 4.8,
-      "reviews": 344
+      "reviews": 346
     },
     {
       "slug": "lecco",
@@ -77,16 +77,64 @@
       "hours": "Lun-Ven: 09.00-13.00 / 15.00-19.00\nSab-Dom: Chiuso",
       "hint": "Di fronte alle poste",
       "photo": "https://ijrrnuurjbgugystlfry.supabase.co/storage/v1/object/public/site-images/23ce636d-0a12-4a21-80f9-f3dea9c0c734/store_photo_url-1770151379134.webp",
-      "placeId": null,
+      "placeId": "ChIJe_rlE8QdhEcRDsib-RoqdKc",
       "rating": 5,
-      "reviews": 77
+      "reviews": 79
     }
   ],
   "macModels": [
     {
+      "slug": "macbook-air-11-a1465",
+      "name": "MacBook Air 11 A1465",
+      "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Air 11 A1465",
+          "kind": "altro",
+          "price": 79,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Air 11 A1465",
+          "kind": "batteria",
+          "price": 119,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
+      "slug": "macbook-air-13-a1369",
+      "name": "MacBook Air 13 A1369",
+      "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Air 13 A1369",
+          "kind": "altro",
+          "price": 79,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Air 13 A1369",
+          "kind": "batteria",
+          "price": 109,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione batteria originale smontata – MacBook Air 13 A1369",
+          "kind": "batteria",
+          "price": 129,
+          "warrantyMonths": 6
+        }
+      ]
+    },
+    {
       "slug": "macbook-air-13-a1466",
       "name": "MacBook Air 13 A1466",
       "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Air 13 A1466",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
         {
           "name": "Batteria MacBook Air 13 (A1466)",
           "kind": "batteria",
@@ -94,15 +142,21 @@
           "warrantyMonths": 6
         },
         {
-          "name": "Display Completo Macbook Air 13 (A1369/A1466)",
-          "kind": "schermo",
-          "price": 119.9,
+          "name": "Sostituzione altoparlante – MacBook Air 13 A1466",
+          "kind": "altro",
+          "price": 99,
           "warrantyMonths": 12
         },
         {
           "name": "Display Completo Argento Macbook Air 13 (A1466)",
           "kind": "schermo",
-          "price": 189.9,
+          "price": 299,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Display Completo Macbook Air 13 (A1369/A1466)",
+          "kind": "schermo",
+          "price": 299,
           "warrantyMonths": 12
         }
       ]
@@ -112,10 +166,40 @@
       "name": "MacBook Air 13 A1932",
       "repairs": [
         {
+          "name": "Sostituzione ventola – MacBook Air 13 A1932",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Air 13 A1932",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
           "name": "Batteria MacBook Air 13 (A1932/A2179)",
           "kind": "batteria",
           "price": 89.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Air 13 A1932",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Air 13 A1932",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Air 13 A1932",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
         },
         {
           "name": "Display Completo Argento MacBook Air 13 (A1932)",
@@ -130,6 +214,48 @@
       "name": "MacBook Air 13 A2179",
       "repairs": [
         {
+          "name": "Sostituzione ventola – MacBook Air 13 A2179",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Air 13 A2179",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Air 13 A2179",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Air 13 A2179",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Air 13 A2179",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Air 13 A2179",
+          "kind": "batteria",
+          "price": 129,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione batteria originale smontata – MacBook Air 13 A2179",
+          "kind": "batteria",
+          "price": 139,
+          "warrantyMonths": 6
+        },
+        {
           "name": "Display Completo Argento Macbook Air 13 (A2179)",
           "kind": "schermo",
           "price": 249.9,
@@ -141,6 +267,42 @@
       "slug": "macbook-air-13-a2681",
       "name": "MacBook Air 13 A2681",
       "repairs": [
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Air 13 A2681",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Air 13 A2681",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione scocca inferiore – MacBook Air 13 A2681",
+          "kind": "altro",
+          "price": 119,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Air 13 A2681",
+          "kind": "altro",
+          "price": 129,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Air 13 A2681",
+          "kind": "batteria",
+          "price": 159,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Air 13 A2681",
+          "kind": "altro",
+          "price": 159,
+          "warrantyMonths": 12
+        },
         {
           "name": "Display Completo Midnight MacBook Air 13 (A2681)",
           "kind": "schermo",
@@ -162,7 +324,7 @@
         {
           "name": "Display Completo Grigio Siderale MacBook Air 13 (A3113)",
           "kind": "schermo",
-          "price": 259.9,
+          "price": 489,
           "warrantyMonths": 12
         }
       ]
@@ -171,6 +333,12 @@
       "slug": "macbook-air-15-a2941",
       "name": "MacBook Air 15 A2941",
       "repairs": [
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Air 15 A2941",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
         {
           "name": "Display Completo Grigio Siderale MacBook Air 15 (A2941/A3114)",
           "kind": "schermo",
@@ -186,14 +354,62 @@
       ]
     },
     {
+      "slug": "macbook-air-15-m4-a3241",
+      "name": "Macbook Air 15 M4 A3241",
+      "repairs": [
+        {
+          "name": "Sostituzione connettore di ricarica – Macbook Air 15 M4 A3241",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – Macbook Air 15 M4 A3241",
+          "kind": "altro",
+          "price": 119,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – Macbook Air 15 M4 A3241",
+          "kind": "schermo",
+          "price": 689,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
       "slug": "macbook-air-m1-a2337",
       "name": "MacBook Air M1 A2337",
       "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Air M1 A2337",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Air M1 A2337",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
         {
           "name": "Batteria Macbook Air M1 (A2337)",
           "kind": "batteria",
           "price": 89.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Air M1 A2337",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Air M1 A2337",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
         },
         {
           "name": "Display Completo Grigio Siderale Macbook Air M1 (A2337)",
@@ -216,14 +432,62 @@
       ]
     },
     {
+      "slug": "macbook-pro-13-a1278",
+      "name": "Macbook Pro 13 A1278",
+      "repairs": [
+        {
+          "name": "Sostituzione ventola – Macbook Pro 13 A1278",
+          "kind": "altro",
+          "price": 79,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – Macbook Pro 13 A1278",
+          "kind": "batteria",
+          "price": 109,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – Macbook Pro 13 A1278",
+          "kind": "schermo",
+          "price": 109,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
       "slug": "macbook-pro-13-a1502",
       "name": "MacBook Pro 13 A1502",
       "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Pro 13 A1502",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
         {
           "name": "Batteria MacBook Pro 13 Retina (A1502)",
           "kind": "batteria",
           "price": 94.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 13 A1502",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 13 A1502",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 13 A1502",
+          "kind": "schermo",
+          "price": 399,
+          "warrantyMonths": 12
         }
       ]
     },
@@ -238,6 +502,18 @@
           "warrantyMonths": 6
         },
         {
+          "name": "Sostituzione trackpad – MacBook Pro 13 A1706",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione scocca inferiore – MacBook Pro 13 A1706",
+          "kind": "altro",
+          "price": 129,
+          "warrantyMonths": 12
+        },
+        {
           "name": "Display Completo Grigio Siderale Macbook Pro 13 (A1706)",
           "kind": "schermo",
           "price": 249.9,
@@ -250,10 +526,22 @@
       "name": "MacBook Pro 13 A1708",
       "repairs": [
         {
+          "name": "Sostituzione ventola – MacBook Pro 13 A1708",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
+        {
           "name": "Batteria MacBook Pro 13 Retina (A1708/A2159/A2338)",
           "kind": "batteria",
           "price": 94.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 13 A1708",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
         },
         {
           "name": "Display Completo Grigio Siderale Macbook Pro Retina 13 (A1708)",
@@ -270,14 +558,224 @@
       ]
     },
     {
+      "slug": "macbook-pro-13-a1989",
+      "name": "MacBook Pro 13 A1989",
+      "repairs": [
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 13 A1989",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione scocca inferiore – MacBook Pro 13 A1989",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 13 A1989",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 13 A1989",
+          "kind": "altro",
+          "price": 129,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Pro 13 A1989",
+          "kind": "batteria",
+          "price": 129,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione batteria originale smontata – MacBook Pro 13 A1989",
+          "kind": "batteria",
+          "price": 139,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 13 A1989",
+          "kind": "schermo",
+          "price": 389,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-13-a2159",
+      "name": "MacBook Pro 13 A2159",
+      "repairs": [
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 13 A2159",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 13 A2159",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione scocca inferiore – MacBook Pro 13 A2159",
+          "kind": "altro",
+          "price": 119,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Pro 13 A2159",
+          "kind": "batteria",
+          "price": 129,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione batteria originale smontata – MacBook Pro 13 A2159",
+          "kind": "batteria",
+          "price": 139,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 13 A2159",
+          "kind": "schermo",
+          "price": 399,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-13-a2251",
+      "name": "Macbook Pro 13 A2251",
+      "repairs": [
+        {
+          "name": "Sostituzione connettore di ricarica – Macbook Pro 13 A2251",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – Macbook Pro 13 A2251",
+          "kind": "altro",
+          "price": 119,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – Macbook Pro 13 A2251",
+          "kind": "altro",
+          "price": 139,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – Macbook Pro 13 A2251",
+          "kind": "altro",
+          "price": 149,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – Macbook Pro 13 A2251",
+          "kind": "schermo",
+          "price": 409,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-13-a2289",
+      "name": "MacBook Pro 13 A2289",
+      "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Pro 13 A2289",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 13 A2289",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 13 A2289",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Pro 13 A2289",
+          "kind": "altro",
+          "price": 119,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Pro 13 A2289",
+          "kind": "batteria",
+          "price": 129,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 13 A2289",
+          "kind": "altro",
+          "price": 149,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 13 A2289",
+          "kind": "schermo",
+          "price": 409,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
       "slug": "macbook-pro-13-retina-a2338",
       "name": "MacBook Pro 13\" Retina A2338",
       "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Pro 13’’ Retina A2338",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 13’’ Retina A2338",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Pro 13’’ Retina A2338",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
         {
           "name": "Sostituzione Batteria Macbook Pro a2238",
           "kind": "batteria",
           "price": 109,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 13’’ Retina A2338",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 13’’ Retina A2338",
+          "kind": "altro",
+          "price": 149,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 13’’ Retina A2338",
+          "kind": "schermo",
+          "price": 419,
+          "warrantyMonths": 12
         }
       ]
     },
@@ -286,9 +784,39 @@
       "name": "MacBook Pro 14 A2442",
       "repairs": [
         {
+          "name": "Sostituzione ventola – MacBook Pro 14 A2442",
+          "kind": "altro",
+          "price": 79,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 14 A2442",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 14 A2442",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Pro 14 A2442",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Pro 14 A2442",
+          "kind": "batteria",
+          "price": 139,
+          "warrantyMonths": 6
+        },
+        {
           "name": "Display Completo Grigio Siderale MacBook Pro 14 (A2442/A2779)",
           "kind": "schermo",
-          "price": 479.9,
+          "price": 889,
           "warrantyMonths": 12
         }
       ]
@@ -300,7 +828,7 @@
         {
           "name": "Display Completo Nero Sidérale MacBook Pro 14 (A2992)",
           "kind": "schermo",
-          "price": 469.9,
+          "price": 739,
           "warrantyMonths": 12
         }
       ]
@@ -314,6 +842,24 @@
           "kind": "batteria",
           "price": 89.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione ventola – MacBook Pro 15 A1286",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 15 A1286",
+          "kind": "schermo",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display originale ricondizionato – MacBook Pro 15 A1286",
+          "kind": "schermo",
+          "price": 189,
+          "warrantyMonths": 12
         }
       ]
     },
@@ -322,10 +868,28 @@
       "name": "MacBook Pro 15 A1398",
       "repairs": [
         {
+          "name": "Sostituzione altoparlante – MacBook Pro 15 A1398",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
           "name": "Batteria MacBook Pro 15 Retina (A1398)",
           "kind": "batteria",
           "price": 99.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione scocca inferiore – MacBook Pro 15 A1398",
+          "kind": "altro",
+          "price": 119,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 15 A1398",
+          "kind": "schermo",
+          "price": 259,
+          "warrantyMonths": 12
         }
       ]
     },
@@ -334,10 +898,34 @@
       "name": "MacBook Pro 15 A1707",
       "repairs": [
         {
+          "name": "Sostituzione ventola – MacBook Pro 15 A1707",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 15 A1707",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Pro 15 A1707",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
           "name": "Batteria MacBook Pro 15 Retina (A1707)",
           "kind": "batteria",
           "price": 109.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 15 A1707",
+          "kind": "schermo",
+          "price": 459,
+          "warrantyMonths": 12
         }
       ]
     },
@@ -346,10 +934,52 @@
       "name": "MacBook Pro 15 A1990",
       "repairs": [
         {
+          "name": "Sostituzione ventola – MacBook Pro 15 A1990",
+          "kind": "altro",
+          "price": 69,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 15 A1990",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 15 A1990",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Pro 15 A1990",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 15 A1990",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione scocca inferiore – MacBook Pro 15 A1990",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
           "name": "Batteria MacBook Pro 15 Retina (A1990)",
           "kind": "batteria",
           "price": 109.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 15 A1990",
+          "kind": "schermo",
+          "price": 509,
+          "warrantyMonths": 12
         }
       ]
     },
@@ -358,10 +988,46 @@
       "name": "MacBook Pro 16 A2141",
       "repairs": [
         {
+          "name": "Sostituzione ventola – MacBook Pro 16 A2141",
+          "kind": "altro",
+          "price": 79,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 16 A2141",
+          "kind": "altro",
+          "price": 89,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro 16 A2141",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione altoparlante – MacBook Pro 16 A2141",
+          "kind": "altro",
+          "price": 109,
+          "warrantyMonths": 12
+        },
+        {
           "name": "Batteria MacBook Pro 16 Retina (A2141)",
           "kind": "batteria",
           "price": 119.9,
           "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione tasti power/volume – MacBook Pro 16 A2141",
+          "kind": "altro",
+          "price": 129,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 16 A2141",
+          "kind": "schermo",
+          "price": 509,
+          "warrantyMonths": 12
         }
       ]
     },
@@ -370,9 +1036,21 @@
       "name": "MacBook Pro 16 A2485",
       "repairs": [
         {
+          "name": "Sostituzione connettore di ricarica – MacBook Pro 16 A2485",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Pro 16 A2485",
+          "kind": "batteria",
+          "price": 159,
+          "warrantyMonths": 6
+        },
+        {
           "name": "Display Completo Grigio Siderale MacBook Pro 16 (A2485/A2780)",
           "kind": "schermo",
-          "price": 479.9,
+          "price": 889,
           "warrantyMonths": 12
         }
       ]
@@ -384,7 +1062,79 @@
         {
           "name": "Display Completo Nero Sidérale MacBook Pro 16 (A2991)",
           "kind": "schermo",
-          "price": 489.9,
+          "price": 589,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-17-a1297",
+      "name": "MacBook Pro 17 A1297",
+      "repairs": [
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Pro 17 A1297",
+          "kind": "batteria",
+          "price": 129,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro 17 A1297",
+          "kind": "schermo",
+          "price": 309,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-pro-retina-13-a1425",
+      "name": "MacBook Pro Retina 13 A1425",
+      "repairs": [
+        {
+          "name": "Sostituzione ventola – MacBook Pro Retina 13 A1425",
+          "kind": "altro",
+          "price": 79,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione trackpad – MacBook Pro Retina 13 A1425",
+          "kind": "altro",
+          "price": 119,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria alta qualità – MacBook Pro Retina 13 A1425",
+          "kind": "batteria",
+          "price": 149,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – MacBook Pro Retina 13 A1425",
+          "kind": "schermo",
+          "price": 709,
+          "warrantyMonths": 12
+        }
+      ]
+    },
+    {
+      "slug": "macbook-retina-12-inch-a1534",
+      "name": "Macbook Retina 12 inch A1534",
+      "repairs": [
+        {
+          "name": "Sostituzione trackpad – Macbook Retina 12 inch A1534",
+          "kind": "altro",
+          "price": 99,
+          "warrantyMonths": 12
+        },
+        {
+          "name": "Sostituzione batteria originale smontata – Macbook Retina 12 inch A1534",
+          "kind": "batteria",
+          "price": 129,
+          "warrantyMonths": 6
+        },
+        {
+          "name": "Sostituzione display compatibile alta qualità – Macbook Retina 12 inch A1534",
+          "kind": "schermo",
+          "price": 349,
           "warrantyMonths": 12
         }
       ]

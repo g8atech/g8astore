@@ -4,7 +4,11 @@
 import { writeFile, readFile } from "node:fs/promises";
 
 const URL = process.env.BRAIN_SUPABASE_URL || "https://ijrrnuurjbgugystlfry.supabase.co";
-const KEY = process.env.BRAIN_SUPABASE_ANON_KEY;
+// Chiave anon pubblica di Brain (la stessa che usano i siti RiparoHero/TonerHero): se su Vercel
+// manca la variabile, la build legge comunque i dati aggiornati invece di riusare la copia salvata.
+const PUBLIC_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlqcnJudXVyamJndWd5c3RsZnJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQzNTI0ODAsImV4cCI6MjA3OTkyODQ4MH0.4Txk3QeCKIUBjdPUC6MmUkepivU60qHV2gZUu68X7c8";
+const KEY = process.env.BRAIN_SUPABASE_ANON_KEY || PUBLIC_ANON_KEY;
 const OUT = new globalThis.URL("../src/data/brain.json", import.meta.url);
 
 async function get(path) {
