@@ -54,6 +54,22 @@ export function compactHours(hours: string | null) {
     .join("; ");
 }
 
+/** Fasce orarie per giorno (0 = domenica, come Date.getDay): "Lun-Ven: 09.00-13.00 / 15.00-19.00" → { 1: ["9–13", "15–19"], … }. */
+export function daySlots(hours: string | null) {
+  const ORD = ["dom", "lun", "mar", "mer", "gio", "ven", "sab"];
+  const out: Record<number, string[]> = {};
+  for (const line of (hours ?? "").split("\n")) {
+    const m = line.match(/^\s*([A-Za-zì]{3})(?:\s*-\s*([A-Za-zì]{3}))?\s*:\s*(.+)$/);
+    if (!m || /chius/i.test(m[3])) continue;
+    const a = ORD.indexOf(m[1].toLowerCase()), b = m[2] ? ORD.indexOf(m[2].toLowerCase()) : a;
+    if (a < 0 || b < 0) continue;
+    const slots = m[3].split("/").map((x) => x.trim().match(/(\d{1,2})[.:](\d{2})\s*-\s*(\d{1,2})[.:](\d{2})/)).filter(Boolean)
+      .map((t) => `${Number(t![1])}${t![2] === "00" ? "" : "." + t![2]}–${Number(t![3])}${t![4] === "00" ? "" : "." + t![4]}`);
+    for (let d = a; d <= b; d++) out[d] = slots;
+  }
+  return out;
+}
+
 export const mapsLink =(shop: Shop) =>
   shop.placeId
     ? `https://www.google.com/maps/search/?api=1&query=G8A%20Store&query_place_id=${shop.placeId}`

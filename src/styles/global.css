@@ -283,8 +283,9 @@ h3 { font-size: 1.2rem; letter-spacing: -0.015em; line-height: 1.25; }
 .contact b { font-size: 1.05rem; }
 .contact b a:hover { color: var(--red); }
 .contact .meta { font-size: .85rem; color: var(--muted); }
-.contact .acts { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.contact .acts { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 @media (min-width: 560px) { .contact { grid-template-columns: 64px 1fr auto; } .contact .acts { grid-column: auto; display: flex; } }
+.contact .acts .btn { padding-left: 6px; padding-right: 6px; }
 
 /* negozi */
 .shops { display: grid; gap: 18px; }

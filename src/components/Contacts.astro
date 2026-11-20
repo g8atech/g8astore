@@ -2,7 +2,7 @@
 // Tutti i negozi con Chiama e WhatsApp già pronti: nessuna lista da scegliere prima di agire.
 import Icon from "./Icon.astro";
 import WaIcon from "./WaIcon.astro";
-import { shops, waLink, telLink, fmtRating, compactHours, type Shop } from "../data/site";
+import { shops, waLink, telLink, mapsLink, fmtRating, compactHours, type Shop } from "../data/site";
 interface Props { msg: (s: Shop) => string; linkSuffix?: string; title?: string; sub?: string; paper?: boolean }
 const { msg, linkSuffix, title = "Scrivi al negozio più vicino", sub = "Ti risponde direttamente il tecnico del negozio. Puoi anche passare senza appuntamento.", paper = true } = Astro.props;
 const href = (s: Shop) => (linkSuffix ? `/${s.slug}/${linkSuffix}` : `/${s.slug}/`);
@@ -22,6 +22,7 @@ const href = (s: Shop) => (linkSuffix ? `/${s.slug}/${linkSuffix}` : `/${s.slug}
           <div class="acts">
             <a class="btn btn-line btn-xs" href={telLink(s)}><Icon name="phone" /> Chiama</a>
             <a class="btn btn-wa btn-xs" href={waLink(s, msg(s))} rel="nofollow"><WaIcon /> WhatsApp</a>
+            <a class="btn btn-line btn-xs" href={mapsLink(s)} target="_blank" rel="noopener" aria-label={`Indicazioni per G8A Store ${s.city}`}><Icon name="pin" /> Indicazioni</a>
           </div>
         </div>
       ))}
