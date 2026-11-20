@@ -19,6 +19,10 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Perché il mio PC è diventato lento?",
+        "immagine": {
+          "alt": "Disco rigido meccanico aperto: piatto e testina di lettura",
+          "url": "https://www.g8astore.it/img/hard-disk.webp"
+        },
         "paragrafi": [
           "Microsoft indica tra le cause più comuni lo spazio di archiviazione quasi pieno, troppe app che partono all'avvio, software non aggiornato e hardware che non basta più per ciò che chiedi al computer.",
           "Per questo non esiste una sola risposta: prima devi capire se il problema è nel software o nei componenti."
@@ -41,6 +45,11 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Quando conviene cambiare il disco con un SSD?",
+        "immagine": {
+          "alt": "SSD montato in un notebook aperto sul banco di G8A Store",
+          "url": "https://www.g8astore.it/img/notebook-ssd.webp",
+          "didascalia": "Foto dal banco di lavoro di G8A Store"
+        },
         "paragrafi": [
           "Se in Gestione attività il disco è spesso al massimo e il PC ha ancora un disco meccanico (HDD), l'SSD è di solito il passo che si nota di più: Windows parte più in fretta e i programmi si aprono prima.",
           "Attenzione: un disco al massimo da solo non indica per forza un guasto. Per questo serve una diagnosi, che può dirti anche se il disco ha errori.",
@@ -50,6 +59,11 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Quando serve più RAM?",
+        "immagine": {
+          "alt": "Moduli di RAM e SSD dentro un notebook aperto sul banco di G8A Store",
+          "url": "https://www.g8astore.it/img/notebook-ram-ssd.webp",
+          "didascalia": "Foto dal banco di lavoro di G8A Store"
+        },
         "paragrafi": [
           "La RAM è la memoria di lavoro. Se in Gestione attività la memoria resta spesso molto alta mentre usi poche app e il browser, il PC rallenta quando apri più cose insieme.",
           "Non tutti i PC si possono potenziare: in molti notebook sottili la RAM è saldata sulla scheda e non si cambia. Il tecnico lo verifica sul tuo modello prima di proporti l'intervento."
@@ -64,6 +78,10 @@ export const GUIDE_NINA: any[] = [
           "Se non vuoi spendere molto, valuta anche un ricondizionato controllato."
         ],
         "titolo": "Quando è meglio comprare un PC nuovo?",
+        "immagine": {
+          "alt": "PC All in One G8A nuovo, assemblato e garantito da G8A Store",
+          "url": "https://www.g8astore.it/img/g8a-aio.webp"
+        },
         "paragrafi": [
           "Cambiare il PC ha più senso in questi casi:"
         ]
@@ -141,7 +159,7 @@ export const GUIDE_NINA: any[] = [
     },
     "firmato_da": "Antonio Arrigo",
     "pubblicata_il": "2026-11-17",
-    "aggiornata_il": "2026-11-17"
+    "aggiornata_il": "2026-11-20"
   },
   {
     "slug": "antivirus-pc-lavoro",
@@ -160,6 +178,10 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Windows ha già un antivirus: allora perché installarne un altro?",
+        "immagine": {
+          "alt": "Notebook con Windows acceso su una scrivania",
+          "url": "https://www.g8astore.it/img/notebook-windows.webp"
+        },
         "paragrafi": [
           "Sì: Windows 11 include Sicurezza di Windows con Microsoft Defender Antivirus, senza costi aggiuntivi. Protegge in tempo reale e si aggiorna da solo tramite Windows Update. Per chi usa il PC poco e con attenzione, può bastare.",
           "Chi invece passa molte ore al computer, apre allegati ogni giorno, scambia file con clienti o fornitori e usa servizi online delicati, è molto più esposto. Per questo noi consigliamo un antivirus completo. Una buona suite aggiunge in genere controllo dei siti e dei link pericolosi, protezione dalle email truffa, difesa dai ransomware e un'assistenza a cui rivolgersi.",
@@ -189,6 +211,10 @@ export const GUIDE_NINA: any[] = [
           "Estensioni del browser dannose e pubblicità invasive che dirottano la ricerca."
         ],
         "titolo": "Che minacce corre davvero un PC usato per lavoro?",
+        "immagine": {
+          "alt": "Persona che lavora al notebook",
+          "url": "https://www.g8astore.it/img/lavoro-notebook.webp"
+        },
         "paragrafi": [
           "Le più comuni non sono virus da film, ma queste:"
         ]
@@ -257,6 +283,10 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Quando serve il tecnico e cosa succede in negozio",
+        "immagine": {
+          "alt": "Tecnico al lavoro sui componenti interni di un computer",
+          "url": "https://www.g8astore.it/img/mani-riparazione.webp"
+        },
         "paragrafi": [
           "Se sospetti un'infezione, spegni il PC dalla rete (stacca il Wi-Fi o il cavo) e non pagare nessun riscatto. Cambia le password importanti da un altro dispositivo.",
           "In negozio facciamo la diagnosi gratuita e ti diciamo il prezzo prima di intervenire. Controlliamo il PC, togliamo ciò che non va e, se serve, ti aiutiamo a recuperare i dati. Poi ti consigliamo la protezione adatta a come lavori, così non rischi di ricascarci. Per i prezzi guarda la pagina del servizio. Se hai una partita IVA, trovi la pagina dedicata a professionisti e aziende."
@@ -327,7 +357,7 @@ export const GUIDE_NINA: any[] = [
     },
     "firmato_da": "Antonio Arrigo",
     "pubblicata_il": "2026-11-16",
-    "aggiornata_il": "2026-11-16"
+    "aggiornata_il": "2026-11-20"
   },
   {
     "slug": "windows-10-fine-supporto-sostituire-pc",
@@ -346,6 +376,10 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Cosa significa davvero che Windows 10 non è più supportato?",
+        "immagine": {
+          "alt": "Notebook su una scrivania in ufficio",
+          "url": "https://www.g8astore.it/img/scrivania-notebook.webp"
+        },
         "paragrafi": [
           "Il PC non smette di funzionare. Si avvia, apri i file e usi i programmi come prima. Cambia una cosa: Microsoft non pubblica più gli aggiornamenti gratuiti da Windows Update, né correzioni per la sicurezza o assistenza tecnica.",
           "Il rischio è nel tempo. Ogni falla scoperta dopo la fine del supporto resta aperta, e chi attacca i computer cerca proprio i sistemi non aggiornati. Contano soprattutto la posta, la navigazione e i pagamenti online fatti da quel PC."
@@ -401,6 +435,10 @@ export const GUIDE_NINA: any[] = [
           "Computer di lavoro: pianifica la sostituzione di tutti i PC insieme, così non resti fermo e non rischi la sicurezza dei dati dei clienti."
         ],
         "titolo": "PC compatibile o non compatibile: cosa conviene fare",
+        "immagine": {
+          "alt": "Notebook G8A nuovo con Windows 11, assemblato e garantito da G8A Store",
+          "url": "https://www.g8astore.it/img/g8a-notebook.webp"
+        },
         "paragrafi": [
           "Prima di tutto, qualunque scelta fai, fai una copia dei tuoi file importanti su un disco esterno o su un cloud."
         ]
@@ -408,6 +446,11 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Cosa succede in negozio se porti il tuo PC",
+        "immagine": {
+          "alt": "Due notebook smontati sul banco di G8A Store durante una riparazione",
+          "url": "https://www.g8astore.it/img/notebook-schermo.webp",
+          "didascalia": "Foto dal banco di lavoro di G8A Store"
+        },
         "paragrafi": [
           "Porti il computer in uno dei nostri negozi (Gallarate, Busto Arsizio, Jerago con Orago, Bollate, Lecco) o scrivi prima su WhatsApp. Controlliamo se è compatibile con Windows 11 e in che stato è. La diagnosi è gratuita e il prezzo ti viene detto prima di ogni intervento; sulle riparazioni c'è la garanzia.",
           "Se il PC non regge, ti diciamo con onestà che cosa conviene: aggiornare, potenziare o sostituire. I prezzi dei servizi sono nelle pagine dedicate."
@@ -482,7 +525,7 @@ export const GUIDE_NINA: any[] = [
     },
     "firmato_da": "Antonio Arrigo",
     "pubblicata_il": "2026-11-15",
-    "aggiornata_il": "2026-11-15"
+    "aggiornata_il": "2026-11-20"
   },
   {
     "slug": "sostituzione-batteria-notebook",
@@ -507,6 +550,11 @@ export const GUIDE_NINA: any[] = [
           "Windows segnala che la batteria è da sostituire o la batteria risulta rilevata ma non carica."
         ],
         "titolo": "Come capire se la batteria del notebook è da sostituire",
+        "immagine": {
+          "alt": "Batteria interna di un notebook aperto sul banco di G8A Store",
+          "url": "https://www.g8astore.it/img/notebook-batteria.webp",
+          "didascalia": "Foto dal banco di lavoro di G8A Store"
+        },
         "paragrafi": [
           "Le batterie al litio si consumano con l'uso e con gli anni. Non è un difetto: è normale che dopo molti cicli di carica tengano sempre meno energia."
         ]
@@ -578,6 +626,11 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Conviene cambiare la batteria o comprare un notebook nuovo?",
+        "immagine": {
+          "alt": "Notebook Dell aperto sul banco di G8A Store per un controllo",
+          "url": "https://www.g8astore.it/img/notebook-dell.webp",
+          "didascalia": "Foto dal banco di lavoro di G8A Store"
+        },
         "paragrafi": [
           "Se il PC va ancora bene per ciò che fai, cambiare la batteria costa meno di un notebook nuovo e lo rende di nuovo portatile. Conviene meno se il PC è molto lento o con altri guasti: in quel caso il tecnico ti dice onestamente le alternative, tra cui un ricondizionato o un nuovo."
         ]
@@ -647,7 +700,7 @@ export const GUIDE_NINA: any[] = [
     },
     "firmato_da": "Antonio Arrigo",
     "pubblicata_il": "2026-11-13",
-    "aggiornata_il": "2026-11-13"
+    "aggiornata_il": "2026-11-20"
   },
   {
     "slug": "notebook-non-si-accende",
@@ -690,6 +743,11 @@ export const GUIDE_NINA: any[] = [
           "RAM, disco, BIOS o scheda madre guasti: qui serve il laboratorio."
         ],
         "titolo": "Quali sono le cause più comuni?",
+        "immagine": {
+          "alt": "Notebook aperto sul banco di G8A Store: scheda madre, ventola e batteria",
+          "url": "https://www.g8astore.it/img/notebook-scheda.webp",
+          "didascalia": "Foto dal banco di lavoro di G8A Store"
+        },
         "paragrafi": [
           "Le cause vanno dalle più banali alle più serie. I produttori indicano come frequenti la batteria scarica, i collegamenti di alimentazione non perfetti e uno stato in cui il sistema ha bisogno di un reset."
         ]
@@ -709,6 +767,10 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Come si fa il reset dell'energia residua (hard reset)?",
+        "immagine": {
+          "alt": "Notebook al buio con lo schermo che si accende",
+          "url": "https://www.g8astore.it/img/notebook-buio.webp"
+        },
         "paragrafi": [
           "È la procedura che i produttori propongono per prima. Serve a scaricare la corrente rimasta nei componenti, che a volte impedisce l'avvio.",
           "Con il notebook spento, scollega il caricatore e tutti gli accessori. Se la batteria è estraibile e sai farlo in sicurezza, toglila. Poi tieni premuto il tasto di accensione per un tempo che dipende dal produttore: HP indica tempi tra circa 15 e 60 secondi a seconda del modello, Dell circa 30 secondi. Se il tuo modello è diverso, cerca le istruzioni sul sito del produttore.",
@@ -731,6 +793,11 @@ export const GUIDE_NINA: any[] = [
       {
         "punti": [],
         "titolo": "Quando serve il tecnico e cosa succede in negozio?",
+        "immagine": {
+          "alt": "Notebook aperto sul banco di G8A Store con gli attrezzi per la diagnosi",
+          "url": "https://www.g8astore.it/img/notebook-aperto.webp",
+          "didascalia": "Foto dal banco di lavoro di G8A Store"
+        },
         "paragrafi": [
           "Se hai fatto i controlli e il notebook continua a non dare segni di vita, o si accende e si spegne subito, è il momento di farlo controllare. Le cause possibili sono tante e solo una verifica con strumenti adatti dice quale è quella vera.",
           "In negozio il tecnico controlla alimentazione, batteria, caricatore, RAM, disco e scheda madre. La diagnosi è gratuita e ti dà il prezzo prima di riparare: decidi tu se procedere. Le riparazioni hanno garanzia. Se per te i dati sono la cosa più importante, dillo subito: si valuta come metterli al sicuro.",
@@ -802,6 +869,6 @@ export const GUIDE_NINA: any[] = [
     },
     "firmato_da": "Antonio Arrigo",
     "pubblicata_il": "2026-11-12",
-    "aggiornata_il": "2026-11-12"
+    "aggiornata_il": "2026-11-20"
   }
 ];

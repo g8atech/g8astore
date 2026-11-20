@@ -6,8 +6,9 @@ import Base from "../../layouts/Base.astro";
 import Hero from "../../components/Hero.astro";
 import Faq from "../../components/Faq.astro";
 import Contacts from "../../components/Contacts.astro";
+import GuideActions from "../../components/GuideActions.astro";
 import { GUIDE_NINA } from "../../data/guideNina";
-import { SITE, shops } from "../../data/site";
+import { SITE, shops, services } from "../../data/site";
 import { faqSchema } from "../../lib/schema";
 
 type Img = { url: string; alt: string; didascalia?: string };
@@ -28,6 +29,17 @@ const { guida, guide } = Astro.props as { guida: Guida | null; guide: Guida[] };
 const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const RUOLI: Record<string, string> = { "Giuseppe Arrigo": "co-fondatore di G8A Technology", "Antonio Arrigo": "co-fondatore di G8A Technology" };
 const data = (iso: string) => new Intl.DateTimeFormat("it-IT", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Rome" }).format(new Date(`${iso}T12:00:00Z`));
+// Ancore dei titoli (indice "In questa guida" e link diretti alle sezioni dai risultati Google)
+const ancora = (t: string) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60);
+// Servizio di riparazione della guida (dal primo link verso una pagina riparazione): porta il blocco negozi alle pagine città del servizio.
+const servizio = guida
+  ? services.find((sv) => guida.link.some((l) => l.url.startsWith(`/${sv.slug}/`))) ?? null
+  : null;
+const meta = Math.ceil((guida?.sezioni.length ?? 0) / 2); // il riquadro negozio a metà guida
+const parole = guida
+  ? [guida.intro, ...guida.in_breve, ...guida.sezioni.flatMap((x) => [x.titolo, ...(x.paragrafi ?? []), ...(x.punti ?? [])]), ...guida.faq.flatMap((f) => [f.d, f.r])].join(" ").split(/\s+/).filter(Boolean).length
+  : 0;
+const immagini = guida ? [guida.copertina?.url, ...guida.sezioni.map((x) => x.immagine?.url)].filter(Boolean) as string[] : [];
 const crumbs = guida ? [{ name: "Guide", path: "/guide/" }, { name: guida.h1, path: `/guide/${guida.slug}/` }] : [{ name: "Guide", path: "/guide/" }];
 
 const schema = guida
@@ -35,15 +47,22 @@ const schema = guida
       {
         "@context": "https://schema.org",
         "@type": "Article",
+        "@id": new URL(`/guide/${guida.slug}/#articolo`, SITE).toString(),
         headline: guida.h1,
-        ...(guida.copertina?.url ? { image: guida.copertina.url } : {}),
+        ...(immagini.length ? { image: immagini } : {}),
         description: guida.descrizione,
         inLanguage: "it-IT",
+        articleSection: "Guide",
+        wordCount: parole,
+        isAccessibleForFree: true,
+        ...(servizio ? { about: { "@type": "Service", name: servizio.name, url: new URL(`/${servizio.slug}/`, SITE).toString() } } : {}),
+        // Negozi dove si fa la riparazione: collega la guida alle schede locali (stessi @id delle pagine negozio)
+        mentions: shops.map((s) => ({ "@id": `${SITE}/${s.slug}/#store` })),
         datePublished: guida.pubblicata_il,
         dateModified: guida.aggiornata_il,
         mainEntityOfPage: new URL(`/guide/${guida.slug}/`, SITE).toString(),
-        author: { "@type": "Organization", name: "G8A Store", url: SITE },
-        publisher: { "@type": "Organization", name: "G8A Store", url: SITE, logo: { "@type": "ImageObject", url: new URL("/g8a-logo.png", SITE).toString() } },
+        author: { "@type": "Organization", "@id": `${SITE}/#org`, name: "G8A Store", url: `${SITE}/` },
+        publisher: { "@type": "Organization", "@id": `${SITE}/#org`, name: "G8A Store", url: `${SITE}/`, logo: { "@type": "ImageObject", url: new URL("/g8a-logo.png", SITE).toString() } },
       },
       {
         "@context": "https://schema.org",
@@ -59,28 +78,38 @@ const schema = guida
 const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [];
 ---
 {guida ? (
-  <Base title={`${guida.titolo} | G8A Store`} description={guida.descrizione} path={`/guide/${guida.slug}/`} crumbs={crumbs} schema={schema} waMessage={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} ogImage={guida.copertina?.url}>
+  <Base title={`${guida.titolo} | G8A Store`} description={guida.descrizione} path={`/guide/${guida.slug}/`} crumbs={crumbs} schema={schema} waMessage={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} ogImage={guida.copertina?.url} article={{ published: guida.pubblicata_il, modified: guida.aggiornata_il }}>
     <Hero crumbs={crumbs} sub={guida.intro} shop={ref} msg={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} secondary={{ href: "#contatti", label: "Trova il negozio" }}>
       {guida.h1}
     </Hero>
     <section class="sec">
       <div class="wrap guide">
         <p class="byline">Guida di G8A Store{guida.firmato_da ? <> · verificata da <b>{guida.firmato_da}</b>{RUOLI[guida.firmato_da] ? `, ${RUOLI[guida.firmato_da]}` : ""}</> : null} · aggiornata il {data(guida.aggiornata_il)}</p>
-        {guida.copertina?.url && <img class="cover" src={guida.copertina.url} alt={guida.copertina.alt} width="1200" height="800" />}
+        {guida.copertina?.url && <img class="cover" src={guida.copertina.url} alt={guida.copertina.alt} width="1200" height="800" decoding="async" />}
         {guida.in_breve.length > 0 && (
           <aside class="breve" aria-label="In breve">
             <b>In breve</b>
             <ul>{guida.in_breve.map((b) => <li>{b}</li>)}</ul>
           </aside>
         )}
-        {guida.sezioni.map((s) => (
+        {guida.sezioni.length >= 4 && (
+          <nav class="toc" aria-label="In questa guida">
+            <b>In questa guida</b>
+            <ol>{guida.sezioni.map((s) => <li><a href={`#${ancora(s.titolo)}`}>{s.titolo}</a></li>)}{guida.faq.length > 0 && <li><a href="#domande">Domande frequenti</a></li>}</ol>
+          </nav>
+        )}
+        {guida.sezioni.map((s, i) => (
+          <>
+          {i === meta && <GuideActions topic={guida.h1} variant="compact" title="Preferisci farlo controllare a un tecnico?" />}
           <section>
-            <h2>{s.titolo}</h2>
+            <h2 id={ancora(s.titolo)}>{s.titolo}</h2>
             {(s.paragrafi ?? []).map((p) => <p>{p}</p>)}
             {(s.punti ?? []).length > 0 && <ul class="punti">{s.punti!.map((p) => <li>{p}</li>)}</ul>}
-            {s.immagine?.url && <figure><img src={s.immagine.url} alt={s.immagine.alt} width="1200" height="800" loading="lazy" />{s.immagine.didascalia && <figcaption>{s.immagine.didascalia}</figcaption>}</figure>}
+            {s.immagine?.url && <figure><img src={s.immagine.url} alt={s.immagine.alt} width="1200" height="800" loading="lazy" decoding="async" />{s.immagine.didascalia && <figcaption>{s.immagine.didascalia}</figcaption>}</figure>}
           </section>
+          </>
         ))}
+        <GuideActions topic={guida.h1} title="Il problema non si risolve? Portalo in negozio" />
         {guida.link.length > 0 && (
           <nav class="approf" aria-label="Per approfondire">
             <h2>Per approfondire</h2>
@@ -89,8 +118,14 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
         )}
       </div>
     </section>
-    <Faq items={guida.faq.map((f) => [f.d, f.r] as [string, string])} paper />
-    <Contacts msg={(s) => `Ciao G8A Store ${s.city}, ho letto la guida "${guida.h1}" e ho bisogno di:`} title="Serve una mano? Scrivi al negozio più vicino" paper={false} />
+    <div id="domande"><Faq items={guida.faq.map((f) => [f.d, f.r] as [string, string])} paper /></div>
+    <Contacts
+      msg={(s) => `Ciao G8A Store ${s.city}, ho letto la guida "${guida.h1}" e ho bisogno di:`}
+      linkSuffix={servizio ? `${servizio.slug}/` : undefined}
+      title={servizio ? `${servizio.name} vicino a te: ${shops.length} negozi` : "Serve una mano? Scrivi al negozio più vicino"}
+      sub={`${shops.map((s) => s.city).join(", ")}. Puoi passare senza appuntamento: la diagnosi è gratuita e il prezzo te lo diciamo prima.`}
+      paper={false}
+    />
     {altre.length > 0 && (
       <section class="sec sec-paper">
         <div class="wrap">
@@ -131,6 +166,13 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
   .breve { border-left: 4px solid var(--red); background: var(--paper); border-radius: 12px; padding: 16px 18px; }
   .breve b { display: block; margin-bottom: 6px; }
   .breve ul { list-style: disc; padding-left: 20px; color: var(--text-2); }
+  .toc { background: var(--paper); border-radius: 12px; padding: 16px 18px; margin-top: 18px; }
+  .toc b { display: block; margin-bottom: 6px; }
+  .toc ol { list-style: decimal; padding-left: 22px; color: var(--text-2); }
+  .toc li { margin-bottom: 4px; }
+  .toc a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  .toc a:hover { color: var(--red); text-decoration-color: var(--red); }
+  .guide h2[id] { scroll-margin-top: 90px; }
   .approf { margin-top: 30px; }
   .approf ul { list-style: disc; padding-left: 22px; }
   .approf a { color: var(--red); text-decoration: underline; }

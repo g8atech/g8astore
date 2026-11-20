@@ -1,0 +1,199 @@
+---
+// Riquadro "Portalo in negozio" dentro le guide: scelta del negozio + WhatsApp, Prenota appuntamento, Indicazioni, Chiama.
+// Senza JavaScript i pulsanti funzionano già (negozio di Gallarate, "Prenota" apre WhatsApp con la richiesta).
+// Con JavaScript: il negozio scelto vale per tutti i riquadri della pagina ed è ricordato sul dispositivo;
+// "Prenota appuntamento" apre un modulo (giorno, fascia oraria secondo gli orari del negozio, nome, problema)
+// che prepara il messaggio WhatsApp per il negozio. Nessun dato viene salvato o inviato dal sito.
+import Icon from "./Icon.astro";
+import WaIcon from "./WaIcon.astro";
+import { shops, waLink, telLink, mapsLink, compactHours, daySlots, waNumber, phoneDisplay } from "../data/site";
+
+interface Props {
+  topic: string; // argomento della guida, va nei messaggi WhatsApp
+  variant?: "full" | "compact";
+  title?: string;
+}
+const { topic, variant = "full", title = "Portalo in uno dei nostri negozi" } = Astro.props;
+const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
+const msgWa = (city: string) => `Ciao G8A Store ${city}, ho letto la guida "${topic}" e ho bisogno di:`;
+const msgBook = (city: string) => `Ciao G8A Store ${city}, vorrei prenotare un appuntamento. Ho letto la guida "${topic}".`;
+const data = shops.map((s) => ({
+  slug: s.slug,
+  city: s.city,
+  info: `${s.address}, ${s.city} · ${compactHours(s.hours) ?? "orari su Google Maps"}`,
+  wa: waNumber(s.whatsapp),
+  tel: telLink(s),
+  telLabel: phoneDisplay(s),
+  maps: mapsLink(s),
+  slots: daySlots(s.hours),
+}));
+const uid = `ga-${Math.random().toString(36).slice(2, 8)}`;
+const Heading = variant === "full" ? "h2" : "p";
+---
+<aside class={`gact gact-${variant}`} data-gact data-topic={topic} data-shops={JSON.stringify(data)} aria-labelledby={`${uid}-t`}>
+  <div class="gact-h">
+    <Heading id={`${uid}-t`} class="gact-t">{title}</Heading>
+    <ul class="gact-sub">{["Diagnosi gratuita", "Prezzo prima di riparare", "Garanzia fino a 12 mesi"].map((t) => <li><Icon name="checkc" /> {t}</li>)}</ul>
+  </div>
+  <div class="gact-shops" role="radiogroup" aria-label="Scegli il negozio">
+    {shops.map((s) => (
+      <button type="button" role="radio" class="gact-shop" data-shop={s.slug} aria-checked={s.slug === ref.slug ? "true" : "false"}>{s.city}</button>
+    ))}
+  </div>
+  <p class="gact-info" data-info><Icon name="pin" /> <span>{data.find((d) => d.slug === ref.slug)!.info}</span></p>
+  <div class="gact-btns">
+    <a class="btn btn-wa" data-act="wa" href={waLink(ref, msgWa(ref.city))} rel="nofollow"><WaIcon /> WhatsApp</a>
+    <a class="btn btn-red" data-act="book" href={waLink(ref, msgBook(ref.city))} rel="nofollow" aria-expanded="false" aria-controls={`${uid}-f`}><Icon name="calendar" /> Prenota appuntamento</a>
+    <a class="btn btn-line" data-act="maps" href={mapsLink(ref)} target="_blank" rel="noopener"><Icon name="nav" /> Indicazioni</a>
+    <a class="btn btn-line" data-act="tel" href={telLink(ref)}><Icon name="phone" /> <span>Chiama</span></a>
+  </div>
+  <form class="gact-book" id={`${uid}-f`} hidden novalidate>
+    <p class="gact-book-t">Prenota da <b data-city>{ref.city}</b>: scegli giorno e fascia, ti confermiamo l'orario su WhatsApp.</p>
+    <div class="gact-grid">
+      <label>Giorno<input type="date" name="giorno" required /></label>
+      <label>Fascia oraria<select name="fascia" required><option value="">Scegli prima il giorno</option></select></label>
+      <label>Nome<input type="text" name="nome" autocomplete="given-name" required maxlength="60" /></label>
+      <label class="wide">Cosa devi riparare<input type="text" name="problema" maxlength="160" placeholder="Es. notebook HP che non si accende" /></label>
+    </div>
+    <p class="gact-err" data-err role="alert" hidden></p>
+    <button class="btn btn-wa" type="submit"><WaIcon /> Invia la richiesta su WhatsApp</button>
+    <p class="gact-note">Puoi passare anche senza appuntamento. Il sito non salva i tuoi dati: il messaggio parte dal tuo WhatsApp.</p>
+  </form>
+</aside>
+
+<script>
+  type ShopData = { slug: string; city: string; info: string; wa: string; tel: string; telLabel: string; maps: string; slots: Record<string, string[]> };
+  const KEY = "g8a_negozio";
+  const GIORNI = ["domenica", "lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
+  const blocks = Array.from(document.querySelectorAll<HTMLElement>("[data-gact]"));
+  const read = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
+  const save = (v: string) => { try { localStorage.setItem(KEY, v); } catch { /* storage non disponibile */ } };
+  const wa = (num: string, msg: string) => `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+  const iso = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const fromIso = (v: string) => new Date(`${v}T12:00:00`);
+
+  function apply(slug: string) {
+    for (const b of blocks) {
+      const list: ShopData[] = JSON.parse(b.dataset.shops || "[]");
+      const s = list.find((x) => x.slug === slug);
+      if (!s) continue;
+      const topic = b.dataset.topic || "";
+      b.dataset.current = slug;
+      b.querySelectorAll<HTMLButtonElement>("[data-shop]").forEach((x) => x.setAttribute("aria-checked", String(x.dataset.shop === slug)));
+      b.querySelector("[data-info] span")!.textContent = s.info;
+      (b.querySelector('[data-act="wa"]') as HTMLAnchorElement).href = wa(s.wa, `Ciao G8A Store ${s.city}, ho letto la guida "${topic}" e ho bisogno di:`);
+      (b.querySelector('[data-act="book"]') as HTMLAnchorElement).href = wa(s.wa, `Ciao G8A Store ${s.city}, vorrei prenotare un appuntamento. Ho letto la guida "${topic}".`);
+      (b.querySelector('[data-act="maps"]') as HTMLAnchorElement).href = s.maps;
+      const tel = b.querySelector('[data-act="tel"]') as HTMLAnchorElement;
+      tel.href = s.tel;
+      tel.setAttribute("aria-label", `Chiama G8A Store ${s.city}, ${s.telLabel}`);
+      b.querySelector("[data-city]")!.textContent = s.city;
+      const form = b.querySelector("form")!;
+      fillSlots(form, s);
+    }
+  }
+
+  function firstOpenDay(s: ShopData) {
+    const d = new Date();
+    if (d.getHours() >= 17) d.setDate(d.getDate() + 1); // nel tardo pomeriggio si propone già il giorno dopo
+    for (let i = 0; i < 8; i++, d.setDate(d.getDate() + 1)) if (s.slots[d.getDay()]?.length) return d;
+    return new Date();
+  }
+
+  function fillSlots(form: HTMLFormElement, s: ShopData, scelto = false) {
+    const day = form.elements.namedItem("giorno") as HTMLInputElement;
+    const sel = form.elements.namedItem("fascia") as HTMLSelectElement;
+    const today = new Date();
+    day.min = iso(today);
+    const max = new Date(); max.setDate(max.getDate() + 60);
+    day.max = iso(max);
+    // Giorno vuoto, passato o (cambiando negozio) di chiusura: si propone il primo giorno aperto. Se lo sceglie la persona, resta.
+    if (!day.value || day.value < day.min || (!scelto && !s.slots[fromIso(day.value).getDay()]?.length)) day.value = iso(firstOpenDay(s));
+    const slots = s.slots[fromIso(day.value).getDay()] || [];
+    const prev = sel.value;
+    sel.innerHTML = "";
+    if (!slots.length) {
+      sel.add(new Option(`Chiuso il ${GIORNI[fromIso(day.value).getDay()]}`, ""));
+      return;
+    }
+    slots.forEach((t) => sel.add(new Option(`${parseInt(t, 10) < 13 ? "Mattina" : "Pomeriggio"} (${t})`, t)));
+    if (prev && slots.includes(prev)) sel.value = prev;
+  }
+
+  for (const b of blocks) {
+    const form = b.querySelector("form")!;
+    const book = b.querySelector('[data-act="book"]') as HTMLAnchorElement;
+    const err = b.querySelector("[data-err]") as HTMLElement;
+    const current = (): ShopData => (JSON.parse(b.dataset.shops || "[]") as ShopData[]).find((x) => x.slug === b.dataset.current)!;
+
+    b.querySelectorAll<HTMLButtonElement>("[data-shop]").forEach((btn) =>
+      btn.addEventListener("click", () => { save(btn.dataset.shop!); apply(btn.dataset.shop!); })
+    );
+    book.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation(); // il clic non è ancora un contatto: si conta all'invio del modulo
+      form.hidden = !form.hidden;
+      book.setAttribute("aria-expanded", String(!form.hidden));
+      if (!form.hidden) (form.elements.namedItem("giorno") as HTMLInputElement).focus();
+    });
+    (form.elements.namedItem("giorno") as HTMLInputElement).addEventListener("change", () => fillSlots(form, current(), true));
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const s = current();
+      const f = new FormData(form);
+      const giorno = String(f.get("giorno") || ""), fascia = String(f.get("fascia") || ""), nome = String(f.get("nome") || "").trim();
+      const problema = String(f.get("problema") || "").trim();
+      const manca = !giorno ? "Scegli il giorno." : !fascia ? "Quel giorno il negozio è chiuso: scegli un altro giorno." : !nome ? "Scrivi il tuo nome." : "";
+      err.hidden = !manca;
+      err.textContent = manca;
+      if (manca) return;
+      const d = fromIso(giorno);
+      const quando = `${GIORNI[d.getDay()]} ${d.toLocaleDateString("it-IT", { day: "numeric", month: "long" })}, fascia ${fascia}`;
+      const msg = [
+        `Ciao G8A Store ${s.city}, vorrei prenotare un appuntamento.`,
+        `Giorno: ${quando}`,
+        `Nome: ${nome}`,
+        problema ? `Da riparare: ${problema}` : "",
+        `(Ho letto la guida "${b.dataset.topic}")`,
+      ].filter(Boolean).join("\n");
+      const dati = { canale: "prenotazione", pagina: location.pathname, negozio: s.city };
+      const w = window as any;
+      (w.dataLayer = w.dataLayer || []).push({ event: "contatto", ...dati });
+      if (w.__g8aGa4 && w.gtag) w.gtag("event", "contatto", dati);
+      location.href = wa(s.wa, msg);
+    });
+  }
+
+  const saved = read();
+  const start = blocks[0] && saved && JSON.parse(blocks[0].dataset.shops || "[]").some((x: ShopData) => x.slug === saved) ? saved : blocks[0]?.dataset.current || "gallarate";
+  if (blocks.length) apply(start);
+</script>
+
+<style>
+  .gact { border: 1px solid var(--line); border-radius: var(--r); background: var(--white); box-shadow: var(--shadow); padding: 22px; margin: 34px 0; border-top: 4px solid var(--red); }
+  .gact-compact { padding: 18px; }
+  .gact-t { font-size: clamp(1.25rem, 2.4vw, 1.6rem); font-weight: 800; line-height: 1.2; margin: 0 0 6px; color: var(--text); }
+  .gact-compact .gact-t { font-size: 1.15rem; }
+  .gact-sub { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .9rem; color: var(--text-2); margin: 0 0 14px; padding: 0; list-style: none; }
+  .gact-sub li { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .gact-sub :global(svg) { width: 16px; height: 16px; color: var(--red); }
+  .gact-shops { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .gact-shop { border: 1.5px solid var(--line); background: var(--paper); border-radius: 999px; padding: 8px 14px; font: 600 .9rem/1.2 var(--f); color: var(--text); cursor: pointer; min-height: 40px; }
+  .gact-shop[aria-checked="true"] { background: var(--text); border-color: var(--text); color: #fff; }
+  .gact-shop:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+  .gact-info { display: flex; align-items: flex-start; gap: 6px; font-size: .9rem; color: var(--muted); margin: 0 0 14px; }
+  .gact-info :global(svg) { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+  .gact-btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .gact-btns .btn { min-height: 50px; padding: 12px 14px; white-space: normal; text-align: center; }
+  @media (min-width: 720px) { .gact-full .gact-btns { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .gact-book { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .gact-book-t { font-size: .95rem; color: var(--text-2); margin: 0 0 12px; }
+  .gact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 12px; }
+  .gact-grid label { display: flex; flex-direction: column; gap: 5px; font-size: .86rem; font-weight: 600; color: var(--text); }
+  .gact-grid .wide { grid-column: 1 / -1; }
+  .gact-grid input, .gact-grid select { font: 500 1rem/1.3 var(--f); padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; color: var(--text); min-height: 46px; }
+  .gact-grid input:focus, .gact-grid select:focus { outline: none; border-color: var(--text); }
+  .gact-err { color: var(--red); font-size: .9rem; font-weight: 600; margin: 0 0 10px; }
+  .gact-book .btn { width: 100%; }
+  .gact-note { font-size: .82rem; color: var(--muted); margin: 10px 0 0; }
+</style>
