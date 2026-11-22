@@ -5,13 +5,12 @@ import Promises from "../../components/Promises.astro";
 import Contacts from "../../components/Contacts.astro";
 import Icon from "../../components/Icon.astro";
 import WaIcon from "../../components/WaIcon.astro";
-import { shops, waLink, telLink, fmtRating, compactHours, avgRating, totalReviews } from "../../data/site";
+import { shops, waLink, telLink, phoneDisplay, mailLink, fmtRating, compactHours, avgRating, totalReviews } from "../../data/site";
 import { storeSchema } from "../../lib/schema";
-const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const cities = shops.map((s) => s.city).join(", ");
 ---
 <Base title={`Negozi G8A Store: ${cities}`} description={`I ${shops.length} negozi G8A Store per riparazione e vendita computer: ${cities}. Indirizzi, orari, telefono e WhatsApp di ogni sede.`} path="/negozi/" crumbs={[{ name: "Negozi", path: "/negozi/" }]} schema={shops.map((s) => storeSchema(s))}>
-  <Hero photo="circuito-rosso" photoAlt="" crumbs={[{ name: "Negozi", path: "/negozi/" }]} sub="Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp al negozio più vicino." shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} diagTitle="I negozi G8A Store" diagItems={shops.slice(0, 4).map((s) => s.city)} diagFoot={["Negozi", String(shops.length)]} secondary={{ href: "#negozi", label: "Vedi i negozi" }}>
+  <Hero photo="circuito-rosso" photoAlt="" crumbs={[{ name: "Negozi", path: "/negozi/" }]} sub="Passa senza appuntamento per una valutazione gratuita, oppure scrivi su WhatsApp al negozio più vicino." msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} diagTitle="I negozi G8A Store" diagItems={shops.slice(0, 4).map((s) => s.city)} diagFoot={["Negozi", String(shops.length)]} secondary={{ href: "#negozi", label: "Vedi i negozi" }}>
     I negozi <span class="grad-text">G8A Store</span>
   </Hero>
   <Promises />
@@ -28,6 +27,7 @@ const cities = shops.map((s) => s.city).join(", ");
             <h3><a href={`/${s.slug}/`}>G8A Store {s.city}</a></h3>
             <p class="addr">{s.address}, {s.zip} {s.city}{s.hint ? `, ${s.hint.toLowerCase()}` : ""}</p>
             <p class="hrs">{compactHours(s.hours) ?? "Orari sulla scheda Google Maps"}</p>
+            <p class="hrs"><a href={telLink(s)}>{phoneDisplay(s)}</a>{s.email && <> · <a href={mailLink(s)!}>{s.email}</a></>}</p>
             <div class="row">
               <a class="btn btn-line btn-xs" href={telLink(s)}><Icon name="phone" /> Chiama</a>
               <a class="btn btn-wa btn-xs" href={waLink(s, `Ciao G8A Store ${s.city}, ho bisogno di:`)} rel="nofollow"><WaIcon /> WhatsApp</a>

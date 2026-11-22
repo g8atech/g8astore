@@ -1,6 +1,7 @@
 ---
 // Riquadro "Portalo in negozio" dentro le guide: scelta del negozio + WhatsApp, Prenota appuntamento, Indicazioni, Chiama.
-// Senza JavaScript i pulsanti funzionano già (negozio di Gallarate, "Prenota" apre WhatsApp con la richiesta).
+// Nessun negozio preselezionato: ogni negozio ha il suo numero, WhatsApp, email e indirizzo. Senza JavaScript i pulsanti
+// portano a /negozi/; con JavaScript si sceglie il negozio qui (o vale quello scelto l'ultima volta sul dispositivo).
 // Con JavaScript: il negozio scelto vale per tutti i riquadri della pagina ed è ricordato sul dispositivo;
 // "Prenota appuntamento" apre un modulo (giorno, fascia oraria secondo gli orari del negozio, nome, problema)
 // che prepara il messaggio WhatsApp per il negozio. Nessun dato viene salvato o inviato dal sito.
@@ -14,13 +15,12 @@ interface Props {
   title?: string;
 }
 const { topic, variant = "full", title = "Portalo in uno dei nostri negozi" } = Astro.props;
-const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const msgWa = (city: string) => `Ciao G8A Store ${city}, ho letto la guida "${topic}" e ho bisogno di:`;
 const msgBook = (city: string) => `Ciao G8A Store ${city}, vorrei prenotare un appuntamento. Ho letto la guida "${topic}".`;
 const data = shops.map((s) => ({
   slug: s.slug,
   city: s.city,
-  info: `${s.address}, ${s.city} · ${compactHours(s.hours) ?? "orari su Google Maps"}`,
+  info: `${s.address}, ${s.city} · ${compactHours(s.hours) ?? "orari su Google Maps"} · ${phoneDisplay(s)}${s.email ? ` · ${s.email}` : ""}`,
   wa: waNumber(s.whatsapp),
   tel: telLink(s),
   telLabel: phoneDisplay(s),
@@ -37,18 +37,18 @@ const Heading = variant === "full" ? "h2" : "p";
   </div>
   <div class="gact-shops" role="radiogroup" aria-label="Scegli il negozio">
     {shops.map((s) => (
-      <button type="button" role="radio" class="gact-shop" data-shop={s.slug} aria-checked={s.slug === ref.slug ? "true" : "false"}>{s.city}</button>
+      <button type="button" role="radio" class="gact-shop" data-shop={s.slug} aria-checked="false">{s.city}</button>
     ))}
   </div>
-  <p class="gact-info" data-info><Icon name="pin" /> <span>{data.find((d) => d.slug === ref.slug)!.info}</span></p>
+  <p class="gact-info" data-info><Icon name="pin" /> <span>Scegli il negozio: ognuno ha il suo numero, il suo WhatsApp e il suo indirizzo.</span></p>
   <div class="gact-btns">
-    <a class="btn btn-wa" data-act="wa" href={waLink(ref, msgWa(ref.city))} rel="nofollow"><WaIcon /> WhatsApp</a>
-    <a class="btn btn-red" data-act="book" href={waLink(ref, msgBook(ref.city))} rel="nofollow" aria-expanded="false" aria-controls={`${uid}-f`}><Icon name="calendar" /> Prenota appuntamento</a>
-    <a class="btn btn-line" data-act="maps" href={mapsLink(ref)} target="_blank" rel="noopener"><Icon name="nav" /> Indicazioni</a>
-    <a class="btn btn-line" data-act="tel" href={telLink(ref)}><Icon name="phone" /> <span>Chiama</span></a>
+    <a class="btn btn-wa" data-act="wa" href="/negozi/" rel="nofollow"><WaIcon /> WhatsApp</a>
+    <a class="btn btn-red" data-act="book" href="/negozi/" rel="nofollow" aria-expanded="false" aria-controls={`${uid}-f`}><Icon name="calendar" /> Prenota appuntamento</a>
+    <a class="btn btn-line" data-act="maps" href="/negozi/"><Icon name="nav" /> Indicazioni</a>
+    <a class="btn btn-line" data-act="tel" href="/negozi/"><Icon name="phone" /> <span>Chiama</span></a>
   </div>
   <form class="gact-book" id={`${uid}-f`} hidden novalidate>
-    <p class="gact-book-t">Prenota da <b data-city>{ref.city}</b>: scegli giorno e fascia, ti confermiamo l'orario su WhatsApp.</p>
+    <p class="gact-book-t">Prenota da <b data-city>G8A Store</b>: scegli giorno e fascia, ti confermiamo l'orario su WhatsApp.</p>
     <div class="gact-grid">
       <label>Giorno<input type="date" name="giorno" required /></label>
       <label>Fascia oraria<select name="fascia" required><option value="">Scegli prima il giorno</option></select></label>
@@ -83,7 +83,9 @@ const Heading = variant === "full" ? "h2" : "p";
       b.querySelector("[data-info] span")!.textContent = s.info;
       (b.querySelector('[data-act="wa"]') as HTMLAnchorElement).href = wa(s.wa, `Ciao G8A Store ${s.city}, ho letto la guida "${topic}" e ho bisogno di:`);
       (b.querySelector('[data-act="book"]') as HTMLAnchorElement).href = wa(s.wa, `Ciao G8A Store ${s.city}, vorrei prenotare un appuntamento. Ho letto la guida "${topic}".`);
-      (b.querySelector('[data-act="maps"]') as HTMLAnchorElement).href = s.maps;
+      const maps = b.querySelector('[data-act="maps"]') as HTMLAnchorElement;
+      maps.href = s.maps; maps.target = "_blank"; maps.rel = "noopener";
+      b.classList.remove("need");
       const tel = b.querySelector('[data-act="tel"]') as HTMLAnchorElement;
       tel.href = s.tel;
       tel.setAttribute("aria-label", `Chiama G8A Store ${s.city}, ${s.telLabel}`);
@@ -164,14 +166,27 @@ const Heading = variant === "full" ? "h2" : "p";
     });
   }
 
+  // Finché non si sceglie un negozio, i pulsanti chiedono di sceglierlo (nessun negozio predefinito).
+  for (const b of blocks) {
+    b.querySelectorAll<HTMLAnchorElement>("[data-act]").forEach((a) =>
+      a.addEventListener("click", (e) => {
+        if (b.dataset.current) return;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        b.classList.add("need");
+        b.querySelector<HTMLButtonElement>("[data-shop]")?.focus();
+      }, true)
+    );
+  }
   const saved = read();
-  const start = blocks[0] && saved && JSON.parse(blocks[0].dataset.shops || "[]").some((x: ShopData) => x.slug === saved) ? saved : blocks[0]?.dataset.current || "gallarate";
-  if (blocks.length) apply(start);
+  if (blocks[0] && saved && JSON.parse(blocks[0].dataset.shops || "[]").some((x: ShopData) => x.slug === saved)) apply(saved);
 </script>
 
 <style>
   .gact { border: 1px solid var(--line); border-radius: var(--r); background: var(--white); box-shadow: var(--shadow); padding: 22px; margin: 34px 0; border-top: 4px solid var(--red); }
   .gact-compact { padding: 18px; }
+  .gact.need .gact-shops { outline: 3px solid var(--red); outline-offset: 6px; border-radius: 999px; }
+  .gact.need [data-info] { color: var(--red); font-weight: 600; }
   .gact-t { font-size: clamp(1.25rem, 2.4vw, 1.6rem); font-weight: 800; line-height: 1.2; margin: 0 0 6px; color: var(--text); }
   .gact-compact .gact-t { font-size: 1.15rem; }
   .gact-sub { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .9rem; color: var(--text-2); margin: 0 0 14px; padding: 0; list-style: none; }

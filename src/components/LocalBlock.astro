@@ -1,7 +1,7 @@
 ---
 import Icon from "./Icon.astro";
 import WaIcon from "./WaIcon.astro";
-import { mapsLink, telLink, phoneDisplay, nearby, waLink, fmtRating, type Shop } from "../data/site";
+import { mapsLink, telLink, mailLink, phoneDisplay, nearby, waLink, fmtRating, type Shop } from "../data/site";
 interface Props { shop: Shop; msg?: string }
 const { shop, msg } = Astro.props;
 const near = nearby[shop.slug] || [];
@@ -15,6 +15,7 @@ const near = nearby[shop.slug] || [];
         <div><span class="ic"><Icon name="pin" /></span><p><small>Indirizzo</small><span>{shop.address}, {shop.zip} {shop.city} ({shop.province}){shop.hint ? `\n${shop.hint}` : ""}</span></p></div>
         <div><span class="ic"><Icon name="clock" /></span><p><small>Orari</small><span>{shop.hours ?? "Sulla scheda Google Maps"}</span></p></div>
         <div><span class="ic"><Icon name="phone" /></span><p><small>Telefono</small><span><a href={telLink(shop)}>{phoneDisplay(shop)}</a></span></p></div>
+        {shop.email && <div><span class="ic"><Icon name="mail" /></span><p><small>Email</small><span><a href={mailLink(shop)!}>{shop.email}</a></span></p></div>}
         {shop.rating && shop.reviews ? <div><span class="ic"><Icon name="star" /></span><p><small>Google</small><span><span class="stars">★★★★★</span> {fmtRating(shop.rating)}, {shop.reviews} recensioni</span></p></div> : null}
       </div>
       <div class="acts">

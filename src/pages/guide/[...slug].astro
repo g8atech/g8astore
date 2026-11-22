@@ -26,7 +26,6 @@ export function getStaticPaths() {
 }
 
 const { guida, guide } = Astro.props as { guida: Guida | null; guide: Guida[] };
-const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const RUOLI: Record<string, string> = { "Giuseppe Arrigo": "co-fondatore di G8A Technology", "Antonio Arrigo": "co-fondatore di G8A Technology" };
 const data = (iso: string) => new Intl.DateTimeFormat("it-IT", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Rome" }).format(new Date(`${iso}T12:00:00Z`));
 // Ancore dei titoli (indice "In questa guida" e link diretti alle sezioni dai risultati Google)
@@ -79,7 +78,7 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
 ---
 {guida ? (
   <Base title={`${guida.titolo} | G8A Store`} description={guida.descrizione} path={`/guide/${guida.slug}/`} crumbs={crumbs} schema={schema} waMessage={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} ogImage={guida.copertina?.url} article={{ published: guida.pubblicata_il, modified: guida.aggiornata_il }}>
-    <Hero crumbs={crumbs} sub={guida.intro} shop={ref} msg={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} secondary={{ href: "#contatti", label: "Trova il negozio" }}>
+    <Hero crumbs={crumbs} sub={guida.intro} msg={`Ciao G8A Store, ho letto la guida "${guida.h1}" e ho bisogno di:`} secondary={{ href: "#contatti", label: "Trova il negozio" }}>
       {guida.h1}
     </Hero>
     <section class="sec">
@@ -137,7 +136,7 @@ const altre = guida ? guide.filter((g) => g.slug !== guida.slug).slice(0, 4) : [
   </Base>
 ) : (
   <Base title="Guide pratiche su PC, notebook e Mac | G8A Store" description="Guide pratiche dei tecnici G8A Store: cosa fare quando il PC, il notebook o il Mac ha un problema, cosa controllare da soli e quando serve l'assistenza." path="/guide/" crumbs={crumbs} schema={schema}>
-    <Hero crumbs={crumbs} sub="Cosa fare quando il computer ha un problema, cosa puoi controllare da solo e quando conviene passare in negozio." shop={ref} msg="Ciao G8A Store, ho bisogno di:" secondary={{ href: "#guide", label: "Vedi le guide" }}>
+    <Hero crumbs={crumbs} sub="Cosa fare quando il computer ha un problema, cosa puoi controllare da solo e quando conviene passare in negozio." msg="Ciao G8A Store, ho bisogno di:" secondary={{ href: "#guide", label: "Vedi le guide" }}>
       Guide <span class="grad-text">G8A Store</span>
     </Hero>
     <section class="sec" id="guide">

@@ -2,8 +2,8 @@
 import Icon from "./Icon.astro";
 import WaIcon from "./WaIcon.astro";
 import Photo from "./Photo.astro";
-import { waLink, telLink, type Shop } from "../data/site";
-interface Props { shop: Shop; title: string; text: string; msg: string; photo?: string }
+import { waLink, telLink, pickAttrs, type Shop } from "../data/site";
+interface Props { shop?: Shop; title: string; text: string; msg: string; photo?: string }
 const { shop, title, text, msg, photo = "circuito-rosso" } = Astro.props;
 ---
 <section class="sec">
@@ -13,8 +13,8 @@ const { shop, title, text, msg, photo = "circuito-rosso" } = Astro.props;
       <h2>{title}</h2>
       <p>{text}</p>
       <div class="acts">
-        <a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
-        <a class="btn btn-glass" href={telLink(shop)}><Icon name="phone" /> Chiama</a>
+        <a class="btn btn-wa" {...(shop ? { href: waLink(shop, msg) } : pickAttrs("wa", msg))} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
+        <a class="btn btn-glass" {...(shop ? { href: telLink(shop) } : pickAttrs("tel", msg))}><Icon name="phone" /> Chiama</a>
       </div>
     </div>
   </div>

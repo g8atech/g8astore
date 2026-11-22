@@ -5,10 +5,9 @@ import WaIcon from "../../components/WaIcon.astro";
 import ShopNav from "../../components/ShopNav.astro";
 import ShopGrid from "../../components/ShopGrid.astro";
 import Faq from "../../components/Faq.astro";
-import { pcModels, pcFamilies, pcFrom, euro, shops, waLink, catSlug } from "../../data/site";
+import { pcModels, pcFamilies, pcFrom, euro, shops, waLink, pickAttrs, catSlug } from "../../data/site";
 import { faqSchema } from "../../lib/schema";
 
-const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const minPrice = Math.min(...pcModels.map(pcFrom));
 const cover: Record<string, string> = { notebook: "n16m-ultra", gaming: "vortex-i7-rtx5050", aio: "zenith-27", mini: "energy5" };
 const faq: [string, string][] = [
@@ -26,7 +25,7 @@ const faq: [string, string][] = [
       <nav class="crumbs" aria-label="Percorso"><ol><li><a href="/">Home</a></li><li><span aria-current="page">Shop PC</span></li></ol></nav>
       <h1>Shop PC G8A</h1>
       <p style="max-width:52ch">{pcModels.length} computer a marchio G8A da configurare con RAM e SSD. Prezzi IVA inclusa da {euro(minPrice)}, montati e testati nei nostri negozi.</p>
-      <div class="acts" style="margin-top:6px"><a class="btn btn-red btn-sm" href="#prodotti">Vedi tutti i PC</a><a class="btn btn-glass btn-sm" href={waLink(ref, "Ciao G8A Store, vorrei un consiglio su quale PC scegliere:")} rel="nofollow"><WaIcon /> Chiedi un consiglio</a></div>
+      <div class="acts" style="margin-top:6px"><a class="btn btn-red btn-sm" href="#prodotti">Vedi tutti i PC</a><a class="btn btn-glass btn-sm" {...pickAttrs("wa", "Ciao G8A Store, vorrei un consiglio su quale PC scegliere:")} rel="nofollow"><WaIcon /> Chiedi un consiglio</a></div>
     </div>
     <div class="usp">
       <div><Icon name="wrench" /> Montato e testato da noi</div>

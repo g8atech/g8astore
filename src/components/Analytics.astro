@@ -11,7 +11,7 @@ import { shops, waNumber } from "../data/site";
 const chiavi: Record<string, string> = {};
 const doppie = new Set<string>();
 for (const s of shops) {
-  for (const k of [waNumber(s.phone), waNumber(s.whatsapp), s.placeId, s.city]) {
+  for (const k of [waNumber(s.phone), waNumber(s.whatsapp), s.placeId, s.city, (s.email || "").toLowerCase()]) {
     if (!k) continue;
     if (chiavi[k] && chiavi[k] !== s.city) doppie.add(k);
     chiavi[k] = s.city;
@@ -46,7 +46,9 @@ const pagine = Object.fromEntries(shops.map((s) => [`/${s.slug}/`, s.city]));
     var negozio = '';
     var num = (h.match(/^tel:\+?(\d+)/) || h.match(/wa\.me\/(\d+)/) || [])[1];
     var place = (h.match(/query_place_id=([^&]+)/) || [])[1];
+    var mail = ((h.match(/^mailto:([^?]+)/) || [])[1] || '').toLowerCase();
     if (num && chiavi[num]) negozio = chiavi[num];
+    else if (mail && chiavi[mail]) negozio = chiavi[mail];
     else if (place && chiavi[place]) negozio = chiavi[place];
     else if (canale === 'indicazioni') { var q = decodeURIComponent(h); for (var k in chiavi) if (isNaN(k) && q.indexOf(' ' + k) >= 0) negozio = chiavi[k]; }
     if (!negozio) negozio = pagine[location.pathname] || '';

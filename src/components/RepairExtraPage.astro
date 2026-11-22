@@ -18,7 +18,6 @@ type Brand = NonNullable<Service["brands"]>[number];
 type Props = { service: Service } & ({ kind: "brand"; brand: Brand } | { kind: "mac"; model: MacModel });
 const p = Astro.props as Props;
 const { service } = p;
-const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const base = `/${service.slug}/`;
 const slug = p.kind === "brand" ? p.brand.slug : p.model.slug;
 const path = `${base}${slug}/`;
@@ -55,8 +54,8 @@ const msg = `Ciao G8A Store, ${p.kind === "brand" ? `ho un notebook ${p.brand.na
 const crumbs = [{ name: service.name, path: base }, { name: p.kind === "brand" ? p.brand.name : p.model.name, path }];
 const from = rows[0] ? Math.min(...rows.map((r) => r.price)) : undefined;
 ---
-<Base title={`${name}${from ? ` da ${euro(from)}` : ""} | G8A Store`} description={`${name}${from ? ` da ${euro(from)}` : ""}: diagnosi gratuita e prezzo prima di riparare nei negozi G8A Store di ${citiesText}.`.slice(0, 160)} path={path} crumbs={crumbs} schema={[serviceSchema(name, sub, ref, path, rows), faqSchema(faq)]} waMessage={msg} ogImage={`/img/${photo}.webp`}>
-  <Hero photo={photo} photoAlt={name} crumbs={crumbs} sub={sub} chips={[...(from ? [{ t: `da ${euro(from)}`, price: true }] : []), { t: "Diagnosi gratuita" }, { t: "Garanzia fino a 12 mesi" }]} shop={ref} msg={msg} rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} diagTitle={p.kind === "brand" ? `Notebook ${p.brand.name}` : p.model.name} diagItems={p.kind === "brand" ? ["Schermo e cavo video", "Batteria", "Disco e SSD", "Temperature"] : ["Batteria", "Schermo Retina", "Tastiera", "Scheda logica"]} secondary={{ href: "#contatti", label: `${shops.length} negozi` }}>
+<Base title={`${name}${from ? ` da ${euro(from)}` : ""} | G8A Store`} description={`${name}${from ? ` da ${euro(from)}` : ""}: diagnosi gratuita e prezzo prima di riparare nei negozi G8A Store di ${citiesText}.`.slice(0, 160)} path={path} crumbs={crumbs} schema={[serviceSchema(name, sub, null, path, rows), faqSchema(faq)]} waMessage={msg} ogImage={`/img/${photo}.webp`}>
+  <Hero photo={photo} photoAlt={name} crumbs={crumbs} sub={sub} chips={[...(from ? [{ t: `da ${euro(from)}`, price: true }] : []), { t: "Diagnosi gratuita" }, { t: "Garanzia fino a 12 mesi" }]} msg={msg} rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} diagTitle={p.kind === "brand" ? `Notebook ${p.brand.name}` : p.model.name} diagItems={p.kind === "brand" ? ["Schermo e cavo video", "Batteria", "Disco e SSD", "Temperature"] : ["Batteria", "Schermo Retina", "Tastiera", "Scheda logica"]} secondary={{ href: "#contatti", label: `${shops.length} negozi` }}>
     {name}
   </Hero>
   <Promises />
@@ -108,5 +107,5 @@ const from = rows[0] ? Math.min(...rows.map((r) => r.price)) : undefined;
   <HowItWorks />
   <Contacts msg={(s) => `Ciao G8A Store ${s.city}, ${p.kind === "brand" ? `ho un notebook ${p.brand.name} da riparare` : `ho un ${p.model.name} da riparare`}:`} linkSuffix={`${service.slug}/`} title={`${name}: scrivi al negozio più vicino`} />
   <Faq items={faq} paper />
-  <Cta shop={ref} title={name} text="Scrivici modello e problema: ti diciamo subito tempi e prezzo." msg={msg} photo={photo} />
+  <Cta title={name} text="Scrivici modello e problema: ti diciamo subito tempi e prezzo." msg={msg} photo={photo} />
 </Base>
