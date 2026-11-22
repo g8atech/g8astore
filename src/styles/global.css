@@ -475,6 +475,7 @@ h3 { font-size: 1.2rem; letter-spacing: -0.015em; line-height: 1.25; }
 .opt .t small { color: var(--muted); font-size: .82rem; }
 .opt .p { margin-left: auto; font-weight: 800; white-space: nowrap; }
 .opt select { width: 100%; }
+.store-select.need { border-color: var(--red); box-shadow: 0 0 0 4px rgba(227, 6, 19, .15); }
 .store-select { width: 100%; min-height: 52px; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: #fff; font: 600 1rem var(--f); color: var(--text); }
 .summary-box { margin-top: 26px; padding: 22px; border-radius: 22px; background: var(--black); color: #fff; }
 .summary-box .ln { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; font-size: .94rem; color: #c9c9d1; border-bottom: 1px solid var(--line-d); }

@@ -5,7 +5,7 @@ import WaIcon from "./WaIcon.astro";
 import GoogleG from "./GoogleG.astro";
 import Photo from "./Photo.astro";
 import StorePanel from "./StorePanel.astro";
-import { waLink, telLink, fmtRating, phoneDisplay, type Shop } from "../data/site";
+import { waLink, telLink, pickAttrs, fmtRating, phoneDisplay, type Shop } from "../data/site";
 interface Props {
   variant?: "store" | "photo";
   photo?: string;
@@ -13,7 +13,7 @@ interface Props {
   crumbs?: { name: string; path: string }[];
   sub: string;
   chips?: { t: string; price?: boolean }[];
-  shop: Shop;
+  shop?: Shop; // senza negozio (pagine generali) Chiama e WhatsApp aprono la scelta del negozio
   msg: string;
   rating?: number | null;
   reviews?: number | null;
@@ -38,9 +38,11 @@ const { variant = "photo", photo = "notebook-rosso", photoAlt = "", crumbs = [],
       <p class="hero-sub">{sub}</p>
       <div class="chips">{chips.map((c) => <span class={c.price ? "chip price" : "chip"}><Icon name={c.price ? "euro" : "checkc"} /> {c.t}</span>)}</div>
       <div class="hero-ctas">
-        <a class="btn btn-wa" href={waLink(shop, msg)} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
+        <a class="btn btn-wa" {...(shop ? { href: waLink(shop, msg) } : pickAttrs("wa", msg))} rel="nofollow"><WaIcon /> Scrivici su WhatsApp</a>
         <div class="row2">
-          <a class="btn btn-glass btn-sm" href={telLink(shop)}><Icon name="phone" /> {phoneDisplay(shop)}</a>
+          {shop
+            ? <a class="btn btn-glass btn-sm" href={telLink(shop)}><Icon name="phone" /> {phoneDisplay(shop)}</a>
+            : <a class="btn btn-glass btn-sm" {...pickAttrs("tel", msg)}><Icon name="phone" /> Chiama un negozio</a>}
           <a class="btn btn-glass btn-sm" href={secondary?.href ?? "#contatti"}><Icon name={secondary?.icon ?? "pin"} /> {secondary?.label ?? "Negozi"}</a>
         </div>
       </div>

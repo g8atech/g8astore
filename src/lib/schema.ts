@@ -1,4 +1,4 @@
-import { SITE, telLink, mapsLink, type Shop } from "../data/site";
+import { SITE, shops, telLink, mapsLink, type Shop } from "../data/site";
 
 const DAYS: Record<string, string[]> = {
   lun: ["Monday"], mar: ["Tuesday"], mer: ["Wednesday"], gio: ["Thursday"], ven: ["Friday"], sab: ["Saturday"], dom: ["Sunday"],
@@ -54,15 +54,16 @@ export function storeSchema(shop: Shop, withRating = false) {
   };
 }
 
-export function serviceSchema(name: string, description: string, shop: Shop, url: string, offers?: { name: string; price: number }[]) {
+/** Servizio di un negozio (pagine città) o di tutta la rete (pagine generali: tutti e 5 i negozi). */
+export function serviceSchema(name: string, description: string, shop: Shop | null | undefined, url: string, offers?: { name: string; price: number }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name,
     description,
     url: new URL(url, SITE).toString(),
-    areaServed: { "@type": "City", name: shop.city },
-    provider: { "@id": `${SITE}/${shop.slug}/#store` },
+    areaServed: shop ? { "@type": "City", name: shop.city } : shops.map((s) => ({ "@type": "City", name: s.city })),
+    provider: shop ? { "@id": `${SITE}/${shop.slug}/#store` } : shops.map((s) => ({ "@id": `${SITE}/${s.slug}/#store` })),
     ...(offers?.length
       ? {
           hasOfferCatalog: {

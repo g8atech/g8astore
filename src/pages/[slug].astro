@@ -14,7 +14,7 @@ import Cta from "../components/Cta.astro";
 import B2b from "../components/B2b.astro";
 import WaIcon from "../components/WaIcon.astro";
 import GoogleG from "../components/GoogleG.astro";
-import { shops, services, saleCategories, pivaPoints, macModels, macPriceRange, euro, waLink, avgRating, totalReviews, fmtRating, nearby, repairTitle, type Shop, type Service, type SaleCategory } from "../data/site";
+import { shops, services, saleCategories, pivaPoints, macModels, macPriceRange, euro, waLink, pickAttrs, avgRating, totalReviews, fmtRating, nearby, repairTitle, type Shop, type Service, type SaleCategory } from "../data/site";
 import { storeSchema, faqSchema } from "../lib/schema";
 
 type Props = { kind: "service"; service: Service } | { kind: "sale"; cat: SaleCategory } | { kind: "vendita" } | { kind: "piva" } | { kind: "city"; shop: Shop };
@@ -29,9 +29,7 @@ export function getStaticPaths() {
 }
 const p = Astro.props as Props;
 const path = `/${Astro.params.slug}/`;
-const gallarate = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const shop = p.kind === "city" ? p.shop : undefined;
-const ref = shop ?? gallarate;
 const cities = shops.map((s) => s.city);
 const citiesText = `${cities.slice(0, -1).join(", ")} e ${cities[cities.length - 1]}`;
 const battery = macPriceRange("batteria");
@@ -116,7 +114,7 @@ const popular = [
     photoAlt={crumbName}
     crumbs={crumbs}
     sub={sub}
-    shop={ref}
+    shop={shop}
     msg={msg}
     rating={shop ? shop.rating : avgRating}
     reviews={shop ? shop.reviews : totalReviews}
@@ -175,7 +173,7 @@ const popular = [
               <h2 style="margin-top:10px">{p.cat.name}, chiavi in mano</h2>
               <ul class="checks">{p.cat.points.map((x) => <li><Icon name="checkc" /> {x}</li>)}</ul>
               <p class="lead" style="margin-top:20px"><b>Per chi è:</b> {p.cat.for.toLowerCase()}. Scrivici cosa ti serve e quanto vuoi spendere: ti proponiamo due o tre soluzioni.</p>
-              <div class="acts" style="margin-top:22px"><a class="btn btn-wa" href={waLink(ref, msg)} rel="nofollow"><WaIcon /> Chiedi una proposta</a></div>
+              <div class="acts" style="margin-top:22px"><a class="btn btn-wa" {...(shop ? { href: waLink(shop, msg) } : pickAttrs("wa", msg))} rel="nofollow"><WaIcon /> Chiedi una proposta</a></div>
             </div>
             <figure class="reveal"><Photo name={p.cat.photo} alt={p.cat.name} /></figure>
           </div>
@@ -208,7 +206,7 @@ const popular = [
             <span class="tag">Per il tuo studio</span>
             <h2 style="margin-top:10px">Un tecnico di riferimento, vicino a te</h2>
             <p class="lead" style="margin-top:14px">Quando il computer di lavoro si ferma, ti serve qualcuno che risponda subito. Con G8A Store hai un negozio vicino, un tecnico che conosce i tuoi computer e l'assistenza remota per i problemi di tutti i giorni.</p>
-            <div class="acts" style="margin-top:22px"><a class="btn btn-wa" href={waLink(ref, msg)} rel="nofollow"><WaIcon /> Parliamone</a></div>
+            <div class="acts" style="margin-top:22px"><a class="btn btn-wa" {...(shop ? { href: waLink(shop, msg) } : pickAttrs("wa", msg))} rel="nofollow"><WaIcon /> Parliamone</a></div>
           </div>
         </div>
       </div>
@@ -261,7 +259,7 @@ const popular = [
 
   {shop ? <LocalBlock shop={shop} msg={msg} /> : <Contacts msg={(s) => `Ciao G8A Store ${s.city}, ${msg.replace(/^Ciao G8A Store, /, "")}`} linkSuffix={p.kind === "service" || p.kind === "vendita" || p.kind === "piva" ? `${Astro.params.slug}/` : p.kind === "sale" ? "vendita-pc/" : undefined} />}
   <Faq items={faq} paper={!shop} />
-  <Cta shop={ref} title={shop ? `Ti aspettiamo a ${shop.city}` : "Scrivici, ti rispondiamo subito"} text="Raccontaci cosa ti serve: ti diciamo come fare, quanto costa e quando passare." msg={msg} photo={p.kind === "city" ? "circuito-rosso" : photo} />
+  <Cta shop={shop} title={shop ? `Ti aspettiamo a ${shop.city}` : "Scrivici, ti rispondiamo subito"} text="Raccontaci cosa ti serve: ti diciamo come fare, quanto costa e quando passare." msg={msg} photo={p.kind === "city" ? "circuito-rosso" : photo} />
   {shop && <section class="sec-tight"><div class="wrap"><p class="also">Gli altri negozi G8A Store: {shops.filter((s) => s.slug !== shop.slug).map((s, i, a) => <><a href={`/${s.slug}/`}>{s.city}</a>{i < a.length - 1 ? ", " : "."}</>)}</p></div></section>}
   {(p.kind === "piva" || p.kind === "city") && <B2b />}
 </Base>

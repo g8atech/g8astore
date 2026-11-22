@@ -28,6 +28,14 @@ export const waNumber = (raw: string) => {
 };
 export const waLink = (shop: Shop, msg: string) => `https://wa.me/${waNumber(shop.whatsapp)}?text=${encodeURIComponent(msg)}`;
 export const telLink = (shop: Shop) => `tel:+${waNumber(shop.phone)}`;
+export const mailLink = (shop: Shop, subject = "Richiesta dal sito") => (shop.email ? `mailto:${shop.email}?subject=${encodeURIComponent(subject)}` : null);
+/** Messaggio WhatsApp intestato al negozio: "Ciao G8A Store, …" → "Ciao G8A Store Lecco, …". */
+export const msgFor = (shop: Shop, msg: string) => (msg.includes(`G8A Store ${shop.city}`) ? msg : msg.replace("G8A Store", `G8A Store ${shop.city}`));
+/**
+ * Pagine senza un negozio preciso: Chiama e WhatsApp aprono la scelta del negozio (ShopPicker in Base.astro),
+ * così ogni contatto arriva al numero, al WhatsApp e all'email del negozio scelto. Senza JavaScript il link porta a /negozi/.
+ */
+export const pickAttrs = (kind: "tel" | "wa", msg = "Ciao G8A Store, ho bisogno di:") => ({ href: "/negozi/", "data-scegli": kind, "data-msg": msg });
 export const phoneDisplay = (shop: Shop) => {
   const d = waNumber(shop.phone).slice(2);
   // Prefissi a 2 cifre (02 Milano, 06 Roma): 02 350 4614; gli altri (0331, 0341…): 0331 248 859

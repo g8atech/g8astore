@@ -5,8 +5,9 @@ import WaIcon from "../components/WaIcon.astro";
 import ConsentHead from "../components/ConsentHead.astro";
 import Analytics from "../components/Analytics.astro";
 import ConsentBanner from "../components/ConsentBanner.astro";
+import ShopPicker from "../components/ShopPicker.astro";
 import { GUIDE_NINA } from "../data/guideNina";
-import { SITE, shops, services, saleCategories, waLink, telLink, avgRating, fmtRating, totalReviews, type Shop } from "../data/site";
+import { SITE, shops, services, saleCategories, waLink, telLink, pickAttrs, avgRating, fmtRating, totalReviews, type Shop } from "../data/site";
 
 interface Props {
   title: string;
@@ -33,8 +34,10 @@ const description = (() => {
 })();
 const title = rawTitle.length > 65 && rawTitle.endsWith(" | G8A Store") ? rawTitle.slice(0, -12) : rawTitle;
 const canonical = new URL(path, SITE).toString();
-const ref = shop ?? shops.find((s) => s.slug === "gallarate") ?? shops[0];
-const wa = waLink(ref, waMessage ?? (shop ? `Ciao G8A Store ${shop.city}, ho bisogno di:` : "Ciao G8A Store, ho bisogno di:"));
+// Pagina di un negozio: Chiama e WhatsApp vanno a quel negozio. Altre pagine: si sceglie il negozio (ShopPicker).
+const waMsg = waMessage ?? (shop ? `Ciao G8A Store ${shop.city}, ho bisogno di:` : "Ciao G8A Store, ho bisogno di:");
+const telAttrs = shop ? { href: telLink(shop) } : pickAttrs("tel", waMsg);
+const waAttrs = shop ? { href: waLink(shop, waMsg) } : pickAttrs("wa", waMsg);
 const breadcrumbSchema = crumbs.length
   ? { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ name: "Home", path: "/" }, ...crumbs].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, item: new URL(c.path, SITE).toString() })) }
   : null;
@@ -90,8 +93,8 @@ const menu = [
           {menu.map((m) => <a href={m.path} aria-current={path.includes(m.path) ? "page" : undefined}>{m.name}</a>)}
         </nav>
         <div class="top-cta">
-          <a class="btn btn-line btn-sm" href={telLink(ref)}><Icon name="phone" /> Chiama</a>
-          <a class="btn btn-wa btn-sm" href={wa} rel="nofollow"><WaIcon /> WhatsApp</a>
+          <a class="btn btn-line btn-sm" {...telAttrs}><Icon name="phone" /> Chiama</a>
+          <a class="btn btn-wa btn-sm" {...waAttrs} rel="nofollow"><WaIcon /> WhatsApp</a>
         </div>
       </div>
       <nav class="mnav" aria-label="Menu">{menu.map((m) => <a href={m.path}>{m.name}</a>)}</nav>
@@ -117,8 +120,8 @@ const menu = [
     </footer>
 
     <nav class="mbar" aria-label="Contatti rapidi">
-      <a class="btn btn-line" href={telLink(ref)}><Icon name="phone" /> Chiama</a>
-      <a class="btn btn-wa" href={wa} rel="nofollow"><WaIcon /> WhatsApp</a>
+      <a class="btn btn-line" {...telAttrs}><Icon name="phone" /> Chiama</a>
+      <a class="btn btn-wa" {...waAttrs} rel="nofollow"><WaIcon /> WhatsApp</a>
     </nav>
 
     <script is:inline>
@@ -130,6 +133,7 @@ const menu = [
         setTimeout(function () { els.forEach(function (e) { e.classList.add("in"); }); }, 2500);
       })();
     </script>
+    {!shop && <ShopPicker />}
     <ConsentBanner />
   </body>
 </html>

@@ -91,7 +91,8 @@ const crumbs = [{ name: "Shop PC", path: "/configuratore/" }, { name: fam.plural
         <div class="step-box">
           <h2><b>3</b> Dove lo ritiri</h2>
           <select class="store-select" name="store" aria-label="Negozio di ritiro">
-            {shops.map((s) => <option value={waNumber(s.whatsapp)} data-city={s.city} selected={s.slug === "gallarate"}>G8A Store {s.city} – {s.address}</option>)}
+            <option value="" selected disabled>Scegli il negozio</option>
+            {shops.map((s) => <option value={waNumber(s.whatsapp)} data-city={s.city} data-slug={s.slug}>G8A Store {s.city} – {s.address}</option>)}
           </select>
         </div>
 
@@ -146,6 +147,7 @@ const crumbs = [{ name: "Shop PC", path: "/configuratore/" }, { name: fam.plural
       var fmt = function (n) { var p = (Math.round(n * 100) / 100).toFixed(2).split("."); return p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (p[1] === "00" ? "" : "," + p[1]) + " €"; };
       function update() {
         var r = f.querySelector("input[name=ram]:checked"), s = f.querySelector("input[name=ssd]:checked"), st = f.store.options[f.store.selectedIndex];
+        var wa = document.getElementById("wa");
         var tot = Math.round((base + parseFloat(r.value) + parseFloat(s.value)) * 100) / 100;
         document.getElementById("s-ram").textContent = "RAM " + r.dataset.label;
         document.getElementById("p-ram").textContent = fmt(parseFloat(r.value));
@@ -153,11 +155,22 @@ const crumbs = [{ name: "Shop PC", path: "/configuratore/" }, { name: fam.plural
         document.getElementById("p-ssd").textContent = fmt(parseFloat(s.value));
         document.getElementById("tot").textContent = fmt(tot);
         var tm = document.getElementById("tot-m"); if (tm) tm.textContent = fmt(tot);
+        // Nessun negozio scelto: il pulsante chiede prima di scegliere dove ritirarlo (ogni negozio ha il suo WhatsApp).
+        if (!st || !st.value) { wa.href = "#"; wa.dataset.nostore = "1"; return; }
+        delete wa.dataset.nostore;
+        try { localStorage.setItem("g8a_negozio", st.dataset.slug); } catch (e) {}
         var msg = "Ciao G8A Store " + st.dataset.city + ", vorrei questo PC:\n" + name + "\n- RAM " + r.dataset.label + "\n- " + s.dataset.label + "\nTotale indicato sul sito: " + fmt(tot) + "\nMi confermate disponibilità e tempi?";
-        document.getElementById("wa").href = "https://wa.me/" + st.value + "?text=" + encodeURIComponent(msg);
-        document.querySelectorAll(".mbar .btn-wa").forEach(function (a) { a.href = document.getElementById("wa").href; });
+        wa.href = "https://wa.me/" + st.value + "?text=" + encodeURIComponent(msg);
+        document.querySelectorAll(".mbar .btn-wa").forEach(function (a) { a.href = wa.href; a.removeAttribute("data-scegli"); });
       }
-      f.addEventListener("change", update); update();
+      document.getElementById("wa").addEventListener("click", function (e) {
+        if (!this.dataset.nostore) return;
+        e.preventDefault(); e.stopPropagation();
+        f.store.focus(); f.store.classList.add("need");
+      });
+      // Il negozio scelto l'ultima volta (anche nelle guide o nella scelta negozio) è già selezionato.
+      try { var last = localStorage.getItem("g8a_negozio"); if (last) Array.prototype.forEach.call(f.store.options, function (o) { if (o.dataset.slug === last) o.selected = true; }); } catch (e) {}
+      f.addEventListener("change", function () { f.store.classList.remove("need"); update(); }); update();
       var main = document.getElementById("gal-main");
       document.querySelectorAll(".gal-thumbs button").forEach(function (b) {
         b.addEventListener("click", function () {

@@ -9,11 +9,10 @@ import Cta from "../components/Cta.astro";
 import WaIcon from "../components/WaIcon.astro";
 import GoogleG from "../components/GoogleG.astro";
 import StoreStatus from "../components/StoreStatus.astro";
-import { shops, services, totalReviews, avgRating, fmtRating, waLink, telLink, mapsLink, compactHours, repairTitle, SITE } from "../data/site";
+import { shops, services, totalReviews, avgRating, fmtRating, waLink, telLink, phoneDisplay, mailLink, mapsLink, compactHours, repairTitle, SITE } from "../data/site";
 import { storeSchema, faqSchema, pressSchema } from "../lib/schema";
 import Press from "../components/Press.astro";
 
-const ref = shops.find((s) => s.slug === "gallarate") ?? shops[0];
 const cities = shops.map((s) => s.city);
 const citiesText = `${cities.slice(0, -1).join(", ")} e ${cities[cities.length - 1]}`;
 const faq: [string, string][] = [
@@ -34,7 +33,7 @@ const popular = [
 ].map(([sv, sl]) => { const s = services.find((x) => x.slug === sv)!; return { s, pr: s.problems.find((x) => x.slug === sl)! }; });
 ---
 <Base title="G8A Store: riparazione e vendita PC, notebook e Mac in 5 negozi" description={`Riparazione notebook, PC e Mac e vendita computer per privati e partite IVA. Negozi a ${citiesText}. Diagnosi gratuita e prezzo prima di riparare.`} path="/" schema={schema}>
-  <Hero variant="store" sub={`Il tuo PC in mani esperte: ripariamo, potenziamo e vendiamo notebook, PC e Mac per privati e partite IVA, in ${shops.length} negozi tra Varese, Milano e Lecco.`} shop={ref} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "/configuratore/", label: "PC G8A", icon: "cart" }}>
+  <Hero variant="store" sub={`Il tuo PC in mani esperte: ripariamo, potenziamo e vendiamo notebook, PC e Mac per privati e partite IVA, in ${shops.length} negozi tra Varese, Milano e Lecco.`} msg="Ciao G8A Store, ho bisogno di:" rating={avgRating} reviews={totalReviews} ratingLabel={`nei ${shops.length} negozi`} secondary={{ href: "/configuratore/", label: "PC G8A", icon: "cart" }}>
     Riparazione e vendita <span class="grad-text">PC, notebook e Mac</span>
   </Hero>
   <Promises />
@@ -73,6 +72,7 @@ const popular = [
               <h3><a href={`/${s.slug}/`}>{s.city}</a></h3>
               <p class="addr">{s.address}{s.hint ? `, ${s.hint.toLowerCase()}` : ""}</p>
               <p class="hrs">{compactHours(s.hours) ?? "Orari sulla scheda Google Maps"}</p>
+              <p class="hrs"><a href={telLink(s)}>{phoneDisplay(s)}</a>{s.email && <> · <a href={mailLink(s)!}>{s.email}</a></>}</p>
               {s.hours && <span class="st" data-hours={s.hours}></span>}
               <div class="row">
                 <a class="btn btn-line btn-xs" href={telLink(s)}><Icon name="phone" /> Chiama</a>
@@ -96,6 +96,6 @@ const popular = [
   )}
 
   <Faq items={faq} title="Prima di passare" />
-  <Cta shop={ref} title="Il computer ti ha lasciato a piedi?" text="Scrivici cosa succede: ti rispondiamo in pochi minuti e ti diciamo se si risolve in giornata." msg="Ciao G8A Store, ho un problema con il computer:" />
+  <Cta title="Il computer ti ha lasciato a piedi?" text="Scrivici cosa succede: ti rispondiamo in pochi minuti e ti diciamo se si risolve in giornata." msg="Ciao G8A Store, ho un problema con il computer:" />
   <StoreStatus />
 </Base>
